@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Management.UserControls.Day"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:conv="clr-namespace:Management.Converter"
+             mc:Ignorable="d" 
+             x:Name="UC"
+             d:DesignHeight="80" d:DesignWidth="45">
+    <UserControl.Resources>
+        <conv:DayVisibilityConverter x:Key="VisibleConv" />
+    </UserControl.Resources>
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Setter Property="ToolTipService.IsEnabled" Value="True" />
+            <Setter Property="ToolTipService.ToolTip" Value="{Binding ElementName=UC, Path=Schedule}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=UC, Path=Schedule}" Value="{x:Null}" >
+                    <Setter Property="ToolTipService.IsEnabled" Value="False" />
+                    <Setter Property="ToolTipService.ToolTip" Value="{x:Null}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+    <Grid Visibility="{Binding ElementName=UC, Path=Date, Converter={StaticResource VisibleConv}}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding ElementName=UC, Path=Date}" Foreground="{Binding ElementName=UC, Path=WeekColor}" FontSize="13" VerticalAlignment="Center" TextAlignment="Right" Padding="1,0" />
+        <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding ElementName=UC, Path=Schedule}" FontSize="8" VerticalAlignment="Top" TextAlignment="Left" Padding="1,0" />
+    </Grid>
+</UserControl>
