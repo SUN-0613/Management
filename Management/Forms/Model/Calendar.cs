@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Management.Forms.Model
 {
 
     /// <summary>
-    /// メニュー.Model
+    /// メニュー.カレンダー.Model
     /// </summary>
-    public class MainMenu : IDisposable
+    public class Calendar : IDisposable
     {
 
         #region ViewModel.Property
@@ -14,17 +18,17 @@ namespace Management.Forms.Model
         /// <summary>
         /// カレンダー
         /// </summary>
-        public Pages.View.Calendar Calendar;
+        public Pages.View.Calendar Page;
 
         #endregion
 
         /// <summary>
-        /// メニュー.Model
+        /// メニュー.カレンダー.Model
         /// </summary>
-        public MainMenu()
+        public Calendar()
         {
 
-            Calendar = new Pages.View.Calendar();
+            Page = new Pages.View.Calendar();
 
         }
 
@@ -34,13 +38,14 @@ namespace Management.Forms.Model
         public void Dispose()
         {
 
-            if (Calendar != null)
+            if (Page != null)
             {
-                Calendar.Dispose();
-                Calendar = null;
+                Page.Dispose();
+                Page = null;
             }
 
         }
 
     }
+
 }

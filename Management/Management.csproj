@@ -60,7 +60,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converter\DayVisibilityConverter.cs" />
-    <Compile Include="Forms\Model\MainMenu.cs" />
+    <Compile Include="Forms\Model\Calendar.cs" />
+    <Compile Include="Forms\Model\Timer.cs" />
     <Compile Include="Forms\ViewModel\MainMenu.cs" />
     <Compile Include="Pages\Model\Calendar.cs" />
     <Compile Include="Pages\Model\Class\DayInfo.cs" />
