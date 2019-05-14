@@ -30,9 +30,18 @@
                 <RowDefinition Height="200" />
                 <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
-            <Frame Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding Calender, Mode=OneWay}" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Now, StringFormat=yyyy/MM/dd HH:mm:ss, Mode=OneWay}" TextAlignment="Center" FontSize="21" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Calender, Mode=OneWay}" />
+            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Now, StringFormat=yyyy/MM/dd HH:mm:ss, Mode=OneWay}" TextAlignment="Center" FontSize="21" />
+            <ListBox Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Schedules}" >
+                <TextBlock TextAlignment="Left" Text="{Binding Name}" />
+            </ListBox>
+            
         </Grid>
         
     </Grid>

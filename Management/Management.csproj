@@ -59,9 +59,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Class\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
-    <Compile Include="Forms\Model\Calendar.cs" />
-    <Compile Include="Forms\Model\Timer.cs" />
+    <Compile Include="Forms\Model\Menu\Calendar.cs" />
+    <Compile Include="Forms\Model\Menu\Schedule.cs" />
+    <Compile Include="Forms\Model\Menu\Timer.cs" />
     <Compile Include="Forms\ViewModel\MainMenu.cs" />
     <Compile Include="Pages\Model\Calendar.cs" />
     <Compile Include="Pages\Model\Class\DayInfo.cs" />

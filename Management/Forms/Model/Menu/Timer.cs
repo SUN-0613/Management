@@ -2,7 +2,7 @@
 using System;
 using System.Windows.Threading;
 
-namespace Management.Forms.Model
+namespace Management.Forms.Model.Menu
 {
 
     /// <summary>

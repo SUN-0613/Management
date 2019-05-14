@@ -1,5 +1,7 @@
 ﻿using AYam.Common.MVVM;
+using Management.Class;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Management.Forms.ViewModel
@@ -16,12 +18,17 @@ namespace Management.Forms.ViewModel
         /// <summary>
         /// カレンダー.Model
         /// </summary>
-        private Model.Calendar _Calendar;
+        private Model.Menu.Calendar _Calendar;
 
         /// <summary>
         /// 現在日時.Model
         /// </summary>
-        private Model.Timer _Timer;
+        private Model.Menu.Timer _Timer;
+
+        /// <summary>
+        /// スケジュール.Model
+        /// </summary>
+        private Model.Menu.Schedule _Schedule;
 
         #endregion
 
@@ -37,6 +44,16 @@ namespace Management.Forms.ViewModel
         /// </summary>
         public DateTime Now { get { return _Timer.Now; } }
 
+        /// <summary>
+        /// 予定一覧
+        /// </summary>
+        public ObservableCollection<ScheduleInfo> Schedules { get { return _Schedule.Schedules; } }
+
+        /// <summary>
+        /// 表示するスケジュール一覧の切り替えコマンド
+        /// </summary>
+        public DelegateCommand<string> ChangeListCommand { get { return _Schedule.ChangeListCommand; } }
+
         #endregion
 
         /// <summary>
@@ -45,10 +62,12 @@ namespace Management.Forms.ViewModel
         public MainMenu()
         {
 
-            _Calendar = new Model.Calendar();
+            _Calendar = new Model.Menu.Calendar();
 
-            _Timer = new Model.Timer();
+            _Timer = new Model.Menu.Timer();
             _Timer.PropertyChanged += OnTimerPropertyChanged;
+
+            _Schedule = new Model.Menu.Schedule();
 
         }
 
