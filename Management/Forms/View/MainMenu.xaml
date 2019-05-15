@@ -23,13 +23,15 @@
 
         <Menu Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" >
             <MenuItem Header="ファイル(_F)">
-                <MenuItem />
+                <Separator />
+                <MenuItem Header="終了" />
             </MenuItem>
             <MenuItem Header="常用処理(_O)">
                 <MenuItem />
             </MenuItem>
             <MenuItem Header="マスタ管理(_M)">
-                <MenuItem />
+                <MenuItem Header="マスタ情報" Command="{Binding MasterCommand}" CommandParameter="master" />
+                <MenuItem Header="取引先情報" Command="{Binding MasterCommand}" CommandParameter="client" />
             </MenuItem>
         </Menu>
         

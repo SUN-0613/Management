@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿using Management.Class;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
@@ -12,6 +12,11 @@ namespace Management
     {
 
         /// <summary>
+        /// アプリパス情報
+        /// </summary>
+        public PathInfo Path;
+
+        /// <summary>
         /// 初期開始
         /// </summary>
         /// <param name="e"></param>
@@ -22,7 +27,7 @@ namespace Management
             string appName = Assembly.GetExecutingAssembly().GetName().Name;
 
             // 実行ファイル名取得
-            appName = Path.GetFileNameWithoutExtension(appName);
+            appName = System.IO.Path.GetFileNameWithoutExtension(appName);
 
             // 多重起動情報取得
             Mutex mutex = new Mutex(false, appName);
@@ -33,6 +38,9 @@ namespace Management
 
                 // 基本処理
                 base.OnStartup(e);
+
+                // パス情報
+                Path = new PathInfo();
 
                 // 画面表示
                 var form = new Forms.View.MainMenu();

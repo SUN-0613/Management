@@ -54,6 +54,49 @@ namespace Management.Forms.ViewModel
         /// </summary>
         public DelegateCommand<string> ChangeListCommand { get { return _Schedule.ChangeListCommand; } }
 
+        /// <summary>
+        /// マスタ情報コマンド
+        /// </summary>
+        private DelegateCommand<string> _MasterCommand;
+
+        /// <summary>
+        /// マスタ情報コマンド
+        /// </summary>
+        public DelegateCommand<string> MasterCommand
+        {
+            get
+            {
+
+                if (_MasterCommand == null)
+                {
+
+                    _MasterCommand = new DelegateCommand<string>(
+                        (parameter) => 
+                        {
+                            switch (parameter)
+                            {
+
+                                case "master":  // マスタ情報
+                                    CallPropertyChanged("CallMaster");
+                                    break;
+
+                                case "client":  // 取引先情報
+                                    CallPropertyChanged("CallClient");
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        ,() => true);
+
+                }
+
+                return _MasterCommand;
+
+            }
+        }
+
         #endregion
 
         /// <summary>

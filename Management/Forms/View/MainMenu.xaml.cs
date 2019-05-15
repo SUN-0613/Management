@@ -47,6 +47,13 @@ namespace Management.Forms.View
 
             switch (e.PropertyName)
             {
+
+                case "CallMaster":  // マスタ情報画面の呼び出し
+                    break;
+
+                case "CallClient":  // 取引先情報画面の呼び出し
+                    break;
+
                 default:
                     break;
             }
