@@ -59,8 +59,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Class\PathInfo.cs" />
-    <Compile Include="Class\ScheduleInfo.cs" />
+    <Compile Include="Data\File\Base\DataFile.cs" />
+    <Compile Include="Data\File\MasterFile.cs" />
+    <Compile Include="Data\Info\PathInfo.cs" />
+    <Compile Include="Data\Info\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />

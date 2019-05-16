@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Management.Class
+namespace Management.Data.Info
 {
 
     /// <summary>

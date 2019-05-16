@@ -1,5 +1,4 @@
-﻿using Management.Class;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Threading;
 using System.Windows;
 
@@ -10,11 +9,6 @@ namespace Management
     /// </summary>
     public partial class App : Application
     {
-
-        /// <summary>
-        /// アプリパス情報
-        /// </summary>
-        public PathInfo Path;
 
         /// <summary>
         /// 初期開始
@@ -38,9 +32,6 @@ namespace Management
 
                 // 基本処理
                 base.OnStartup(e);
-
-                // パス情報
-                Path = new PathInfo();
 
                 // 画面表示
                 var form = new Forms.View.MainMenu();

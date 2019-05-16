@@ -1,7 +1,7 @@
 ﻿using AYam.Common.Method;
 using System;
 
-namespace Management.Class
+namespace Management.Data
 {
 
     /// <summary>
@@ -60,7 +60,7 @@ namespace Management.Class
             /// <summary>
             /// フォルダ一覧
             /// </summary>
-            private readonly DirectoryInfo Directories;
+            private readonly DirectoryInfo _Directories;
 
             /// <summary>
             /// ファイル情報
@@ -68,20 +68,15 @@ namespace Management.Class
             public FileInfo()
             {
 
-                Directories = new DirectoryInfo();
+                _Directories = new DirectoryInfo();
 
-                Master = Path.GetFullPath(Directories.MasterPath, "Master.Dat");
+                Master = Path.GetFullPath(_Directories.MasterPath, "Master.Dat");
 
             }
 
         }
 
         #endregion
-
-        /// <summary>
-        /// フォルダ一覧
-        /// </summary>
-        public readonly DirectoryInfo Directories;
 
         /// <summary>
         /// ファイル一覧
@@ -94,7 +89,6 @@ namespace Management.Class
         public PathInfo()
         {
 
-            Directories = new DirectoryInfo();
             Files = new FileInfo();
 
         }
