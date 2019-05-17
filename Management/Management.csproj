@@ -35,8 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,10 +70,15 @@
     <Compile Include="Data\Info\PathInfo.cs" />
     <Compile Include="Data\Info\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
+    <Compile Include="Forms\Model\Master\MasterInfo.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
     <Compile Include="Forms\ViewModel\MainMenu.cs" />
+    <Compile Include="Forms\ViewModel\MasterInfo.cs" />
+    <Compile Include="Forms\View\MasterInfo.xaml.cs">
+      <DependentUpon>MasterInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Model\Calendar.cs" />
     <Compile Include="Pages\Model\Class\DayInfo.cs" />
     <Compile Include="Pages\Model\Class\Holiday.cs" />
@@ -114,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\View\MasterInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\View\Calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +139,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\CommonControls\CommonControls.csproj">
+      <Project>{2f642622-633e-430d-bf13-cfff4077f854}</Project>
+      <Name>CommonControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Common\Common.csproj">
       <Project>{326c56d4-4067-435f-b7b0-a93b167c2186}</Project>
       <Name>Common</Name>

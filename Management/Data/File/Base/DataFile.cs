@@ -144,12 +144,54 @@ namespace Management.Data.File.Base
         /// 指定ヘッダの詳細値取得
         /// </summary>
         /// <param name="key">ヘッダ名</param>
+        /// <returns>
+        /// 詳細値
+        /// 取得できない場合はブランクを返す
+        /// </returns>
+        protected string GetValue(string key)
+        {
+            return GetValue(key, -1, "");
+        }
+
+        /// <summary>
+        /// 指定ヘッダの詳細値取得
+        /// </summary>
+        /// <param name="key">ヘッダ名</param>
         /// <param name="valueIndex">
         /// 詳細一覧のIndex
         /// -1の場合は改行コードにて連結
         /// </param>
+        /// <returns>
+        /// 詳細値
+        /// 取得できない場合はブランクを返す
+        /// </returns>
+        protected string GetValue(string key, int valueIndex)
+        {
+            return GetValue(key, valueIndex, "");
+        }
+
+        /// <summary>
+        /// 指定ヘッダの詳細値取得
+        /// </summary>
+        /// <param name="key">ヘッダ名</param>
+        /// <param name="returnValue">指定ヘッダがテーブルに存在しない時にreturnする初期値</param>
         /// <returns>詳細値</returns>
-        protected string GetValue(string key, int valueIndex = -1)
+        protected string GetValue(string key, string returnValue)
+        {
+            return GetValue(key, -1, returnValue);
+        }
+
+        /// <summary>
+        /// 指定ヘッダの詳細値取得
+        /// </summary>
+        /// <param name="key">ヘッダ名</param>
+        /// <param name="valueIndex">
+        /// 詳細一覧のIndex
+        /// -1の場合は改行コードにて連結
+        /// </param>
+        /// <param name="returnValue">指定ヘッダがテーブルに存在しない時にreturnする初期値</param>
+        /// <returns>詳細値</returns>
+        protected string GetValue(string key, int valueIndex, string returnValue)
         {
 
             if (DataTable.ContainsKey(key))
@@ -160,11 +202,7 @@ namespace Management.Data.File.Base
 
                     if (valueIndex < DataTable[key].Count)
                     {
-                        return DataTable[key][valueIndex];
-                    }
-                    else
-                    {
-                        return "";
+                        returnValue = DataTable[key][valueIndex];
                     }
 
                 }
@@ -173,34 +211,43 @@ namespace Management.Data.File.Base
 
                     var value = new StringBuilder();
 
-                    for (int iLoop = 0; iLoop < DataTable[key].Count; iLoop++)
+                    try
                     {
 
-                        if (iLoop.Equals(DataTable[key].Count - 1))
+                        for (int iLoop = 0; iLoop < DataTable[key].Count; iLoop++)
                         {
-                            value.Append(DataTable[key][iLoop]);
+
+                            if (iLoop.Equals(DataTable[key].Count - 1))
+                            {
+                                value.Append(DataTable[key][iLoop]);
+                            }
+                            else
+                            {
+                                value.AppendLine(DataTable[key][iLoop]);
+                            }
+
                         }
-                        else
-                        {
-                            value.AppendLine(DataTable[key][iLoop]);
-                        }
-                        
+
+                        returnValue = value.ToString();
+
                     }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine(nameof(GetValue) + " : " + ex.Message);
+                    }
+                    finally
+                    {
 
-                    string returnValue = value.ToString();
+                        value.Clear();
+                        value = null;
 
-                    value.Clear();
-                    value = null;
-
-                    return returnValue;
+                    }
 
                 }
 
             }
-            else
-            {
-                return "";
-            }
+
+            return returnValue;
 
         }
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Management.Data.File
 {
@@ -50,9 +46,9 @@ namespace Management.Data.File
         {
 
             Name = GetValue(nameof(Name));
-            PostalCode = GetValue(nameof(PostalCode));
+            PostalCode = GetValue(nameof(PostalCode), "-");
             Address = GetValue(nameof(Address));
-            PhoneNo = GetValue(nameof(PhoneNo));
+            PhoneNo = GetValue(nameof(PhoneNo), "--");
             EMailAddress = GetValue(nameof(EMailAddress));
             BankAccount = GetValue(nameof(BankAccount));
 

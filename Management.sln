@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Management", "Management\Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common\Common.csproj", "{326C56D4-4067-435F-B7B0-A93B167C2186}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonControls", "..\Common\CommonControls\CommonControls.csproj", "{2F642622-633E-430D-BF13-CFFF4077F854}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{326C56D4-4067-435F-B7B0-A93B167C2186}.Release|Any CPU.Build.0 = Release|Any CPU
 		{326C56D4-4067-435F-B7B0-A93B167C2186}.Release|x64.ActiveCfg = Release|x64
 		{326C56D4-4067-435F-B7B0-A93B167C2186}.Release|x64.Build.0 = Release|x64
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Debug|x64.Build.0 = Debug|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Release|x64.ActiveCfg = Release|Any CPU
+		{2F642622-633E-430D-BF13-CFFF4077F854}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
