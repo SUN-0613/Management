@@ -43,6 +43,12 @@ namespace Management.Data.File
         /// マスタ情報ファイル
         /// </summary>
         public MasterFile() : base(new PathInfo().Files.Master)
+        { }
+
+        /// <summary>
+        /// ファイル読込
+        /// </summary>
+        public override void Read()
         {
 
             Name = GetValue(nameof(Name));

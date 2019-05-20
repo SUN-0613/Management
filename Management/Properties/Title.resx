@@ -117,16 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="App_MutexMessage" xml:space="preserve">
-    <value>多重起動防止</value>
-    <comment>アプリ：多重起動防止</comment>
-  </data>
-  <data name="Button_Cancel" xml:space="preserve">
-    <value>取消</value>
-    <comment>ボタン：キャンセル</comment>
-  </data>
-  <data name="Button_Save" xml:space="preserve">
-    <value>保存</value>
-    <comment>ボタン：保存</comment>
+  <data name="MasterInfo" xml:space="preserve">
+    <value>マスタ情報</value>
+    <comment>マスタ情報ダイアログ</comment>
   </data>
 </root>

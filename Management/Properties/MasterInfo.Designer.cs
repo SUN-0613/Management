@@ -22,14 +22,14 @@ namespace Management.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class MasterInfo {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal MasterInfo() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Management.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.MasterInfo", typeof(MasterInfo).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,65 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   多重起動防止 に類似しているローカライズされた文字列を検索します。
+        ///   住所 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string App_MutexMessage {
+        public static string Address {
             get {
-                return ResourceManager.GetString("App_MutexMessage", resourceCulture);
+                return ResourceManager.GetString("Address", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   取消 に類似しているローカライズされた文字列を検索します。
+        ///   口座 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Button_Cancel {
+        public static string BankAccount {
             get {
-                return ResourceManager.GetString("Button_Cancel", resourceCulture);
+                return ResourceManager.GetString("BankAccount", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   保存 に類似しているローカライズされた文字列を検索します。
+        ///   E-Mail に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Button_Save {
+        public static string EMailAddress {
             get {
-                return ResourceManager.GetString("Button_Save", resourceCulture);
+                return ResourceManager.GetString("EMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   編集中のデータを反映せずに終了しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessageClose {
+            get {
+                return ResourceManager.GetString("MessageClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   保存しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessageSave {
+            get {
+                return ResourceManager.GetString("MessageSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   氏名 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TEL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PhoneNo {
+            get {
+                return ResourceManager.GetString("PhoneNo", resourceCulture);
             }
         }
     }

@@ -49,6 +49,14 @@ namespace Management.Forms.View
             {
 
                 case "CallMaster":  // マスタ情報画面の呼び出し
+
+                    var master = new MasterInfo()
+                    {
+                        Owner = this
+                    };
+
+                    master.ShowDialog();
+
                     break;
 
                 case "CallClient":  // 取引先情報画面の呼び出し

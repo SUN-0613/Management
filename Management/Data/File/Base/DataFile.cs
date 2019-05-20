@@ -32,6 +32,16 @@ namespace Management.Data.File.Base
         private readonly string _FilePath;
 
         /// <summary>
+        /// ファイル読込
+        /// </summary>
+        public abstract void Read();
+
+        /// <summary>
+        /// ファイル保存
+        /// </summary>
+        public abstract void Save();
+
+        /// <summary>
         /// データファイル
         /// ベースクラス
         /// </summary>
@@ -43,6 +53,8 @@ namespace Management.Data.File.Base
 
             _FilePath = path;
             ReadFile();
+
+            Read();
 
         }
 
@@ -252,6 +264,16 @@ namespace Management.Data.File.Base
         }
 
         /// <summary>
+        /// 指定ヘッダの詳細数を取得
+        /// </summary>
+        /// <param name="key">ヘッダ名</param>
+        /// <returns>詳細一覧.Count</returns>
+        protected int GetValueCount(string key)
+        {
+            return DataTable.ContainsKey(key) ? DataTable[key].Count : -1;
+        }
+
+        /// <summary>
         /// データテーブル更新
         /// </summary>
         /// <param name="key">ヘッダ名</param>
@@ -317,11 +339,6 @@ namespace Management.Data.File.Base
             }
 
         }
-
-        /// <summary>
-        /// ファイル保存
-        /// </summary>
-        public abstract void Save();
 
         /// <summary>
         /// ファイル書込

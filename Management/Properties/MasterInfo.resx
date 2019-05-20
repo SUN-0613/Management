@@ -117,16 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="App_MutexMessage" xml:space="preserve">
-    <value>多重起動防止</value>
-    <comment>アプリ：多重起動防止</comment>
+  <data name="Address" xml:space="preserve">
+    <value>住所</value>
+    <comment>住所</comment>
   </data>
-  <data name="Button_Cancel" xml:space="preserve">
-    <value>取消</value>
-    <comment>ボタン：キャンセル</comment>
+  <data name="BankAccount" xml:space="preserve">
+    <value>口座</value>
+    <comment>口座</comment>
   </data>
-  <data name="Button_Save" xml:space="preserve">
-    <value>保存</value>
-    <comment>ボタン：保存</comment>
+  <data name="EMailAddress" xml:space="preserve">
+    <value>E-Mail</value>
+    <comment>メールアドレス</comment>
+  </data>
+  <data name="MessageClose" xml:space="preserve">
+    <value>編集中のデータを反映せずに終了しますか？</value>
+    <comment>メッセージボックス：キャンセル</comment>
+  </data>
+  <data name="MessageSave" xml:space="preserve">
+    <value>保存しますか？</value>
+    <comment>メッセージボックス：保存</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>氏名</value>
+    <comment>氏名</comment>
+  </data>
+  <data name="PhoneNo" xml:space="preserve">
+    <value>TEL</value>
+    <comment>電話番号</comment>
   </data>
 </root>

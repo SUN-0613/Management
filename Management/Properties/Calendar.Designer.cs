@@ -22,14 +22,14 @@ namespace Management.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class Calendar {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Calendar() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Management.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Calendar", typeof(Calendar).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,65 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   多重起動防止 に類似しているローカライズされた文字列を検索します。
+        ///   金 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string App_MutexMessage {
+        public static string Week_Friday {
             get {
-                return ResourceManager.GetString("App_MutexMessage", resourceCulture);
+                return ResourceManager.GetString("Week_Friday", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   取消 に類似しているローカライズされた文字列を検索します。
+        ///   月 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Button_Cancel {
+        public static string Week_Monday {
             get {
-                return ResourceManager.GetString("Button_Cancel", resourceCulture);
+                return ResourceManager.GetString("Week_Monday", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   保存 に類似しているローカライズされた文字列を検索します。
+        ///   土 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Button_Save {
+        public static string Week_Saturday {
             get {
-                return ResourceManager.GetString("Button_Save", resourceCulture);
+                return ResourceManager.GetString("Week_Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   日 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Sunday {
+            get {
+                return ResourceManager.GetString("Week_Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   木 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Thursday {
+            get {
+                return ResourceManager.GetString("Week_Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   火 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Tuesday {
+            get {
+                return ResourceManager.GetString("Week_Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   水 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Week_Wednesday {
+            get {
+                return ResourceManager.GetString("Week_Wednesday", resourceCulture);
             }
         }
     }

@@ -22,14 +22,14 @@ namespace Management.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    public class Title {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Title() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Management.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Title", typeof(Title).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,11 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   多重起動防止 に類似しているローカライズされた文字列を検索します。
+        ///   マスタ情報 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string App_MutexMessage {
+        public static string MasterInfo {
             get {
-                return ResourceManager.GetString("App_MutexMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   取消 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Button_Cancel {
-            get {
-                return ResourceManager.GetString("Button_Cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   保存 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Button_Save {
-            get {
-                return ResourceManager.GetString("Button_Save", resourceCulture);
+                return ResourceManager.GetString("MasterInfo", resourceCulture);
             }
         }
     }

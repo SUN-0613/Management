@@ -34,7 +34,7 @@ namespace Management.Data
             public DirectoryInfo()
             {
 
-                RootPath = Path.MakeDirectories(Environment.CurrentDirectory);
+                RootPath = Path.MakeDirectories(Environment.CurrentDirectory) + @"\" + "Parameter";
                 MasterPath = Path.MakeDirectories(RootPath + @"\" + "MasterData");
 
             }

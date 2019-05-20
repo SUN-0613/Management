@@ -14,14 +14,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Menu Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" >
+        <Menu Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" >
             <MenuItem Header="ファイル(_F)">
                 <Separator />
                 <MenuItem Header="終了" />
@@ -34,39 +32,55 @@
                 <MenuItem Header="取引先情報" Command="{Binding MasterCommand}" CommandParameter="client" />
             </MenuItem>
         </Menu>
-        
-        <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+
+        <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="200" />
-                <RowDefinition Height="30" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Frame Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Calender, Mode=OneWay}" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Now, StringFormat=yyyy/MM/dd HH:mm:ss, Mode=OneWay}" TextAlignment="Center" FontSize="15" />
+
+            <Grid Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Calender, Mode=OneWay}" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Now, StringFormat=yyyy/MM/dd HH:mm:ss, Mode=OneWay}" TextAlignment="Center" FontSize="15" />
+                <!--
             <ListBox Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Schedules}" >
                 <TextBlock TextAlignment="Left" Text="{Binding Name}" />
             </ListBox>
+            -->
 
-            <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="前" FontSize="15" >
-                <Button.InputBindings>
-                    <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="previous" MouseAction="LeftClick" />
-                </Button.InputBindings>
-            </Button>
+                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="前" FontSize="15" >
+                    <Button.InputBindings>
+                        <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="previous" MouseAction="LeftClick" />
+                    </Button.InputBindings>
+                </Button>
 
-            <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="次" FontSize="15" >
-                <Button.InputBindings>
-                    <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="next" MouseAction="LeftClick" />
-                </Button.InputBindings>
-            </Button>
+                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="次" FontSize="15" >
+                    <Button.InputBindings>
+                        <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="next" MouseAction="LeftClick" />
+                    </Button.InputBindings>
+                </Button>
+
+            </Grid>
+
+            <GridSplitter Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Stretch" Background="Transparent" Width="1" />
+
+            <TabControl Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" />
 
         </Grid>
-
-        <TabControl Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" />
-
+        
     </Grid>
 </Window>

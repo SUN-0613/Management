@@ -117,16 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="App_MutexMessage" xml:space="preserve">
-    <value>多重起動防止</value>
-    <comment>アプリ：多重起動防止</comment>
+  <data name="Week_Friday" xml:space="preserve">
+    <value>金</value>
+    <comment>金曜</comment>
   </data>
-  <data name="Button_Cancel" xml:space="preserve">
-    <value>取消</value>
-    <comment>ボタン：キャンセル</comment>
+  <data name="Week_Monday" xml:space="preserve">
+    <value>月</value>
+    <comment>月曜</comment>
   </data>
-  <data name="Button_Save" xml:space="preserve">
-    <value>保存</value>
-    <comment>ボタン：保存</comment>
+  <data name="Week_Saturday" xml:space="preserve">
+    <value>土</value>
+    <comment>土曜</comment>
+  </data>
+  <data name="Week_Sunday" xml:space="preserve">
+    <value>日</value>
+    <comment>日曜</comment>
+  </data>
+  <data name="Week_Thursday" xml:space="preserve">
+    <value>木</value>
+    <comment>木曜</comment>
+  </data>
+  <data name="Week_Tuesday" xml:space="preserve">
+    <value>火</value>
+    <comment>火曜</comment>
+  </data>
+  <data name="Week_Wednesday" xml:space="preserve">
+    <value>水</value>
+    <comment>水曜</comment>
   </data>
 </root>

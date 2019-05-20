@@ -1,27 +1,83 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Management.Forms.View
 {
     /// <summary>
     /// MasterInfo.xaml の相互作用ロジック
     /// </summary>
-    public partial class MasterInfo : Window
+    public partial class MasterInfo : Window, IDisposable
     {
+
+        /// <summary>
+        /// マスタ情報.View
+        /// </summary>
         public MasterInfo()
         {
+
             InitializeComponent();
+
+            if (DataContext is ViewModel.MasterInfo viewModel)
+            {
+                viewModel.PropertyChanged += OnPropertyChanged;
+            }
+
         }
+
+        /// <summary>
+        /// 終了処理
+        /// </summary>
+        public void Dispose()
+        {
+
+            if (DataContext is ViewModel.MasterInfo viewModel)
+            {
+                viewModel.PropertyChanged -= OnPropertyChanged;
+            }
+
+        }
+
+        /// <summary>
+        /// ViewModelプロパティ変更通知イベント
+        /// </summary>
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            if (DataContext is ViewModel.MasterInfo viewModel)
+            {
+
+                switch (e.PropertyName)
+                {
+
+                    case "CallSave":
+
+                        if (MessageBox.Show(Properties.MasterInfo.MessageSave, Properties.Title.MasterInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            viewModel.Save();
+                            Close();
+                        }
+
+                        break;
+
+                    case "CallClose":
+
+                        if (!viewModel.IsEdited 
+                            || MessageBox.Show(Properties.MasterInfo.MessageClose, Properties.Title.MasterInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            viewModel.IsClose = true;
+                            Close();
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }
+
+        }
+
     }
 }

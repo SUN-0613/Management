@@ -211,6 +211,7 @@ namespace Management.Forms.ViewModel
         public void Save()
         {
             _Model.Save();
+            ResetEditFlg();
         }
 
     }
