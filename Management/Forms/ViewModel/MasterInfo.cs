@@ -155,9 +155,14 @@ namespace Management.Forms.ViewModel
         #endregion
 
         /// <summary>
-        /// 閉じる処理OK
+        /// 閉じる確認メッセージ.タイトル
         /// </summary>
-        public bool IsClose { private get; set; } = false;
+        public string ClosingTitle { get { return Properties.Title.MasterInfo; } }
+
+        /// <summary>
+        /// 閉じる確認メッセージ.文章
+        /// </summary>
+        public string ClosingMessage { get { return Properties.MasterInfo.MessageClose; } }
 
         /// <summary>
         /// マスタ管理.ViewModel
@@ -173,21 +178,13 @@ namespace Management.Forms.ViewModel
         /// 閉じる処理
         /// </summary>
         /// <returns>
-        /// True:閉じる処理中止
-        /// False:閉じる処理続行
+        /// True:閉じる処理続行
+        /// False:閉じる処理中止
         /// </returns>
         bool IClosing.OnClosing()
         {
 
-            if (IsClose || !IsEdited)
-            {
-                return false;
-            }
-            else
-            {
-                CallPropertyChanged("CallClose");
-                return true;
-            }
+            return !IsEdited;
 
         }
 

@@ -61,14 +61,7 @@ namespace Management.Forms.View
                         break;
 
                     case "CallClose":
-
-                        if (!viewModel.IsEdited 
-                            || MessageBox.Show(Properties.MasterInfo.MessageClose, Properties.Title.MasterInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
-                        {
-                            viewModel.IsClose = true;
-                            Close();
-                        }
-
+                        Close();
                         break;
 
                     default:

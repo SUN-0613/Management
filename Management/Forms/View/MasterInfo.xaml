@@ -46,7 +46,7 @@
 
         <!-- 氏名 -->
         <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Name, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" x:Name="txtFirst" Text="{Binding Name}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+        <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" x:Name="txtFirst" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -66,23 +66,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding PostalCode[0]}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding PostalCode[0], UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
+                    <b:TextBoxNumberOnly />
                     <b:FrameworkElementMoveFocus />
                 </i:Interaction.Behaviors>
             </TextBox>
             <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="-" VerticalAlignment="Center" TextAlignment="Center" Padding="0,2" />
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding PostalCode[1]}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding PostalCode[1], UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
+                    <b:TextBoxNumberOnly />
                     <b:FrameworkElementMoveFocus />
                 </i:Interaction.Behaviors>
             </TextBox>
 
         </Grid>
 
-        <TextBox Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Address}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
+        <TextBox Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Address, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -104,23 +106,26 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding PhoneNo[0]}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding PhoneNo[0], UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
+                    <b:TextBoxNumberOnly />
                     <b:FrameworkElementMoveFocus />
                 </i:Interaction.Behaviors>
             </TextBox>
             <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="-" VerticalAlignment="Center" TextAlignment="Center" Padding="0,2" />
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding PhoneNo[1]}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding PhoneNo[1], UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
+                    <b:TextBoxNumberOnly />
                     <b:FrameworkElementMoveFocus />
                 </i:Interaction.Behaviors>
             </TextBox>
             <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="-" VerticalAlignment="Center" TextAlignment="Center" Padding="0,2" />
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding PhoneNo[2]}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding PhoneNo[2], UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
+                    <b:TextBoxNumberOnly />
                     <b:FrameworkElementMoveFocus />
                 </i:Interaction.Behaviors>
             </TextBox>
@@ -128,7 +133,7 @@
 
         <!-- メールアドレス -->
         <TextBlock Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=EMailAddress, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding EMailAddress}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+        <TextBox Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding EMailAddress, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -137,7 +142,7 @@
         
         <!-- 口座 -->
         <TextBlock Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=BankAccount, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="6" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding BankAccount}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
+        <TextBox Grid.Row="6" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding BankAccount, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
