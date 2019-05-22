@@ -24,7 +24,7 @@ namespace Management.Data.File.Base
         /// Key : ヘッダ名
         /// Value : 詳細一覧
         /// </summary>
-        protected Dictionary<string, List<string>> DataTable;
+        private Dictionary<string, List<string>> DataTable;
 
         /// <summary>
         /// ファイルパス
@@ -61,7 +61,7 @@ namespace Management.Data.File.Base
         /// <summary>
         /// 終了処理
         /// </summary>
-        public void Dispose()
+        public virtual void Dispose()
         {
 
             if (DataTable != null)
@@ -260,6 +260,28 @@ namespace Management.Data.File.Base
             }
 
             return returnValue;
+
+        }
+
+        /// <summary>
+        /// 指定ヘッダの詳細値一覧のシャローコピーを取得
+        /// </summary>
+        /// <param name="key">ヘッダ名</param>
+        /// <returns>
+        /// 詳細値一覧
+        /// 取得できない場合はnullを返す
+        /// </returns>
+        protected List<string> GetValues(string key)
+        {
+
+            if (DataTable.ContainsKey(key))
+            {
+                return DataTable[key];
+            }
+            else
+            {
+                return null;
+            }
 
         }
 

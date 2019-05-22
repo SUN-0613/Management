@@ -6,7 +6,7 @@ namespace Management.Data.File
     /// <summary>
     /// マスタ情報ファイル
     /// </summary>
-    public class MasterFile : Base.DataFile, IDisposable
+    public class MasterFile : Base.DataFile
     {
 
         /// <summary>

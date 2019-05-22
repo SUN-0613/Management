@@ -66,16 +66,24 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\File\Base\DataFile.cs" />
+    <Compile Include="Data\File\ClientDetailFile.cs" />
+    <Compile Include="Data\File\ClientsFile.cs" />
     <Compile Include="Data\File\MasterFile.cs" />
     <Compile Include="Data\Info\PathInfo.cs" />
     <Compile Include="Data\Info\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
+    <Compile Include="Forms\Model\Clients\ClientDetail.cs" />
+    <Compile Include="Forms\Model\Clients\ClientList.cs" />
     <Compile Include="Forms\Model\Master\MasterInfo.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
+    <Compile Include="Forms\ViewModel\ClientInfo.cs" />
     <Compile Include="Forms\ViewModel\MainMenu.cs" />
     <Compile Include="Forms\ViewModel\MasterInfo.cs" />
+    <Compile Include="Forms\View\ClientInfo.xaml.cs">
+      <DependentUpon>ClientInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\View\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
     </Compile>
@@ -148,6 +156,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Forms\View\ClientInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\View\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

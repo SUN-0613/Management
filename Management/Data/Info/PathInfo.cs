@@ -10,6 +10,11 @@ namespace Management.Data
     public class PathInfo
     {
 
+        /// <summary>
+        /// ワイルド文字
+        /// </summary>
+        public static readonly string Wild = "*";
+
         #region Class
 
         /// <summary>
@@ -29,6 +34,11 @@ namespace Management.Data
             public readonly string MasterPath;
 
             /// <summary>
+            /// 取引先情報フォルダ
+            /// </summary>
+            public readonly string ClientPath;
+
+            /// <summary>
             /// フォルダ情報
             /// </summary>
             public DirectoryInfo()
@@ -36,6 +46,7 @@ namespace Management.Data
 
                 RootPath = Path.MakeDirectories(Environment.CurrentDirectory) + @"\" + "Parameter";
                 MasterPath = Path.MakeDirectories(RootPath + @"\" + "MasterData");
+                ClientPath = Path.MakeDirectories(RootPath + @"\" + "ClientData");
 
             }
 
@@ -53,9 +64,14 @@ namespace Management.Data
             public readonly string Master;
 
             /// <summary>
-            /// 取引先情報
+            /// 取引先一覧情報
             /// </summary>
             public readonly string Clients;
+
+            /// <summary>
+            /// 取引先一覧から選択した取引先の詳細情報
+            /// </summary>
+            public readonly string ClientDetail;
 
             /// <summary>
             /// フォルダ一覧
@@ -71,6 +87,8 @@ namespace Management.Data
                 _Directories = new DirectoryInfo();
 
                 Master = Path.GetFullPath(_Directories.MasterPath, "Master.Dat");
+                Clients = Path.GetFullPath(_Directories.ClientPath, "Clients.Dat");
+                ClientDetail = Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".Dat");
 
             }
 
