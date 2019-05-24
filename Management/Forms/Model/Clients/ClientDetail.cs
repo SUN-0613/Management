@@ -124,6 +124,17 @@ namespace Management.Forms.Model.Clients
 
         }
 
+        /// <summary>
+        /// 保存ファイルも含め削除
+        /// </summary>
+        public void Delete()
+        {
+
+            _File.DeleteItself();
+            Dispose();
+
+        }
+
     }
 
 }

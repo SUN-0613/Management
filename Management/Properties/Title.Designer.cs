@@ -61,6 +61,33 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   取引先登録 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClientAdd {
+            get {
+                return ResourceManager.GetString("ClientAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   取引先情報 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClientInfo {
+            get {
+                return ResourceManager.GetString("ClientInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   担当者登録 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClientStaffAdd {
+            get {
+                return ResourceManager.GetString("ClientStaffAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   マスタ情報 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MasterInfo {

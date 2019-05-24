@@ -411,6 +411,23 @@ namespace Management.Data.File.Base
 
         }
 
+        /// <summary>
+        /// ファイル削除
+        /// </summary>
+        public void DeleteItself()
+        {
+
+            if (System.IO.File.Exists(_FilePath))
+            {
+
+                Dispose();
+
+                System.IO.File.Delete(_FilePath);
+
+            }
+
+        }
+
     }
 
 }

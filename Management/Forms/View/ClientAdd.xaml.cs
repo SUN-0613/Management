@@ -5,20 +5,20 @@ using System.Windows;
 namespace Management.Forms.View
 {
     /// <summary>
-    /// MasterInfo.xaml の相互作用ロジック
+    /// ClientAdd.xaml の相互作用ロジック
     /// </summary>
-    public partial class MasterInfo : Window, IDisposable
+    public partial class ClientAdd : Window , IDisposable
     {
 
         /// <summary>
-        /// マスタ情報.View
+        /// 取引先追加.View
         /// </summary>
-        public MasterInfo()
+        public ClientAdd()
         {
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModel.ClientAdd viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -31,7 +31,7 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModel.ClientAdd viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -44,7 +44,7 @@ namespace Management.Forms.View
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModel.ClientAdd viewModel)
             {
 
                 switch (e.PropertyName)
@@ -52,16 +52,16 @@ namespace Management.Forms.View
 
                     case "CallSave":
 
-                        if (MessageBox.Show(Properties.MasterInfo.MessageSave, Properties.Title.MasterInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        if (!viewModel.Contains()
+                            && MessageBox.Show(Properties.ClientInfo.MessageSave, Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
-                            viewModel.Save();
-                            Close();
+                            DialogResult = true;
                         }
 
                         break;
 
                     case "CallClose":
-                        Close();
+                        DialogResult = false;
                         break;
 
                     default:
@@ -74,4 +74,5 @@ namespace Management.Forms.View
         }
 
     }
+
 }

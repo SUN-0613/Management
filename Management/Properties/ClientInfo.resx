@@ -117,20 +117,48 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientAdd" xml:space="preserve">
-    <value>取引先登録</value>
-    <comment>取引先追加ダイアログ</comment>
+  <data name="CompanyName" xml:space="preserve">
+    <value>会社名</value>
+    <comment>会社名</comment>
   </data>
-  <data name="ClientInfo" xml:space="preserve">
-    <value>取引先情報</value>
-    <comment>取引先情報ダイアログ</comment>
+  <data name="EMailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+    <comment>メールアドレス</comment>
   </data>
-  <data name="ClientStaffAdd" xml:space="preserve">
-    <value>担当者登録</value>
-    <comment>取引先：担当者登録ダイアログ</comment>
+  <data name="MessageClose" xml:space="preserve">
+    <value>編集中のデータを反映せずに終了しますか？</value>
+    <comment>メッセージボックス：キャンセル</comment>
   </data>
-  <data name="MasterInfo" xml:space="preserve">
-    <value>マスタ情報</value>
-    <comment>マスタ情報ダイアログ</comment>
+  <data name="MessageListAdd" xml:space="preserve">
+    <value>「*」を新たに取引先一覧に登録しますか？</value>
+    <comment>メッセージボックス：一覧登録</comment>
+  </data>
+  <data name="MessageListRemove" xml:space="preserve">
+    <value>「*」を取引先一覧より削除しますか？</value>
+    <comment>メッセージボックス：一覧削除</comment>
+  </data>
+  <data name="MessageSave" xml:space="preserve">
+    <value>保存しますか？</value>
+    <comment>メッセージボックス：保存</comment>
+  </data>
+  <data name="MessageStaffAdd" xml:space="preserve">
+    <value>「*」を新たに担当一覧に登録しますか？</value>
+    <comment>メッセージボックス：担当登録</comment>
+  </data>
+  <data name="MessageStaffRemove" xml:space="preserve">
+    <value>「*」を担当一覧より削除しますか？</value>
+    <comment>メッセージボックス：担当削除</comment>
+  </data>
+  <data name="MobilePhone" xml:space="preserve">
+    <value>連絡先</value>
+    <comment>携帯電話番号</comment>
+  </data>
+  <data name="Phonetic" xml:space="preserve">
+    <value>振り仮名</value>
+    <comment>振り仮名</comment>
+  </data>
+  <data name="StaffName" xml:space="preserve">
+    <value>氏名</value>
+    <comment>氏名</comment>
   </data>
 </root>

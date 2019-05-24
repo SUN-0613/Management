@@ -72,17 +72,27 @@
     <Compile Include="Data\Info\PathInfo.cs" />
     <Compile Include="Data\Info\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
+    <Compile Include="Forms\Model\Clients\ClientAdd.cs" />
     <Compile Include="Forms\Model\Clients\ClientDetail.cs" />
     <Compile Include="Forms\Model\Clients\ClientList.cs" />
+    <Compile Include="Forms\Model\Clients\ClientStaffAdd.cs" />
     <Compile Include="Forms\Model\Master\MasterInfo.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
+    <Compile Include="Forms\ViewModel\ClientAdd.cs" />
     <Compile Include="Forms\ViewModel\ClientInfo.cs" />
+    <Compile Include="Forms\ViewModel\ClientStaffAdd.cs" />
     <Compile Include="Forms\ViewModel\MainMenu.cs" />
     <Compile Include="Forms\ViewModel\MasterInfo.cs" />
+    <Compile Include="Forms\View\ClientAdd.xaml.cs">
+      <DependentUpon>ClientAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\View\ClientInfo.xaml.cs">
       <DependentUpon>ClientInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\ClientStaffAdd.xaml.cs">
+      <DependentUpon>ClientStaffAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\View\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
@@ -98,6 +108,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Calendar.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ClientInfo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientInfo.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\MasterInfo.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -134,6 +149,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Calendar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ClientInfo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientInfo.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\MasterInfo.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MasterInfo.Designer.cs</LastGenOutput>
@@ -156,7 +175,15 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Forms\View\ClientAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\View\ClientInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\View\ClientStaffAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

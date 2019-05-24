@@ -37,6 +37,7 @@ namespace Management.Pages.ViewModel
 
                                 switch (parameter)
                                 {
+
                                     case "previous":
                                         SelectMonth = SelectMonth.AddMonths(-1);
                                         break;

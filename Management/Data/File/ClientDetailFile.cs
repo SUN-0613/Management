@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Management.Data.File
@@ -9,6 +10,11 @@ namespace Management.Data.File
     /// </summary>
     public class ClientDetailFile : Base.DataFile
     {
+
+        /// <summary>
+        /// 登録日のテキスト保存用フォーマット
+        /// </summary>
+        private readonly string _DateTimeFormat = "yyyyMMddHHmmssfff";
 
         /// <summary>
         /// 会社名
@@ -81,10 +87,13 @@ namespace Management.Data.File
             var phonetics = GetValues(nameof(Staff) + nameof(Staff.Phonetic));
             var mails = GetValues(nameof(Staff) + nameof(Staff.EMailAddress));
             var mobiles = GetValues(nameof(Staff) + nameof(Staff.MobilePhone));
+            var creates = GetValues(nameof(Staff) + nameof(Staff.CreateDate));
 
             for (int iLoop = 0; iLoop < names.Count; iLoop++)
             {
-                Staffs.Add(new Staff(names[iLoop], phonetics[iLoop], mails[iLoop], mobiles[iLoop]));
+                Staffs.Add(new Staff(names[iLoop], phonetics[iLoop]
+                                    , mails[iLoop], mobiles[iLoop]
+                                    , DateTime.ParseExact(creates[iLoop], _DateTimeFormat, null)));
             }
 
         }
@@ -105,6 +114,7 @@ namespace Management.Data.File
             var phonetics = new List<string>();
             var mails = new List<string>();
             var mobiles = new List<string>();
+            var creates = new List<string>();
 
             for (int iLoop = 0; iLoop < Staffs.Count; iLoop++)
             {
@@ -113,6 +123,7 @@ namespace Management.Data.File
                 phonetics.Add(Staffs[iLoop].Phonetic);
                 mails.Add(Staffs[iLoop].EMailAddress);
                 mobiles.Add(Staffs[iLoop].MobilePhone);
+                creates.Add(Staffs[iLoop].CreateDate.ToString(_DateTimeFormat));
 
             }
 
@@ -120,6 +131,7 @@ namespace Management.Data.File
             Update(nameof(Staff) + nameof(Staff.Phonetic), phonetics);
             Update(nameof(Staff) + nameof(Staff.EMailAddress), mails);
             Update(nameof(Staff) + nameof(Staff.MobilePhone), mobiles);
+            Update(nameof(Staff) + nameof(Staff.CreateDate), creates);
 
             WriteFile();
 
@@ -154,20 +166,61 @@ namespace Management.Data.File
         public string MobilePhone;
 
         /// <summary>
+        /// 登録日
+        /// </summary>
+        public DateTime CreateDate;
+
+        /// <summary>
         /// 担当者情報
         /// </summary>
         /// <param name="name">氏名</param>
         /// <param name="phonetic">振り仮名</param>
         /// <param name="eMailAddress">メールアドレス</param>
         /// <param name="mobilePhone">携帯電話番号</param>
-        public Staff(string name, string phonetic, string eMailAddress, string mobilePhone)
+        /// <param name="createDate">登録日</param>
+        public Staff(string name, string phonetic, string eMailAddress, string mobilePhone, DateTime createDate)
         {
 
             Name = name;
             Phonetic = phonetic;
             EMailAddress = eMailAddress;
             MobilePhone = mobilePhone;
+            CreateDate = createDate;
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+
+            if (obj is Staff staff)
+            {
+
+                return staff.Name.Equals(Name)
+                        && staff.Phonetic.Equals(Phonetic)
+                        && staff.EMailAddress.Equals(EMailAddress)
+                        && staff.MobilePhone.Equals(MobilePhone)
+                        && staff.CreateDate.Equals(CreateDate);
+                
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// ハッシュコードの取得
+        /// </summary>
+        /// <returns>ハッシュコード</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
     }
