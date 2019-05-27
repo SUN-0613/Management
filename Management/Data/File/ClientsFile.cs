@@ -88,12 +88,12 @@ namespace Management.Data.File
         /// <summary>
         /// 名称
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// ファイル名の"*"部分の名称
         /// </summary>
-        public string FileWildName;
+        public string FileWildName { get; set; }
 
         /// <summary>
         /// 取引先情報

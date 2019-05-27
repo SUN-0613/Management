@@ -53,7 +53,7 @@ namespace Management.Forms.View
 
                     case "CallListAdd":
 
-                        var clientAdd = new ClientAdd();
+                        var clientAdd = new ClientAdd() { Owner = this };
                         var resultValue = clientAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
@@ -81,7 +81,7 @@ namespace Management.Forms.View
 
                     case "CallStaffAdd":
 
-                        var staffAdd = new ClientStaffAdd(viewModel.SelectedClient.FileWildName);
+                        var staffAdd = new ClientStaffAdd(viewModel.SelectedClient.FileWildName) { Owner = this };
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
@@ -99,7 +99,7 @@ namespace Management.Forms.View
 
                     case "CallStaffEdit":
 
-                        staffAdd = new ClientStaffAdd(viewModel.SelectedClient.FileWildName, viewModel.SelectedStaff);
+                        staffAdd = new ClientStaffAdd(viewModel.SelectedClient.FileWildName, viewModel.SelectedStaff) { Owner = this };
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value

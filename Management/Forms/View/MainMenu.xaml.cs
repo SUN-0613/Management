@@ -60,6 +60,14 @@ namespace Management.Forms.View
                     break;
 
                 case "CallClient":  // 取引先情報画面の呼び出し
+
+                    var client = new ClientInfo()
+                    {
+                        Owner = this
+                    };
+
+                    client.ShowDialog();
+
                     break;
 
                 default:

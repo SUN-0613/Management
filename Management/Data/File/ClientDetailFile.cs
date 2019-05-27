@@ -148,27 +148,27 @@ namespace Management.Data.File
         /// <summary>
         /// 氏名
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// 振り仮名
         /// </summary>
-        public string Phonetic;
+        public string Phonetic { get; set; }
 
         /// <summary>
         /// メールアドレス
         /// </summary>
-        public string EMailAddress;
+        public string EMailAddress { get; set; }
 
         /// <summary>
         /// 携帯電話番号
         /// </summary>
-        public string MobilePhone;
+        public string MobilePhone { get; set; }
 
         /// <summary>
         /// 登録日
         /// </summary>
-        public DateTime CreateDate;
+        public DateTime CreateDate { get; set; }
 
         /// <summary>
         /// 担当者情報

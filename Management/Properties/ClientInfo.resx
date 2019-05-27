@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Address" xml:space="preserve">
+    <value>住所</value>
+    <comment>住所</comment>
+  </data>
+  <data name="BankAccount" xml:space="preserve">
+    <value>口座</value>
+    <comment>口座</comment>
+  </data>
+  <data name="ClientList" xml:space="preserve">
+    <value>取引先一覧</value>
+    <comment>取引先一覧</comment>
+  </data>
   <data name="CompanyName" xml:space="preserve">
     <value>会社名</value>
     <comment>会社名</comment>
@@ -152,6 +164,10 @@
   <data name="MobilePhone" xml:space="preserve">
     <value>連絡先</value>
     <comment>携帯電話番号</comment>
+  </data>
+  <data name="PhoneNo" xml:space="preserve">
+    <value>TEL</value>
+    <comment>電話番号</comment>
   </data>
   <data name="Phonetic" xml:space="preserve">
     <value>振り仮名</value>

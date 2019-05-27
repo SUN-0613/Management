@@ -61,6 +61,33 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   住所 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   口座 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string BankAccount {
+            get {
+                return ResourceManager.GetString("BankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   取引先一覧 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClientList {
+            get {
+                return ResourceManager.GetString("ClientList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   会社名 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string CompanyName {
@@ -138,6 +165,15 @@ namespace Management.Properties {
         public static string MobilePhone {
             get {
                 return ResourceManager.GetString("MobilePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TEL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PhoneNo {
+            get {
+                return ResourceManager.GetString("PhoneNo", resourceCulture);
             }
         }
         

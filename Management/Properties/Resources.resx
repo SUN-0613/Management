@@ -121,9 +121,21 @@
     <value>多重起動防止</value>
     <comment>アプリ：多重起動防止</comment>
   </data>
+  <data name="Button_Add" xml:space="preserve">
+    <value>追加</value>
+    <comment>ボタン：追加</comment>
+  </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>取消</value>
     <comment>ボタン：キャンセル</comment>
+  </data>
+  <data name="Button_Edit" xml:space="preserve">
+    <value>編集</value>
+    <comment>ボタン：編集</comment>
+  </data>
+  <data name="Button_Remove" xml:space="preserve">
+    <value>削除</value>
+    <comment>ボタン：削除</comment>
   </data>
   <data name="Button_Save" xml:space="preserve">
     <value>保存</value>
