@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AYam.Common.Data.File;
+using AYam.Common.Data.List;
+using System.Xml.Linq;
 
 namespace Management.Data.File
 {
@@ -6,7 +8,7 @@ namespace Management.Data.File
     /// <summary>
     /// マスタ情報ファイル
     /// </summary>
-    public class MasterFile : Base.DataFile
+    public class MasterFile : XmlDataFile
     {
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace Management.Data.File
         /// <summary>
         /// マスタ情報ファイル
         /// </summary>
-        public MasterFile() : base(new PathInfo().Files.Master)
+        public MasterFile() : base(new PathInfo().Files.Master, "Master")
         { }
 
         /// <summary>
@@ -51,12 +53,12 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            Name = GetValue(nameof(Name));
-            PostalCode = GetValue(nameof(PostalCode), "-");
-            Address = GetValue(nameof(Address));
-            PhoneNo = GetValue(nameof(PhoneNo), "--");
-            EMailAddress = GetValue(nameof(EMailAddress));
-            BankAccount = GetValue(nameof(BankAccount));
+            Name = GetValue<string>(nameof(Name));
+            PostalCode = GetValue<string>(nameof(PostalCode), "-");
+            Address = GetValue<string>(nameof(Address));
+            PhoneNo = GetValue<string>(nameof(PhoneNo), "--");
+            EMailAddress = GetValue<string>(nameof(EMailAddress));
+            BankAccount = GetValue<string>(nameof(BankAccount));
 
         }
 
@@ -66,14 +68,20 @@ namespace Management.Data.File
         public override void Save()
         {
 
-            Update(nameof(Name), Name);
-            Update(nameof(PostalCode), PostalCode);
-            Update(nameof(Address), Address);
-            Update(nameof(PhoneNo), PhoneNo);
-            Update(nameof(EMailAddress), EMailAddress);
-            Update(nameof(BankAccount), BankAccount);
+            using (var elements = new List<XElement>
+            {
+                new XElement(nameof(Name), Name)
+                , new XElement(nameof(PostalCode), PostalCode)
+                , new XElement(nameof(Address), Address)
+                , new XElement(nameof(PhoneNo), PhoneNo)
+                , new XElement(nameof(EMailAddress), EMailAddress)
+                , new XElement(nameof(BankAccount), BankAccount)
+            })
+            {
 
-            WriteFile();
+                WriteFile(elements);
+
+            }
 
         }
 

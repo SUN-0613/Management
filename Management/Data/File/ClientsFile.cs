@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using AYam.Common.Data.File;
+using AYam.Common.Data.List;
+using System.Xml.Linq;
 using System.Collections.ObjectModel;
 
 namespace Management.Data.File
@@ -7,8 +9,13 @@ namespace Management.Data.File
     /// <summary>
     /// 取引先一覧情報ファイル
     /// </summary>
-    public class ClientsFile : Base.DataFile
+    public class ClientsFile : XmlDataFile
     {
+
+        /// <summary>
+        /// XML要素名
+        /// </summary>
+        private const string _ElementName = "Client";
 
         /// <summary>
         /// 取引先一覧
@@ -18,7 +25,7 @@ namespace Management.Data.File
         /// <summary>
         /// 取引先一覧情報ファイル
         /// </summary>
-        public ClientsFile() : base(new PathInfo().Files.Clients)
+        public ClientsFile() : base(new PathInfo().Files.Clients, "Clients")
         {
             Clients = new ObservableCollection<Client>();
         }
@@ -45,12 +52,9 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            var names = GetValues(nameof(Client.Name));
-            var wildNames = GetValues(nameof(Client.FileWildName));
-
-            for (int iLoop = 0; iLoop < names.Count; iLoop++)
+            foreach(var element in Element.Elements(_ElementName))
             {
-                Clients.Add(new Client(names[iLoop], wildNames[iLoop]));
+                Clients.Add(new Client(GetValue<string>(nameof(Client.Name)), GetAttribute<string>(nameof(Client.FileWildName))));
             }
 
         }
@@ -61,19 +65,22 @@ namespace Management.Data.File
         public override void Save()
         {
 
-            var names = new List<string>();
-            var wildNames = new List<string>();
-
-            for (int iLoop = 0; iLoop < Clients.Count; iLoop++)
+            using (var elements = new List<XElement>())
             {
-                names.Add(Clients[iLoop].Name);
-                wildNames.Add(Clients[iLoop].FileWildName);
+
+                for (int iLoop = 0; iLoop < Clients.Count; iLoop++)
+                {
+
+                    var element = new XElement(_ElementName, Clients[iLoop].Name);
+                    AddAttribute(ref element, new XAttribute(nameof(Client.FileWildName), Clients[iLoop].FileWildName));
+
+                    elements.Add(element);
+
+                }
+
+                WriteFile(elements);
+
             }
-
-            Update(nameof(Client.Name), names);
-            Update(nameof(Client.FileWildName), wildNames);
-
-            WriteFile();
 
         }
 

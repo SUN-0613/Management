@@ -1,6 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AYam.Common.Data.File;
+using AYam.Common.Data.List;
+using System;
 using System.Collections.ObjectModel;
+using System.Xml.Linq;
 
 namespace Management.Data.File
 {
@@ -8,13 +10,8 @@ namespace Management.Data.File
     /// <summary>
     /// 取引先情報ファイル
     /// </summary>
-    public class ClientDetailFile : Base.DataFile
+    public class ClientDetailFile : XmlDataFile
     {
-
-        /// <summary>
-        /// 登録日のテキスト保存用フォーマット
-        /// </summary>
-        private readonly string _DateTimeFormat = "yyyyMMddHHmmssfff";
 
         /// <summary>
         /// 会社名
@@ -50,7 +47,7 @@ namespace Management.Data.File
         /// 取引先情報ファイル
         /// </summary>
         /// <param name="wildName">ファイル名のワイルド部分</param>
-        public ClientDetailFile(string wildName) : base(new PathInfo().Files.ClientDetail.Replace(PathInfo.Wild, wildName))
+        public ClientDetailFile(string wildName) : base(new PathInfo().Files.ClientDetail.Replace(PathInfo.Wild, wildName), "Client")
         {
             Staffs = new ObservableCollection<Staff>();
         }
@@ -77,24 +74,24 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            CompanyName = GetValue(nameof(CompanyName));
-            PostalCode = GetValue(nameof(PostalCode), "-");
-            Address = GetValue(nameof(Address));
-            PhoneNo = GetValue(nameof(PhoneNo), "--");
-            BankAccount = GetValue(nameof(BankAccount));
+            CompanyName = GetValue<string>(nameof(CompanyName));
+            PostalCode = GetValue<string>(nameof(PostalCode), "-");
+            Address = GetValue<string>(nameof(Address));
+            PhoneNo = GetValue<string>(nameof(PhoneNo), "--");
+            BankAccount = GetValue<string>(nameof(BankAccount));
 
-            var names = GetValues(nameof(Staff) + nameof(Staff.Name));
-            var phonetics = GetValues(nameof(Staff) + nameof(Staff.Phonetic));
-            var mails = GetValues(nameof(Staff) + nameof(Staff.EMailAddress));
-            var mobiles = GetValues(nameof(Staff) + nameof(Staff.MobilePhone));
-            var creates = GetValues(nameof(Staff) + nameof(Staff.CreateDate));
-
-            for (int iLoop = 0; iLoop < names.Count; iLoop++)
+            foreach (var element in Element.Elements(nameof(Staff)))
             {
-                Staffs.Add(new Staff(names[iLoop], phonetics[iLoop]
-                                    , mails[iLoop], mobiles[iLoop]
-                                    , DateTime.ParseExact(creates[iLoop], _DateTimeFormat, null)));
+
+                Staffs.Add(new Staff(GetValue<string>(element.Element(nameof(Staff.Name)))
+                                    , GetValue<string>(element.Element(nameof(Staff.Phonetic)))
+                                    , GetValue<string>(element.Element(nameof(Staff.EMailAddress)))
+                                    , GetValue<string>(element.Element(nameof(Staff.MobilePhone)))
+                                    , GetAttribute<DateTime>(nameof(Staff.CreateDate))
+                                    ));
+
             }
+
 
         }
 
@@ -104,36 +101,35 @@ namespace Management.Data.File
         public override void Save()
         {
 
-            Update(nameof(CompanyName), CompanyName);
-            Update(nameof(PostalCode), PostalCode);
-            Update(nameof(Address), Address);
-            Update(nameof(PhoneNo), PhoneNo);
-            Update(nameof(BankAccount), BankAccount);
+            using (var elements = new List<XElement>()
+            {
+                new XElement(nameof(CompanyName), CompanyName)
+                , new XElement(nameof(PostalCode), PostalCode)
+                , new XElement(nameof(Address), Address)
+                , new XElement(nameof(PhoneNo), PhoneNo)
+                , new XElement(nameof(BankAccount), BankAccount)
 
-            var names = new List<string>();
-            var phonetics = new List<string>();
-            var mails = new List<string>();
-            var mobiles = new List<string>();
-            var creates = new List<string>();
-
-            for (int iLoop = 0; iLoop < Staffs.Count; iLoop++)
+            })
             {
 
-                names.Add(Staffs[iLoop].Name);
-                phonetics.Add(Staffs[iLoop].Phonetic);
-                mails.Add(Staffs[iLoop].EMailAddress);
-                mobiles.Add(Staffs[iLoop].MobilePhone);
-                creates.Add(Staffs[iLoop].CreateDate.ToString(_DateTimeFormat));
+                for (int iLoop = 0; iLoop < Staffs.Count; iLoop++)
+                {
+
+                    var element = new XElement(nameof(Staff));
+
+                    AddElement(ref element, new XElement(nameof(Staff.Name), Staffs[iLoop].Name));
+                    AddElement(ref element, new XElement(nameof(Staff.Phonetic), Staffs[iLoop].Phonetic));
+                    AddElement(ref element, new XElement(nameof(Staff.EMailAddress), Staffs[iLoop].EMailAddress));
+                    AddElement(ref element, new XElement(nameof(Staff.MobilePhone), Staffs[iLoop].MobilePhone));
+                    AddAttribute(ref element, new XAttribute(nameof(Staff.CreateDate), Staffs[iLoop].CreateDate));
+
+                    elements.Add(element);
+
+                }
+
+                WriteFile(elements);
 
             }
-
-            Update(nameof(Staff) + nameof(Staff.Name), names);
-            Update(nameof(Staff) + nameof(Staff.Phonetic), phonetics);
-            Update(nameof(Staff) + nameof(Staff.EMailAddress), mails);
-            Update(nameof(Staff) + nameof(Staff.MobilePhone), mobiles);
-            Update(nameof(Staff) + nameof(Staff.CreateDate), creates);
-
-            WriteFile();
 
         }
 
