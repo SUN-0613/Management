@@ -86,9 +86,9 @@ namespace Management.Data
 
                 _Directories = new DirectoryInfo();
 
-                Master = Path.GetFullPath(_Directories.MasterPath, "Master.Dat");
-                Clients = Path.GetFullPath(_Directories.ClientPath, "Clients.Dat");
-                ClientDetail = Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".Dat");
+                Master = Path.GetFullPath(_Directories.MasterPath, "Master.xml");
+                Clients = Path.GetFullPath(_Directories.ClientPath, "Clients.xml");
+                ClientDetail = Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
 
             }
 
