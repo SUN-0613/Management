@@ -130,7 +130,7 @@ namespace Management.Forms.Model.Clients
         public void Delete()
         {
 
-            _File.DeleteItself();
+            _File.Delete();
             Dispose();
 
         }

@@ -53,12 +53,12 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            Name = GetValue<string>(nameof(Name));
-            PostalCode = GetValue<string>(nameof(PostalCode), "-");
-            Address = GetValue<string>(nameof(Address));
-            PhoneNo = GetValue<string>(nameof(PhoneNo), "--");
-            EMailAddress = GetValue<string>(nameof(EMailAddress));
-            BankAccount = GetValue<string>(nameof(BankAccount));
+            Name = GetValue(nameof(Name), "");
+            PostalCode = GetValue(nameof(PostalCode), "-");
+            Address = GetValue(nameof(Address), "");
+            PhoneNo = GetValue(nameof(PhoneNo), "--");
+            EMailAddress = GetValue(nameof(EMailAddress), "");
+            BankAccount = GetValue(nameof(BankAccount), "");
 
         }
 

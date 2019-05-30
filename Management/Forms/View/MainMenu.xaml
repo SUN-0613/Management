@@ -4,12 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Management.Forms.ViewModel"
+        xmlns:p="clr-namespace:Management.Properties"
         mc:Ignorable="d"
         Title="ジョブ管理" 
         Height="750" Width="1200">
     <Window.DataContext>
         <vm:MainMenu />
     </Window.DataContext>
+    <Window.Resources>
+        <p:Resources x:Key="resources" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />

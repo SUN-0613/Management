@@ -54,7 +54,7 @@ namespace Management.Data.File
 
             foreach(var element in Element.Elements(_ElementName))
             {
-                Clients.Add(new Client(GetValue<string>(nameof(Client.Name)), GetAttribute<string>(nameof(Client.FileWildName))));
+                Clients.Add(new Client(GetValue(nameof(Client.Name), ""), GetAttribute(nameof(Client.FileWildName), "")));
             }
 
         }

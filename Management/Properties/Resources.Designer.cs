@@ -97,6 +97,24 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   次 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Next {
+            get {
+                return ResourceManager.GetString("Button_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   前 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Previous {
+            get {
+                return ResourceManager.GetString("Button_Previous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   削除 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Button_Remove {

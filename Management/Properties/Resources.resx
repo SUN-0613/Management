@@ -133,6 +133,14 @@
     <value>編集</value>
     <comment>ボタン：編集</comment>
   </data>
+  <data name="Button_Next" xml:space="preserve">
+    <value>次</value>
+    <comment>ボタン：次</comment>
+  </data>
+  <data name="Button_Previous" xml:space="preserve">
+    <value>前</value>
+    <comment>ボタン：前</comment>
+  </data>
   <data name="Button_Remove" xml:space="preserve">
     <value>削除</value>
     <comment>ボタン：削除</comment>

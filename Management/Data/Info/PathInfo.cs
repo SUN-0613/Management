@@ -44,9 +44,9 @@ namespace Management.Data
             public DirectoryInfo()
             {
 
-                RootPath = Path.MakeDirectories(Environment.CurrentDirectory) + @"\" + "Parameter";
-                MasterPath = Path.MakeDirectories(RootPath + @"\" + "MasterData");
-                ClientPath = Path.MakeDirectories(RootPath + @"\" + "ClientData");
+                RootPath = Path.MakeDirectories(Environment.CurrentDirectory) + "Parameter";
+                MasterPath = Path.MakeDirectories(RootPath + @"\MasterData");
+                ClientPath = Path.MakeDirectories(RootPath + @"\ClientData");
 
             }
 

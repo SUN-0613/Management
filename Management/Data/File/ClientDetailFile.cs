@@ -74,20 +74,20 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            CompanyName = GetValue<string>(nameof(CompanyName));
-            PostalCode = GetValue<string>(nameof(PostalCode), "-");
-            Address = GetValue<string>(nameof(Address));
-            PhoneNo = GetValue<string>(nameof(PhoneNo), "--");
-            BankAccount = GetValue<string>(nameof(BankAccount));
+            CompanyName = GetValue(nameof(CompanyName), "");
+            PostalCode = GetValue(nameof(PostalCode), "-");
+            Address = GetValue(nameof(Address), "");
+            PhoneNo = GetValue(nameof(PhoneNo), "--");
+            BankAccount = GetValue(nameof(BankAccount), "");
 
             foreach (var element in Element.Elements(nameof(Staff)))
             {
 
-                Staffs.Add(new Staff(GetValue<string>(element.Element(nameof(Staff.Name)))
-                                    , GetValue<string>(element.Element(nameof(Staff.Phonetic)))
-                                    , GetValue<string>(element.Element(nameof(Staff.EMailAddress)))
-                                    , GetValue<string>(element.Element(nameof(Staff.MobilePhone)))
-                                    , GetAttribute<DateTime>(nameof(Staff.CreateDate))
+                Staffs.Add(new Staff(GetValue(element.Element(nameof(Staff.Name)), "")
+                                    , GetValue(element.Element(nameof(Staff.Phonetic)), "")
+                                    , GetValue(element.Element(nameof(Staff.EMailAddress)), "")
+                                    , GetValue(element.Element(nameof(Staff.MobilePhone)), "")
+                                    , GetAttribute(nameof(Staff.CreateDate), DateTime.Now)
                                     ));
 
             }
@@ -131,6 +131,14 @@ namespace Management.Data.File
 
             }
 
+        }
+
+        /// <summary>
+        /// XMLファイルの削除
+        /// </summary>
+        public void Delete()
+        {
+            DeleteXmlFile();
         }
 
     }
