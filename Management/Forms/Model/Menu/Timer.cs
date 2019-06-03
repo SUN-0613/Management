@@ -1,5 +1,6 @@
 ﻿using AYam.Common.MVVM;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace Management.Forms.Model.Menu
@@ -63,10 +64,17 @@ namespace Management.Forms.Model.Menu
         /// <summary>
         /// タイマイベント
         /// </summary>
-        private void Timer_Tick(object sender, EventArgs e)
+        private async void Timer_Tick(object sender, EventArgs e)
         {
-            Now = DateTime.Now;
-            CallPropertyChanged("CallDateTime");
+
+            await Task.Run(() => 
+            {
+
+                Now = DateTime.Now;
+                CallPropertyChanged("CallDateTime");
+
+            });
+
         }
 
     }

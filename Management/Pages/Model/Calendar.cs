@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
+using System.Threading.Tasks;
 
 namespace Management.Pages.Model
 {
@@ -39,6 +40,11 @@ namespace Management.Pages.Model
         private SortedDictionary<DateTime, Holiday> _Holidays;
 
         /// <summary>
+        /// 祝日を取得している年
+        /// </summary>
+        private int _YearGetHoliday;
+
+        /// <summary>
         /// Calendar.Model
         /// </summary>
         public Calendar()
@@ -58,7 +64,8 @@ namespace Management.Pages.Model
             }
 
             // 選択年の祝日取得
-            Class.HolidayMethod.SetHolidays(SelectMonth.Year, ref _Holidays);
+            _YearGetHoliday = SelectMonth.Year;
+            Class.HolidayMethod.SetHolidays(_YearGetHoliday, ref _Holidays);
 
             // 選択年月の日付情報セット
             SetDaysPosition();
@@ -82,64 +89,74 @@ namespace Management.Pages.Model
         /// <summary>
         /// 日付の配置決め
         /// </summary>
-        public void SetDaysPosition()
+        public async void SetDaysPosition()
         {
 
-            // 初期化：全てを空白にする
-            for (int iLoop = 0; iLoop < Days.Count; iLoop++)
+            await Task.Run(() =>
             {
 
-                Days[iLoop].DayNumber = "";
-                Days[iLoop].Schedule = null;
+                // 初期化：全てを空白にする
+                Parallel.For(0, Days.Count, iLoop => 
+                {
+                    Days[iLoop].DayNumber = "";
+                    Days[iLoop].Schedule = null;
+                });
 
-            }
+                // 月末日の取得
+                int daysInMonth = DateTime.ParseExact(SelectMonth.AddMonths(1).ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).AddDays(-1).Day;
+                int startDayOfWeek = (int)DateTime.ParseExact(SelectMonth.ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).DayOfWeek;
 
-            // 月末日の取得
-            int daysInMonth = DateTime.ParseExact(SelectMonth.AddMonths(1).ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).AddDays(-1).Day;
-            int startDayOfWeek = (int)DateTime.ParseExact(SelectMonth.ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).DayOfWeek;
-
-            // 1日から月末日までセット
-            for (int iLoop = 0; iLoop < daysInMonth; iLoop++)
-            {
-
-                int index = startDayOfWeek + iLoop;
-                int day = iLoop + 1;
-
-                Days[index].DayNumber = day.ToString();
-
-                DateTime date = new DateTime(SelectMonth.Year, SelectMonth.Month, day);
-
-                switch (date.DayOfWeek)
+                // 1日から月末日までセット
+                Parallel.For(0, daysInMonth, iLoop => 
                 {
 
-                    case DayOfWeek.Sunday:
+                    int index = startDayOfWeek + iLoop;
+                    int day = iLoop + 1;
+
+                    Days[index].DayNumber = day.ToString();
+
+                    DateTime date = new DateTime(SelectMonth.Year, SelectMonth.Month, day);
+
+                    switch (date.DayOfWeek)
+                    {
+
+                        case DayOfWeek.Sunday:
+                            Days[index].Foreground = Brushes.Red;
+                            break;
+
+                        case DayOfWeek.Saturday:
+                            Days[index].Foreground = Brushes.Blue;
+                            break;
+
+                        default:    // 平日
+                            Days[index].Foreground = Brushes.Black;
+                            break;
+
+                    }
+
+                    // 選択年の祝日取得
+                    if (!_YearGetHoliday.Equals(SelectMonth.Year))
+                    {
+                        _YearGetHoliday = SelectMonth.Year;
+                        Class.HolidayMethod.SetHolidays(_YearGetHoliday, ref _Holidays);
+                    }
+
+                    // 祝日チェック
+                    if (_Holidays.ContainsKey(date))
+                    {
                         Days[index].Foreground = Brushes.Red;
-                        break;
+                        Days[index].Schedule = _Holidays[date].Name;
+                    }
 
-                    case DayOfWeek.Saturday:
-                        Days[index].Foreground = Brushes.Blue;
-                        break;
+                    /* 後ほど実装
 
-                    default:    // 平日
-                        Days[index].Foreground = Brushes.Black;
-                        break;
+                    Days[index].Schedule = "";  
 
-                }
+                    */
 
-                // 祝日チェック
-                if (_Holidays.ContainsKey(date))
-                {
-                    Days[index].Foreground = Brushes.Red;
-                    Days[index].Schedule = _Holidays[date].Name;
-                }
+                });
 
-                /* 後ほど実装
-                
-                Days[index].Schedule = "";  
-
-                */
-
-            }
+            });
 
         }
 
