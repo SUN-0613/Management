@@ -1,4 +1,5 @@
 ﻿using Management.Data.File;
+using Management.Data.Info;
 using System;
 using System.Collections.ObjectModel;
 
@@ -34,6 +35,21 @@ namespace Management.Forms.Model.Clients
         }
 
         /// <summary>
+        /// 会社名：よみがな
+        /// </summary>
+        public string CompanyKana
+        {
+            get { return _File.CompanyKana; }
+            set
+            {
+                if (!_File.CompanyKana.Equals(value))
+                {
+                    _File.CompanyKana = value;
+                }
+            }
+        }
+
+        /// <summary>
         /// 郵便番号を"-"で分割
         /// </summary>
         public string[] PostalCode;
@@ -60,6 +76,12 @@ namespace Management.Forms.Model.Clients
         public string[] PhoneNo;
 
         /// <summary>
+        /// FAX番号を"-"で分割
+        /// 市外局番-市内局番-加入者番号
+        /// </summary>
+        public string[] FaxNo;
+
+        /// <summary>
         /// 銀行口座
         /// </summary>
         public string BankAccount
@@ -79,19 +101,35 @@ namespace Management.Forms.Model.Clients
         /// </summary>
         public ObservableCollection<Staff> Staffs { get; set; }
 
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Remarks
+        {
+            get { return _File.Remarks; }
+            set
+            {
+                if (!_File.Remarks.Equals(value))
+                {
+                    _File.Remarks = value;
+                }
+            }
+        }
+
         #endregion
 
         /// <summary>
         /// 取引先管理.取引先詳細Model
         /// </summary>
-        /// <param name="wildName">ファイル名のワイルド部分</param>
-        public ClientDetail(string wildName)
+        /// <param name="wildName">取引先情報</param>
+        public ClientDetail(Client client)
         {
 
-            _File = new ClientDetailFile(wildName);
+            _File = new ClientDetailFile(client.FileWildName);
 
             PostalCode = _File.PostalCode.Split('-');
             PhoneNo = _File.PhoneNo.Split('-');
+            FaxNo = _File.FaxNo.Split('-');
 
         }
 
@@ -118,6 +156,7 @@ namespace Management.Forms.Model.Clients
             // 分割値の結合
             _File.PostalCode = string.Join("-", PostalCode);
             _File.PhoneNo = string.Join("-", PhoneNo);
+            _File.FaxNo = string.Join("-", FaxNo);
 
             // ファイル保存
             _File.Save();

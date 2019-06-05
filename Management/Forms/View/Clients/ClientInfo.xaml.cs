@@ -1,9 +1,9 @@
-﻿using Management.Data.File;
+﻿using ViewModels = Management.Forms.ViewModel.Clients;
 using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View
+namespace Management.Forms.View.Clients
 {
     /// <summary>
     /// ClientInfo.xaml の相互作用ロジック
@@ -19,7 +19,7 @@ namespace Management.Forms.View
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.ClientInfo viewModel)
+            if (DataContext is ViewModels.ClientInfo viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -32,7 +32,7 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.ClientInfo viewModel)
+            if (DataContext is ViewModels.ClientInfo viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -45,7 +45,7 @@ namespace Management.Forms.View
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel.ClientInfo viewModel)
+            if (DataContext is ViewModels.ClientInfo viewModel)
             {
 
                 switch (e.PropertyName)
@@ -57,7 +57,7 @@ namespace Management.Forms.View
                         var resultValue = clientAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && clientAdd.DataContext is ViewModel.ClientAdd addViewModel)
+                            && clientAdd.DataContext is ViewModels.ClientAdd addViewModel)
                         {
 
                             viewModel.AddClient(addViewModel.CompanyName);
@@ -85,11 +85,9 @@ namespace Management.Forms.View
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && staffAdd.DataContext is ViewModel.ClientStaffAdd addVM)
+                            && staffAdd.DataContext is ViewModels.ClientStaffAdd addVM)
                         {
-
-                            viewModel.AddStaff(new Staff(addVM.Name, addVM.Phonetic, addVM.EMailAddress, addVM.MobilePhone, addVM.CreateDate));
-
+                            viewModel.AddStaff(addVM.GetStaffClone());
                         }
 
                         staffAdd.Dispose();
@@ -103,9 +101,9 @@ namespace Management.Forms.View
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && staffAdd.DataContext is ViewModel.ClientStaffAdd editVM)
+                            && staffAdd.DataContext is ViewModels.ClientStaffAdd editVM)
                         {
-                            viewModel.EditStaff(new Staff(editVM.Name, editVM.Phonetic, editVM.EMailAddress, editVM.MobilePhone, editVM.CreateDate));
+                            viewModel.EditStaff(editVM.GetStaffClone());
                         }
 
                         staffAdd.Dispose();
@@ -115,7 +113,7 @@ namespace Management.Forms.View
 
                     case "CallStaffRemove":
 
-                        if (MessageBox.Show(Properties.ClientInfo.MessageStaffRemove.Replace("*", viewModel.SelectedStaff.Name), Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        if (MessageBox.Show(Properties.ClientInfo.MessageStaffRemove.Replace("*", viewModel.SelectedStaff.FullName), Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
                             viewModel.RemoveSelectedStaff();
                             Close();

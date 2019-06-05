@@ -1,5 +1,5 @@
 ﻿using AYam.Common.MVVM;
-using Management.Data.Info;
+using Management.Data.Schedule;
 using System;
 using System.Collections.ObjectModel;
 

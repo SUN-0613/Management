@@ -1,5 +1,7 @@
 ﻿using AYam.Common.Data.File;
 using AYam.Common.Data.List;
+using Management.Data.Info;
+using Management.Data.Path;
 using System.Xml.Linq;
 using System.Collections.ObjectModel;
 
@@ -26,9 +28,7 @@ namespace Management.Data.File
         /// 取引先一覧情報ファイル
         /// </summary>
         public ClientsFile() : base(new PathInfo().Files.Clients, "Clients")
-        {
-            Clients = new ObservableCollection<Client>();
-        }
+        { }
 
         /// <summary>
         /// 終了処理
@@ -52,9 +52,21 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            foreach(var element in Element.Elements(_ElementName))
+            Clients = new ObservableCollection<Client>();
+
+            if (Element != null)
             {
-                Clients.Add(new Client(GetValue(nameof(Client.Name), ""), GetAttribute(nameof(Client.FileWildName), "")));
+
+                foreach (var element in Element.Elements(_ElementName))
+                {
+                    Clients.Add(
+                        new Client(
+                            GetValue(element, nameof(Client.Name), "")
+                            , GetAttribute(element, nameof(Client.FileWildName), "")
+                            )
+                        );
+                }
+
             }
 
         }
@@ -71,7 +83,8 @@ namespace Management.Data.File
                 for (int iLoop = 0; iLoop < Clients.Count; iLoop++)
                 {
 
-                    var element = new XElement(_ElementName, Clients[iLoop].Name);
+                    var nameElement = new XElement(nameof(Client.Name), Clients[iLoop].Name);
+                    var element = new XElement(_ElementName, nameElement);
                     AddAttribute(ref element, new XAttribute(nameof(Client.FileWildName), Clients[iLoop].FileWildName));
 
                     elements.Add(element);
@@ -82,35 +95,6 @@ namespace Management.Data.File
 
             }
 
-        }
-
-    }
-
-    /// <summary>
-    /// 取引先情報
-    /// </summary>
-    public class Client
-    {
-
-        /// <summary>
-        /// 名称
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// ファイル名の"*"部分の名称
-        /// </summary>
-        public string FileWildName { get; set; }
-
-        /// <summary>
-        /// 取引先情報
-        /// </summary>
-        /// <param name="name">名称</param>
-        /// <param name="wild">ファイル名の"*"部分の名称</param>
-        public Client(string name, string wild)
-        {
-            Name = name;
-            FileWildName = wild;
         }
 
     }

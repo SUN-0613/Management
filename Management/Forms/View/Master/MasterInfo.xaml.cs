@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ViewModels = Management.Forms.ViewModel.Master;
+using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View
+namespace Management.Forms.View.Master
 {
     /// <summary>
     /// MasterInfo.xaml の相互作用ロジック
@@ -18,7 +19,7 @@ namespace Management.Forms.View
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModels.MasterInfo viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -31,7 +32,7 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModels.MasterInfo viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -44,7 +45,7 @@ namespace Management.Forms.View
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel.MasterInfo viewModel)
+            if (DataContext is ViewModels.MasterInfo viewModel)
             {
 
                 switch (e.PropertyName)

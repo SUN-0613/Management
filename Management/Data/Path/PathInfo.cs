@@ -1,7 +1,7 @@
-﻿using AYam.Common.Method;
+﻿using ComMethod = AYam.Common.Method;
 using System;
 
-namespace Management.Data
+namespace Management.Data.Path
 {
 
     /// <summary>
@@ -44,9 +44,9 @@ namespace Management.Data
             public DirectoryInfo()
             {
 
-                RootPath = Path.MakeDirectories(Environment.CurrentDirectory) + "Parameter";
-                MasterPath = Path.MakeDirectories(RootPath + @"\MasterData");
-                ClientPath = Path.MakeDirectories(RootPath + @"\ClientData");
+                RootPath = ComMethod.Path.MakeDirectories(Environment.CurrentDirectory) + "Parameter";
+                MasterPath = ComMethod.Path.MakeDirectories(RootPath + @"\MasterData");
+                ClientPath = ComMethod.Path.MakeDirectories(RootPath + @"\ClientData");
 
             }
 
@@ -86,9 +86,9 @@ namespace Management.Data
 
                 _Directories = new DirectoryInfo();
 
-                Master = Path.GetFullPath(_Directories.MasterPath, "Master.xml");
-                Clients = Path.GetFullPath(_Directories.ClientPath, "Clients.xml");
-                ClientDetail = Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
+                Master = ComMethod.Path.GetFullPath(_Directories.MasterPath, "Master.xml");
+                Clients = ComMethod.Path.GetFullPath(_Directories.ClientPath, "Clients.xml");
+                ClientDetail = ComMethod.Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
 
             }
 

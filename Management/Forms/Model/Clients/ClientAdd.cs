@@ -20,7 +20,7 @@ namespace Management.Forms.Model.Clients
         /// <summary>
         /// 会社名
         /// </summary>
-        public string CompanyName;
+        public string CompanyName = "";
 
         #endregion
 

@@ -88,6 +88,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   よみがな に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string CompanyKana {
+            get {
+                return ResourceManager.GetString("CompanyKana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   会社名 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string CompanyName {
@@ -97,11 +106,29 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   所属部署 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Department {
+            get {
+                return ResourceManager.GetString("Department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   メールアドレス に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string EMailAddress {
             get {
                 return ResourceManager.GetString("EMailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Fax に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FaxNo {
+            get {
+                return ResourceManager.GetString("FaxNo", resourceCulture);
             }
         }
         
@@ -178,20 +205,47 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   振り仮名 に類似しているローカライズされた文字列を検索します。
+        ///   メモ に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string Phonetic {
+        public static string Remarks {
             get {
-                return ResourceManager.GetString("Phonetic", resourceCulture);
+                return ResourceManager.GetString("Remarks", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   氏名 に類似しているローカライズされた文字列を検索します。
+        ///   よみがな に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string StaffName {
+        public static string StaffFirstKana {
             get {
-                return ResourceManager.GetString("StaffName", resourceCulture);
+                return ResourceManager.GetString("StaffFirstKana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名前 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StaffFirstName {
+            get {
+                return ResourceManager.GetString("StaffFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   よみがな に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StaffLastKana {
+            get {
+                return ResourceManager.GetString("StaffLastKana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名字 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StaffLastName {
+            get {
+                return ResourceManager.GetString("StaffLastName", resourceCulture);
             }
         }
     }

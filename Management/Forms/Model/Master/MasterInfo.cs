@@ -18,16 +18,61 @@ namespace Management.Forms.Model.Master
         #region ViewModel.Property
 
         /// <summary>
-        /// 氏名
+        /// 名前
         /// </summary>
-        public string Name
+        public string FirstName
         {
-            get { return _File.Name; }
+            get { return _File.FirstName; }
             set
             {
-                if (!_File.Name.Equals(value))
+                if (!_File.FirstName.Equals(value))
                 {
-                    _File.Name = value;
+                    _File.FirstName = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名前：よみがな
+        /// </summary>
+        public string FirstKana
+        {
+            get { return _File.FirstKana; }
+            set
+            {
+                if (!_File.FirstKana.Equals(value))
+                {
+                    _File.FirstKana = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字
+        /// </summary>
+        public string LastName
+        {
+            get { return _File.LastName; }
+            set
+            {
+                if (!_File.LastName.Equals(value))
+                {
+                    _File.LastName = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字：よみがな
+        /// </summary>
+        public string LastKana
+        {
+            get { return _File.LastKana; }
+            set
+            {
+                if (!_File.LastKana.Equals(value))
+                {
+                    _File.LastKana = value;
                 }
             }
         }
@@ -57,6 +102,12 @@ namespace Management.Forms.Model.Master
         /// 市外局番-市内局番-加入者番号
         /// </summary>
         public string[] PhoneNo;
+
+        /// <summary>
+        /// FAX番号を"-"で分割
+        /// 市外局番-市内局番-加入者番号
+        /// </summary>
+        public string[] FaxNo;
 
         /// <summary>
         /// メールアドレス
@@ -100,6 +151,7 @@ namespace Management.Forms.Model.Master
 
             PostalCode = _File.PostalCode.Split('-');
             PhoneNo = _File.PhoneNo.Split('-');
+            FaxNo = _File.FaxNo.Split('-');
 
         }
 
@@ -126,6 +178,7 @@ namespace Management.Forms.Model.Master
             // 分割値の結合
             _File.PostalCode = string.Join("-", PostalCode);
             _File.PhoneNo = string.Join("-", PhoneNo);
+            _File.FaxNo = string.Join("-", FaxNo);
 
             // ファイル保存
             _File.Save();

@@ -106,6 +106,13 @@ namespace Management.Pages.Model
                 int daysInMonth = DateTime.ParseExact(SelectMonth.AddMonths(1).ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).AddDays(-1).Day;
                 int startDayOfWeek = (int)DateTime.ParseExact(SelectMonth.ToString("yyyyMM") + "01", "yyyyMMdd", System.Globalization.DateTimeFormatInfo.InvariantInfo).DayOfWeek;
 
+                // 選択年の祝日取得
+                if (!_YearGetHoliday.Equals(SelectMonth.Year))
+                {
+                    _YearGetHoliday = SelectMonth.Year;
+                    Class.HolidayMethod.SetHolidays(_YearGetHoliday, ref _Holidays);
+                }
+
                 // 1日から月末日までセット
                 Parallel.For(0, daysInMonth, iLoop => 
                 {
@@ -132,13 +139,6 @@ namespace Management.Pages.Model
                             Days[index].Foreground = Brushes.Black;
                             break;
 
-                    }
-
-                    // 選択年の祝日取得
-                    if (!_YearGetHoliday.Equals(SelectMonth.Year))
-                    {
-                        _YearGetHoliday = SelectMonth.Year;
-                        Class.HolidayMethod.SetHolidays(_YearGetHoliday, ref _Holidays);
                     }
 
                     // 祝日チェック

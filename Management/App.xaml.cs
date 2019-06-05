@@ -34,7 +34,7 @@ namespace Management
                 base.OnStartup(e);
 
                 // 画面表示
-                var form = new Forms.View.MainMenu();
+                var form = new Forms.View.Menu.MainMenu();
                 form.ShowDialog();
 
             }

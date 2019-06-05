@@ -1,42 +1,25 @@
-﻿using Management.Data.File;
+﻿using ViewModels = Management.Forms.ViewModel.Clients;
 using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View
+namespace Management.Forms.View.Clients
 {
     /// <summary>
-    /// ClientStaffAdd.xaml の相互作用ロジック
+    /// ClientAdd.xaml の相互作用ロジック
     /// </summary>
-    public partial class ClientStaffAdd : Window, IDisposable
+    public partial class ClientAdd : Window , IDisposable
     {
 
         /// <summary>
-        /// 担当者登録.ViewModel
+        /// 取引先追加.View
         /// </summary>
-        /// <param name="wildName">ファイル名のワイルド部分</param>
-        /// <param name="staff">編集対象の担当者情報</param>
-        public ClientStaffAdd(string wildName, Staff staff = null)
+        public ClientAdd()
         {
 
             InitializeComponent();
 
-            if (DataContext != null && DataContext is IDisposable dataContext)
-            {
-                dataContext.Dispose();
-                dataContext = null;
-            }
-
-            if (staff == null)
-            {
-                DataContext = new ViewModel.ClientStaffAdd(wildName);
-            }
-            else
-            {
-                DataContext = new ViewModel.ClientStaffAdd(wildName, staff);
-            }
-
-            if (DataContext is ViewModel.ClientStaffAdd viewModel)
+            if (DataContext is ViewModels.ClientAdd viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -49,7 +32,7 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.ClientStaffAdd viewModel)
+            if (DataContext is ViewModels.ClientAdd viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -62,7 +45,7 @@ namespace Management.Forms.View
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel.ClientStaffAdd viewModel)
+            if (DataContext is ViewModels.ClientAdd viewModel)
             {
 
                 switch (e.PropertyName)
@@ -92,4 +75,5 @@ namespace Management.Forms.View
         }
 
     }
+
 }

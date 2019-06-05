@@ -1,8 +1,9 @@
 ﻿using AYam.Common.MVVM;
-using Management.Data.File;
+using Management.Data.Info;
+using Models = Management.Forms.Model.Clients;
 using System;
 
-namespace Management.Forms.ViewModel
+namespace Management.Forms.ViewModel.Clients
 {
 
     /// <summary>
@@ -16,39 +17,87 @@ namespace Management.Forms.ViewModel
         /// <summary>
         /// Model
         /// </summary>
-        private Model.Clients.ClientStaffAdd _Model;
+        private Models.ClientStaffAdd _Model;
 
         #endregion
 
         #region Property
 
         /// <summary>
-        /// 氏名
+        /// 名前
         /// </summary>
-        public string Name
+        public string FirstName
         {
-            get { return _Model.Staff.Name; }
+            get { return _Model.Staff.FirstName; }
             set
             {
-                if (!_Model.Staff.Name.Equals(value))
+                if (!_Model.Staff.FirstName.Equals(value))
                 {
-                    _Model.Staff.Name = value;
+                    _Model.Staff.FirstName = value;
                     CallPropertyChanged();
                 }
             }
         }
 
         /// <summary>
-        /// 振り仮名
+        /// 名前：よみがな
         /// </summary>
-        public string Phonetic
+        public string FirstKana
         {
-            get { return _Model.Staff.Phonetic; }
+            get { return _Model.Staff.FirstKana; }
             set
             {
-                if (!_Model.Staff.Phonetic.Equals(value))
+                if (!_Model.Staff.FirstKana.Equals(value))
                 {
-                    _Model.Staff.Phonetic = value;
+                    _Model.Staff.FirstKana = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字
+        /// </summary>
+        public string LastName
+        {
+            get { return _Model.Staff.LastName; }
+            set
+            {
+                if (!_Model.Staff.LastName.Equals(value))
+                {
+                    _Model.Staff.LastName = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字：よみがな
+        /// </summary>
+        public string LastKana
+        {
+            get { return _Model.Staff.LastKana; }
+            set
+            {
+                if (!_Model.Staff.LastKana.Equals(value))
+                {
+                    _Model.Staff.LastKana = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 部署
+        /// </summary>
+        public string Department
+        {
+            get { return _Model.Staff.Department; }
+            set
+            {
+                if (!_Model.Staff.Department.Equals(value))
+                {
+                    _Model.Staff.Department = value;
                     CallPropertyChanged();
                 }
             }
@@ -81,6 +130,22 @@ namespace Management.Forms.ViewModel
                 if (!_Model.Staff.MobilePhone.Equals(value))
                 {
                     _Model.Staff.MobilePhone = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Remarks
+        {
+            get { return _Model.Staff.Remarks; }
+            set
+            {
+                if (!_Model.Staff.Remarks.Equals(value))
+                {
+                    _Model.Staff.Remarks = value;
                     CallPropertyChanged();
                 }
             }
@@ -131,16 +196,7 @@ namespace Management.Forms.ViewModel
         /// </summary>
         public ClientStaffAdd()
         {
-            _Model = new Model.Clients.ClientStaffAdd("");
-        }
-
-        /// <summary>
-        /// 担当者登録.ViewModel
-        /// </summary>
-        /// <param name="wildName">ファイル名のワイルド部分</param>
-        public ClientStaffAdd(string wildName)
-        {
-            _Model = new Model.Clients.ClientStaffAdd(wildName);
+            _Model = new Models.ClientStaffAdd("");
         }
 
         /// <summary>
@@ -148,9 +204,9 @@ namespace Management.Forms.ViewModel
         /// </summary>
         /// <param name="wildName">ファイル名のワイルド部分</param>
         /// <param name="staff">編集対象の担当者情報</param>
-        public ClientStaffAdd(string wildName, Staff staff)
+        public ClientStaffAdd(string wildName, Staff staff = null)
         {
-            _Model = new Model.Clients.ClientStaffAdd(wildName, staff.Name, staff.Phonetic, staff.EMailAddress, staff.MobilePhone, staff.CreateDate);
+            _Model = new Models.ClientStaffAdd(wildName, staff);
         }
 
         /// <summary>
@@ -177,6 +233,15 @@ namespace Management.Forms.ViewModel
         public bool Contains()
         {
             return _Model.Contains();
+        }
+
+        /// <summary>
+        /// 担当者情報のクローンを取得
+        /// </summary>
+        /// <returns>担当者情報</returns>
+        public Staff GetStaffClone()
+        {
+            return (Staff)_Model.Staff.Clone();
         }
 
     }

@@ -1,12 +1,12 @@
 ﻿using AYam.Common.Controls.Interface;
 using AYam.Common.MVVM;
 using AYam.Common.MVVM.Custom;
-using Management.Data.File;
-using Management.Forms.Model.Clients;
+using Management.Data.Info;
+using Models = Management.Forms.Model.Clients;
 using System;
 using System.Collections.ObjectModel;
 
-namespace Management.Forms.ViewModel
+namespace Management.Forms.ViewModel.Clients
 {
 
     /// <summary>
@@ -20,12 +20,12 @@ namespace Management.Forms.ViewModel
         /// <summary>
         /// 一覧.Model
         /// </summary>
-        private ClientList _ListModel;
+        private Models.ClientList _ListModel;
 
         /// <summary>
         /// 詳細.Model
         /// </summary>
-        private ClientDetail _DetailModel;
+        private Models.ClientDetail _DetailModel;
 
         #endregion
 
@@ -73,9 +73,26 @@ namespace Management.Forms.ViewModel
             get { return _DetailModel.CompanyName; }
             set
             {
-                if (string.IsNullOrEmpty(_DetailModel.CompanyName) || !_DetailModel.CompanyName.Equals(value))
+                if (!_DetailModel.CompanyName.Equals(value))
                 {
                     _DetailModel.CompanyName = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 会社名：よみがな
+        /// </summary>
+        public string CompanyKana
+        {
+            get { return _DetailModel.CompanyKana; }
+            set
+            {
+                if (!_DetailModel.CompanyKana.Equals(value))
+                {
+                    _DetailModel.CompanyKana = value;
+                    CallPropertyChanged();
                 }
             }
         }
@@ -104,9 +121,10 @@ namespace Management.Forms.ViewModel
             get { return _DetailModel.Address; }
             set
             {
-                if (string.IsNullOrEmpty(_DetailModel.Address) || !_DetailModel.Address.Equals(value))
+                if (!_DetailModel.Address.Equals(value))
                 {
                     _DetailModel.Address = value;
+                    CallPropertyChanged();
                 }
             }
         }
@@ -129,6 +147,23 @@ namespace Management.Forms.ViewModel
         }
 
         /// <summary>
+        /// FAX番号を"-"で分割
+        /// 市外局番-市内局番-加入者番号
+        /// </summary>
+        public string[] FaxNo
+        {
+            get { return _DetailModel.FaxNo; }
+            set
+            {
+                if (!_DetailModel.FaxNo.Equals(value))
+                {
+                    _DetailModel.FaxNo = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
         /// 銀行口座
         /// </summary>
         public string BankAccount
@@ -136,9 +171,10 @@ namespace Management.Forms.ViewModel
             get { return _DetailModel.BankAccount; }
             set
             {
-                if (string.IsNullOrEmpty(_DetailModel.BankAccount) || !_DetailModel.BankAccount.Equals(value))
+                if (!_DetailModel.BankAccount.Equals(value))
                 {
                     _DetailModel.BankAccount = value;
+                    CallPropertyChanged();
                 }
             }
         }
@@ -150,6 +186,22 @@ namespace Management.Forms.ViewModel
         {
             get { return _DetailModel.Staffs; }
             set { _DetailModel.Staffs = value; }
+        }
+
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Remarks
+        {
+            get { return _DetailModel.Remarks; }
+            set
+            {
+                if (!_DetailModel.Remarks.Equals(value))
+                {
+                    _DetailModel.Remarks = value;
+                    CallPropertyChanged();
+                }
+            }
         }
 
         /// <summary>
@@ -322,6 +374,11 @@ namespace Management.Forms.ViewModel
             }
         }
 
+        /// <summary>
+        /// 詳細入力可否
+        /// </summary>
+        public bool IsEnabled { get { return SelectedClient != null; } }
+
         #endregion
 
         /// <summary>
@@ -340,7 +397,7 @@ namespace Management.Forms.ViewModel
         public ClientInfo()
         {
 
-            _ListModel = new ClientList();
+            _ListModel = new Models.ClientList();
 
         }
 
@@ -420,7 +477,7 @@ namespace Management.Forms.ViewModel
                     _DetailModel = null;
                 }
 
-                _DetailModel = new ClientDetail(SelectedClient.FileWildName);
+                _DetailModel = new Models.ClientDetail(SelectedClient);
 
                 // 名称未入力の場合は一覧名称をセット
                 if (string.IsNullOrEmpty(CompanyName) || CompanyName.Length.Equals(0))
@@ -482,6 +539,8 @@ namespace Management.Forms.ViewModel
                 ResetEditFlg();
 
             }
+
+            CallPropertyChanged(nameof(IsEnabled));
 
         }
 

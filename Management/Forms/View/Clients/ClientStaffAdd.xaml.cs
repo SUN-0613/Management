@@ -1,24 +1,35 @@
-﻿using System;
+﻿using Management.Data.Info;
+using ViewModels = Management.Forms.ViewModel.Clients;
+using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View
+namespace Management.Forms.View.Clients
 {
     /// <summary>
-    /// ClientAdd.xaml の相互作用ロジック
+    /// ClientStaffAdd.xaml の相互作用ロジック
     /// </summary>
-    public partial class ClientAdd : Window , IDisposable
+    public partial class ClientStaffAdd : Window, IDisposable
     {
 
         /// <summary>
-        /// 取引先追加.View
+        /// 担当者登録.ViewModel
         /// </summary>
-        public ClientAdd()
+        /// <param name="wildName">ファイル名のワイルド部分</param>
+        /// <param name="staff">編集対象の担当者情報</param>
+        public ClientStaffAdd(string wildName, Staff staff = null)
         {
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.ClientAdd viewModel)
+            if (DataContext != null && DataContext is IDisposable dataContext)
+            {
+                dataContext.Dispose();
+                dataContext = null;
+            }
+
+            DataContext = new ViewModels.ClientStaffAdd(wildName, staff);
+            if (DataContext is ViewModels.ClientStaffAdd viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -31,7 +42,7 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.ClientAdd viewModel)
+            if (DataContext is ViewModels.ClientStaffAdd viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -44,7 +55,7 @@ namespace Management.Forms.View
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel.ClientAdd viewModel)
+            if (DataContext is ViewModels.ClientStaffAdd viewModel)
             {
 
                 switch (e.PropertyName)
@@ -74,5 +85,4 @@ namespace Management.Forms.View
         }
 
     }
-
 }

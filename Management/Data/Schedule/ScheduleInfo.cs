@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Management.Data.Info
+namespace Management.Data.Schedule
 {
 
     /// <summary>

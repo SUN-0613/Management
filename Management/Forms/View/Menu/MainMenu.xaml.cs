@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ViewModels = Management.Forms.ViewModel.Menu;
+using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View
+namespace Management.Forms.View.Menu
 {
     
     /// <summary>
@@ -19,7 +20,7 @@ namespace Management.Forms.View
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.MainMenu viewModel)
+            if (DataContext is ViewModels.MainMenu viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -32,9 +33,14 @@ namespace Management.Forms.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.MainMenu viewModel)
+            if (DataContext is ViewModels.MainMenu viewModel)
             {
+
                 viewModel.PropertyChanged -= OnPropertyChanged;
+
+                viewModel.Dispose();
+                viewModel = null;
+
             }
 
         }
@@ -50,7 +56,7 @@ namespace Management.Forms.View
 
                 case "CallMaster":  // マスタ情報画面の呼び出し
 
-                    var master = new MasterInfo()
+                    var master = new View.Master.MasterInfo()
                     {
                         Owner = this
                     };
@@ -61,7 +67,7 @@ namespace Management.Forms.View
 
                 case "CallClient":  // 取引先情報画面の呼び出し
 
-                    var client = new ClientInfo()
+                    var client = new View.Clients.ClientInfo()
                     {
                         Owner = this
                     };

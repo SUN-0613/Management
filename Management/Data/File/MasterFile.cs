@@ -12,9 +12,24 @@ namespace Management.Data.File
     {
 
         /// <summary>
-        /// 氏名
+        /// 名前
         /// </summary>
-        public string Name;
+        public string FirstName;
+
+        /// <summary>
+        /// 名前：よみがな
+        /// </summary>
+        public string FirstKana;
+
+        /// <summary>
+        /// 名字
+        /// </summary>
+        public string LastName;
+
+        /// <summary>
+        /// 名字：よみがな
+        /// </summary>
+        public string LastKana;
 
         /// <summary>
         /// 郵便番号
@@ -32,6 +47,11 @@ namespace Management.Data.File
         public string PhoneNo;
 
         /// <summary>
+        /// FAX番号
+        /// </summary>
+        public string FaxNo;
+
+        /// <summary>
         /// メールアドレス
         /// </summary>
         public string EMailAddress;
@@ -44,7 +64,7 @@ namespace Management.Data.File
         /// <summary>
         /// マスタ情報ファイル
         /// </summary>
-        public MasterFile() : base(new PathInfo().Files.Master, "Master")
+        public MasterFile() : base(new Path.PathInfo().Files.Master, "Master")
         { }
 
         /// <summary>
@@ -53,10 +73,14 @@ namespace Management.Data.File
         public override void Read()
         {
 
-            Name = GetValue(nameof(Name), "");
+            FirstName = GetValue(nameof(FirstName), "");
+            FirstKana = GetValue(nameof(FirstKana), "");
+            LastName = GetValue(nameof(LastName), "");
+            LastKana = GetValue(nameof(LastKana), "");
             PostalCode = GetValue(nameof(PostalCode), "-");
             Address = GetValue(nameof(Address), "");
             PhoneNo = GetValue(nameof(PhoneNo), "--");
+            FaxNo = GetValue(nameof(FaxNo), "--");
             EMailAddress = GetValue(nameof(EMailAddress), "");
             BankAccount = GetValue(nameof(BankAccount), "");
 
@@ -70,10 +94,14 @@ namespace Management.Data.File
 
             using (var elements = new List<XElement>
             {
-                new XElement(nameof(Name), Name)
+                new XElement(nameof(FirstName), FirstName)
+                , new XElement(nameof(FirstKana), FirstKana)
+                , new XElement(nameof(LastName), LastName)
+                , new XElement(nameof(LastKana), LastKana)
                 , new XElement(nameof(PostalCode), PostalCode)
                 , new XElement(nameof(Address), Address)
                 , new XElement(nameof(PhoneNo), PhoneNo)
+                , new XElement(nameof(FaxNo), FaxNo)
                 , new XElement(nameof(EMailAddress), EMailAddress)
                 , new XElement(nameof(BankAccount), BankAccount)
             })
@@ -81,6 +109,25 @@ namespace Management.Data.File
 
                 WriteFile(elements);
 
+            }
+
+        }
+
+        /// <summary>
+        /// フルネーム取得
+        /// </summary>
+        /// <param name="isJapaneseStyle">姓名表記か</param>
+        /// <returns>フルネーム</returns>
+        public string GetFullName(bool isJapaneseStyle = true)
+        {
+
+            if (isJapaneseStyle)
+            {
+                return LastName + " " + FirstName;
+            }
+            else
+            {
+                return FirstName + " " + LastName;
             }
 
         }

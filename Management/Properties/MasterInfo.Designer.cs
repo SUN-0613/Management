@@ -88,6 +88,51 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   FAX に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FaxNo {
+            get {
+                return ResourceManager.GetString("FaxNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   よみがな に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FirstKana {
+            get {
+                return ResourceManager.GetString("FirstKana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名前 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   よみがな に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LastKana {
+            get {
+                return ResourceManager.GetString("LastKana", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名字 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   編集中のデータを反映せずに終了しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MessageClose {
@@ -102,15 +147,6 @@ namespace Management.Properties {
         public static string MessageSave {
             get {
                 return ResourceManager.GetString("MessageSave", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   氏名 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         

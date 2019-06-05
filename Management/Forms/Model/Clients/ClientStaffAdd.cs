@@ -1,4 +1,5 @@
 ﻿using Management.Data.File;
+using Management.Data.Info;
 using System;
 
 namespace Management.Forms.Model.Clients
@@ -28,27 +29,20 @@ namespace Management.Forms.Model.Clients
         /// 担当者登録.Model
         /// </summary>
         /// <param name="wildName">ファイル名のワイルド部分</param>
-        public ClientStaffAdd(string wildName)
-        {
-
-            _File = new ClientDetailFile(wildName);
-            Staff = new Staff("", "", "", "", DateTime.Now);
-
-        }
-
-        /// <summary>
-        /// 担当者登録.Model
-        /// </summary>
-        /// <param name="wildName">ファイル名のワイルド部分</param>
-        /// <param name="name">氏名</param>
-        /// <param name="phonetic">振り仮名</param>
-        /// <param name="eMailAddress">メールアドレス</param>
-        /// <param name="mobilePhone">携帯電話番号</param>
-        /// <param name="createDate">登録日</param>
-        public ClientStaffAdd(string wildName, string name, string phonetic, string eMailAddress, string mobilePhone, DateTime createDate)
+        /// <param name="staff">担当者情報</param>
+        public ClientStaffAdd(string wildName, Staff staff = null)
         {
             _File = new ClientDetailFile(wildName);
-            Staff = new Staff(name, phonetic, eMailAddress, mobilePhone, createDate);
+
+            if (staff == null)
+            {
+                Staff = new Staff("", "", "", "", "", "", "", "", DateTime.Now);
+            }
+            else
+            {
+                Staff = (Staff)staff.Clone();
+            }
+            
         }
 
         /// <summary>

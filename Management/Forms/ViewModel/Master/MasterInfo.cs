@@ -3,7 +3,7 @@ using AYam.Common.MVVM;
 using AYam.Common.MVVM.Custom;
 using System;
 
-namespace Management.Forms.ViewModel
+namespace Management.Forms.ViewModel.Master
 {
 
     /// <summary>
@@ -24,16 +24,64 @@ namespace Management.Forms.ViewModel
         #region Property
 
         /// <summary>
-        /// 氏名
+        /// 名前
         /// </summary>
-        public string Name
+        public string FirstName
         {
-            get { return _Model.Name; }
+            get { return _Model.FirstName; }
             set
             {
-                if (!_Model.Name.Equals(value))
+                if (!_Model.FirstName.Equals(value))
                 {
-                    _Model.Name = value;
+                    _Model.FirstName = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名前：よみがな
+        /// </summary>
+        public string FirstKana
+        {
+            get { return _Model.FirstKana; }
+            set
+            {
+                if (!_Model.FirstKana.Equals(value))
+                {
+                    _Model.FirstKana = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字
+        /// </summary>
+        public string LastName
+        {
+            get { return _Model.LastName; }
+            set
+            {
+                if (!_Model.LastName.Equals(value))
+                {
+                    _Model.LastName = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 名字：よみがな
+        /// </summary>
+        public string LastKana
+        {
+            get { return _Model.LastKana; }
+            set
+            {
+                if (!_Model.LastKana.Equals(value))
+                {
+                    _Model.LastKana = value;
                     CallPropertyChanged();
                 }
             }
@@ -82,6 +130,22 @@ namespace Management.Forms.ViewModel
                 if (!_Model.PhoneNo.Equals(value))
                 {
                     _Model.PhoneNo = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// FAX番号
+        /// </summary>
+        public string[] FaxNo
+        {
+            get { return _Model.FaxNo; }
+            set
+            {
+                if (!_Model.FaxNo.Equals(value))
+                {
+                    _Model.FaxNo = value;
                     CallPropertyChanged();
                 }
             }

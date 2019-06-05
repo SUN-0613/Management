@@ -55,12 +55,12 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions">
-      <HintPath>..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity">
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
@@ -88,8 +88,10 @@
     <Compile Include="Data\File\ClientDetailFile.cs" />
     <Compile Include="Data\File\ClientsFile.cs" />
     <Compile Include="Data\File\MasterFile.cs" />
-    <Compile Include="Data\Info\PathInfo.cs" />
-    <Compile Include="Data\Info\ScheduleInfo.cs" />
+    <Compile Include="Data\Info\Client.cs" />
+    <Compile Include="Data\Info\Staff.cs" />
+    <Compile Include="Data\Path\PathInfo.cs" />
+    <Compile Include="Data\Schedule\ScheduleInfo.cs" />
     <Compile Include="Converter\DayVisibilityConverter.cs" />
     <Compile Include="Forms\Model\Clients\ClientAdd.cs" />
     <Compile Include="Forms\Model\Clients\ClientDetail.cs" />
@@ -99,21 +101,21 @@
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
-    <Compile Include="Forms\ViewModel\ClientAdd.cs" />
-    <Compile Include="Forms\ViewModel\ClientInfo.cs" />
-    <Compile Include="Forms\ViewModel\ClientStaffAdd.cs" />
-    <Compile Include="Forms\ViewModel\MainMenu.cs" />
-    <Compile Include="Forms\ViewModel\MasterInfo.cs" />
-    <Compile Include="Forms\View\ClientAdd.xaml.cs">
+    <Compile Include="Forms\ViewModel\Clients\ClientAdd.cs" />
+    <Compile Include="Forms\ViewModel\Clients\ClientInfo.cs" />
+    <Compile Include="Forms\ViewModel\Clients\ClientStaffAdd.cs" />
+    <Compile Include="Forms\ViewModel\Menu\MainMenu.cs" />
+    <Compile Include="Forms\ViewModel\Master\MasterInfo.cs" />
+    <Compile Include="Forms\View\Clients\ClientAdd.xaml.cs">
       <DependentUpon>ClientAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View\ClientInfo.xaml.cs">
+    <Compile Include="Forms\View\Clients\ClientInfo.xaml.cs">
       <DependentUpon>ClientInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View\ClientStaffAdd.xaml.cs">
+    <Compile Include="Forms\View\Clients\ClientStaffAdd.xaml.cs">
       <DependentUpon>ClientStaffAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View\MasterInfo.xaml.cs">
+    <Compile Include="Forms\View\Master\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Model\Calendar.cs" />
@@ -152,7 +154,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\View\MainMenu.xaml.cs">
+    <Compile Include="Forms\View\Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -170,31 +172,31 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Content Include="Properties\Calendar.resx">
+    <EmbeddedResource Include="Properties\Calendar.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Calendar.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\ClientInfo.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ClientInfo.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ClientInfo.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\MasterInfo.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\MasterInfo.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MasterInfo.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\Resources.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Properties\Title.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Title.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Title.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -203,26 +205,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Page Include="Forms\View\ClientAdd.xaml">
+    <Page Include="Forms\View\Clients\ClientAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\View\ClientInfo.xaml">
+    <Page Include="Forms\View\Clients\ClientInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\View\ClientStaffAdd.xaml">
+    <Page Include="Forms\View\Clients\ClientStaffAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\View\MainMenu.xaml">
+    <Page Include="Forms\View\Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forms\View\MasterInfo.xaml">
+    <Page Include="Forms\View\Master\MasterInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -129,6 +129,26 @@
     <value>E-Mail</value>
     <comment>メールアドレス</comment>
   </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>FAX</value>
+    <comment>FAX番号</comment>
+  </data>
+  <data name="FirstKana" xml:space="preserve">
+    <value>よみがな</value>
+    <comment>名前：よみがな</comment>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>名前</value>
+    <comment>名前</comment>
+  </data>
+  <data name="LastKana" xml:space="preserve">
+    <value>よみがな</value>
+    <comment>名字：よみがな</comment>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>名字</value>
+    <comment>名字</comment>
+  </data>
   <data name="MessageClose" xml:space="preserve">
     <value>編集中のデータを反映せずに終了しますか？</value>
     <comment>メッセージボックス：キャンセル</comment>
@@ -136,10 +156,6 @@
   <data name="MessageSave" xml:space="preserve">
     <value>保存しますか？</value>
     <comment>メッセージボックス：保存</comment>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>氏名</value>
-    <comment>氏名</comment>
   </data>
   <data name="PhoneNo" xml:space="preserve">
     <value>TEL</value>

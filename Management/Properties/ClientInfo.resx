@@ -129,13 +129,25 @@
     <value>取引先一覧</value>
     <comment>取引先一覧</comment>
   </data>
+  <data name="CompanyKana" xml:space="preserve">
+    <value>よみがな</value>
+    <comment>会社名：よみがな</comment>
+  </data>
   <data name="CompanyName" xml:space="preserve">
     <value>会社名</value>
     <comment>会社名</comment>
   </data>
+  <data name="Department" xml:space="preserve">
+    <value>所属部署</value>
+    <comment>部署</comment>
+  </data>
   <data name="EMailAddress" xml:space="preserve">
     <value>メールアドレス</value>
     <comment>メールアドレス</comment>
+  </data>
+  <data name="FaxNo" xml:space="preserve">
+    <value>Fax</value>
+    <comment>FAX番号</comment>
   </data>
   <data name="MessageClose" xml:space="preserve">
     <value>編集中のデータを反映せずに終了しますか？</value>
@@ -169,12 +181,24 @@
     <value>TEL</value>
     <comment>電話番号</comment>
   </data>
-  <data name="Phonetic" xml:space="preserve">
-    <value>振り仮名</value>
-    <comment>振り仮名</comment>
+  <data name="Remarks" xml:space="preserve">
+    <value>メモ</value>
+    <comment>メモ</comment>
   </data>
-  <data name="StaffName" xml:space="preserve">
-    <value>氏名</value>
-    <comment>氏名</comment>
+  <data name="StaffFirstKana" xml:space="preserve">
+    <value>よみがな</value>
+    <comment>担当者：名前：よみがな</comment>
+  </data>
+  <data name="StaffFirstName" xml:space="preserve">
+    <value>名前</value>
+    <comment>担当者：名前</comment>
+  </data>
+  <data name="StaffLastKana" xml:space="preserve">
+    <value>よみがな</value>
+    <comment>担当者：名字：よみがな</comment>
+  </data>
+  <data name="StaffLastName" xml:space="preserve">
+    <value>名字</value>
+    <comment>担当者：名字</comment>
   </data>
 </root>
