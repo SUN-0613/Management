@@ -265,8 +265,8 @@
 
                 <DataGrid Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" ItemsSource="{Binding Staffs}" SelectedItem="{Binding SelectedStaff}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsEnabled="{Binding IsEnabled}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="{Binding StaffName, Source={StaticResource resources}}" Width="120" Binding="{Binding Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{Binding Phonetic, Source={StaticResource resources}}" Width="120" Binding="{Binding Phonetic}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{Binding Department, Source={StaticResource resources}}" Width="120" Binding="{Binding Department}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{Binding StaffFullName, Source={StaticResource resources}}" Width="120" Binding="{Binding FullName}" IsReadOnly="True" />
                         <DataGridTextColumn Header="{Binding EMailAddress, Source={StaticResource resources}}" Width="120" Binding="{Binding EMailAddress}" IsReadOnly="True" />
                         <DataGridTextColumn Header="{Binding MobilePhone, Source={StaticResource resources}}" Width="120" Binding="{Binding MobilePhone}" IsReadOnly="True" />
                     </DataGrid.Columns>
@@ -309,7 +309,7 @@
                     </Button.InputBindings>
                 </Button>
 
-                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding Path=Button_Cancel, Source={StaticResource resourcesCommon}}" >
+                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding Path=Button_Close, Source={StaticResource resourcesCommon}}" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding CancelCommand}" MouseAction="LeftClick" />
                     </Button.InputBindings>

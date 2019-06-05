@@ -126,7 +126,6 @@ namespace Management.Forms.View.Clients
                         if (MessageBox.Show(Properties.ClientInfo.MessageSave, Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
                             viewModel.Save();
-                            Close();
                         }
 
                         break;

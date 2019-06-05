@@ -169,6 +169,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   編集中のデータを反映せずに取引先を変更しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessageSelectedClient {
+            get {
+                return ResourceManager.GetString("MessageSelectedClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   「*」を新たに担当一覧に登録しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MessageStaffAdd {
@@ -228,6 +237,15 @@ namespace Management.Properties {
         public static string StaffFirstName {
             get {
                 return ResourceManager.GetString("StaffFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   氏名 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StaffFullName {
+            get {
+                return ResourceManager.GetString("StaffFullName", resourceCulture);
             }
         }
         

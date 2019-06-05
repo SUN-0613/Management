@@ -129,6 +129,10 @@
     <value>取消</value>
     <comment>ボタン：キャンセル</comment>
   </data>
+  <data name="Button_Close" xml:space="preserve">
+    <value>閉じる</value>
+    <comment>ボタン：閉じる</comment>
+  </data>
   <data name="Button_Edit" xml:space="preserve">
     <value>編集</value>
     <comment>ボタン：編集</comment>

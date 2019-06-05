@@ -70,10 +70,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string CompanyName
         {
-            get { return _DetailModel.CompanyName; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.CompanyName;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (!_DetailModel.CompanyName.Equals(value))
+                if (_DetailModel != null && !_DetailModel.CompanyName.Equals(value))
                 {
                     _DetailModel.CompanyName = value;
                     CallPropertyChanged();
@@ -86,10 +96,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string CompanyKana
         {
-            get { return _DetailModel.CompanyKana; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.CompanyKana;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (!_DetailModel.CompanyKana.Equals(value))
+                if (_DetailModel != null && !_DetailModel.CompanyKana.Equals(value))
                 {
                     _DetailModel.CompanyKana = value;
                     CallPropertyChanged();
@@ -102,10 +122,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string[] PostalCode
         {
-            get { return _DetailModel.PostalCode; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.PostalCode;
+                }
+                else
+                {
+                    return new string[] { "", "" };
+                }
+            }
             set
             {
-                if (!_DetailModel.PostalCode.Equals(value))
+                if (_DetailModel != null && !_DetailModel.PostalCode.Equals(value))
                 {
                     _DetailModel.PostalCode = value;
                     CallPropertyChanged();
@@ -118,10 +148,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string Address
         {
-            get { return _DetailModel.Address; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.Address;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (!_DetailModel.Address.Equals(value))
+                if (_DetailModel != null && !_DetailModel.Address.Equals(value))
                 {
                     _DetailModel.Address = value;
                     CallPropertyChanged();
@@ -135,10 +175,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string[] PhoneNo
         {
-            get { return _DetailModel.PhoneNo; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.PhoneNo;
+                }
+                else
+                {
+                    return new string[] { "", "", "" };
+                }
+            }
             set
             {
-                if (!_DetailModel.PhoneNo.Equals(value))
+                if (_DetailModel != null && !_DetailModel.PhoneNo.Equals(value))
                 {
                     _DetailModel.PhoneNo = value;
                     CallPropertyChanged();
@@ -152,10 +202,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string[] FaxNo
         {
-            get { return _DetailModel.FaxNo; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.FaxNo;
+                }
+                else
+                {
+                    return new string[] { "", "", "" };
+                }
+            }
             set
             {
-                if (!_DetailModel.FaxNo.Equals(value))
+                if (_DetailModel != null && !_DetailModel.FaxNo.Equals(value))
                 {
                     _DetailModel.FaxNo = value;
                     CallPropertyChanged();
@@ -168,10 +228,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string BankAccount
         {
-            get { return _DetailModel.BankAccount; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.BankAccount;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (!_DetailModel.BankAccount.Equals(value))
+                if (_DetailModel != null && !_DetailModel.BankAccount.Equals(value))
                 {
                     _DetailModel.BankAccount = value;
                     CallPropertyChanged();
@@ -184,8 +254,24 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public ObservableCollection<Staff> Staffs
         {
-            get { return _DetailModel.Staffs; }
-            set { _DetailModel.Staffs = value; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.Staffs;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (_DetailModel != null)
+                {
+                    _DetailModel.Staffs = value;
+                }
+            }
         }
 
         /// <summary>
@@ -193,10 +279,20 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public string Remarks
         {
-            get { return _DetailModel.Remarks; }
+            get
+            {
+                if (_DetailModel != null)
+                {
+                    return _DetailModel.Remarks;
+                }
+                else
+                {
+                    return "";
+                }
+            }
             set
             {
-                if (!_DetailModel.Remarks.Equals(value))
+                if (_DetailModel != null && !_DetailModel.Remarks.Equals(value))
                 {
                     _DetailModel.Remarks = value;
                     CallPropertyChanged();
@@ -468,14 +564,14 @@ namespace Management.Forms.ViewModel.Clients
         private void ChangeSelectedClient()
         {
 
+            if (_DetailModel != null)
+            {
+                _DetailModel.Dispose();
+                _DetailModel = null;
+            }
+
             if (SelectedClient != null)
             {
-
-                if (_DetailModel != null)
-                {
-                    _DetailModel.Dispose();
-                    _DetailModel = null;
-                }
 
                 _DetailModel = new Models.ClientDetail(SelectedClient);
 
@@ -506,12 +602,6 @@ namespace Management.Forms.ViewModel.Clients
             else
             {
 
-                if (_DetailModel != null)
-                {
-                    _DetailModel.Dispose();
-                    _DetailModel = null;
-                }
-
                 CompanyName = "";
                 CallPropertyChanged(nameof(CompanyName));
 
@@ -536,11 +626,11 @@ namespace Management.Forms.ViewModel.Clients
                 Staffs.Clear();
                 CallPropertyChanged(nameof(Staffs));
 
-                ResetEditFlg();
-
             }
 
             CallPropertyChanged(nameof(IsEnabled));
+
+            ResetEditFlg();
 
         }
 

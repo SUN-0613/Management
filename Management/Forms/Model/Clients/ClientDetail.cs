@@ -126,6 +126,7 @@ namespace Management.Forms.Model.Clients
         {
 
             _File = new ClientDetailFile(client.FileWildName);
+            Staffs = new ObservableCollection<Staff>();
 
             PostalCode = _File.PostalCode.Split('-');
             PhoneNo = _File.PhoneNo.Split('-');

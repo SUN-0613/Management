@@ -88,6 +88,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   閉じる に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Close {
+            get {
+                return ResourceManager.GetString("Button_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   編集 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Button_Edit {
