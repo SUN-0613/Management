@@ -1,6 +1,6 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
-using Models = Management.Forms.Model.Clients;
+using Model = Management.Forms.Model.Clients;
 using System;
 
 namespace Management.Forms.ViewModel.Clients
@@ -17,7 +17,7 @@ namespace Management.Forms.ViewModel.Clients
         /// <summary>
         /// Model
         /// </summary>
-        private Models.ClientStaffAdd _Model;
+        private Model::ClientStaffAdd _Model;
 
         #endregion
 
@@ -98,6 +98,22 @@ namespace Management.Forms.ViewModel.Clients
                 if (!_Model.Staff.Department.Equals(value))
                 {
                     _Model.Staff.Department = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 役職
+        /// </summary>
+        public string Position
+        {
+            get { return _Model.Staff.Position; }
+            set
+            {
+                if (!_Model.Staff.Position.Equals(value))
+                {
+                    _Model.Staff.Position = value;
                     CallPropertyChanged();
                 }
             }
@@ -196,7 +212,7 @@ namespace Management.Forms.ViewModel.Clients
         /// </summary>
         public ClientStaffAdd()
         {
-            _Model = new Models.ClientStaffAdd("");
+            _Model = new Model::ClientStaffAdd("");
         }
 
         /// <summary>
@@ -206,7 +222,7 @@ namespace Management.Forms.ViewModel.Clients
         /// <param name="staff">編集対象の担当者情報</param>
         public ClientStaffAdd(string wildName, Staff staff = null)
         {
-            _Model = new Models.ClientStaffAdd(wildName, staff);
+            _Model = new Model::ClientStaffAdd(wildName, staff);
         }
 
         /// <summary>

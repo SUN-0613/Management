@@ -193,7 +193,7 @@ namespace Management.Forms.ViewModel.Master
 
                 return new DelegateCommand(
                     () => { CallPropertyChanged("CallSave"); }, 
-                    () => { return IsEdited; });
+                    () => true);
 
             }
         }

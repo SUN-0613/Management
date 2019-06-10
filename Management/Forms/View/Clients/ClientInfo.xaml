@@ -270,11 +270,26 @@
                         <DataGridTextColumn Header="{Binding EMailAddress, Source={StaticResource resources}}" Width="120" Binding="{Binding EMailAddress}" IsReadOnly="True" />
                         <DataGridTextColumn Header="{Binding MobilePhone, Source={StaticResource resources}}" Width="120" Binding="{Binding MobilePhone}" IsReadOnly="True" />
                     </DataGrid.Columns>
+                    <DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <Grid Background="LightYellow" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Position}" />
+                                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Remarks}" />
+                            </Grid>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>
                     <DataGrid.ContextMenu>
                         <ContextMenu>
                             <MenuItem Header="{Binding Path=Button_Add, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="add" />
-                            <MenuItem Header="{Binding Path=Button_Edit, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="add" />
-                            <MenuItem Header="{Binding Path=Button_Remove, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="add" />
+                            <MenuItem Header="{Binding Path=Button_Edit, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="edit" />
+                            <MenuItem Header="{Binding Path=Button_Remove, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="remove" />
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                 </DataGrid>

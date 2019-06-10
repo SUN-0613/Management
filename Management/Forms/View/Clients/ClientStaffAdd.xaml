@@ -9,7 +9,7 @@
         xmlns:vm="clr-namespace:Management.Forms.ViewModel.Clients"
         mc:Ignorable="d"
         Title="{Binding Path=ClientStaffAdd, Source={StaticResource resourcesTitle}}"
-        Height="370" Width="800"
+        Height="400" Width="800"
         FocusManager.FocusedElement="{Binding ElementName=txtFirst}"
         WindowStartupLocation="CenterOwner"
         >
@@ -23,6 +23,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="5" />
             <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -97,9 +98,18 @@
             </i:Interaction.Behaviors>
         </TextBox>
 
+        <!-- 役職 -->
+        <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=StaffPosition, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+        <TextBox Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Position, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+            <i:Interaction.Behaviors>
+                <b:TextBoxSelectAll />
+                <b:FrameworkElementMoveFocus />
+            </i:Interaction.Behaviors>
+        </TextBox>
+
         <!-- メールアドレス -->
-        <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=EMailAddress, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding EMailAddress, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+        <TextBlock Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=EMailAddress, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+        <TextBox Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding EMailAddress, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -107,8 +117,8 @@
         </TextBox>
 
         <!-- 携帯電話番号 -->
-        <TextBlock Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=MobilePhone, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding MobilePhone, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
+        <TextBlock Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=MobilePhone, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+        <TextBox Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding MobilePhone, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -116,8 +126,8 @@
         </TextBox>
 
         <!-- メモ -->
-        <TextBlock Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Remarks, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
-        <TextBox Grid.Row="5" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
+        <TextBlock Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Remarks, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+        <TextBox Grid.Row="6" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -125,7 +135,7 @@
         </TextBox>
 
         <!-- Button -->
-        <Grid Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="3" >
+        <Grid Grid.Row="9" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="3" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>

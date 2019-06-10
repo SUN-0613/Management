@@ -209,4 +209,8 @@
     <value>名字</value>
     <comment>担当者：名字</comment>
   </data>
+  <data name="StaffPosition" xml:space="preserve">
+    <value>役職</value>
+    <comment>担当者：役職</comment>
+  </data>
 </root>

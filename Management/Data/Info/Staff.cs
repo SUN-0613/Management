@@ -58,6 +58,11 @@ namespace Management.Data.Info
         public string Department { get; set; }
 
         /// <summary>
+        /// 役職
+        /// </summary>
+        public string Position { get; set; }
+
+        /// <summary>
         /// メールアドレス
         /// </summary>
         public string EMailAddress { get; set; }
@@ -85,11 +90,12 @@ namespace Management.Data.Info
         /// <param name="lastName">名字</param>
         /// <param name="lastKana">名字：よみがな</param>
         /// <param name="department">部署</param>
+        /// <param name="position">役職</param>
         /// <param name="eMailAddress">メールアドレス</param>
         /// <param name="mobilePhone">携帯電話番号</param>
         /// <param name="remarks">メモ</param>
         /// <param name="createDate">登録日</param>
-        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string eMailAddress, string mobilePhone, string remarks, DateTime createDate)
+        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string position, string eMailAddress, string mobilePhone, string remarks, DateTime createDate)
         {
 
             FirstName = firstName;
@@ -97,6 +103,7 @@ namespace Management.Data.Info
             LastName = lastName;
             LastKana = lastKana;
             Department = department;
+            Position = position;
             EMailAddress = eMailAddress;
             MobilePhone = mobilePhone;
             Remarks = remarks;
@@ -123,6 +130,7 @@ namespace Management.Data.Info
                         && staff.LastName.Equals(LastName)
                         && staff.LastKana.Equals(LastKana)
                         && staff.Department.Equals(Department)
+                        && staff.Position.Equals(Position)
                         && staff.EMailAddress.Equals(EMailAddress)
                         && staff.MobilePhone.Equals(MobilePhone)
                         && staff.Remarks.Equals(Remarks)
@@ -151,7 +159,7 @@ namespace Management.Data.Info
         /// <returns>クローン</returns>
         public object Clone()
         {
-            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, EMailAddress, MobilePhone, Remarks, CreateDate);
+            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, Position, EMailAddress, MobilePhone, Remarks, CreateDate);
         }
 
     }

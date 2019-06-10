@@ -266,5 +266,14 @@ namespace Management.Properties {
                 return ResourceManager.GetString("StaffLastName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   役職 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StaffPosition {
+            get {
+                return ResourceManager.GetString("StaffPosition", resourceCulture);
+            }
+        }
     }
 }

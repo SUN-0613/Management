@@ -37,7 +37,9 @@ namespace Management.Forms.Model.Menu
                 Interval = new TimeSpan(0, 0, 0, 0, 100)
             };
             _Timer.Tick += new EventHandler(Timer_Tick);
-            _Timer.Start();
+
+
+            Task.Run(() => { _Timer.Start(); });
 
         }
 
@@ -64,16 +66,11 @@ namespace Management.Forms.Model.Menu
         /// <summary>
         /// タイマイベント
         /// </summary>
-        private async void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
 
-            await Task.Run(() => 
-            {
-
-                Now = DateTime.Now;
-                CallPropertyChanged("CallDateTime");
-
-            });
+            Now = DateTime.Now;
+            CallPropertyChanged("CallDateTime");
 
         }
 

@@ -1,4 +1,4 @@
-﻿using ViewModels = Management.Forms.ViewModel.Clients;
+﻿using ViewModel = Management.Forms.ViewModel.Clients;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace Management.Forms.View.Clients
 
             InitializeComponent();
 
-            if (DataContext is ViewModels.ClientInfo viewModel)
+            if (DataContext is ViewModel::ClientInfo viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -32,7 +32,7 @@ namespace Management.Forms.View.Clients
         public void Dispose()
         {
 
-            if (DataContext is ViewModels.ClientInfo viewModel)
+            if (DataContext is ViewModel::ClientInfo viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -45,7 +45,7 @@ namespace Management.Forms.View.Clients
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModels.ClientInfo viewModel)
+            if (DataContext is ViewModel::ClientInfo viewModel)
             {
 
                 switch (e.PropertyName)
@@ -57,7 +57,7 @@ namespace Management.Forms.View.Clients
                         var resultValue = clientAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && clientAdd.DataContext is ViewModels.ClientAdd addViewModel)
+                            && clientAdd.DataContext is ViewModel::ClientAdd addViewModel)
                         {
 
                             viewModel.AddClient(addViewModel.CompanyName);
@@ -74,7 +74,6 @@ namespace Management.Forms.View.Clients
                         if (MessageBox.Show(Properties.ClientInfo.MessageListRemove.Replace("*", viewModel.CompanyName), Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
                             viewModel.RemoveSelectedClient();
-                            Close();
                         }
 
                         break;
@@ -85,7 +84,7 @@ namespace Management.Forms.View.Clients
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && staffAdd.DataContext is ViewModels.ClientStaffAdd addVM)
+                            && staffAdd.DataContext is ViewModel::ClientStaffAdd addVM)
                         {
                             viewModel.AddStaff(addVM.GetStaffClone());
                         }
@@ -101,7 +100,7 @@ namespace Management.Forms.View.Clients
                         resultValue = staffAdd.ShowDialog();
 
                         if (resultValue.HasValue && resultValue.Value
-                            && staffAdd.DataContext is ViewModels.ClientStaffAdd editVM)
+                            && staffAdd.DataContext is ViewModel::ClientStaffAdd editVM)
                         {
                             viewModel.EditStaff(editVM.GetStaffClone());
                         }
@@ -116,7 +115,6 @@ namespace Management.Forms.View.Clients
                         if (MessageBox.Show(Properties.ClientInfo.MessageStaffRemove.Replace("*", viewModel.SelectedStaff.FullName), Properties.Title.ClientInfo, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
                             viewModel.RemoveSelectedStaff();
-                            Close();
                         }
 
                         break;

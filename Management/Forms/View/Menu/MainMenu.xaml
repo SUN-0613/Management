@@ -7,7 +7,8 @@
         xmlns:p="clr-namespace:Management.Properties"
         mc:Ignorable="d"
         Title="ジョブ管理" 
-        Height="750" Width="1200">
+        Height="750" Width="1200"
+        WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainMenu />
     </Window.DataContext>

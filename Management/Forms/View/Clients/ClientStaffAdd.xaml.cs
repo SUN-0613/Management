@@ -1,5 +1,5 @@
 ﻿using Management.Data.Info;
-using ViewModels = Management.Forms.ViewModel.Clients;
+using ViewModel = Management.Forms.ViewModel.Clients;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -28,8 +28,8 @@ namespace Management.Forms.View.Clients
                 dataContext = null;
             }
 
-            DataContext = new ViewModels.ClientStaffAdd(wildName, staff);
-            if (DataContext is ViewModels.ClientStaffAdd viewModel)
+            DataContext = new ViewModel::ClientStaffAdd(wildName, staff);
+            if (DataContext is ViewModel::ClientStaffAdd viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -42,7 +42,7 @@ namespace Management.Forms.View.Clients
         public void Dispose()
         {
 
-            if (DataContext is ViewModels.ClientStaffAdd viewModel)
+            if (DataContext is ViewModel::ClientStaffAdd viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -55,7 +55,7 @@ namespace Management.Forms.View.Clients
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModels.ClientStaffAdd viewModel)
+            if (DataContext is ViewModel::ClientStaffAdd viewModel)
             {
 
                 switch (e.PropertyName)

@@ -99,7 +99,11 @@ namespace Management.Forms.Model.Clients
         /// <summary>
         /// 担当差一覧
         /// </summary>
-        public ObservableCollection<Staff> Staffs { get; set; }
+        public ObservableCollection<Staff> Staffs
+        {
+            get { return _File.Staffs; }
+            set { _File.Staffs = value; }
+        }
 
         /// <summary>
         /// メモ
@@ -126,7 +130,6 @@ namespace Management.Forms.Model.Clients
         {
 
             _File = new ClientDetailFile(client.FileWildName);
-            Staffs = new ObservableCollection<Staff>();
 
             PostalCode = _File.PostalCode.Split('-');
             PhoneNo = _File.PhoneNo.Split('-');

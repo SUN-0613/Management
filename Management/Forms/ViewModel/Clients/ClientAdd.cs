@@ -1,5 +1,5 @@
 ﻿using AYam.Common.MVVM;
-using Models = Management.Forms.Model.Clients;
+using Model = Management.Forms.Model.Clients;
 using System;
 
 namespace Management.Forms.ViewModel.Clients
@@ -16,7 +16,7 @@ namespace Management.Forms.ViewModel.Clients
         /// <summary>
         /// Model
         /// </summary>
-        private Models.ClientAdd _Model;
+        private Model::ClientAdd _Model;
 
         #endregion
 
@@ -79,7 +79,7 @@ namespace Management.Forms.ViewModel.Clients
         public ClientAdd()
         {
 
-            _Model = new Models.ClientAdd();
+            _Model = new Model::ClientAdd();
 
         }
 

@@ -2,7 +2,7 @@
 using AYam.Common.MVVM;
 using AYam.Common.MVVM.Custom;
 using Management.Data.Info;
-using Models = Management.Forms.Model.Clients;
+using Model = Management.Forms.Model.Clients;
 using System;
 using System.Collections.ObjectModel;
 
@@ -20,12 +20,12 @@ namespace Management.Forms.ViewModel.Clients
         /// <summary>
         /// 一覧.Model
         /// </summary>
-        private Models.ClientList _ListModel;
+        private Model::ClientList _ListModel;
 
         /// <summary>
         /// 詳細.Model
         /// </summary>
-        private Models.ClientDetail _DetailModel;
+        private Model::ClientDetail _DetailModel;
 
         #endregion
 
@@ -447,7 +447,7 @@ namespace Management.Forms.ViewModel.Clients
 
                 return new DelegateCommand(
                     () => { CallPropertyChanged("CallSave"); },
-                    () => { return IsEdited; });
+                    () => true);
 
             }
         }
@@ -493,7 +493,7 @@ namespace Management.Forms.ViewModel.Clients
         public ClientInfo()
         {
 
-            _ListModel = new Models.ClientList();
+            _ListModel = new Model::ClientList();
 
         }
 
@@ -573,7 +573,7 @@ namespace Management.Forms.ViewModel.Clients
             if (SelectedClient != null)
             {
 
-                _DetailModel = new Models.ClientDetail(SelectedClient);
+                _DetailModel = new Model::ClientDetail(SelectedClient);
 
                 // 名称未入力の場合は一覧名称をセット
                 if (string.IsNullOrEmpty(CompanyName) || CompanyName.Length.Equals(0))
@@ -581,52 +581,36 @@ namespace Management.Forms.ViewModel.Clients
                     CompanyName = SelectedClient.Name;
                 }
 
-                CallPropertyChanged(nameof(CompanyName));
-
-                for (int iLoop = 0; iLoop < PostalCode.Length; iLoop++)
-                {
-                    CallPropertyChanged(String.Format(nameof(PostalCode) + "[{0}]", iLoop));
-                }
-
-                CallPropertyChanged(nameof(Address));
-
-                for (int iLoop = 0; iLoop < PhoneNo.Length; iLoop++)
-                {
-                    CallPropertyChanged(String.Format(nameof(PhoneNo) + "[{0}]", iLoop));
-                }
-
-                CallPropertyChanged(nameof(BankAccount));
-                CallPropertyChanged(nameof(Staffs));
-
             }
             else
             {
 
                 CompanyName = "";
-                CallPropertyChanged(nameof(CompanyName));
-
-                for (int iLoop = 0; iLoop < PostalCode.Length; iLoop++)
-                {
-                    PostalCode[iLoop] = "";
-                    CallPropertyChanged(String.Format(nameof(PostalCode) + "[{0}]", iLoop));
-                }
-
+                CompanyKana = "";
+                PostalCode = new string[] { "", "" };
                 Address = "";
-                CallPropertyChanged(nameof(Address));
-
-                for (int iLoop = 0; iLoop < PhoneNo.Length; iLoop++)
-                {
-                    PhoneNo[iLoop] = "";
-                    CallPropertyChanged(String.Format(nameof(PhoneNo) + "[{0}]", iLoop));
-                }
-
+                PhoneNo = new string[] { "", "", "" };
+                FaxNo = new string[] { "", "", "" };
                 BankAccount = "";
-                CallPropertyChanged(nameof(BankAccount));
 
-                Staffs.Clear();
-                CallPropertyChanged(nameof(Staffs));
+                if (Staffs != null)
+                {
+                    Staffs.Clear();
+                }
+                
+                Remarks = "";
 
             }
+
+            CallPropertyChanged(nameof(CompanyName));
+            CallPropertyChanged(nameof(CompanyKana));
+            CallPropertyChanged(nameof(PostalCode));
+            CallPropertyChanged(nameof(Address));
+            CallPropertyChanged(nameof(PhoneNo));
+            CallPropertyChanged(nameof(FaxNo));
+            CallPropertyChanged(nameof(BankAccount));
+            CallPropertyChanged(nameof(Staffs));
+            CallPropertyChanged(nameof(Remarks));
 
             CallPropertyChanged(nameof(IsEnabled));
 
@@ -640,16 +624,15 @@ namespace Management.Forms.ViewModel.Clients
         public void RemoveSelectedClient()
         {
 
+            // 詳細削除
+            _DetailModel.Delete();
+
             // 一覧より削除
             Clients.Remove(SelectedClient);
             _ListModel.Save();
 
-            // 詳細削除
-            _DetailModel.Delete();
-
             // 初期化
             SelectedClient = null;
-            ResetEditFlg();
 
         }
 
@@ -697,7 +680,7 @@ namespace Management.Forms.ViewModel.Clients
         public void EditStaff(Staff staff)
         {
 
-            int index = Staffs.IndexOf(staff);
+            int index = Staffs.IndexOf(SelectedStaff);
 
             if (index > -1)
             {

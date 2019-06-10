@@ -111,10 +111,11 @@ namespace Management.Data.File
                                         , GetValue(element.Element(nameof(Staff.LastName)), "")
                                         , GetValue(element.Element(nameof(Staff.LastKana)), "")
                                         , GetValue(element.Element(nameof(Staff.Department)), "")
+                                        , GetValue(element.Element(nameof(Staff.Position)), "")
                                         , GetValue(element.Element(nameof(Staff.EMailAddress)), "")
                                         , GetValue(element.Element(nameof(Staff.MobilePhone)), "")
                                         , GetValue(element.Element(nameof(Staff.Remarks)), "")
-                                        , GetAttribute(nameof(Staff.CreateDate), DateTime.Now)
+                                        , GetAttribute(element, nameof(Staff.CreateDate), DateTime.Now)
                                         ));
 
                 }
@@ -136,6 +137,7 @@ namespace Management.Data.File
                 , new XElement(nameof(PostalCode), PostalCode)
                 , new XElement(nameof(Address), Address)
                 , new XElement(nameof(PhoneNo), PhoneNo)
+                , new XElement(nameof(FaxNo), FaxNo)
                 , new XElement(nameof(BankAccount), BankAccount)
                 , new XElement(nameof(Remarks), Remarks)
             })
@@ -151,6 +153,7 @@ namespace Management.Data.File
                     AddElement(ref element, new XElement(nameof(Staff.LastName), Staffs[iLoop].LastName));
                     AddElement(ref element, new XElement(nameof(Staff.LastKana), Staffs[iLoop].LastKana));
                     AddElement(ref element, new XElement(nameof(Staff.Department), Staffs[iLoop].Department));
+                    AddElement(ref element, new XElement(nameof(Staff.Position), Staffs[iLoop].Position));
                     AddElement(ref element, new XElement(nameof(Staff.EMailAddress), Staffs[iLoop].EMailAddress));
                     AddElement(ref element, new XElement(nameof(Staff.MobilePhone), Staffs[iLoop].MobilePhone));
                     AddElement(ref element, new XElement(nameof(Staff.Remarks), Staffs[iLoop].Remarks));

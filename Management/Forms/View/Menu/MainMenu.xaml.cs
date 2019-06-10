@@ -1,4 +1,4 @@
-﻿using ViewModels = Management.Forms.ViewModel.Menu;
+﻿using ViewModel = Management.Forms.ViewModel.Menu;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -20,7 +20,7 @@ namespace Management.Forms.View.Menu
 
             InitializeComponent();
 
-            if (DataContext is ViewModels.MainMenu viewModel)
+            if (DataContext is ViewModel::MainMenu viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -33,7 +33,7 @@ namespace Management.Forms.View.Menu
         public void Dispose()
         {
 
-            if (DataContext is ViewModels.MainMenu viewModel)
+            if (DataContext is ViewModel::MainMenu viewModel)
             {
 
                 viewModel.PropertyChanged -= OnPropertyChanged;

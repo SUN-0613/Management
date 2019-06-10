@@ -1,4 +1,4 @@
-﻿using ViewModels = Management.Forms.ViewModel.Master;
+﻿using ViewModel = Management.Forms.ViewModel.Master;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -19,7 +19,7 @@ namespace Management.Forms.View.Master
 
             InitializeComponent();
 
-            if (DataContext is ViewModels.MasterInfo viewModel)
+            if (DataContext is ViewModel::MasterInfo viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -32,7 +32,7 @@ namespace Management.Forms.View.Master
         public void Dispose()
         {
 
-            if (DataContext is ViewModels.MasterInfo viewModel)
+            if (DataContext is ViewModel::MasterInfo viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }
@@ -45,7 +45,7 @@ namespace Management.Forms.View.Master
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModels.MasterInfo viewModel)
+            if (DataContext is ViewModel::MasterInfo viewModel)
             {
 
                 switch (e.PropertyName)
