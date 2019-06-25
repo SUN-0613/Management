@@ -34,7 +34,12 @@ namespace Management.Forms.View.Clients
 
             if (DataContext is ViewModel::ClientInfo viewModel)
             {
+
                 viewModel.PropertyChanged -= OnPropertyChanged;
+
+                viewModel.Dispose();
+                viewModel = null;
+
             }
 
         }

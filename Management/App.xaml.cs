@@ -13,7 +13,7 @@ namespace Management
         /// <summary>
         /// 初期開始
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e">引数</param>
         protected override void OnStartup(StartupEventArgs e)
         {
 
@@ -32,6 +32,49 @@ namespace Management
 
                 // 基本処理
                 base.OnStartup(e);
+
+                // データ保存パス用変数
+                bool isSelectPath = false;
+                int pathLength = Management.Properties.Settings.Default.RootPath.Length;
+
+                // 引数取得
+                foreach (var cmd in e.Args)
+                {
+
+                    switch (cmd)
+                    {
+
+                        case "-d":  // データ保存先の変更
+                            isSelectPath = true;
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                }
+
+                // フォルダ選択FLG更新
+                // 引数指定 or パス未指定 or パスが存在しない
+                isSelectPath = isSelectPath 
+                                || pathLength.Equals(0)
+                                || !System.IO.Directory.Exists(Management.Properties.Settings.Default.RootPath);
+
+                // 初期設定
+                if (isSelectPath)
+                {
+
+                    string defaultPath = pathLength.Equals(0) 
+                                            || !System.IO.Directory.Exists(Management.Properties.Settings.Default.RootPath)
+                                                ? System.Environment.CurrentDirectory 
+                                                : Management.Properties.Settings.Default.RootPath;
+
+                    // フォルダ選択画面表示
+
+
+                    
+
+                }
 
                 // 画面表示
                 var form = new Forms.View.Menu.MainMenu();

@@ -15,42 +15,22 @@ namespace Management.Data.Path
         /// </summary>
         public static readonly string Wild = "*";
 
-        #region Class
+        /// <summary>
+        /// ファイル一覧
+        /// </summary>
+        public readonly FileInfo Files;
 
         /// <summary>
-        /// フォルダ情報
+        /// パス情報
         /// </summary>
-        public class DirectoryInfo
+        public PathInfo()
         {
 
-            /// <summary>
-            /// ルートフォルダ
-            /// </summary>
-            public readonly string RootPath;
-
-            /// <summary>
-            /// マスタ情報フォルダ
-            /// </summary>
-            public readonly string MasterPath;
-
-            /// <summary>
-            /// 取引先情報フォルダ
-            /// </summary>
-            public readonly string ClientPath;
-
-            /// <summary>
-            /// フォルダ情報
-            /// </summary>
-            public DirectoryInfo()
-            {
-
-                RootPath = ComMethod.Path.MakeDirectories(Environment.CurrentDirectory) + "Parameter";
-                MasterPath = ComMethod.Path.MakeDirectories(RootPath + @"\MasterData");
-                ClientPath = ComMethod.Path.MakeDirectories(RootPath + @"\ClientData");
-
-            }
+            Files = new FileInfo();
 
         }
+
+        #region Class
 
         /// <summary>
         /// ファイル情報
@@ -86,30 +66,61 @@ namespace Management.Data.Path
 
                 _Directories = new DirectoryInfo();
 
-                Master = ComMethod.Path.GetFullPath(_Directories.MasterPath, "Master.xml");
-                Clients = ComMethod.Path.GetFullPath(_Directories.ClientPath, "Clients.xml");
-                ClientDetail = ComMethod.Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
+                Master = ComMethod::Path.GetFullPath(_Directories.MasterPath, "Master.xml");
+                Clients = ComMethod::Path.GetFullPath(_Directories.ClientPath, "Clients.xml");
+                ClientDetail = ComMethod::Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
+
+            }
+
+        }
+
+        /// <summary>
+        /// フォルダ情報
+        /// </summary>
+        public class DirectoryInfo
+        {
+
+            /// <summary>
+            /// ルートフォルダ
+            /// </summary>
+            public readonly string RootPath;
+
+            /// <summary>
+            /// マスタ情報フォルダ
+            /// </summary>
+            public readonly string MasterPath;
+
+            /// <summary>
+            /// 取引先情報フォルダ
+            /// </summary>
+            public readonly string ClientPath;
+
+            /// <summary>
+            /// フォルダ情報
+            /// </summary>
+            public DirectoryInfo()
+            {
+
+                const string parameter = "Parameter";
+
+                // Settingファイルより取得できない場合はexeパス
+                if (Properties.Settings.Default.RootPath.Length.Equals(0))
+                {
+                    RootPath = ComMethod::Path.MakeDirectories(Environment.CurrentDirectory) + parameter;
+                }
+                else
+                {
+                    RootPath = ComMethod::Path.MakeDirectories(Properties.Settings.Default.RootPath) + parameter;
+                }
+
+                MasterPath = ComMethod::Path.MakeDirectories(RootPath + @"\MasterData");
+                ClientPath = ComMethod::Path.MakeDirectories(RootPath + @"\ClientData");
 
             }
 
         }
 
         #endregion
-
-        /// <summary>
-        /// ファイル一覧
-        /// </summary>
-        public readonly FileInfo Files;
-
-        /// <summary>
-        /// パス情報
-        /// </summary>
-        public PathInfo()
-        {
-
-            Files = new FileInfo();
-
-        }
 
     }
 

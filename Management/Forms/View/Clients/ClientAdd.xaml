@@ -12,7 +12,7 @@
         Height="110" Width="600"
         FocusManager.FocusedElement="{Binding ElementName=txtFirst}"
         WindowStartupLocation="CenterOwner"
-        >
+        WindowStyle="ToolWindow">
     <Window.Resources>
         <p:ClientInfo x:Key="resources" />
     </Window.Resources>

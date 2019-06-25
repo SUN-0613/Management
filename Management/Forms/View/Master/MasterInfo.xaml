@@ -12,7 +12,7 @@
         Height="460" Width="600" 
         FocusManager.FocusedElement="{Binding ElementName=txtFirst}"
         WindowStartupLocation="CenterOwner"
-        >
+        WindowStyle="ToolWindow">
     <i:Interaction.Behaviors>
         <b:WindowClosing />
     </i:Interaction.Behaviors>

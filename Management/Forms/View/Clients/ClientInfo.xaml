@@ -11,7 +11,7 @@
         Title="{Binding Path=ClientInfo, Source={StaticResource resourcesTitle}}" 
         Height="550" Width="750"
         WindowStartupLocation="CenterOwner"
-        >
+        WindowStyle="ToolWindow">
     <i:Interaction.Behaviors>
         <b:WindowClosing />
     </i:Interaction.Behaviors>

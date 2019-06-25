@@ -34,7 +34,12 @@ namespace Management.Forms.View.Master
 
             if (DataContext is ViewModel::MasterInfo viewModel)
             {
+
                 viewModel.PropertyChanged -= OnPropertyChanged;
+
+                viewModel.Dispose();
+                viewModel = null;
+
             }
 
         }
