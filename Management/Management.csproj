@@ -121,6 +121,7 @@
     <Compile Include="Pages\Model\Calendar.cs" />
     <Compile Include="Pages\Model\Class\DayInfo.cs" />
     <Compile Include="Pages\Model\Class\Holiday.cs" />
+    <Compile Include="Pages\Model\Timer.cs" />
     <Compile Include="Pages\ViewModel\Calendar.cs" />
     <Compile Include="Pages\View\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>

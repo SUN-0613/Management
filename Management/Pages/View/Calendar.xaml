@@ -84,6 +84,62 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=Week_Sunday, Source={StaticResource resources}}" FontSize="13" Foreground="Red" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Week_Monday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Path=Week_Tuesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding Path=Week_Wednesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding Path=Week_Thursday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Text="{Binding Path=Week_Friday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Text="{Binding Path=Week_Saturday, Source={StaticResource resources}}" FontSize="13" Foreground="Blue" TextAlignment="Center" VerticalAlignment="Center" />
+            
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[0].DayNumber}" Schedule="{Binding Days[0].Schedule}" WeekColor="{Binding Days[0].Foreground}" BackColor="{Binding Days[0].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[1].DayNumber}" Schedule="{Binding Days[1].Schedule}" WeekColor="{Binding Days[1].Foreground}" BackColor="{Binding Days[1].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[2].DayNumber}" Schedule="{Binding Days[2].Schedule}" WeekColor="{Binding Days[2].Foreground}" BackColor="{Binding Days[2].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[3].DayNumber}" Schedule="{Binding Days[3].Schedule}" WeekColor="{Binding Days[3].Foreground}" BackColor="{Binding Days[3].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[4].DayNumber}" Schedule="{Binding Days[4].Schedule}" WeekColor="{Binding Days[4].Foreground}" BackColor="{Binding Days[4].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[5].DayNumber}" Schedule="{Binding Days[5].Schedule}" WeekColor="{Binding Days[5].Foreground}" BackColor="{Binding Days[5].Background}" />
+            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[6].DayNumber}" Schedule="{Binding Days[6].Schedule}" WeekColor="{Binding Days[6].Foreground}" BackColor="{Binding Days[6].Background}" />
+
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[7].DayNumber}" Schedule="{Binding Days[7].Schedule}" WeekColor="{Binding Days[7].Foreground}" BackColor="{Binding Days[7].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[8].DayNumber}" Schedule="{Binding Days[8].Schedule}" WeekColor="{Binding Days[8].Foreground}" BackColor="{Binding Days[8].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[9].DayNumber}" Schedule="{Binding Days[9].Schedule}" WeekColor="{Binding Days[9].Foreground}" BackColor="{Binding Days[9].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[10].DayNumber}" Schedule="{Binding Days[10].Schedule}" WeekColor="{Binding Days[10].Foreground}" BackColor="{Binding Days[10].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[11].DayNumber}" Schedule="{Binding Days[11].Schedule}" WeekColor="{Binding Days[11].Foreground}" BackColor="{Binding Days[11].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[12].DayNumber}" Schedule="{Binding Days[12].Schedule}" WeekColor="{Binding Days[12].Foreground}" BackColor="{Binding Days[12].Background}" />
+            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[13].DayNumber}" Schedule="{Binding Days[13].Schedule}" WeekColor="{Binding Days[13].Foreground}" BackColor="{Binding Days[13].Background}" />
+
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[14].DayNumber}" Schedule="{Binding Days[14].Schedule}" WeekColor="{Binding Days[14].Foreground}" BackColor="{Binding Days[14].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[15].DayNumber}" Schedule="{Binding Days[15].Schedule}" WeekColor="{Binding Days[15].Foreground}" BackColor="{Binding Days[15].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[16].DayNumber}" Schedule="{Binding Days[16].Schedule}" WeekColor="{Binding Days[16].Foreground}" BackColor="{Binding Days[16].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[17].DayNumber}" Schedule="{Binding Days[17].Schedule}" WeekColor="{Binding Days[17].Foreground}" BackColor="{Binding Days[17].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[18].DayNumber}" Schedule="{Binding Days[18].Schedule}" WeekColor="{Binding Days[18].Foreground}" BackColor="{Binding Days[18].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[19].DayNumber}" Schedule="{Binding Days[19].Schedule}" WeekColor="{Binding Days[19].Foreground}" BackColor="{Binding Days[19].Background}" />
+            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[20].DayNumber}" Schedule="{Binding Days[20].Schedule}" WeekColor="{Binding Days[20].Foreground}" BackColor="{Binding Days[20].Background}" />
+
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[21].DayNumber}" Schedule="{Binding Days[21].Schedule}" WeekColor="{Binding Days[21].Foreground}" BackColor="{Binding Days[21].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[22].DayNumber}" Schedule="{Binding Days[22].Schedule}" WeekColor="{Binding Days[22].Foreground}" BackColor="{Binding Days[22].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[23].DayNumber}" Schedule="{Binding Days[23].Schedule}" WeekColor="{Binding Days[23].Foreground}" BackColor="{Binding Days[23].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[24].DayNumber}" Schedule="{Binding Days[24].Schedule}" WeekColor="{Binding Days[24].Foreground}" BackColor="{Binding Days[24].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[25].DayNumber}" Schedule="{Binding Days[25].Schedule}" WeekColor="{Binding Days[25].Foreground}" BackColor="{Binding Days[25].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[26].DayNumber}" Schedule="{Binding Days[26].Schedule}" WeekColor="{Binding Days[26].Foreground}" BackColor="{Binding Days[26].Background}" />
+            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[27].DayNumber}" Schedule="{Binding Days[27].Schedule}" WeekColor="{Binding Days[27].Foreground}" BackColor="{Binding Days[27].Background}" />
+
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[28].DayNumber}" Schedule="{Binding Days[28].Schedule}" WeekColor="{Binding Days[28].Foreground}" BackColor="{Binding Days[28].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[29].DayNumber}" Schedule="{Binding Days[29].Schedule}" WeekColor="{Binding Days[29].Foreground}" BackColor="{Binding Days[29].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[30].DayNumber}" Schedule="{Binding Days[30].Schedule}" WeekColor="{Binding Days[30].Foreground}" BackColor="{Binding Days[30].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[31].DayNumber}" Schedule="{Binding Days[31].Schedule}" WeekColor="{Binding Days[31].Foreground}" BackColor="{Binding Days[31].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[32].DayNumber}" Schedule="{Binding Days[32].Schedule}" WeekColor="{Binding Days[32].Foreground}" BackColor="{Binding Days[32].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[33].DayNumber}" Schedule="{Binding Days[33].Schedule}" WeekColor="{Binding Days[33].Foreground}" BackColor="{Binding Days[33].Background}" />
+            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[34].DayNumber}" Schedule="{Binding Days[34].Schedule}" WeekColor="{Binding Days[34].Foreground}" BackColor="{Binding Days[34].Background}" />
+
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[35].DayNumber}" Schedule="{Binding Days[35].Schedule}" WeekColor="{Binding Days[35].Foreground}" BackColor="{Binding Days[35].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[36].DayNumber}" Schedule="{Binding Days[36].Schedule}" WeekColor="{Binding Days[36].Foreground}" BackColor="{Binding Days[36].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[37].DayNumber}" Schedule="{Binding Days[37].Schedule}" WeekColor="{Binding Days[37].Foreground}" BackColor="{Binding Days[37].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[38].DayNumber}" Schedule="{Binding Days[38].Schedule}" WeekColor="{Binding Days[38].Foreground}" BackColor="{Binding Days[38].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[39].DayNumber}" Schedule="{Binding Days[39].Schedule}" WeekColor="{Binding Days[39].Foreground}" BackColor="{Binding Days[39].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[40].DayNumber}" Schedule="{Binding Days[40].Schedule}" WeekColor="{Binding Days[40].Foreground}" BackColor="{Binding Days[40].Background}" />
+            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[41].DayNumber}" Schedule="{Binding Days[41].Schedule}" WeekColor="{Binding Days[41].Foreground}" BackColor="{Binding Days[41].Background}" />
+
             <Border Grid.Row="0" Grid.RowSpan="7" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,0" />
             <Border Grid.Row="0" Grid.RowSpan="7" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,1,0" />
             <Border Grid.Row="0" Grid.RowSpan="7" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,1,0" />
@@ -99,62 +155,6 @@
             <Border Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness="0,0,0,1" />
             <Border Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness="0,0,0,1" />
             <Border Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="7" BorderBrush="Black" BorderThickness="0,0,0,1" />
-
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=Week_Sunday, Source={StaticResource resources}}" FontSize="13" Foreground="Red" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Week_Monday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Path=Week_Tuesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding Path=Week_Wednesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding Path=Week_Thursday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Text="{Binding Path=Week_Friday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Text="{Binding Path=Week_Saturday, Source={StaticResource resources}}" FontSize="13" Foreground="Blue" TextAlignment="Center" VerticalAlignment="Center" />
-            
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[0].DayNumber}" Schedule="{Binding Days[0].Schedule}" WeekColor="{Binding Days[0].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[1].DayNumber}" Schedule="{Binding Days[1].Schedule}" WeekColor="{Binding Days[1].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[2].DayNumber}" Schedule="{Binding Days[2].Schedule}" WeekColor="{Binding Days[2].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[3].DayNumber}" Schedule="{Binding Days[3].Schedule}" WeekColor="{Binding Days[3].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[4].DayNumber}" Schedule="{Binding Days[4].Schedule}" WeekColor="{Binding Days[4].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[5].DayNumber}" Schedule="{Binding Days[5].Schedule}" WeekColor="{Binding Days[5].Foreground}" />
-            <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[6].DayNumber}" Schedule="{Binding Days[6].Schedule}" WeekColor="{Binding Days[6].Foreground}" />
-
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[7].DayNumber}" Schedule="{Binding Days[7].Schedule}" WeekColor="{Binding Days[7].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[8].DayNumber}" Schedule="{Binding Days[8].Schedule}" WeekColor="{Binding Days[8].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[9].DayNumber}" Schedule="{Binding Days[9].Schedule}" WeekColor="{Binding Days[9].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[10].DayNumber}" Schedule="{Binding Days[10].Schedule}" WeekColor="{Binding Days[10].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[11].DayNumber}" Schedule="{Binding Days[11].Schedule}" WeekColor="{Binding Days[11].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[12].DayNumber}" Schedule="{Binding Days[12].Schedule}" WeekColor="{Binding Days[12].Foreground}" />
-            <uc:Day Grid.Row="2" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[13].DayNumber}" Schedule="{Binding Days[13].Schedule}" WeekColor="{Binding Days[13].Foreground}" />
-
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[14].DayNumber}" Schedule="{Binding Days[14].Schedule}" WeekColor="{Binding Days[14].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[15].DayNumber}" Schedule="{Binding Days[15].Schedule}" WeekColor="{Binding Days[15].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[16].DayNumber}" Schedule="{Binding Days[16].Schedule}" WeekColor="{Binding Days[16].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[17].DayNumber}" Schedule="{Binding Days[17].Schedule}" WeekColor="{Binding Days[17].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[18].DayNumber}" Schedule="{Binding Days[18].Schedule}" WeekColor="{Binding Days[18].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[19].DayNumber}" Schedule="{Binding Days[19].Schedule}" WeekColor="{Binding Days[19].Foreground}" />
-            <uc:Day Grid.Row="3" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[20].DayNumber}" Schedule="{Binding Days[20].Schedule}" WeekColor="{Binding Days[20].Foreground}" />
-
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[21].DayNumber}" Schedule="{Binding Days[21].Schedule}" WeekColor="{Binding Days[21].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[22].DayNumber}" Schedule="{Binding Days[22].Schedule}" WeekColor="{Binding Days[22].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[23].DayNumber}" Schedule="{Binding Days[23].Schedule}" WeekColor="{Binding Days[23].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[24].DayNumber}" Schedule="{Binding Days[24].Schedule}" WeekColor="{Binding Days[24].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[25].DayNumber}" Schedule="{Binding Days[25].Schedule}" WeekColor="{Binding Days[25].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[26].DayNumber}" Schedule="{Binding Days[26].Schedule}" WeekColor="{Binding Days[26].Foreground}" />
-            <uc:Day Grid.Row="4" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[27].DayNumber}" Schedule="{Binding Days[27].Schedule}" WeekColor="{Binding Days[27].Foreground}" />
-
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[28].DayNumber}" Schedule="{Binding Days[28].Schedule}" WeekColor="{Binding Days[28].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[29].DayNumber}" Schedule="{Binding Days[29].Schedule}" WeekColor="{Binding Days[29].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[30].DayNumber}" Schedule="{Binding Days[30].Schedule}" WeekColor="{Binding Days[30].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[31].DayNumber}" Schedule="{Binding Days[31].Schedule}" WeekColor="{Binding Days[31].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[32].DayNumber}" Schedule="{Binding Days[32].Schedule}" WeekColor="{Binding Days[32].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[33].DayNumber}" Schedule="{Binding Days[33].Schedule}" WeekColor="{Binding Days[33].Foreground}" />
-            <uc:Day Grid.Row="5" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[34].DayNumber}" Schedule="{Binding Days[34].Schedule}" WeekColor="{Binding Days[34].Foreground}" />
-
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[35].DayNumber}" Schedule="{Binding Days[35].Schedule}" WeekColor="{Binding Days[35].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[36].DayNumber}" Schedule="{Binding Days[36].Schedule}" WeekColor="{Binding Days[36].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Date="{Binding Days[37].DayNumber}" Schedule="{Binding Days[37].Schedule}" WeekColor="{Binding Days[37].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Date="{Binding Days[38].DayNumber}" Schedule="{Binding Days[38].Schedule}" WeekColor="{Binding Days[38].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Date="{Binding Days[39].DayNumber}" Schedule="{Binding Days[39].Schedule}" WeekColor="{Binding Days[39].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Date="{Binding Days[40].DayNumber}" Schedule="{Binding Days[40].Schedule}" WeekColor="{Binding Days[40].Foreground}" />
-            <uc:Day Grid.Row="6" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Date="{Binding Days[41].DayNumber}" Schedule="{Binding Days[41].Schedule}" WeekColor="{Binding Days[41].Foreground}" />
 
         </Grid>
     </Grid>

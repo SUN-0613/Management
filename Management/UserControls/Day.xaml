@@ -22,7 +22,7 @@
             </Style.Triggers>
         </Style>
     </UserControl.Style>
-    <Grid Visibility="{Binding ElementName=UC, Path=Date, Converter={StaticResource VisibleConv}}" >
+    <Grid Background="{Binding ElementName=UC, Path=BackColor}" Visibility="{Binding ElementName=UC, Path=Date, Converter={StaticResource VisibleConv}}" >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
             <RowDefinition Height="3*" />

@@ -34,6 +34,16 @@ namespace Management.UserControls
                 , new UIPropertyMetadata(Brushes.Black));
 
         /// <summary>
+        /// 背景色依存プロパティ
+        /// </summary>
+        public static readonly DependencyProperty BackColorProperty
+            = DependencyProperty.Register(
+                nameof(BackColor)
+                , typeof(Brush)
+                , typeof(Day)
+                , new UIPropertyMetadata(Brushes.White));
+
+        /// <summary>
         /// 予定依存プロパティ
         /// </summary>
         public static readonly DependencyProperty ScheduleProperty
@@ -66,6 +76,15 @@ namespace Management.UserControls
         {
             get { return (Brush)GetValue(WeekColorProperty); }
             set { SetValue(WeekColorProperty, value); }
+        }
+
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        public Brush BackColor
+        {
+            get { return (Brush)GetValue(BackColorProperty); }
+            set { SetValue(BackColorProperty, value); }
         }
 
         /// <summary>

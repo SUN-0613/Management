@@ -2,6 +2,7 @@
 using Management.Pages.Model.Class;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Management.Pages.ViewModel
 {
@@ -12,10 +13,19 @@ namespace Management.Pages.ViewModel
     public class Calendar : ViewModelBase, IDisposable
     {
 
+        #region Model
+
         /// <summary>
         /// Calendar.Model
         /// </summary>
         private Model.Calendar _Model;
+
+        /// <summary>
+        /// 切替用タイマ.Model
+        /// </summary>
+        private Model.Timer _TimerModel;
+
+        #endregion
 
         #region Property
 
@@ -106,6 +116,8 @@ namespace Management.Pages.ViewModel
         {
 
             _Model = new Model.Calendar();
+            _TimerModel = new Model.Timer();
+            _TimerModel.PropertyChanged += OnTimerPropertyChanged;
 
         }
 
@@ -120,6 +132,33 @@ namespace Management.Pages.ViewModel
 
                 _Model.Dispose();
                 _Model = null;
+
+            }
+
+            if (_TimerModel != null)
+            {
+                _TimerModel.PropertyChanged -= OnTimerPropertyChanged;
+                _TimerModel.Dispose();
+                _TimerModel = null;
+            }
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OnTimerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            switch (e.PropertyName)
+            {
+
+                case "CallDateTime":
+                    _Model.SetDaysPosition();
+                    break;
+
+                default:
+                    break;
 
             }
 

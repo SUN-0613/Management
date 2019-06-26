@@ -24,7 +24,7 @@ namespace Management
             appName = System.IO.Path.GetFileNameWithoutExtension(appName);
 
             // 多重起動情報取得
-            Mutex mutex = new Mutex(false, appName);
+            var mutex = new Mutex(false, appName);
 
             // 多重起動確認
             if (mutex.WaitOne(0, false))
@@ -32,6 +32,8 @@ namespace Management
 
                 // 基本処理
                 base.OnStartup(e);
+
+                /*
 
                 // データ保存パス用変数
                 bool isSelectPath = false;
@@ -75,6 +77,8 @@ namespace Management
                     
 
                 }
+
+                */
 
                 // 画面表示
                 var form = new Forms.View.Menu.MainMenu();

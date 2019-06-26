@@ -60,6 +60,19 @@ namespace Management.Pages.Model.Class
             }
         }
 
+        public Brush Background
+        {
+            get { return _Background; }
+            set
+            {
+                if (!_Background.Equals(value))
+                {
+                    _Background = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -76,6 +89,11 @@ namespace Management.Pages.Model.Class
         /// 文字色
         /// </summary>
         private Brush _Foreground = Brushes.Black;
+
+        /// <summary>
+        /// 背景色
+        /// </summary>
+        private Brush _Background = Brushes.White;
 
         /// <summary>
         /// 日付情報クラス

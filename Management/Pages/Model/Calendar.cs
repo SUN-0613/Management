@@ -148,6 +148,9 @@ namespace Management.Pages.Model
                         Days[index].Schedule = _Holidays[date].Name;
                     }
 
+                    // 背景セット
+                    Days[index].Background = date.Equals(DateTime.Today) ? Brushes.Yellow : Brushes.White;
+
                     /* 後ほど実装
 
                     Days[index].Schedule = "";  
