@@ -54,6 +54,14 @@ namespace Management.Forms.View.Menu
             switch (e.PropertyName)
             {
 
+                case "CallPath":    // データの保存場所変更
+                    MessageBox.Show("考え中");
+                    break;
+
+                case "CallQuit":    // アプリ終了
+                    Close();
+                    break;
+
                 case "CallMaster":  // マスタ情報画面の呼び出し
 
                     var master = new View.Master.MasterInfo()

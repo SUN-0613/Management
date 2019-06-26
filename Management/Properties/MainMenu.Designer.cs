@@ -22,14 +22,14 @@ namespace Management.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Title {
+    public class MainMenu {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Title() {
+        internal MainMenu() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Management.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.Title", typeof(Title).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.MainMenu", typeof(MainMenu).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,15 +61,6 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   取引先登録 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string ClientAdd {
-            get {
-                return ResourceManager.GetString("ClientAdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   取引先情報 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ClientInfo {
@@ -79,20 +70,11 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   担当者登録 に類似しているローカライズされた文字列を検索します。
+        ///   ファイル(_F) に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string ClientStaffAdd {
+        public static string File {
             get {
-                return ResourceManager.GetString("ClientStaffAdd", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   ジョブ管理 に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string MainMenu {
-            get {
-                return ResourceManager.GetString("MainMenu", resourceCulture);
+                return ResourceManager.GetString("File", resourceCulture);
             }
         }
         
@@ -102,6 +84,42 @@ namespace Management.Properties {
         public static string MasterInfo {
             get {
                 return ResourceManager.GetString("MasterInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   マスタ管理(_M) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MasterOption {
+            get {
+                return ResourceManager.GetString("MasterOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   保存パスの設定(_S) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Path {
+            get {
+                return ResourceManager.GetString("Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   常用処理(_O) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Process {
+            get {
+                return ResourceManager.GetString("Process", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   終了(_X) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Quit {
+            get {
+                return ResourceManager.GetString("Quit", resourceCulture);
             }
         }
     }

@@ -117,24 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientAdd" xml:space="preserve">
-    <value>取引先登録</value>
-    <comment>取引先追加ダイアログ</comment>
-  </data>
   <data name="ClientInfo" xml:space="preserve">
     <value>取引先情報</value>
-    <comment>取引先情報ダイアログ</comment>
+    <comment>メニュー：取引先情報</comment>
   </data>
-  <data name="ClientStaffAdd" xml:space="preserve">
-    <value>担当者登録</value>
-    <comment>取引先：担当者登録ダイアログ</comment>
-  </data>
-  <data name="MainMenu" xml:space="preserve">
-    <value>ジョブ管理</value>
-    <comment>メインメニューフォーム</comment>
+  <data name="File" xml:space="preserve">
+    <value>ファイル(_F)</value>
+    <comment>メニュー：ファイル</comment>
   </data>
   <data name="MasterInfo" xml:space="preserve">
     <value>マスタ情報</value>
-    <comment>マスタ情報ダイアログ</comment>
+    <comment>メニュー：マスタ情報</comment>
+  </data>
+  <data name="MasterOption" xml:space="preserve">
+    <value>マスタ管理(_M)</value>
+    <comment>メニュー：マスタ管理</comment>
+  </data>
+  <data name="Path" xml:space="preserve">
+    <value>保存パスの設定(_S)</value>
+    <comment>メニュー：パス設定</comment>
+  </data>
+  <data name="Process" xml:space="preserve">
+    <value>常用処理(_O)</value>
+    <comment>メニュー：常用処理</comment>
+  </data>
+  <data name="Quit" xml:space="preserve">
+    <value>終了(_X)</value>
+    <comment>メニュー：終了</comment>
   </data>
 </root>

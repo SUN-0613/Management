@@ -55,44 +55,88 @@ namespace Management.Forms.ViewModel.Menu
         public DelegateCommand<string> ChangeListCommand { get { return _Schedule.ChangeListCommand; } }
 
         /// <summary>
-        /// マスタ情報コマンド
+        /// ファイルメニューコマンド
         /// </summary>
-        private DelegateCommand<string> _MasterCommand;
+        public DelegateCommand<string> FileCommand
+        {
+            get
+            {
+
+                return new DelegateCommand<string>(
+                    (parameter) =>
+                    {
+                        switch (parameter)
+                        {
+
+                            case "path":
+                                CallPropertyChanged("CallPath");
+                                break;
+
+                            case "quit":
+                                CallPropertyChanged("CallQuit");
+                                break;
+
+                            default:
+                                break;
+
+                        }
+
+                    }
+                    , () => true);
+
+            }
+        }
 
         /// <summary>
-        /// マスタ情報コマンド
+        /// 常用処理コマンド
+        /// </summary>
+        public DelegateCommand<string> ProcessCommand
+        {
+            get
+            {
+
+                return new DelegateCommand<string>(
+                    (parameter) =>
+                    {
+                        switch (parameter)
+                        {
+                            default:
+                                break;
+                        }
+
+                    }
+                    , () => true);
+
+            }
+        }
+
+        /// <summary>
+        /// マスタ情報メニューコマンド
         /// </summary>
         public DelegateCommand<string> MasterCommand
         {
             get
             {
 
-                if (_MasterCommand == null)
-                {
-
-                    _MasterCommand = new DelegateCommand<string>(
-                        (parameter) => 
+                return new DelegateCommand<string>(
+                    (parameter) => 
+                    {
+                        switch (parameter)
                         {
-                            switch (parameter)
-                            {
 
-                                case "master":  // マスタ情報
-                                    CallPropertyChanged("CallMaster");
-                                    break;
+                            case "master":  // マスタ情報
+                                CallPropertyChanged("CallMaster");
+                                break;
 
-                                case "client":  // 取引先情報
-                                    CallPropertyChanged("CallClient");
-                                    break;
+                            case "client":  // 取引先情報
+                                CallPropertyChanged("CallClient");
+                                break;
 
-                                default:
-                                    break;
-                            }
+                            default:
+                                break;
                         }
-                        ,() => true);
-
-                }
-
-                return _MasterCommand;
+                    }
+                    ,() => true);
 
             }
         }
