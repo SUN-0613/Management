@@ -79,6 +79,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   ジョブ一覧(_J) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Job {
+            get {
+                return ResourceManager.GetString("Job", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   マスタ情報 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MasterInfo {

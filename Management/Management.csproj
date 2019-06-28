@@ -99,7 +99,9 @@
     <Compile Include="Forms\Model\Clients\ClientStaffAdd.cs" />
     <Compile Include="Forms\Model\Master\MasterInfo.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
+    <Compile Include="Forms\Model\Menu\Class\TabItemData.cs" />
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
+    <Compile Include="Forms\Model\Menu\TabItem.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientAdd.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientInfo.cs" />

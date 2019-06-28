@@ -125,6 +125,10 @@
     <value>ファイル(_F)</value>
     <comment>メニュー：ファイル</comment>
   </data>
+  <data name="Job" xml:space="preserve">
+    <value>ジョブ一覧(_J)</value>
+    <comment>メニュー：ジョブ一覧</comment>
+  </data>
   <data name="MasterInfo" xml:space="preserve">
     <value>マスタ情報</value>
     <comment>メニュー：マスタ情報</comment>

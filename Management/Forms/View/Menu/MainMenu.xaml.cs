@@ -54,6 +54,8 @@ namespace Management.Forms.View.Menu
             switch (e.PropertyName)
             {
 
+                #region ファイル
+
                 case "CallPath":    // データの保存場所変更
                     MessageBox.Show("考え中");
                     break;
@@ -61,6 +63,20 @@ namespace Management.Forms.View.Menu
                 case "CallQuit":    // アプリ終了
                     Close();
                     break;
+
+                #endregion
+
+                #region 常用処理
+
+                case "CallJobList": // ジョブ一覧の呼び出し
+
+
+
+                    break;
+
+                #endregion
+
+                #region マスタ管理
 
                 case "CallMaster":  // マスタ情報画面の呼び出し
 
@@ -83,6 +99,8 @@ namespace Management.Forms.View.Menu
                     client.ShowDialog();
 
                     break;
+
+                #endregion
 
                 default:
                     break;

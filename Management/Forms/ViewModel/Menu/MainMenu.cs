@@ -30,6 +30,11 @@ namespace Management.Forms.ViewModel.Menu
         /// </summary>
         private Model.Menu.Schedule _Schedule;
 
+        /// <summary>
+        /// タブ.Model
+        /// </summary>
+        private Model.Menu.TabItem _TabItem;
+
         #endregion
 
         #region Property
@@ -37,7 +42,7 @@ namespace Management.Forms.ViewModel.Menu
         /// <summary>
         /// カレンダー
         /// </summary>
-        public Pages.View.Calendar Calender { get { return _Calendar.Page; } }
+        public object Calender { get { return _Calendar.Page; } }
 
         /// <summary>
         /// 現在日時
@@ -48,6 +53,15 @@ namespace Management.Forms.ViewModel.Menu
         /// 予定一覧
         /// </summary>
         public ObservableCollection<ScheduleInfo> Schedules { get { return _Schedule.Schedules; } }
+
+        /// <summary>
+        /// タブ一覧
+        /// </summary>
+        public ObservableCollection<Model.Menu.Class.TabItemData> TabItems
+        {
+            get { return _TabItem.TabItems; }
+            set { _TabItem.TabItems = value; }
+        }
 
         /// <summary>
         /// 表示するスケジュール一覧の切り替えコマンド
@@ -100,6 +114,11 @@ namespace Management.Forms.ViewModel.Menu
                     {
                         switch (parameter)
                         {
+
+                            case "job": //ジョブ一覧
+                                CallPropertyChanged("CallJobList");
+                                break;
+
                             default:
                                 break;
                         }
@@ -156,6 +175,8 @@ namespace Management.Forms.ViewModel.Menu
 
             _Schedule = new Model.Menu.Schedule();
 
+            _TabItem = new Model.Menu.TabItem();
+
         }
 
         /// <summary>
@@ -175,6 +196,18 @@ namespace Management.Forms.ViewModel.Menu
                 _Timer.PropertyChanged -= OnTimerPropertyChanged;
                 _Timer.Dispose();
                 _Timer = null;
+            }
+
+            if (_Schedule != null)
+            {
+                _Schedule.Dispose();
+                _Schedule = null;
+            }
+
+            if (_TabItem != null)
+            {
+                _TabItem.Dispose();
+                _TabItem = null;
             }
 
         }
