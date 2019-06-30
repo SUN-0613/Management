@@ -1,12 +1,12 @@
 ﻿using AYam.Common.MVVM;
-using Management.Pages.Model.Class;
+using Management.Pages.Model.Calendar.Class;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 using System.Threading.Tasks;
 
-namespace Management.Pages.Model
+namespace Management.Pages.Model.Calendar
 {
 
     /// <summary>

@@ -108,7 +108,7 @@
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Header}" />
-                            <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="☒" Background="Transparent" BorderThickness="0" >
+                            <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="×" Foreground="Gray" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonCustomStyle}" >
                                 <Button.InputBindings>
                                     <MouseBinding Command="{Binding CloseCommand}" MouseAction="LeftClick" />
                                 </Button.InputBindings>

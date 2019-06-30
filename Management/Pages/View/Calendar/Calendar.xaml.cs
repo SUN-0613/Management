@@ -1,8 +1,9 @@
-﻿using System;
+﻿using ViewModel = Management.Pages.ViewModel.Calendar;
+using System;
 using System.ComponentModel;
 using System.Windows.Controls;
 
-namespace Management.Pages.View
+namespace Management.Pages.View.Calendar
 {
 
     /// <summary>
@@ -19,7 +20,7 @@ namespace Management.Pages.View
 
             InitializeComponent();
 
-            if (DataContext is ViewModel.Calendar viewModel)
+            if (DataContext is ViewModel::Calendar viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;
             }
@@ -32,7 +33,7 @@ namespace Management.Pages.View
         public void Dispose()
         {
 
-            if (DataContext is ViewModel.Calendar viewModel)
+            if (DataContext is ViewModel::Calendar viewModel)
             {
                 viewModel.PropertyChanged -= OnPropertyChanged;
             }

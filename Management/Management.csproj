@@ -120,12 +120,12 @@
     <Compile Include="Forms\View\Master\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Model\Calendar.cs" />
-    <Compile Include="Pages\Model\Class\DayInfo.cs" />
-    <Compile Include="Pages\Model\Class\Holiday.cs" />
-    <Compile Include="Pages\Model\Timer.cs" />
-    <Compile Include="Pages\ViewModel\Calendar.cs" />
-    <Compile Include="Pages\View\Calendar.xaml.cs">
+    <Compile Include="Pages\Model\Calendar\Calendar.cs" />
+    <Compile Include="Pages\Model\Calendar\Class\DayInfo.cs" />
+    <Compile Include="Pages\Model\Calendar\Class\Holiday.cs" />
+    <Compile Include="Pages\Model\Calendar\Timer.cs" />
+    <Compile Include="Pages\ViewModel\Calendar\Calendar.cs" />
+    <Compile Include="Pages\View\Calendar\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Calendar.Designer.cs">
@@ -244,7 +244,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\View\Calendar.xaml">
+    <Page Include="Pages\View\Calendar\Calendar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,7 +1,7 @@
 ﻿using AYam.Common.MVVM;
 using System.Windows.Media;
 
-namespace Management.Pages.Model.Class
+namespace Management.Pages.Model.Calendar.Class
 {
 
     /// <summary>

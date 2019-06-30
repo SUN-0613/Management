@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Management.Pages.Model.Class
+namespace Management.Pages.Model.Calendar.Class
 {
 
     /// <summary>

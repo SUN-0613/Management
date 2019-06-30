@@ -1,10 +1,11 @@
 ﻿using AYam.Common.MVVM;
-using Management.Pages.Model.Class;
+using Model = Management.Pages.Model.Calendar;
+using Management.Pages.Model.Calendar.Class;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace Management.Pages.ViewModel
+namespace Management.Pages.ViewModel.Calendar
 {
 
     /// <summary>
@@ -18,12 +19,12 @@ namespace Management.Pages.ViewModel
         /// <summary>
         /// Calendar.Model
         /// </summary>
-        private Model.Calendar _Model;
+        private Model::Calendar _Model;
 
         /// <summary>
         /// 切替用タイマ.Model
         /// </summary>
-        private Model.Timer _TimerModel;
+        private Model::Timer _TimerModel;
 
         #endregion
 
@@ -115,8 +116,8 @@ namespace Management.Pages.ViewModel
         public Calendar()
         {
 
-            _Model = new Model.Calendar();
-            _TimerModel = new Model.Timer();
+            _Model = new Model::Calendar();
+            _TimerModel = new Model::Timer();
             _TimerModel.PropertyChanged += OnTimerPropertyChanged;
 
         }

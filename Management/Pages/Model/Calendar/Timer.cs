@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
-namespace Management.Pages.Model
+namespace Management.Pages.Model.Calendar
 {
 
     /// <summary>

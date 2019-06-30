@@ -1,4 +1,5 @@
-﻿using System;
+﻿using View = Management.Pages.View.Calendar;
+using System;
 
 namespace Management.Forms.Model.Menu
 {
@@ -14,7 +15,7 @@ namespace Management.Forms.Model.Menu
         /// <summary>
         /// カレンダー
         /// </summary>
-        public Pages.View.Calendar Page;
+        public View::Calendar Page;
 
         #endregion
 
@@ -24,7 +25,7 @@ namespace Management.Forms.Model.Menu
         public Calendar()
         {
 
-            Page = new Pages.View.Calendar();
+            Page = new View::Calendar();
 
         }
 
