@@ -87,8 +87,12 @@
     </Compile>
     <Compile Include="Data\File\ClientDetailFile.cs" />
     <Compile Include="Data\File\ClientsFile.cs" />
+    <Compile Include="Data\File\JobListFile.cs" />
     <Compile Include="Data\File\MasterFile.cs" />
     <Compile Include="Data\Info\Client.cs" />
+    <Compile Include="Data\Info\DataFileInfo.cs" />
+    <Compile Include="Data\Info\Job.cs" />
+    <Compile Include="Data\Info\JobStatus.cs" />
     <Compile Include="Data\Info\Staff.cs" />
     <Compile Include="Data\Path\PathInfo.cs" />
     <Compile Include="Data\Schedule\ScheduleInfo.cs" />
@@ -262,6 +266,11 @@
       <Project>{326c56d4-4067-435f-b7b0-a93b167c2186}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Model\JobList\" />
+    <Folder Include="Pages\ViewModel\JobList\" />
+    <Folder Include="Pages\View\JobList\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
