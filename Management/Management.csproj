@@ -128,9 +128,16 @@
     <Compile Include="Pages\Model\Calendar\Class\DayInfo.cs" />
     <Compile Include="Pages\Model\Calendar\Class\Holiday.cs" />
     <Compile Include="Pages\Model\Calendar\Timer.cs" />
+    <Compile Include="Pages\Model\JobList\JobDetail.cs" />
+    <Compile Include="Pages\Model\JobList\JobList.cs" />
     <Compile Include="Pages\ViewModel\Calendar\Calendar.cs" />
+    <Compile Include="Pages\ViewModel\JobList\JobDetail.cs" />
+    <Compile Include="Pages\ViewModel\JobList\JobList.cs" />
     <Compile Include="Pages\View\Calendar\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\View\JobList\JobList.xaml.cs">
+      <DependentUpon>JobList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Calendar.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -252,6 +259,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\View\JobList\JobList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Day.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -267,10 +278,6 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Model\JobList\" />
-    <Folder Include="Pages\ViewModel\JobList\" />
-    <Folder Include="Pages\View\JobList\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

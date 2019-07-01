@@ -42,8 +42,13 @@ namespace Management.Data.File
                 
                 for (int iLoop = 0; iLoop < Jobs.Count; iLoop++)
                 {
-                    Jobs[iLoop].Dispose();
-                    Jobs[iLoop] = null;
+
+                    if (Jobs[iLoop] != null)
+                    {
+                        Jobs[iLoop].Dispose();
+                        Jobs[iLoop] = null;
+                    }
+
                 }
 
                 Jobs.Clear();
