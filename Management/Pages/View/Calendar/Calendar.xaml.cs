@@ -20,6 +20,8 @@ namespace Management.Pages.View.Calendar
 
             InitializeComponent();
 
+            DataContext = new ViewModel::Calendar();
+
             if (DataContext is ViewModel::Calendar viewModel)
             {
                 viewModel.PropertyChanged += OnPropertyChanged;

@@ -10,7 +10,7 @@
         Height="750" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
-        <vm:MainMenu />
+        <vm:MainMenu/>
     </Window.DataContext>
     <Window.Resources>
         <p:MainMenu x:Key="resources" />

@@ -247,9 +247,7 @@ namespace Management.Forms.ViewModel.Master
         /// </returns>
         bool IClosing.OnClosing()
         {
-
             return !IsEdited;
-
         }
 
         /// <summary>
