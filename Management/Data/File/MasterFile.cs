@@ -68,6 +68,12 @@ namespace Management.Data.File
         { }
 
         /// <summary>
+        /// 終了処理
+        /// </summary>
+        public override void Dispose()
+        { }
+
+        /// <summary>
         /// ファイル読込
         /// </summary>
         public override void Read()

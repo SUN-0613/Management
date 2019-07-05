@@ -56,8 +56,6 @@ namespace Management.Data.File
 
             }
 
-            base.Dispose();
-
         }
 
         /// <summary>

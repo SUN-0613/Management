@@ -79,8 +79,6 @@ namespace Management.Data.File
                 Staffs = null;
             }
 
-            base.Dispose();
-
         }
 
         /// <summary>

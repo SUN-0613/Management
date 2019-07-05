@@ -42,8 +42,6 @@ namespace Management.Data.File
                 Clients = null;
             }
 
-            base.Dispose();
-
         }
 
         /// <summary>
