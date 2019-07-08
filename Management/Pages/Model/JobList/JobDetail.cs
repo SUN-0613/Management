@@ -1,4 +1,5 @@
-﻿using Management.Data.Info;
+﻿using Management.Data.File;
+using Management.Data.Info;
 using System;
 using System.Collections.ObjectModel;
 
@@ -6,15 +7,24 @@ namespace Management.Pages.Model.JobList
 {
 
     /// <summary>
-    /// ジョブ.Model
+    /// ジョブ詳細.Model
     /// </summary>
     public class JobDetail : IDisposable
     {
 
+        #region File
+
         /// <summary>
         /// ジョブファイル
         /// </summary>
-        private Job _File;
+        private Job _JobFile;
+
+        /// <summary>
+        /// 取引先一覧
+        /// </summary>
+        private ClientsFile _ClientsFile;
+
+        #endregion
 
         #region ViewModel.Property
 
@@ -23,8 +33,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public DateTime CreateDate
         {
-            get { return _File.CreateDate; }
-            set { _File.CreateDate = value; }
+            get { return _JobFile.CreateDate; }
+            set { _JobFile.CreateDate = value; }
         }
 
         /// <summary>
@@ -32,17 +42,30 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public string Name
         {
-            get { return _File.Name; }
-            set { _File.Name = value; }
+            get { return _JobFile.Name; }
+            set { _JobFile.Name = value; }
         }
 
         /// <summary>
-        /// 取引先
+        /// 取引先一覧
         /// </summary>
-        public string Client
+        public ObservableCollection<Client> Clients
         {
-            get { return _File.Client; }
-            set { _File.Client = value; }
+            get { return _ClientsFile.Clients; }
+            set { _ClientsFile.Clients = value; }
+        }
+
+        /// <summary>
+        /// 選択している取引先
+        /// </summary>
+        public Client SelectedClient
+        {
+            get { return _SelectedClient; }
+            set
+            {
+                _SelectedClient = value;
+                _JobFile.Client = _SelectedClient.Name;
+            }
         }
 
         /// <summary>
@@ -50,8 +73,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public ObservableCollection<DataFileInfo> Quotations
         {
-            get { return _File.Quotations; }
-            set { _File.Quotations = value; }
+            get { return _JobFile.Quotations; }
+            set { _JobFile.Quotations = value; }
         }
 
         /// <summary>
@@ -59,8 +82,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public ObservableCollection<DataFileInfo> Deliveries
         {
-            get { return _File.Deliveries; }
-            set { _File.Deliveries = value; }
+            get { return _JobFile.Deliveries; }
+            set { _JobFile.Deliveries = value; }
         }
 
         /// <summary>
@@ -68,8 +91,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public ObservableCollection<DataFileInfo> Invoices
         {
-            get { return _File.Invoices; }
-            set { _File.Invoices = value; }
+            get { return _JobFile.Invoices; }
+            set { _JobFile.Invoices = value; }
         }
 
         /// <summary>
@@ -77,8 +100,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public DataFileInfo CoverLetter
         {
-            get { return _File.CoverLetter; }
-            set { _File.CoverLetter = value; }
+            get { return _JobFile.CoverLetter; }
+            set { _JobFile.CoverLetter = value; }
         }
 
         /// <summary>
@@ -86,8 +109,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public JobStatus Status
         {
-            get { return _File.Status; }
-            set { _File.Status = value; }
+            get { return _JobFile.Status; }
+            set { _JobFile.Status = value; }
         }
 
         /// <summary>
@@ -95,8 +118,8 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public DateTime DeliveryDate
         {
-            get { return _File.DeliveryDate; }
-            set { _File.DeliveryDate = value; }
+            get { return _JobFile.DeliveryDate; }
+            set { _JobFile.DeliveryDate = value; }
         }
 
         /// <summary>
@@ -104,11 +127,16 @@ namespace Management.Pages.Model.JobList
         /// </summary>
         public decimal Price
         {
-            get { return _File.Price; }
-            set { _File.Price = value; }
+            get { return _JobFile.Price; }
+            set { _JobFile.Price = value; }
         }
 
         #endregion
+
+        /// <summary>
+        /// 選択している取引先
+        /// </summary>
+        private Client _SelectedClient = null;
 
         /// <summary>
         /// ジョブ.Model
@@ -116,7 +144,19 @@ namespace Management.Pages.Model.JobList
         /// <param name="job">ジョブファイル</param>
         public JobDetail(Job job)
         {
-            _File = job;
+
+            _JobFile = job;
+            _ClientsFile = new ClientsFile();
+
+            for (int iLoop = 0; iLoop < _ClientsFile.Clients.Count; iLoop++)
+            {
+                if (_ClientsFile.Clients[iLoop].Name.Equals(_JobFile.Client))
+                {
+                    _SelectedClient = _ClientsFile.Clients[iLoop];
+                    break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -125,8 +165,14 @@ namespace Management.Pages.Model.JobList
         public void Dispose()
         {
 
-            _File.Dispose();
-            _File = null;
+            _JobFile.Dispose();
+            _JobFile = null;
+
+            if (_ClientsFile != null)
+            {
+                _ClientsFile.Dispose();
+                _ClientsFile = null;
+            }
 
         }
 

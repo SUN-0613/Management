@@ -1,6 +1,6 @@
 ﻿using AYam.Common.MVVM;
-using Model = Management.Pages.Model.JobList;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Management.Pages.ViewModel.JobList
 {
@@ -11,16 +11,12 @@ namespace Management.Pages.ViewModel.JobList
     public class JobList : ViewModelBase, IDisposable
     {
 
-        #region Model
+        #region Property
 
         /// <summary>
-        /// ジョブ一覧.Model
+        /// ジョブ詳細.ViewModel一覧
         /// </summary>
-        private Model::JobList _Model;
-
-        #endregion
-
-        #region Property
+        public ObservableCollection<JobDetail> Details;
 
         #endregion
 
@@ -29,9 +25,7 @@ namespace Management.Pages.ViewModel.JobList
         /// </summary>
         public JobList()
         {
-
-            _Model = new Model::JobList();
-
+            Details = new ObservableCollection<JobDetail>();
         }
 
         /// <summary>
@@ -40,10 +34,17 @@ namespace Management.Pages.ViewModel.JobList
         public void Dispose()
         {
 
-            if (_Model != null)
+            if (Details != null)
             {
-                _Model.Dispose();
-                _Model = null;
+
+                foreach (var detail in Details)
+                {
+                    detail.Dispose();
+                }
+
+                Details.Clear();
+                Details = null;
+                
             }
 
         }

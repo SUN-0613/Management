@@ -85,6 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converter\JobStatusConverter.cs" />
     <Compile Include="Data\File\ClientDetailFile.cs" />
     <Compile Include="Data\File\ClientsFile.cs" />
     <Compile Include="Data\File\JobListFile.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Pages\Model\Calendar\Class\Holiday.cs" />
     <Compile Include="Pages\Model\Calendar\Timer.cs" />
     <Compile Include="Pages\Model\JobList\JobDetail.cs" />
-    <Compile Include="Pages\Model\JobList\JobList.cs" />
     <Compile Include="Pages\ViewModel\Calendar\Calendar.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobDetail.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobList.cs" />
@@ -150,6 +150,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClientInfo.resx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\JobList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobList.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\MainMenu.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -201,6 +206,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ClientInfo.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\JobList.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>JobList.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\MainMenu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
