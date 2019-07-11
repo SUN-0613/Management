@@ -148,6 +148,7 @@ namespace Management.Pages.Model.JobList
             _JobFile = job;
             _ClientsFile = new ClientsFile();
 
+            // 保存されている取引先を取得し、選択中にする
             for (int iLoop = 0; iLoop < _ClientsFile.Clients.Count; iLoop++)
             {
                 if (_ClientsFile.Clients[iLoop].Name.Equals(_JobFile.Client))
@@ -174,6 +175,25 @@ namespace Management.Pages.Model.JobList
                 _ClientsFile = null;
             }
 
+        }
+
+        /// <summary>
+        /// ObservableCollection<DataFileInfo>()のカウントにてファイル作成状態を取得
+        /// </summary>
+        /// <param name="listCount">
+        /// ObservableCollection<DataFileInfo>()のカウント
+        /// </param>
+        /// <returns>"作成済"または"未作成"</returns>
+        public string FileExist(int listCount)
+        {
+            if (listCount.Equals(0))
+            {
+                return Properties.JobList.FileNoExist;
+            }
+            else
+            {
+                return Properties.JobList.FileExist;
+            }
         }
 
     }

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Management.Pages.View.JobList
 {
     /// <summary>
-    /// JobList.xaml の相互作用ロジック
+    /// JobDetail.xaml の相互作用ロジック
     /// </summary>
-    public partial class JobList : Page
+    public partial class JobDetail : Page
     {
-        public JobList()
+        public JobDetail()
         {
             InitializeComponent();
         }

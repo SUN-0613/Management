@@ -3,6 +3,7 @@ using Management.Data.Info;
 using Model = Management.Pages.Model.JobList;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows.Media;
 
 namespace Management.Pages.ViewModel.JobList
 {
@@ -88,6 +89,14 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
+        /// 選択している取引先の名前
+        /// </summary>
+        public string SelectedClientName
+        {
+            get { return _Model?.SelectedClient.Name ?? ""; }
+        }
+
+        /// <summary>
         /// 見積書
         /// </summary>
         public ObservableCollection<DataFileInfo> Quotations
@@ -101,6 +110,14 @@ namespace Management.Pages.ViewModel.JobList
                     CallPropertyChanged();
                 }
             }
+        }
+
+        /// <summary>
+        /// 見積書は作成済か
+        /// </summary>
+        public string FileExistQuotation
+        {
+            get { return _Model?.FileExist(_Model.Quotations.Count) ?? Properties.JobList.FileNoExist; }
         }
 
         /// <summary>
@@ -120,6 +137,14 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
+        /// 納品書は作成済か
+        /// </summary>
+        public string FileExistDelivery
+        {
+            get { return _Model?.FileExist(_Model.Deliveries.Count) ?? Properties.JobList.FileNoExist; }
+        }
+
+        /// <summary>
         /// 請求書
         /// </summary>
         public ObservableCollection<DataFileInfo> Invoices
@@ -133,6 +158,14 @@ namespace Management.Pages.ViewModel.JobList
                     CallPropertyChanged();
                 }
             }
+        }
+
+        /// <summary>
+        /// 請求書は作成済か
+        /// </summary>
+        public string FileExistInvoice
+        {
+            get { return _Model?.FileExist(_Model.Invoices.Count) ?? Properties.JobList.FileNoExist; }
         }
 
         /// <summary>
@@ -152,6 +185,24 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
+        /// 封筒・送付状は作成済か
+        /// </summary>
+        public string FileExistCoverLetter
+        {
+            get
+            {
+                if (_Model?.CoverLetter.CreatedFlg ?? true)
+                {
+                    return Properties.JobList.FileExist;
+                }
+                else
+                {
+                    return Properties.JobList.FileNoExist;
+                }
+            }
+        }
+
+        /// <summary>
         /// ステータス
         /// </summary>
         public JobStatus Status
@@ -163,6 +214,7 @@ namespace Management.Pages.ViewModel.JobList
                 {
                     _Model.Status = value;
                     CallPropertyChanged();
+                    CallPropertyChanged(nameof(DeliveryInfo));
                 }
             }
         }
@@ -170,16 +222,26 @@ namespace Management.Pages.ViewModel.JobList
         /// <summary>
         /// 納期
         /// </summary>
-        public DateTime DeliveryDate
+        public string DeliveryInfo
         {
-            get { return _Model?.DeliveryDate ?? DateTime.MinValue; }
-            set
+            get
             {
-                if (_Model != null && !_Model.DeliveryDate.Equals(value))
+                switch (_Model?.Status.Status ?? JobStatus.StatusEnum.None)
                 {
-                    _Model.DeliveryDate = value;
-                    CallPropertyChanged();
+
+                    case JobStatus.StatusEnum.NotOrdered:
+                        return _Model.Status.Deadline;
+
+                    case JobStatus.StatusEnum.Ordered:
+                        return _Model.Status.DeliveryDate.ToString("yyyy/MM/dd");
+
+                    case JobStatus.StatusEnum.Delivery:
+                        return _Model.Status.DepositDate.ToString("yyyy/MM/dd");
+                        
+                    default:
+                        return "-";
                 }
+
             }
         }
 
@@ -195,6 +257,32 @@ namespace Management.Pages.ViewModel.JobList
                 {
                     _Model.Price = value;
                     CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 行背景色
+        /// </summary>
+        public Brush LineBackground
+        {
+            get
+            {
+                switch (_Model?.Status.Status ?? JobStatus.StatusEnum.None)
+                {
+
+                    case JobStatus.StatusEnum.Ordered:
+                        return Brushes.LightYellow;
+
+                    case JobStatus.StatusEnum.Delivery:
+                        return Brushes.LightGreen;
+
+                    case JobStatus.StatusEnum.Finished:
+                        return Brushes.LightGray;
+
+                    default:
+                        return Brushes.White;
+
                 }
             }
         }

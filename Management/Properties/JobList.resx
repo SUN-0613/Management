@@ -117,6 +117,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Client" xml:space="preserve">
+    <value>取引先</value>
+    <comment>取引先</comment>
+  </data>
+  <data name="CoverLetterFile" xml:space="preserve">
+    <value>封筒・送付状</value>
+    <comment>封筒・送付状</comment>
+  </data>
+  <data name="CreateDateTime" xml:space="preserve">
+    <value>作成日時</value>
+    <comment>作成日時</comment>
+  </data>
+  <data name="DeliveryFile" xml:space="preserve">
+    <value>納品書</value>
+    <comment>納品書</comment>
+  </data>
+  <data name="DeliveryInfo" xml:space="preserve">
+    <value>納期</value>
+    <comment>納期</comment>
+  </data>
+  <data name="FileExist" xml:space="preserve">
+    <value>作成済</value>
+    <comment>ファイル：作成済</comment>
+  </data>
+  <data name="FileNoExist" xml:space="preserve">
+    <value>未作成</value>
+    <comment>ファイル：未作成</comment>
+  </data>
+  <data name="InvoiceFile" xml:space="preserve">
+    <value>請求書</value>
+    <comment>請求書</comment>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+    <comment>ジョブ名称</comment>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>金額</value>
+    <comment>価格</comment>
+  </data>
+  <data name="QuotationFile" xml:space="preserve">
+    <value>見積書</value>
+    <comment>見積書</comment>
+  </data>
+  <data name="Revision" xml:space="preserve">
+    <value>改訂</value>
+    <comment>改訂</comment>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>ステータス</value>
+    <comment>ステータス</comment>
+  </data>
   <data name="Status_Delivery" xml:space="preserve">
     <value>納品</value>
     <comment>ジョブ状態：納品</comment>

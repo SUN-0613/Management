@@ -61,6 +61,123 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   取引先 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Client {
+            get {
+                return ResourceManager.GetString("Client", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   封筒・送付状 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string CoverLetterFile {
+            get {
+                return ResourceManager.GetString("CoverLetterFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   作成日時 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string CreateDateTime {
+            get {
+                return ResourceManager.GetString("CreateDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   納品書 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DeliveryFile {
+            get {
+                return ResourceManager.GetString("DeliveryFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   納期 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string DeliveryInfo {
+            get {
+                return ResourceManager.GetString("DeliveryInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   作成済 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FileExist {
+            get {
+                return ResourceManager.GetString("FileExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   未作成 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string FileNoExist {
+            get {
+                return ResourceManager.GetString("FileNoExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   請求書 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string InvoiceFile {
+            get {
+                return ResourceManager.GetString("InvoiceFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   名称 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   金額 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   見積書 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string QuotationFile {
+            get {
+                return ResourceManager.GetString("QuotationFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   改訂 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Revision {
+            get {
+                return ResourceManager.GetString("Revision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ステータス に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   納品 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Status_Delivery {

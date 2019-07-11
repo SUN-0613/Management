@@ -136,8 +136,8 @@
     <Compile Include="Pages\View\Calendar\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\View\JobList\JobList.xaml.cs">
-      <DependentUpon>JobList.xaml</DependentUpon>
+    <Compile Include="Pages\View\JobList\JobDetail.xaml.cs">
+      <DependentUpon>JobDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Calendar.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -268,7 +268,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\View\JobList\JobList.xaml">
+    <Page Include="Pages\View\JobList\JobDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

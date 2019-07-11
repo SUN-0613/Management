@@ -129,6 +129,10 @@
     <value>担当者登録</value>
     <comment>取引先：担当者登録ダイアログ</comment>
   </data>
+  <data name="JobDetail" xml:space="preserve">
+    <value>ジョブ詳細</value>
+    <comment>ジョブ情報：詳細ページ</comment>
+  </data>
   <data name="MainMenu" xml:space="preserve">
     <value>ジョブ管理</value>
     <comment>メインメニューフォーム</comment>

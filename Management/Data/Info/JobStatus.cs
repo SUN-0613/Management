@@ -57,6 +57,11 @@ namespace Management.Data.Info
         public DateTime DeliveryDate { get; set; } = DateTime.MinValue;
 
         /// <summary>
+        /// 入金予定日
+        /// </summary>
+        public DateTime DepositDate { get; set; } = DateTime.MinValue;
+
+        /// <summary>
         /// ジョブの状態
         /// </summary>
         public JobStatus()

@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:b="clr-namespace:AYam.Common.Controls.Behaviors;assembly=Common.Controls"
-        xmlns:t="clr-namespace:AYam.Common.Controls.TriggerBehaviors;assembly=Common.Controls"
         xmlns:p="clr-namespace:Management.Properties"
         xmlns:vm="clr-namespace:Management.Forms.ViewModel.Master"
         mc:Ignorable="d"

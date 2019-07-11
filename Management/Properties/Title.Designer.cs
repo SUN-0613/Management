@@ -88,6 +88,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   ジョブ詳細 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string JobDetail {
+            get {
+                return ResourceManager.GetString("JobDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ジョブ管理 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainMenu {
