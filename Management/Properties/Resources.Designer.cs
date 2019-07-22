@@ -115,6 +115,24 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   OK に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_OK {
+            get {
+                return ResourceManager.GetString("Button_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   開く に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Open {
+            get {
+                return ResourceManager.GetString("Button_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   前 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Button_Previous {
@@ -129,6 +147,15 @@ namespace Management.Properties {
         public static string Button_Remove {
             get {
                 return ResourceManager.GetString("Button_Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   改訂 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Revision {
+            get {
+                return ResourceManager.GetString("Button_Revision", resourceCulture);
             }
         }
         

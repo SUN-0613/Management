@@ -141,6 +141,14 @@
     <value>次</value>
     <comment>ボタン：次</comment>
   </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>OK</value>
+    <comment>ボタン：OK</comment>
+  </data>
+  <data name="Button_Open" xml:space="preserve">
+    <value>開く</value>
+    <comment>ボタン：開く</comment>
+  </data>
   <data name="Button_Previous" xml:space="preserve">
     <value>前</value>
     <comment>ボタン：前</comment>
@@ -148,6 +156,10 @@
   <data name="Button_Remove" xml:space="preserve">
     <value>削除</value>
     <comment>ボタン：削除</comment>
+  </data>
+  <data name="Button_Revision" xml:space="preserve">
+    <value>改訂</value>
+    <comment>ボタン：改訂</comment>
   </data>
   <data name="Button_Save" xml:space="preserve">
     <value>保存</value>

@@ -113,12 +113,33 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
-        /// 見積書は作成済か
+        /// 見積書の状態メッセージ
         /// </summary>
         public string FileExistQuotation
         {
             get { return _Model?.FileExist(_Model.Quotations.Count) ?? Properties.JobList.FileNoExist; }
         }
+
+        /// <summary>
+        /// 選択している見積Ver
+        /// </summary>
+        public DataFileInfo SelectedQuotation
+        {
+            get { return _Model?.SelectedQuotation; }
+            set
+            {
+                if (_Model != null)
+                {
+                    _Model.SelectedQuotation = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 見積書作成済
+        /// </summary>
+        public bool IsQuotationExist { get { return _Model?.IsQuotationExist ?? false; } }
 
         /// <summary>
         /// 納品書
@@ -137,12 +158,33 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
-        /// 納品書は作成済か
+        /// 納品書の状態メッセージ
         /// </summary>
         public string FileExistDelivery
         {
             get { return _Model?.FileExist(_Model.Deliveries.Count) ?? Properties.JobList.FileNoExist; }
         }
+
+        /// <summary>
+        /// 選択している納品Ver
+        /// </summary>
+        public DataFileInfo SelectedDelivery
+        {
+            get { return _Model?.SelectedDelivery; }
+            set
+            {
+                if (_Model != null)
+                {
+                    _Model.SelectedDelivery = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 納品書作成済
+        /// </summary>
+        public bool IsDeliveryExist { get { return _Model?.IsDeliveryExist ?? false; } }
 
         /// <summary>
         /// 請求書
@@ -161,12 +203,33 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
-        /// 請求書は作成済か
+        /// 請求書の状態メッセージ
         /// </summary>
         public string FileExistInvoice
         {
             get { return _Model?.FileExist(_Model.Invoices.Count) ?? Properties.JobList.FileNoExist; }
         }
+
+        /// <summary>
+        /// 選択している請求Ver
+        /// </summary>
+        public DataFileInfo SelectedInvoice
+        {
+            get { return _Model?.SelectedInvoice; }
+            set
+            {
+                if (_Model != null)
+                {
+                    _Model.SelectedInvoice = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 請求書作成済
+        /// </summary>
+        public bool IsInvoiceExist { get { return _Model?.IsInvoiceExist ?? false; } }
 
         /// <summary>
         /// 封筒・送付状
@@ -185,7 +248,7 @@ namespace Management.Pages.ViewModel.JobList
         }
 
         /// <summary>
-        /// 封筒・送付状は作成済か
+        /// 封筒・送付状の状態メッセージ
         /// </summary>
         public string FileExistCoverLetter
         {

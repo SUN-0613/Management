@@ -58,6 +58,11 @@ namespace Management.Pages.Model.JobList
         /// <summary>
         /// 選択している取引先
         /// </summary>
+        private Client _SelectedClient = null;
+
+        /// <summary>
+        /// 選択している取引先
+        /// </summary>
         public Client SelectedClient
         {
             get { return _SelectedClient; }
@@ -78,6 +83,16 @@ namespace Management.Pages.Model.JobList
         }
 
         /// <summary>
+        /// 選択している見積書Ver
+        /// </summary>
+        public DataFileInfo SelectedQuotation = null;
+
+        /// <summary>
+        /// 見積書作成済
+        /// </summary>
+        public bool IsQuotationExist { get { return !Quotations.Count.Equals(0); } }
+
+        /// <summary>
         /// 納品書
         /// </summary>
         public ObservableCollection<DataFileInfo> Deliveries
@@ -87,6 +102,16 @@ namespace Management.Pages.Model.JobList
         }
 
         /// <summary>
+        /// 選択している納品書Ver
+        /// </summary>
+        public DataFileInfo SelectedDelivery = null;
+
+        /// <summary>
+        /// 納品書作成済
+        /// </summary>
+        public bool IsDeliveryExist { get { return !Deliveries.Count.Equals(0); } }
+
+        /// <summary>
         /// 請求書
         /// </summary>
         public ObservableCollection<DataFileInfo> Invoices
@@ -94,6 +119,16 @@ namespace Management.Pages.Model.JobList
             get { return _JobFile.Invoices; }
             set { _JobFile.Invoices = value; }
         }
+
+        /// <summary>
+        /// 選択している請求書Ver
+        /// </summary>
+        public DataFileInfo SelectedInvoice = null;
+
+        /// <summary>
+        /// 請求書作成済
+        /// </summary>
+        public bool IsInvoiceExist { get { return !Invoices.Count.Equals(0); } }
 
         /// <summary>
         /// 封筒・送付状
@@ -134,11 +169,6 @@ namespace Management.Pages.Model.JobList
         #endregion
 
         /// <summary>
-        /// 選択している取引先
-        /// </summary>
-        private Client _SelectedClient = null;
-
-        /// <summary>
         /// ジョブ.Model
         /// </summary>
         /// <param name="job">ジョブファイル</param>
@@ -157,6 +187,11 @@ namespace Management.Pages.Model.JobList
                     break;
                 }
             }
+
+            // 各書類は最新を選択している状態とする
+            SelectedQuotation = Quotations.Count.Equals(0) ? null : Quotations[Quotations.Count - 1];
+            SelectedDelivery = Deliveries.Count.Equals(0) ? null : Deliveries[Deliveries.Count - 1];
+            SelectedInvoice = Invoices.Count.Equals(0) ? null : Invoices[Invoices.Count - 1];
 
         }
 
