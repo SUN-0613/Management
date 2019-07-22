@@ -435,24 +435,6 @@ namespace Management.Pages.ViewModel.JobList
             }
         }
 
-        /// <summary>
-        /// 取消コマンド
-        /// </summary>
-        public DelegateCommand CancelCommand
-        {
-            get
-            {
-
-                return new DelegateCommand(
-                    () =>
-                    {
-                        CallPropertyChanged("CallClose");
-                    },
-                    () => true);
-
-            }
-        }
-
         #endregion
 
         /// <summary>
