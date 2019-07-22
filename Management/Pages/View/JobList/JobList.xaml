@@ -1,0 +1,89 @@
+﻿<Page x:Class="Management.Pages.View.JobList.JobList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      xmlns:p="clr-namespace:Management.Properties"
+      xmlns:vm="clr-namespace:Management.Pages.ViewModel.JobList"
+      xmlns:conv="clr-namespace:Management.Converter"
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="{x:Static p:Title.JobList}">
+    <Page.Resources>
+        <conv:JobStatusConverter x:Key="jobConv" />
+    </Page.Resources>
+    <Page.DataContext>
+        <vm:JobList />
+    </Page.DataContext>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Details}" SelectedItem="{Binding SelectedDetail}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="{x:Static p:JobList.Detail}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{x:Static p:Resources.Button_Open}" >
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding DetailCommand}" MouseAction="LeftClick" />
+                                </Button.InputBindings>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="{x:Static p:JobList.Name}" Binding="{Binding Name}" IsReadOnly="True" Width="120" />
+                <DataGridTextColumn Header="{x:Static p:JobList.Client}" Binding="{Binding SelectedClientName}" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="{x:Static p:JobList.QuotationFile}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsQuotationExist}" >
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding DocumentCommand}" CommandParameter="openQuotation" MouseAction="LeftClick" />
+                                </Button.InputBindings>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="{x:Static p:JobList.DeliveryFile}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsDeliveryExist}" >
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding DocumentCommand}" CommandParameter="openDelivery" MouseAction="LeftClick" />
+                                </Button.InputBindings>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="{x:Static p:JobList.InvoiceFile}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsInvoiceExist}" >
+                                <Button.InputBindings>
+                                    <MouseBinding Command="{Binding DocumentCommand}" CommandParameter="openInvoice" MouseAction="LeftClick" />
+                                </Button.InputBindings>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="{x:Static p:JobList.Status}" Binding="{Binding Status.Status, Converter={StaticResource jobConv}}" IsReadOnly="True" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{x:Static p:Resources.Button_Add}" Command="{Binding ListCommand}" CommandParameter="add" />
+                    <MenuItem Header="{x:Static p:Resources.Button_Remove}" Command="{Binding ListCommand}" CommandParameter="remove" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        
+    </Grid>
+</Page>

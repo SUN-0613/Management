@@ -10,11 +10,10 @@
       xmlns:vm="clr-namespace:Management.Pages.ViewModel.JobList"
       xmlns:conv="clr-namespace:Management.Converter"
       d:DesignHeight="400" d:DesignWidth="600"
-      Title="{Binding Path=JobDetail, Source={StaticResource resourcesTitle}}"
+      Title="{x:Static p:Title.JobDetail}"
       FocusManager.FocusedElement="{Binding ElementName=txtFirst}">
     <Page.Resources>
         
-        <p:JobList x:Key="resources" />
         <conv:JobStatusConverter x:Key="jobConv" />
 
         <!-- 項目用TextBlock -->
@@ -35,7 +34,7 @@
     <Page.DataContext>
         <vm:JobDetail />
     </Page.DataContext>
-    <Grid Background="White">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="5" />
             <RowDefinition Height="*" />
@@ -62,7 +61,7 @@
         
         <!-- 名称 -->
         <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:JobList.Name}" Style="{StaticResource Content}" />
-        <TextBox Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="2" >
+        <TextBox Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" x:Name="txtFirst" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="2" >
             <i:Interaction.Behaviors>
                 <b:TextBoxSelectAll />
                 <b:FrameworkElementMoveFocus />
@@ -210,7 +209,7 @@
             
             <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Margin="2" Content="{x:Static p:Resources.Button_Save}" >
                 <Button.InputBindings>
-                    <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick" />
+                    <MouseBinding Command="{Binding OkCommand}" MouseAction="LeftClick" />
                 </Button.InputBindings>
             </Button>
             

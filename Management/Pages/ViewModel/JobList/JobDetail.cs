@@ -423,19 +423,31 @@ namespace Management.Pages.ViewModel.JobList
         /// <summary>
         /// 保存コマンド
         /// </summary>
-        public DelegateCommand SaveCommand
+        public DelegateCommand OkCommand
         {
             get
             {
 
                 return new DelegateCommand(
-                    () => { CallPropertyChanged("CallSave"); },
+                    () => 
+                    {
+                        _SaveAction();
+                        CallPropertyChanged("CallOk");
+                    },
                     () => true);
 
             }
         }
 
         #endregion
+
+        /// <summary>
+        /// データ保存アクション
+        /// </summary>
+        /// <remarks>
+        /// Management.Pages.Model.JobList.JobList.Save()
+        /// </remarks>
+        private readonly Action _SaveAction;
 
         /// <summary>
         /// ジョブ.ViewModel
@@ -447,9 +459,11 @@ namespace Management.Pages.ViewModel.JobList
         /// ジョブ.ViewModel
         /// </summary>
         /// <param name="job">ジョブファイル</param>
-        public JobDetail(Job job)
+        /// <param name="saveAction">データ保存アクション</param>
+        public JobDetail(Job job, Action saveAction)
         {
             _Model = new Model::JobDetail(job);
+            _SaveAction = saveAction;
         }
 
         /// <summary>

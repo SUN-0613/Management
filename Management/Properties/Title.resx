@@ -133,6 +133,10 @@
     <value>ジョブ詳細</value>
     <comment>ジョブ情報：詳細ページ</comment>
   </data>
+  <data name="JobList" xml:space="preserve">
+    <value>ジョブ一覧</value>
+    <comment>ジョブ情報：一覧ページ</comment>
+  </data>
   <data name="MainMenu" xml:space="preserve">
     <value>ジョブ管理</value>
     <comment>メインメニューフォーム</comment>

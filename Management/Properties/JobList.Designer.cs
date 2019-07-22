@@ -106,6 +106,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   詳細 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Detail {
+            get {
+                return ResourceManager.GetString("Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   作成済 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string FileExist {

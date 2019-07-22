@@ -97,6 +97,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   ジョブ一覧 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string JobList {
+            get {
+                return ResourceManager.GetString("JobList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ジョブ管理 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainMenu {

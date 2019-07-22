@@ -1,8 +1,8 @@
 ﻿using AYam.Common.MVVM;
-using Management.Data.Info;
 using ViewModel = Management.Pages.ViewModel.JobList;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Management.Pages.View.JobList
@@ -18,7 +18,7 @@ namespace Management.Pages.View.JobList
         /// ジョブ詳細.View
         /// </summary>
         /// <param name="job">ジョブファイル</param>
-        public JobDetail(Job job)
+        public JobDetail(ViewModel::JobDetail viewModel)
         {
 
             InitializeComponent();
@@ -29,9 +29,7 @@ namespace Management.Pages.View.JobList
                 dispose = null;
             }
 
-            var viewModel = new ViewModel::JobDetail(job);
-            viewModel.PropertyChanged += OnPropertyChagned;
-
+            viewModel.PropertyChanged += OnPropertyChanged;
             DataContext = viewModel;
 
         }
@@ -44,52 +42,61 @@ namespace Management.Pages.View.JobList
 
             if (DataContext is ViewModelBase viewModel)
             {
-                viewModel.PropertyChanged -= OnPropertyChagned;
+                viewModel.PropertyChanged -= OnPropertyChanged;
             }
 
-            if (DataContext is IDisposable dispose)
-            {
-                dispose.Dispose();
-                dispose = null;
-            }
+            DataContext = null;
 
         }
 
         /// <summary>
         /// ViewModelプロパティ変更イベント
         /// </summary>
-        private void OnPropertyChagned(object sender, PropertyChangedEventArgs e)
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            switch (e.PropertyName)
+            if (DataContext is ViewModel::JobDetail viewModel)
             {
 
-                case "CallOpenQuotation":       // 見積書を開く
-                    break;
+                switch (e.PropertyName)
+                {
 
-                case "CallRevisionQuotation":   // 見積書の改訂
-                    break;
+                    case "CallOpenQuotation":       // 見積書を開く
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallOpenDelivery":        // 納品書を開く
-                    break;
+                    case "CallRevisionQuotation":   // 見積書の改訂
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallRevisionDelivery":    // 納品書の改訂
-                    break;
+                    case "CallOpenDelivery":        // 納品書を開く
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallOpenInvoice":         // 請求書を開く
-                    break;
+                    case "CallRevisionDelivery":    // 納品書の改訂
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallRevisionInvoice":     // 請求書の改訂
-                    break;
+                    case "CallOpenInvoice":         // 請求書を開く
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallOpenCoverLetter":     // 封筒・送付状を開く
-                    break;
+                    case "CallRevisionInvoice":     // 請求書の改訂
+                        MessageBox.Show("考え中");
+                        break;
 
-                case "CallSave":                // データ保存
-                    break;
+                    case "CallOpenCoverLetter":     // 封筒・送付状を開く
+                        MessageBox.Show("考え中");
+                        break;
 
-                default:
-                    break;
+                    case "CallOk":                  // OKボタンクリック
+                        MessageBox.Show("考え中");
+                        break;
+
+                    default:
+                        break;
+
+                }
 
             }
 

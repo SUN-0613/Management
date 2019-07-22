@@ -137,6 +137,10 @@
     <value>納期</value>
     <comment>納期</comment>
   </data>
+  <data name="Detail" xml:space="preserve">
+    <value>詳細</value>
+    <comment>詳細</comment>
+  </data>
   <data name="FileExist" xml:space="preserve">
     <value>作成済</value>
     <comment>ファイル：作成済</comment>
