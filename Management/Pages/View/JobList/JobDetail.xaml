@@ -43,7 +43,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- 作成日時 -->
-        <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=CreateDateTime, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="2" />
+        <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:JobList.CreateDateTime}" VerticalAlignment="Center" TextAlignment="Right" Padding="2" />
         <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding CreateDate, StringFormat=yyyy/MM/dd HH:mm:ss}" VerticalAlignment="Center" TextAlignment="Left" Padding="2" />
 
     </Grid>

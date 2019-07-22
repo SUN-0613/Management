@@ -6,15 +6,12 @@
         xmlns:vm="clr-namespace:Management.Forms.ViewModel.Menu"
         xmlns:p="clr-namespace:Management.Properties"
         mc:Ignorable="d"
-        Title="{Binding Path=MainMenu ,Source={StaticResource resourcesTitle}}" 
+        Title="{x:Static p:Title.MainMenu}"
         Height="750" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Window.DataContext>
         <vm:MainMenu/>
     </Window.DataContext>
-    <Window.Resources>
-        <p:MainMenu x:Key="resources" />
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -26,17 +23,17 @@
 
         <!-- メニューリスト -->
         <Menu Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" >
-            <MenuItem Header="{Binding Path=File, Source={StaticResource resources}}">
-                <MenuItem Header="{Binding Path=Path, Source={StaticResource resources}}" Command="{Binding FileCommand}" CommandParameter="path" />
+            <MenuItem Header="{x:Static p:MainMenu.File}" >
+                <MenuItem Header="{x:Static p:MainMenu.Path}" Command="{Binding FileCommand}" CommandParameter="path" />
                 <Separator />
-                <MenuItem Header="{Binding Path=Quit, Source={StaticResource resources}}" Command="{Binding FileCommand}" CommandParameter="quit" />
+                <MenuItem Header="{x:Static p:MainMenu.Quit}"  Command="{Binding FileCommand}" CommandParameter="quit" />
             </MenuItem>
-            <MenuItem Header="{Binding Path=Process, Source={StaticResource resources}}">
-                <MenuItem Header="{Binding Path=Job, Source={StaticResource resources}}" Command="{Binding ProcessCommand}" CommandParameter="job" />
+            <MenuItem Header="{x:Static p:MainMenu.Process}" >
+                <MenuItem Header="{x:Static p:MainMenu.Job}"  Command="{Binding ProcessCommand}" CommandParameter="job" />
             </MenuItem>
-            <MenuItem Header="{Binding Path=MasterOption, Source={StaticResource resources}}">
-                <MenuItem Header="{Binding Path=MasterInfo, Source={StaticResource resources}}" Command="{Binding MasterCommand}" CommandParameter="master" />
-                <MenuItem Header="{Binding Path=ClientInfo, Source={StaticResource resources}}" Command="{Binding MasterCommand}" CommandParameter="client" />
+            <MenuItem Header="{x:Static p:MainMenu.MasterOption}" >
+                <MenuItem Header="{x:Static p:MainMenu.MasterInfo}" Command="{Binding MasterCommand}" CommandParameter="master" />
+                <MenuItem Header="{x:Static p:MainMenu.ClientInfo}" Command="{Binding MasterCommand}" CommandParameter="client" />
             </MenuItem>
         </Menu>
 
@@ -77,13 +74,13 @@
                     <TextBlock TextAlignment="Left" Text="{Binding Name}" />
                 </ListBox>
 
-                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding Path=Button_Next, Source={StaticResource resourcesCommon}}" FontSize="15" >
+                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Resources.Button_Next}" FontSize="15" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="previous" MouseAction="LeftClick" />
                     </Button.InputBindings>
                 </Button>
 
-                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding Path=Button_Previous, Source={StaticResource resourcesCommon}}" FontSize="15" >
+                <Button Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Resources.Button_Previous}" FontSize="15" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding ChangeListCommand}" CommandParameter="next" MouseAction="LeftClick" />
                     </Button.InputBindings>

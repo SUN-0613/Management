@@ -8,16 +8,13 @@
         xmlns:p="clr-namespace:Management.Properties"
         xmlns:vm="clr-namespace:Management.Forms.ViewModel.Clients"
         mc:Ignorable="d"
-        Title="{Binding Path=ClientInfo, Source={StaticResource resourcesTitle}}" 
+        Title="{x:Static p:Title.ClientInfo}"
         Height="550" Width="750"
         WindowStartupLocation="CenterOwner"
         WindowStyle="ToolWindow">
     <i:Interaction.Behaviors>
         <b:WindowClosing />
     </i:Interaction.Behaviors>
-    <Window.Resources>
-        <p:ClientInfo x:Key="resources" />
-    </Window.Resources>
     <Window.DataContext>
         <vm:ClientInfo />
     </Window.DataContext>
@@ -46,12 +43,12 @@
 
             <DataGrid Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="DG" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="{Binding ClientList, Source={StaticResource resources}}" Width="145" Binding="{Binding Name}" IsReadOnly="True" />
+                    <DataGridTextColumn Header="{x:Static p:ClientInfo.ClientList}" Width="145" Binding="{Binding Name}" IsReadOnly="True" />
                 </DataGrid.Columns>
                 <DataGrid.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="{Binding Path=Button_Add, Source={StaticResource resourcesCommon}}" Command="{Binding ListCommand}" CommandParameter="add" />
-                        <MenuItem Header="{Binding Path=Button_Remove, Source={StaticResource resourcesCommon}}" Command="{Binding ListCommand}" CommandParameter="remove" />
+                        <MenuItem Header="{x:Static p:Resources.Button_Add}" Command="{Binding ListCommand}" CommandParameter="add" />
+                        <MenuItem Header="{x:Static p:Resources.Button_Remove}" Command="{Binding ListCommand}" CommandParameter="remove" />
                     </ContextMenu>
                 </DataGrid.ContextMenu>
             </DataGrid>
@@ -95,7 +92,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- 名称 -->
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=CompanyName, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.CompanyName}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
                 <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding CompanyName, UpdateSourceTrigger=PropertyChanged, Delay=100}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" IsEnabled="{Binding IsEnabled}" >
                     <i:Interaction.Behaviors>
                         <b:TextBoxSelectAll />
@@ -104,7 +101,7 @@
                 </TextBox>
                 
                 <!-- よみがな -->
-                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=CompanyKana, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.CompanyKana}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
                 <TextBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding CompanyKana, UpdateSourceTrigger=PropertyChanged, Delay=100}" VerticalContentAlignment="Center" TextAlignment="Left" Margin="1" IsEnabled="{Binding IsEnabled}" >
                     <i:Interaction.Behaviors>
                         <b:TextBoxSelectAll />
@@ -115,7 +112,7 @@
             </Grid>
 
             <!-- 住所 -->
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Address, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.Address}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
             <Grid Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -164,7 +161,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- 電話番号 -->
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=PhoneNo, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.PhoneNo}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
                 <Grid Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -204,7 +201,7 @@
                 </Grid>
 
                 <!-- FAX番号 -->
-                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=FaxNo, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.FaxNo}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
                 <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -246,7 +243,7 @@
             </Grid>
             
             <!-- 口座 -->
-            <TextBlock Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=BankAccount, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+            <TextBlock Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.BankAccount}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
             <TextBox Grid.Row="5" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding BankAccount, UpdateSourceTrigger=PropertyChanged, Delay=100}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" IsEnabled="{Binding IsEnabled}" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
@@ -265,10 +262,10 @@
 
                 <DataGrid Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" ItemsSource="{Binding Staffs}" SelectedItem="{Binding SelectedStaff}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" IsEnabled="{Binding IsEnabled}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="{Binding Department, Source={StaticResource resources}}" Width="120" Binding="{Binding Department}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{Binding StaffFullName, Source={StaticResource resources}}" Width="120" Binding="{Binding FullName}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{Binding EMailAddress, Source={StaticResource resources}}" Width="120" Binding="{Binding EMailAddress}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="{Binding MobilePhone, Source={StaticResource resources}}" Width="120" Binding="{Binding MobilePhone}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{x:Static p:ClientInfo.Department}" Width="120" Binding="{Binding Department}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{x:Static p:ClientInfo.StaffFullName}" Width="120" Binding="{Binding FullName}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{x:Static p:ClientInfo.EMailAddress}" Width="120" Binding="{Binding EMailAddress}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{x:Static p:ClientInfo.MobilePhone}" Width="120" Binding="{Binding MobilePhone}" IsReadOnly="True" />
                     </DataGrid.Columns>
                     <DataGrid.RowDetailsTemplate>
                         <DataTemplate>
@@ -287,9 +284,9 @@
                     </DataGrid.RowDetailsTemplate>
                     <DataGrid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="{Binding Path=Button_Add, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="add" />
-                            <MenuItem Header="{Binding Path=Button_Edit, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="edit" />
-                            <MenuItem Header="{Binding Path=Button_Remove, Source={StaticResource resourcesCommon}}" Command="{Binding StaffCommand}" CommandParameter="remove" />
+                            <MenuItem Header="{x:Static p:Resources.Button_Add}" Command="{Binding StaffCommand}" CommandParameter="add" />
+                            <MenuItem Header="{x:Static p:Resources.Button_Edit}" Command="{Binding StaffCommand}" CommandParameter="edit" />
+                            <MenuItem Header="{x:Static p:Resources.Button_Remove}" Command="{Binding StaffCommand}" CommandParameter="remove" />
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                 </DataGrid>
@@ -297,7 +294,7 @@
             </Grid>
 
             <!-- メモ -->
-            <TextBlock Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Remarks, Source={StaticResource resources}}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
+            <TextBlock Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.Remarks}" VerticalAlignment="Center" TextAlignment="Right" Padding="1" />
             <TextBox Grid.Row="8" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged, Delay=100}" VerticalContentAlignment="Top" TextAlignment="Left" Margin="1" AcceptsReturn="True" IsEnabled="{Binding IsEnabled}" >
                 <i:Interaction.Behaviors>
                     <b:TextBoxSelectAll />
@@ -318,13 +315,13 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding Path=Button_Save, Source={StaticResource resourcesCommon}}" >
+                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Resources.Button_Save}" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding SaveCommand}" MouseAction="LeftClick" />
                     </Button.InputBindings>
                 </Button>
 
-                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding Path=Button_Close, Source={StaticResource resourcesCommon}}" >
+                <Button Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{x:Static p:Resources.Button_Close}" >
                     <Button.InputBindings>
                         <MouseBinding Command="{Binding CancelCommand}" MouseAction="LeftClick" />
                     </Button.InputBindings>

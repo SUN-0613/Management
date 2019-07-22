@@ -15,8 +15,6 @@
     </Page.DataContext>
     <Page.Resources>
         
-        <p:Calendar x:Key="resources" />
-
         <!--MouseOver時に光らないボタンのStyle-->
         <Style x:Key="ButtonCustomStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -84,13 +82,13 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding Path=Week_Sunday, Source={StaticResource resources}}" FontSize="13" Foreground="Red" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Path=Week_Monday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{Binding Path=Week_Tuesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding Path=Week_Wednesday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding Path=Week_Thursday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Text="{Binding Path=Week_Friday, Source={StaticResource resources}}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Text="{Binding Path=Week_Saturday, Source={StaticResource resources}}" FontSize="13" Foreground="Blue" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Sunday}" FontSize="13" Foreground="Red" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Monday}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Tuesday}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Wednesday}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Thursday}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Friday}" FontSize="13" Foreground="Black" TextAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="6" Grid.ColumnSpan="1" Text="{x:Static p:Calendar.Week_Saturday}" FontSize="13" Foreground="Blue" TextAlignment="Center" VerticalAlignment="Center" />
             
             <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Date="{Binding Days[0].DayNumber}" Schedule="{Binding Days[0].Schedule}" WeekColor="{Binding Days[0].Foreground}" BackColor="{Binding Days[0].Background}" />
             <uc:Day Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Date="{Binding Days[1].DayNumber}" Schedule="{Binding Days[1].Schedule}" WeekColor="{Binding Days[1].Foreground}" BackColor="{Binding Days[1].Background}" />
