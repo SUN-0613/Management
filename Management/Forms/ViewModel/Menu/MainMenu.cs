@@ -1,5 +1,8 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Schedule;
+using Model = Management.Forms.Model.Menu;
+using Class = Management.Forms.Model.Menu.Class;
+using Job = Management.Pages.View.JobList;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -18,22 +21,22 @@ namespace Management.Forms.ViewModel.Menu
         /// <summary>
         /// カレンダー.Model
         /// </summary>
-        private Model.Menu.Calendar _Calendar;
+        private Model::Calendar _Calendar;
 
         /// <summary>
         /// 現在日時.Model
         /// </summary>
-        private Model.Menu.Timer _Timer;
+        private Model::Timer _Timer;
 
         /// <summary>
         /// スケジュール.Model
         /// </summary>
-        private Model.Menu.Schedule _Schedule;
+        private Model::Schedule _Schedule;
 
         /// <summary>
         /// タブ.Model
         /// </summary>
-        private Model.Menu.TabItem _TabItem;
+        private Model::TabItem _TabItem;
 
         #endregion
 
@@ -57,7 +60,7 @@ namespace Management.Forms.ViewModel.Menu
         /// <summary>
         /// タブ一覧
         /// </summary>
-        public ObservableCollection<Model.Menu.Class.TabItemData> TabItems
+        public ObservableCollection<Class::TabItemData> TabItems
         {
             get { return _TabItem.TabItems; }
             set { _TabItem.TabItems = value; }
@@ -116,7 +119,7 @@ namespace Management.Forms.ViewModel.Menu
                         {
 
                             case "job": //ジョブ一覧
-                                CallPropertyChanged("CallJobList");
+                                _TabItem.AddTabItem(Properties.Title.JobList, new Job::JobList());
                                 break;
 
                             default:
@@ -168,14 +171,14 @@ namespace Management.Forms.ViewModel.Menu
         public MainMenu()
         {
 
-            _Calendar = new Model.Menu.Calendar();
+            _Calendar = new Model::Calendar();
 
-            _Timer = new Model.Menu.Timer();
+            _Timer = new Model::Timer();
             _Timer.PropertyChanged += OnTimerPropertyChanged;
 
-            _Schedule = new Model.Menu.Schedule();
+            _Schedule = new Model::Schedule();
 
-            _TabItem = new Model.Menu.TabItem();
+            _TabItem = new Model::TabItem();
 
         }
 

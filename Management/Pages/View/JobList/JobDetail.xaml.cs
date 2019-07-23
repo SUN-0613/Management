@@ -90,7 +90,7 @@ namespace Management.Pages.View.JobList
                         break;
 
                     case "CallOk":                  // OKボタンクリック
-                        MessageBox.Show("考え中");
+                        viewModel.ClosePageAction();
                         break;
 
                     default:

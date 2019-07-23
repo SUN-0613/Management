@@ -1,4 +1,5 @@
-﻿using Management.Forms.Model.Menu.Class;
+﻿using AYam.Common.MVVM;
+using Management.Forms.Model.Menu.Class;
 using System;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ namespace Management.Forms.Model.Menu
     /// <summary>
     /// メニュー.タブ.Model
     /// </summary>
-    public class TabItem : IDisposable
+    public class TabItem : ViewModelBase, IDisposable
     {
 
         #region ViewModel.Property
@@ -30,11 +31,7 @@ namespace Management.Forms.Model.Menu
             TabItems = new ObservableCollection<TabItemData>();
 
 #if DEBUG
-
-            var tab = new TabItemData("テスト表示", "TEST");
-            tab.PropertyChanged += OnPropertyChanged;
-            TabItems.Add(tab);
-
+            AddTabItem("テスト表示", "TEST");
 #endif
 
         }
@@ -48,13 +45,10 @@ namespace Management.Forms.Model.Menu
             if (TabItems != null)
             {
                 
-                for (int iLoop = 0; iLoop < TabItems.Count; iLoop++)
+                foreach (var tabItem in TabItems)
                 {
-
-                    TabItems[iLoop].PropertyChanged -= OnPropertyChanged;
-                    TabItems[iLoop].Dispose();
-                    TabItems[iLoop] = null;
-
+                    tabItem.PropertyChanged -= OnPropertyChanged;
+                    tabItem.Dispose();
                 }
 
                 TabItems.Clear();
@@ -65,7 +59,7 @@ namespace Management.Forms.Model.Menu
         }
 
         /// <summary>
-        /// 閉じるコマンド実行イベント
+        /// TabItemDataイベント通知
         /// </summary>
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -73,18 +67,31 @@ namespace Management.Forms.Model.Menu
             switch (e.PropertyName)
             {
 
-                case "CallTabItemClose":
+                case "CallCloseTabItem":
 
                     // 対象はDispose()実行済みなので、Contentがnullのものを探して削除
-                    for (int iLoop = TabItems.Count - 1; iLoop >= 0; iLoop--)
+                    foreach (var tabItem in TabItems)
                     {
-
-                        if (TabItems[iLoop].Content == null)
+                        if (tabItem.Content == null)
                         {
-                            TabItems.RemoveAt(iLoop);
+                            TabItems.Remove(tabItem);
                             break;
                         }
+                    }
 
+                    break;
+
+                case "CallAddTabItem":
+
+                    // 対象クラス内で表示データを作成済なので、NewTabがnullでないものを探して追加
+                    foreach (var tabItem in TabItems)
+                    {
+                        if (tabItem.IsMakeNewTab)
+                        {
+                            AddTabItem(tabItem.NewTab);
+                            tabItem.IsMakeNewTab = false;
+                            break;
+                        }
                     }
 
                     break;
@@ -94,6 +101,26 @@ namespace Management.Forms.Model.Menu
 
             }
 
+        }
+
+        /// <summary>
+        /// タブ追加
+        /// </summary>
+        /// <param name="title">タイトル</param>
+        /// <param name="content">表示内容</param>
+        public void AddTabItem(string title, object content)
+        {
+            AddTabItem(new TabItemData(title, content));
+        }
+
+        /// <summary>
+        /// タブ追加
+        /// </summary>
+        /// <param name="tabItem">タブ表示データ</param>
+        private void AddTabItem(TabItemData tabItem)
+        {
+            tabItem.PropertyChanged += OnPropertyChanged;
+            TabItems.Add(tabItem);
         }
 
     }

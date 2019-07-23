@@ -1,6 +1,7 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
 using Model = Management.Pages.Model.JobList;
+using Management.Pages.ViewModel.Base;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
@@ -11,7 +12,7 @@ namespace Management.Pages.ViewModel.JobList
     /// <summary>
     /// ジョブ詳細.ViewModel
     /// </summary>
-    public class JobDetail : ViewModelBase, IDisposable
+    public class JobDetail : PageViewModelBase, IDisposable
     {
 
         #region Model

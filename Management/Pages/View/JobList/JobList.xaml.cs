@@ -54,23 +54,39 @@ namespace Management.Pages.View.JobList
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            switch (e.PropertyName)
+            if (DataContext is ViewModel::JobList viewModel)
             {
 
-                case "CallListAdd":
-                    MessageBox.Show("考え中");
-                    break;
+                switch (e.PropertyName)
+                {
 
-                case "CallListRemove":
-                    MessageBox.Show("考え中");
-                    break;
+                    case "CallListAdd":
 
-                case "CallDetail":
-                    MessageBox.Show("考え中");
-                    break;
+                        MessageBox.Show("考え中");
 
-                default:
-                    break;
+                        //if (MessageBox.Show(Properties.JobList.MessageJobAdd.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        //{
+                            
+                        //}
+
+                        break;
+
+                    case "CallListRemove":
+
+                        if (MessageBox.Show(Properties.JobList.MessageJobRemove.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            MessageBox.Show("考え中");
+                        }
+                        break;
+
+                    case "CallDetail":
+                        viewModel.AddPageAction(Properties.Title.JobDetail, new JobDetail(viewModel.SelectedDetail));
+                        break;
+
+                    default:
+                        break;
+                }
+
             }
 
         }

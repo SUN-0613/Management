@@ -1,5 +1,7 @@
 ﻿using AYam.Common.MVVM;
+using MVVM = Management.Pages.ViewModel.Base;
 using System;
+using System.Windows.Controls;
 
 namespace Management.Forms.Model.Menu.Class
 {
@@ -11,6 +13,11 @@ namespace Management.Forms.Model.Menu.Class
     {
 
         #region Property
+
+        /// <summary>
+        /// 作成日時
+        /// </summary>
+        public DateTime CreateDate = DateTime.Now;
 
         /// <summary>
         /// ヘッダ
@@ -32,31 +39,41 @@ namespace Management.Forms.Model.Menu.Class
                 return new DelegateCommand(
                     ()=> 
                     {
-                        Dispose();
-                        CallPropertyChanged("CallTabItemClose");
+                        CloseTab();
                     }
                     ,()=>true);
             }
         }
+
+        /// <summary>
+        /// 新規タブを呼び出す場合の表示データ
+        /// </summary>
+        public TabItemData NewTab = null;
+
+        /// <summary>
+        /// 新規タブ作成FLG
+        /// </summary>
+        public bool IsMakeNewTab = false;
 
         #endregion
 
         /// <summary>
         /// TabControl内に表示するデータ
         /// </summary>
-        public TabItemData()
-        { }
-
-        /// <summary>
-        /// TabControl内に表示するデータ
-        /// </summary>
         /// <param name="header">ヘッダ</param>
         /// <param name="content">表示データ</param>
-        public TabItemData(string header, string content)
+        public TabItemData(string header, object content)
         {
 
             Header = header;
             Content = content;
+
+            if (content is Page page
+                && page.DataContext is MVVM::PageViewModelBase viewModel)
+            {
+                viewModel.ClosePageAction = new Action(() => CloseTab());
+                viewModel.AddPageAction = new Action<string, object>((string newTabName, object newContent) => AddTab(newTabName, newContent));
+            }
 
         }
 
@@ -69,20 +86,51 @@ namespace Management.Forms.Model.Menu.Class
             if (Content is IDisposable content)
             {
                 content.Dispose();
-                content = null;
             }
 
-#if DEBUG
-
-            if (Content as string != null)
-            {
-                Content = null;
-            }
-
-#endif
+            Content = null;
 
         }
 
+        /// <summary>
+        /// タブを閉じる
+        /// </summary>
+        private void CloseTab()
+        {
+            Dispose();
+            CallPropertyChanged("CallCloseTabItem");
+        }
+
+        /// <summary>
+        /// タブを追加する
+        /// </summary>
+        /// <param name="tabName">追加タブに表示するデータ名</param>
+        /// <param name="content">追加タブに表示するデータ</param>
+        private void AddTab(string tabName, object content)
+        {
+
+            IsMakeNewTab = true;
+            NewTab = new TabItemData(tabName, content);
+            CallPropertyChanged("CallAddTabItem");
+
+        }
+
+        /// <summary>
+        /// データが等しいかチェック
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+
+            if (obj is TabItemData tabItem)
+            {
+                return CreateDate.Equals(tabItem.CreateDate);
+            }
+            else
+            {
+                return false;
+            }
+
+        }
     }
 
 }

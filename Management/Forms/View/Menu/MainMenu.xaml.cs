@@ -66,21 +66,11 @@ namespace Management.Forms.View.Menu
 
                 #endregion
 
-                #region 常用処理
-
-                case "CallJobList": // ジョブ一覧の呼び出し
-
-
-
-                    break;
-
-                #endregion
-
                 #region マスタ管理
 
                 case "CallMaster":  // マスタ情報画面の呼び出し
 
-                    var master = new View.Master.MasterInfo()
+                    var master = new Master.MasterInfo()
                     {
                         Owner = this
                     };
@@ -91,7 +81,7 @@ namespace Management.Forms.View.Menu
 
                 case "CallClient":  // 取引先情報画面の呼び出し
 
-                    var client = new View.Clients.ClientInfo()
+                    var client = new Clients.ClientInfo()
                     {
                         Owner = this
                     };

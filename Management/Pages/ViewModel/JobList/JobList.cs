@@ -1,5 +1,6 @@
 ﻿using AYam.Common.MVVM;
 using Model = Management.Pages.Model.JobList;
+using Management.Pages.ViewModel.Base;
 using System;
 using System.Collections.ObjectModel;
 
@@ -9,7 +10,7 @@ namespace Management.Pages.ViewModel.JobList
     /// <summary>
     /// ジョブ一覧.ViewModel
     /// </summary>
-    public class JobList : ViewModelBase, IDisposable
+    public class JobList : PageViewModelBase, IDisposable
     {
 
         #region Model
