@@ -131,6 +131,7 @@
     <Compile Include="Pages\Model\Calendar\Timer.cs" />
     <Compile Include="Pages\Model\JobList\JobDetail.cs" />
     <Compile Include="Pages\Model\JobList\JobList.cs" />
+    <Compile Include="Pages\ViewModel\Base\PageViewModelBase.cs" />
     <Compile Include="Pages\ViewModel\Calendar\Calendar.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobDetail.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobList.cs" />

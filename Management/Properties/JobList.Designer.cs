@@ -142,7 +142,7 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   「*」を新たにジョブ一覧に登録しますか？ に類似しているローカライズされた文字列を検索します。
+        ///   新規ジョブを登録しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string MessageJobAdd {
             get {

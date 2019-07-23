@@ -62,20 +62,21 @@ namespace Management.Pages.View.JobList
 
                     case "CallListAdd":
 
-                        MessageBox.Show("考え中");
-
-                        //if (MessageBox.Show(Properties.JobList.MessageJobAdd.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
-                        //{
-                            
-                        //}
+                        if (MessageBox.Show(Properties.JobList.MessageJobAdd, Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            viewModel.AddNewJob();
+                            viewModel.SelectedDetail = viewModel.Details[viewModel.Details.Count - 1];
+                            viewModel.AddPageAction(Properties.Title.JobDetail, viewModel.SelectedDetail);
+                        }
 
                         break;
 
                     case "CallListRemove":
 
-                        if (MessageBox.Show(Properties.JobList.MessageJobRemove.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        if (viewModel.SelectedDetail != null
+                            && MessageBox.Show(Properties.JobList.MessageJobRemove.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
-                            MessageBox.Show("考え中");
+                            viewModel.RemoveSelectedJob();
                         }
                         break;
 

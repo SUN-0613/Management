@@ -154,7 +154,7 @@
     <comment>請求書</comment>
   </data>
   <data name="MessageJobAdd" xml:space="preserve">
-    <value>「*」を新たにジョブ一覧に登録しますか？</value>
+    <value>新規ジョブを登録しますか？</value>
     <comment>メッセージボックス：ジョブ登録</comment>
   </data>
   <data name="MessageJobRemove" xml:space="preserve">

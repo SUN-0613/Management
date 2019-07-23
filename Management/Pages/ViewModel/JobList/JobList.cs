@@ -107,6 +107,22 @@ namespace Management.Pages.ViewModel.JobList
                 
         }
 
+        /// <summary>
+        /// 新規ジョブの作成
+        /// </summary>
+        public void AddNewJob()
+        {
+            _Model.AddNewJob();
+        }
+
+        /// <summary>
+        /// 選択したジョブを削除
+        /// </summary>
+        public void RemoveSelectedJob()
+        {
+            _Model.RemoveJob(SelectedDetail);
+        }
+
     }
 
 }

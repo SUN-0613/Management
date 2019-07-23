@@ -98,6 +98,24 @@ namespace Management.Data.Info
 
         }
 
+        /// <summary>
+        /// 引数データが同一かチェック
+        /// </summary>
+        /// <param name="obj">引数データ</param>
+        public override bool Equals(object obj)
+        {
+            
+            if (obj is Job job)
+            {
+                return CreateDate.Equals(job.CreateDate);
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
     }
 
 }
