@@ -46,6 +46,15 @@ namespace Management.Data.Info
 
         }
 
+        /// <summary>
+        /// ファイル名のワイルド部分を取得
+        /// </summary>
+        /// <returns>作成日時_改訂No</returns>
+        public string GetFileNameParts()
+        {
+            return CreateDate.ToString("yyyyMMdd") + "_" + Revision.ToString();
+        }
+
     }
 
 }

@@ -86,14 +86,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converter\JobStatusConverter.cs" />
+    <Compile Include="Converter\VolumeUnitConverter.cs" />
     <Compile Include="Data\File\ClientDetailFile.cs" />
     <Compile Include="Data\File\ClientsFile.cs" />
     <Compile Include="Data\File\JobListFile.cs" />
     <Compile Include="Data\File\MasterFile.cs" />
+    <Compile Include="Data\File\QuotationFile.cs" />
     <Compile Include="Data\Info\Client.cs" />
     <Compile Include="Data\Info\DataFileInfo.cs" />
     <Compile Include="Data\Info\Job.cs" />
     <Compile Include="Data\Info\JobStatus.cs" />
+    <Compile Include="Data\Info\QuoteSummary.cs" />
     <Compile Include="Data\Info\Staff.cs" />
     <Compile Include="Data\Path\PathInfo.cs" />
     <Compile Include="Data\Schedule\ScheduleInfo.cs" />
@@ -131,10 +134,13 @@
     <Compile Include="Pages\Model\Calendar\Timer.cs" />
     <Compile Include="Pages\Model\JobList\JobDetail.cs" />
     <Compile Include="Pages\Model\JobList\JobList.cs" />
-    <Compile Include="Pages\ViewModel\Base\PageViewModelBase.cs" />
+    <Compile Include="Pages\Model\Quotation\Quotation.cs" />
+    <Compile Include="Pages\ViewModel\Base\TabViewModelBase.cs" />
+    <Compile Include="Pages\ViewModel\Base\TabPrintViewModelBase.cs" />
     <Compile Include="Pages\ViewModel\Calendar\Calendar.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobDetail.cs" />
     <Compile Include="Pages\ViewModel\JobList\JobList.cs" />
+    <Compile Include="Pages\ViewModel\Quotation\Quotation.cs" />
     <Compile Include="Pages\View\Calendar\Calendar.xaml.cs">
       <DependentUpon>Calendar.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,9 @@
     </Compile>
     <Compile Include="Pages\View\JobList\JobList.xaml.cs">
       <DependentUpon>JobList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\View\Quotation\Quotation.xaml.cs">
+      <DependentUpon>Quotation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Calendar.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -171,6 +180,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MasterInfo.resx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Properties\Quotation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Quotation.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Title.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -225,6 +239,10 @@
       <LastGenOutput>MasterInfo.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Quotation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Quotation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -278,6 +296,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\View\JobList\JobList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\View\Quotation\Quotation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\VolumeUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

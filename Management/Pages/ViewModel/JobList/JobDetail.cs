@@ -12,7 +12,7 @@ namespace Management.Pages.ViewModel.JobList
     /// <summary>
     /// ジョブ詳細.ViewModel
     /// </summary>
-    public class JobDetail : PageViewModelBase, IDisposable
+    public class JobDetail : TabViewModelBase, IDisposable
     {
 
         #region Model

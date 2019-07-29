@@ -122,5 +122,14 @@ namespace Management.Properties {
                 return ResourceManager.GetString("MasterInfo", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   御見積書 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Quotation {
+            get {
+                return ResourceManager.GetString("Quotation", resourceCulture);
+            }
+        }
     }
 }

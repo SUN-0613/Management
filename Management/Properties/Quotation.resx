@@ -117,36 +117,136 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClientAdd" xml:space="preserve">
-    <value>取引先登録</value>
-    <comment>取引先追加ダイアログ</comment>
+  <data name="AfterReceiptOfOrder" xml:space="preserve">
+    <value>正式受注後</value>
+    <comment>受注後</comment>
   </data>
-  <data name="ClientInfo" xml:space="preserve">
-    <value>取引先情報</value>
-    <comment>取引先情報ダイアログ</comment>
+  <data name="Attention" xml:space="preserve">
+    <value>御中</value>
+    <comment>御中</comment>
   </data>
-  <data name="ClientStaffAdd" xml:space="preserve">
-    <value>担当者登録</value>
-    <comment>取引先：担当者登録ダイアログ</comment>
+  <data name="ClientStaffName" xml:space="preserve">
+    <value>ご担当：</value>
+    <comment>客先担当欄</comment>
   </data>
-  <data name="JobDetail" xml:space="preserve">
-    <value>ジョブ詳細</value>
-    <comment>ジョブ情報：詳細ページ</comment>
+  <data name="Days" xml:space="preserve">
+    <value>*日間</value>
+    <comment>受注後*日間</comment>
   </data>
-  <data name="JobList" xml:space="preserve">
-    <value>ジョブ一覧</value>
-    <comment>ジョブ情報：一覧ページ</comment>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>納期：</value>
+    <comment>納期</comment>
   </data>
-  <data name="MainMenu" xml:space="preserve">
-    <value>ジョブ管理</value>
-    <comment>メインメニューフォーム</comment>
+  <data name="EMail" xml:space="preserve">
+    <value>E-Mail：</value>
+    <comment>メールアドレス</comment>
   </data>
-  <data name="MasterInfo" xml:space="preserve">
-    <value>マスタ情報</value>
-    <comment>マスタ情報ダイアログ</comment>
+  <data name="ExcludingTax" xml:space="preserve">
+    <value>（税抜）</value>
+    <comment>税抜き</comment>
   </data>
-  <data name="Quotation" xml:space="preserve">
-    <value>御見積書</value>
-    <comment>御見積</comment>
+  <data name="ExpirationDate" xml:space="preserve">
+    <value>有効期限：</value>
+    <comment>有効期限</comment>
+  </data>
+  <data name="ExpirationDateMessage" xml:space="preserve">
+    <value>御見積後2週間</value>
+    <comment>有効期限：定型文</comment>
+  </data>
+  <data name="FixedPhrase1" xml:space="preserve">
+    <value>お振込手数料は御社ご負担にてお願い致します。</value>
+    <comment>備考：定型文1</comment>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>時間</value>
+    <comment>数量単位：時間</comment>
+  </data>
+  <data name="JobTitle" xml:space="preserve">
+    <value>件名：</value>
+    <comment>件名</comment>
+  </data>
+  <data name="MasterName" xml:space="preserve">
+    <value>担当：</value>
+    <comment>担当者名</comment>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>下記のとおり、御見積もり申し上げます。</value>
+    <comment>文章</comment>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>*月間</value>
+    <comment>受注後*月間</comment>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No.</value>
+    <comment>No</comment>
+  </data>
+  <data name="PaymentTerms" xml:space="preserve">
+    <value>支払条件：</value>
+    <comment>支払条件</comment>
+  </data>
+  <data name="PaymentTermsMessage" xml:space="preserve">
+    <value>月末締め翌月末払い</value>
+    <comment>支払条件：定型文</comment>
+  </data>
+  <data name="Pieces" xml:space="preserve">
+    <value>個</value>
+    <comment>数量単位：個</comment>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>金額</value>
+    <comment>金額</comment>
+  </data>
+  <data name="QuotationDate" xml:space="preserve">
+    <value>見積日</value>
+    <comment>見積日</comment>
+  </data>
+  <data name="QuotationNo" xml:space="preserve">
+    <value>見積No.</value>
+    <comment>見積No.</comment>
+  </data>
+  <data name="Remarks" xml:space="preserve">
+    <value>備考</value>
+    <comment>備考</comment>
+  </data>
+  <data name="Sets" xml:space="preserve">
+    <value>式</value>
+    <comment>数量単位：式</comment>
+  </data>
+  <data name="SubTotal" xml:space="preserve">
+    <value>小計</value>
+    <comment>小計</comment>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>摘要</value>
+    <comment>摘要（てきよう）</comment>
+  </data>
+  <data name="Telephone" xml:space="preserve">
+    <value>TEL：</value>
+    <comment>電話番号</comment>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>御　見　積　書</value>
+    <comment>タイトル</comment>
+  </data>
+  <data name="TotalPrice" xml:space="preserve">
+    <value>合計金額</value>
+    <comment>合計金額</comment>
+  </data>
+  <data name="UnitPrice" xml:space="preserve">
+    <value>単価</value>
+    <comment>単価</comment>
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value>台</value>
+    <comment>数量単位：台</comment>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>数量</value>
+    <comment>数量</comment>
+  </data>
+  <data name="Weeks" xml:space="preserve">
+    <value>*週間</value>
+    <comment>受注後*週間</comment>
   </data>
 </root>

@@ -3,7 +3,11 @@ using System;
 
 namespace Management.Pages.ViewModel.Base
 {
-    public class PageViewModelBase : ViewModelBase
+
+    /// <summary>
+    /// タブ制御用ViewModel基幹
+    /// </summary>
+    public class TabViewModelBase : ViewModelBase
     {
 
         /// <summary>
