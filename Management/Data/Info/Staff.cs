@@ -10,6 +10,11 @@ namespace Management.Data.Info
     {
 
         /// <summary>
+        /// 該当担当者を書類表記するか
+        /// </summary>
+        public bool IsSelected { get; set; }
+
+        /// <summary>
         /// 名前
         /// </summary>
         public string FirstName { get; set; }
@@ -51,6 +56,11 @@ namespace Management.Data.Info
         /// フルネームを姓名表記とするか
         /// </summary>
         public bool IsFullNameJapaneseStyle { private get; set; } = true;
+
+        /// <summary>
+        /// 書類表記時、フルネーム表示するか
+        /// </summary>
+        public bool IsNotationFullName { get; set; } = false;
 
         /// <summary>
         /// 部署
@@ -95,7 +105,7 @@ namespace Management.Data.Info
         /// <param name="mobilePhone">携帯電話番号</param>
         /// <param name="remarks">メモ</param>
         /// <param name="createDate">登録日</param>
-        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string position, string eMailAddress, string mobilePhone, string remarks, DateTime createDate)
+        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string position, string eMailAddress, string mobilePhone, string remarks, DateTime createDate, bool IsNotationFullName)
         {
 
             FirstName = firstName;
@@ -134,7 +144,8 @@ namespace Management.Data.Info
                         && staff.EMailAddress.Equals(EMailAddress)
                         && staff.MobilePhone.Equals(MobilePhone)
                         && staff.Remarks.Equals(Remarks)
-                        && staff.CreateDate.Equals(CreateDate);
+                        && staff.CreateDate.Equals(CreateDate)
+                        && staff.IsNotationFullName.Equals(IsNotationFullName);
 
             }
             else
@@ -159,7 +170,7 @@ namespace Management.Data.Info
         /// <returns>クローン</returns>
         public object Clone()
         {
-            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, Position, EMailAddress, MobilePhone, Remarks, CreateDate);
+            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, Position, EMailAddress, MobilePhone, Remarks, CreateDate, IsNotationFullName);
         }
 
     }

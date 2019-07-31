@@ -1,4 +1,5 @@
-﻿using Management.Data.Info;
+﻿using AYam.Common.MVVM;
+using Management.Data.Info;
 using Model = Management.Pages.Model.Quotation;
 using Management.Pages.ViewModel.Base;
 using System;
@@ -45,15 +46,7 @@ namespace Management.Pages.ViewModel.Quotation
         /// </summary>
         public string ClientStaff
         {
-            get { return _Model?.File.ClientStaff ?? ""; }
-            set
-            {
-                if (_Model != null)
-                {
-                    _Model.File.ClientStaff = value;
-                    CallPropertyChanged();
-                }
-            }
+            get { return _Model?.File.GetStaffNames() ?? ""; }
         }
 
         /// <summary>
@@ -162,6 +155,11 @@ namespace Management.Pages.ViewModel.Quotation
         }
 
         /// <summary>
+        /// 選択している見積内容
+        /// </summary>
+        public QuoteSummary SelectedSummary { get; set; } = null;
+
+        /// <summary>
         /// 備考
         /// </summary>
         public string Remarks
@@ -194,6 +192,112 @@ namespace Management.Pages.ViewModel.Quotation
             {
                 _TotalPrice = value;
                 CallPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// 客先担当選択コマンド
+        /// </summary>
+        public DelegateCommand SelectedStaffCommand
+        {
+            get
+            {
+
+                return new DelegateCommand(() => 
+                {
+                    CallPropertyChanged("CallSelectedStaff");
+                });
+
+            }
+        }
+
+        /// <summary>
+        /// 摘要コマンド
+        /// </summary>
+        public DelegateCommand<string> SummaryCommand
+        {
+            get
+            {
+
+                return new DelegateCommand<string>(
+                    (parameter) => 
+                    {
+
+                        switch (parameter)
+                        {
+
+                            case "add":     // 行追加
+
+                                Summaries?.Add(new QuoteSummary()
+                                {
+                                    No = Summaries?.Count ?? 1,
+                                    Summary = "",
+                                    Volume = 0,
+                                    Unit = VolumeUnit.Sets,
+                                    UnitPrice = 0
+                                });
+
+                                break;
+
+                            case "insert":  // 行挿入
+
+                                if (SelectedSummary != null)
+                                {
+
+                                    var index = Summaries?.IndexOf(SelectedSummary) ?? -1;
+
+                                    if (!index.Equals(-1))
+                                    {
+
+                                        for (int iLoop = index + 1; iLoop < Summaries.Count; iLoop++)
+                                        {
+                                            Summaries[iLoop].No += 1;
+                                        }
+
+                                        var quote = new QuoteSummary()
+                                        {
+                                            No = index + 1,
+                                            Summary = "",
+                                            Volume = 0,
+                                            Unit = VolumeUnit.Sets,
+                                            UnitPrice = 0
+                                        };
+
+                                        Summaries?.Insert(index, quote);
+
+                                    }
+
+                                }
+
+                                break;
+
+                            case "remove":  // 行削除
+
+                                if (SelectedSummary != null)
+                                {
+
+                                    var index = Summaries?.IndexOf(SelectedSummary) ?? -1;
+
+                                    if (!index.Equals(-1))
+                                    {
+
+                                        for (int iLoop = index + 1; iLoop < Summaries.Count; iLoop++)
+                                        {
+                                            Summaries[iLoop].No -= 1;
+                                        }
+
+                                        Summaries.RemoveAt(index);
+
+                                    }
+
+                                }
+
+                                break;
+
+                        }
+
+                    });
+
             }
         }
 
@@ -283,6 +387,14 @@ namespace Management.Pages.ViewModel.Quotation
 
             TotalPrice = totalPrice;
 
+        }
+
+        /// <summary>
+        /// 印刷実行
+        /// </summary>
+        public override void ExecutePrint()
+        {
+            System.Windows.MessageBox.Show("考え中");
         }
 
     }

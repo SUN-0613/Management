@@ -2,8 +2,10 @@
 using AYam.Common.Data.List;
 using Management.Data.Info;
 using Management.Data.Path;
+using Property = Management.Properties;
 using System;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Management.Data.File
@@ -19,7 +21,7 @@ namespace Management.Data.File
         /// <summary>
         /// 取引先担当者名
         /// </summary>
-        public string ClientStaff;
+        public ObservableCollection<Staff> ClientStaffs;
 
         /// <summary>
         /// 見積No
@@ -72,6 +74,9 @@ namespace Management.Data.File
             Master.Dispose();
             Master = null;
 
+            ClientStaffs.Clear();
+            ClientStaffs = null;
+
             foreach (var summary in Summaries)
             {
                 summary.InitializeTotalPrice();
@@ -89,10 +94,10 @@ namespace Management.Data.File
         {
 
             Master = new MasterFile();
+            ClientStaffs = new ObservableCollection<Staff>();
             Summaries = new ObservableCollection<QuoteSummary>();
 
             ClientName = GetValue(nameof(ClientName), "");
-            ClientStaff = GetValue(nameof(ClientStaff), "");
             QuoteNo = GetValue(nameof(QuoteNo), "");
             QuoteDate = GetValue(nameof(QuoteDate), DateTime.Now);
             JobName = GetValue(nameof(JobName), "");
@@ -101,6 +106,25 @@ namespace Management.Data.File
 
             if (Element != null)
             {
+
+                foreach (var element in Element.Elements(nameof(ClientStaffs)))
+                {
+                    ClientStaffs.Add(new Staff(GetValue(element.Element(nameof(Staff.FirstName)), "")
+                                        , GetValue(element.Element(nameof(Staff.FirstKana)), "")
+                                        , GetValue(element.Element(nameof(Staff.LastName)), "")
+                                        , GetValue(element.Element(nameof(Staff.LastKana)), "")
+                                        , GetValue(element.Element(nameof(Staff.Department)), "")
+                                        , GetValue(element.Element(nameof(Staff.Position)), "")
+                                        , GetValue(element.Element(nameof(Staff.EMailAddress)), "")
+                                        , GetValue(element.Element(nameof(Staff.MobilePhone)), "")
+                                        , GetValue(element.Element(nameof(Staff.Remarks)), "")
+                                        , GetAttribute(element, nameof(Staff.CreateDate), DateTime.Now)
+                                        , GetAttribute(element, nameof(Staff.IsNotationFullName), false))
+                    {
+                        IsSelected = GetAttribute(element, nameof(Staff.IsSelected), false)
+                    });
+
+                }
 
                 foreach (var element in Element.Elements(nameof(QuoteSummary)))
                 {
@@ -127,7 +151,6 @@ namespace Management.Data.File
             using (var elements = new List<XElement>
             {
                 new XElement(nameof(ClientName), ClientName),
-                new XElement(nameof(ClientStaff), ClientStaff),
                 new XElement(nameof(QuoteNo), QuoteNo),
                 new XElement(nameof(QuoteDate), QuoteDate),
                 new XElement(nameof(JobName), JobName),
@@ -135,6 +158,28 @@ namespace Management.Data.File
                 new XElement(nameof(Remarks), Remarks)
             })
             {
+
+                foreach (var staff in ClientStaffs)
+                {
+
+                    var element = new XElement(nameof(ClientStaffs));
+
+                    AddElement(ref element, new XElement(nameof(Staff.FirstName), staff.FirstName));
+                    AddElement(ref element, new XElement(nameof(Staff.FirstKana), staff.FirstKana));
+                    AddElement(ref element, new XElement(nameof(Staff.LastName), staff.LastName));
+                    AddElement(ref element, new XElement(nameof(Staff.LastKana), staff.LastKana));
+                    AddElement(ref element, new XElement(nameof(Staff.Department), staff.Department));
+                    AddElement(ref element, new XElement(nameof(Staff.Position), staff.Position));
+                    AddElement(ref element, new XElement(nameof(Staff.EMailAddress), staff.EMailAddress));
+                    AddElement(ref element, new XElement(nameof(Staff.MobilePhone), staff.MobilePhone));
+                    AddElement(ref element, new XElement(nameof(Staff.Remarks), staff.Remarks));
+                    AddAttribute(ref element, new XAttribute(nameof(Staff.CreateDate), staff.CreateDate));
+                    AddAttribute(ref element, new XAttribute(nameof(Staff.IsNotationFullName), staff.IsNotationFullName));
+                    AddAttribute(ref element, new XAttribute(nameof(Staff.IsSelected), staff.IsSelected));
+
+                    elements.Add(element);
+
+                }
 
                 foreach (var summary in Summaries)
                 {
@@ -162,6 +207,43 @@ namespace Management.Data.File
         public void Delete()
         {
             DeleteXmlFile();
+        }
+
+        /// <summary>
+        /// 客先担当者一覧を区切文字と敬称を付与して取得
+        /// </summary>
+        public string GetStaffNames()
+        {
+
+            var text = new StringBuilder(64);
+            string returnValue = "";
+
+            try
+            {
+
+                foreach (var staff in ClientStaffs)
+                {
+
+                    if (!text.Length.Equals(0))
+                    {
+                        text.Append(Property::ClientInfo.Comma);
+                    }
+
+                    text.Append(staff).Append(Property::ClientInfo.HonorificTitle);
+
+                }
+
+                returnValue = text.ToString();
+
+            }
+            finally
+            {
+                text.Clear();
+                text = null;
+            }
+
+            return returnValue;
+
         }
 
     }

@@ -1,23 +1,23 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
-using ViewModel = Management.Pages.ViewModel.Quotation;
+using ViewModel = Management.Forms.ViewModel.Clients;
 using System;
 using System.ComponentModel;
-using System.Windows.Controls;
+using System.Windows;
 
-namespace Management.Pages.View.Quotation
+namespace Management.Forms.View.Clients
 {
     /// <summary>
-    /// Quotation.xaml の相互作用ロジック
+    /// SelectedStaff.xaml の相互作用ロジック
     /// </summary>
-    public partial class Quotation : Page, IDisposable
+    public partial class SelectedStaff : Window, IDisposable
     {
 
         /// <summary>
-        /// 見積書.View
+        /// 客先担当選択.View
         /// </summary>
-        /// <param name="dataFile">見積情報</param>
-        public Quotation(DataFileInfo dataFile)
+        /// <param name="dataFile">ファイル情報</param>
+        public SelectedStaff(DataFileInfo dataFile)
         {
 
             InitializeComponent();
@@ -27,9 +27,8 @@ namespace Management.Pages.View.Quotation
                 dispose.Dispose();
             }
 
-            var viewModel = new ViewModel::Quotation(dataFile);
+            var viewModel = new ViewModel::SelectedStaff(dataFile);
             viewModel.PropertyChanged += OnPropertyChanged;
-
             DataContext = viewModel;
 
         }
@@ -53,21 +52,24 @@ namespace Management.Pages.View.Quotation
             DataContext = null;
 
         }
-
+        
         /// <summary>
-        /// ViewModel変更通知イベント
+        /// ViewModelプロパティ変更イベント
         /// </summary>
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel::Quotation viewModel)
+            if (DataContext is ViewModel::SelectedStaff viewModel)
             {
 
                 switch (e.PropertyName)
                 {
 
-                    case "CallSelectedStaff":   // 客先担当者を選択
 
+                    case "CallOk":
+                        viewModel.Save();
+                        DialogResult = true;
+                        break;
 
                     default:
                         break;

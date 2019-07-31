@@ -88,6 +88,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   、 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Comma {
+            get {
+                return ResourceManager.GetString("Comma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   よみがな に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string CompanyKana {
@@ -129,6 +138,33 @@ namespace Management.Properties {
         public static string FaxNo {
             get {
                 return ResourceManager.GetString("FaxNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   様 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string HonorificTitle {
+            get {
+                return ResourceManager.GetString("HonorificTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   姓名表示 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IsNotationFullName {
+            get {
+                return ResourceManager.GetString("IsNotationFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   選択 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IsSelected {
+            get {
+                return ResourceManager.GetString("IsSelected", resourceCulture);
             }
         }
         

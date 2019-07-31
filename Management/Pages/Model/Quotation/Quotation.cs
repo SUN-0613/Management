@@ -33,7 +33,6 @@ namespace Management.Pages.Model.Quotation
         {
 
             File = new QuotationFile(dataFile);
-            _DataFile = dataFile;
 
         }
 
@@ -54,8 +53,6 @@ namespace Management.Pages.Model.Quotation
 
             File.Dispose();
             File = null;
-
-            _DataFile = null;
 
         }
 

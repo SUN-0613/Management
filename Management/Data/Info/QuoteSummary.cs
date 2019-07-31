@@ -27,6 +27,8 @@ namespace Management.Data.Info
         Units
     }
 
+#pragma warning disable 0659
+
     /// <summary>
     /// 見積摘要
     /// </summary>
@@ -40,10 +42,20 @@ namespace Management.Data.Info
         /// </summary>
         private Action _CalcTotalPrice = null;
 
+        private int _No;
+
         /// <summary>
         /// No.
         /// </summary>
-        public int No { get; set; }
+        public int No
+        {
+            get { return _No; }
+            set
+            {
+                _No = value;
+                CallPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// 摘要
@@ -140,6 +152,23 @@ namespace Management.Data.Info
         public void InitializeTotalPrice()
         {
             _CalcTotalPrice = null;
+        }
+
+        /// <summary>
+        /// 同データかチェック
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+
+            if (obj is QuoteSummary quote)
+            {
+                return No.Equals(quote.No);
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
     }

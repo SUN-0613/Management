@@ -6,6 +6,8 @@ using System.Windows.Controls;
 namespace Management.Forms.Model.Menu.Class
 {
 
+#pragma warning disable 0659
+
     /// <summary>
     /// TabControl内に表示するデータ
     /// </summary>

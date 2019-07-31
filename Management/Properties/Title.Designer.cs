@@ -131,5 +131,14 @@ namespace Management.Properties {
                 return ResourceManager.GetString("Quotation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   取引先担当選択 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SelectedStaff {
+            get {
+                return ResourceManager.GetString("SelectedStaff", resourceCulture);
+            }
+        }
     }
 }

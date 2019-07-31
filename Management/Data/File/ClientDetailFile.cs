@@ -114,6 +114,7 @@ namespace Management.Data.File
                                         , GetValue(element.Element(nameof(Staff.MobilePhone)), "")
                                         , GetValue(element.Element(nameof(Staff.Remarks)), "")
                                         , GetAttribute(element, nameof(Staff.CreateDate), DateTime.Now)
+                                        , GetAttribute(element, nameof(Staff.IsNotationFullName), false)
                                         ));
 
                 }
@@ -156,6 +157,7 @@ namespace Management.Data.File
                     AddElement(ref element, new XElement(nameof(Staff.MobilePhone), Staffs[iLoop].MobilePhone));
                     AddElement(ref element, new XElement(nameof(Staff.Remarks), Staffs[iLoop].Remarks));
                     AddAttribute(ref element, new XAttribute(nameof(Staff.CreateDate), Staffs[iLoop].CreateDate));
+                    AddAttribute(ref element, new XAttribute(nameof(Staff.IsNotationFullName), Staffs[iLoop].IsNotationFullName));
 
                     elements.Add(element);
 

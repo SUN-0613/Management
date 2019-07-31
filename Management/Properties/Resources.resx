@@ -137,6 +137,10 @@
     <value>編集</value>
     <comment>ボタン：編集</comment>
   </data>
+  <data name="Button_Insert" xml:space="preserve">
+    <value>挿入</value>
+    <comment>ボタン：挿入</comment>
+  </data>
   <data name="Button_Next" xml:space="preserve">
     <value>次</value>
     <comment>ボタン：次</comment>

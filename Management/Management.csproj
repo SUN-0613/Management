@@ -105,6 +105,7 @@
     <Compile Include="Forms\Model\Clients\ClientDetail.cs" />
     <Compile Include="Forms\Model\Clients\ClientList.cs" />
     <Compile Include="Forms\Model\Clients\ClientStaffAdd.cs" />
+    <Compile Include="Forms\Model\Clients\SelectedStaff.cs" />
     <Compile Include="Forms\Model\Master\MasterInfo.cs" />
     <Compile Include="Forms\Model\Menu\Calendar.cs" />
     <Compile Include="Forms\Model\Menu\Class\TabItemData.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Forms\ViewModel\Clients\ClientAdd.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientInfo.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientStaffAdd.cs" />
+    <Compile Include="Forms\ViewModel\Clients\SelectedStaff.cs" />
     <Compile Include="Forms\ViewModel\Menu\MainMenu.cs" />
     <Compile Include="Forms\ViewModel\Master\MasterInfo.cs" />
     <Compile Include="Forms\View\Clients\ClientAdd.xaml.cs">
@@ -124,6 +126,9 @@
     </Compile>
     <Compile Include="Forms\View\Clients\ClientStaffAdd.xaml.cs">
       <DependentUpon>ClientStaffAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\Clients\SelectedStaff.xaml.cs">
+      <DependentUpon>SelectedStaff.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\View\Master\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
@@ -279,6 +284,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\View\Clients\SelectedStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Forms\View\Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -300,10 +309,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\View\Quotation\Quotation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\VolumeUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

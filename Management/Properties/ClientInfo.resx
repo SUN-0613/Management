@@ -129,6 +129,10 @@
     <value>取引先一覧</value>
     <comment>取引先一覧</comment>
   </data>
+  <data name="Comma" xml:space="preserve">
+    <value>、</value>
+    <comment>区切文字</comment>
+  </data>
   <data name="CompanyKana" xml:space="preserve">
     <value>よみがな</value>
     <comment>会社名：よみがな</comment>
@@ -148,6 +152,18 @@
   <data name="FaxNo" xml:space="preserve">
     <value>Fax</value>
     <comment>FAX番号</comment>
+  </data>
+  <data name="HonorificTitle" xml:space="preserve">
+    <value>様</value>
+    <comment>敬称</comment>
+  </data>
+  <data name="IsNotationFullName" xml:space="preserve">
+    <value>姓名表示</value>
+    <comment>姓名表示欄</comment>
+  </data>
+  <data name="IsSelected" xml:space="preserve">
+    <value>選択</value>
+    <comment>選択欄</comment>
   </data>
   <data name="MessageClose" xml:space="preserve">
     <value>編集中のデータを反映せずに終了しますか？</value>

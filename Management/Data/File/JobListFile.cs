@@ -85,7 +85,8 @@ namespace Management.Data.File
                     {
 
                         job.Quotations.Add(
-                            new DataFileInfo(GetAttribute(quote, nameof(DataFileInfo.Revision), 0)
+                            new DataFileInfo(DataKind.Quotation
+                                            , GetAttribute(quote, nameof(DataFileInfo.Revision), 0)
                                             , GetAttribute(quote, nameof(DataFileInfo.CreateDate), DateTime.MinValue)
                                             , GetAttribute(quote, nameof(DataFileInfo.Seaquence), 1)
                                             , GetValue(quote, false)
@@ -96,7 +97,8 @@ namespace Management.Data.File
                     {
 
                         job.Deliveries.Add(
-                            new DataFileInfo(GetAttribute(delivery, nameof(DataFileInfo.Revision), 0)
+                            new DataFileInfo(DataKind.Delivery
+                                            , GetAttribute(delivery, nameof(DataFileInfo.Revision), 0)
                                             , GetAttribute(delivery, nameof(DataFileInfo.CreateDate), DateTime.MinValue)
                                             , GetAttribute(delivery, nameof(DataFileInfo.Seaquence), 1)
                                             , GetValue(delivery, false)
@@ -108,7 +110,8 @@ namespace Management.Data.File
                     {
 
                         job.Invoices.Add(
-                            new DataFileInfo(GetAttribute(invoice, nameof(DataFileInfo.Revision), 0)
+                            new DataFileInfo(DataKind.Invoice
+                                            , GetAttribute(invoice, nameof(DataFileInfo.Revision), 0)
                                             , GetAttribute(invoice, nameof(DataFileInfo.CreateDate), DateTime.MinValue)
                                             , GetAttribute(invoice, nameof(DataFileInfo.Seaquence), 1)
                                             , GetValue(invoice, false)
@@ -117,7 +120,8 @@ namespace Management.Data.File
                     }
 
                     var cover = element.Element(nameof(Job.CoverLetter));
-                    job.CoverLetter = new DataFileInfo(GetAttribute(cover, nameof(DataFileInfo.Revision), 0)
+                    job.CoverLetter = new DataFileInfo(DataKind.CoverLetter
+                                                        , GetAttribute(cover, nameof(DataFileInfo.Revision), 0)
                                                         , GetAttribute(cover,nameof(DataFileInfo.CreateDate), DateTime.MinValue)
                                                         , GetAttribute(cover, nameof(DataFileInfo.Seaquence), 1)
                                                         , GetValue(cover, false)

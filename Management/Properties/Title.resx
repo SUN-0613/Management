@@ -149,4 +149,8 @@
     <value>御見積書</value>
     <comment>御見積</comment>
   </data>
+  <data name="SelectedStaff" xml:space="preserve">
+    <value>取引先担当選択</value>
+    <comment>取引先担当選択ダイアログ</comment>
+  </data>
 </root>

@@ -4,7 +4,7 @@
     /// <summary>
     /// 印刷Page用
     /// </summary>
-    public class TabPrintViewModelBase : TabViewModelBase
+    public abstract class TabPrintViewModelBase : TabViewModelBase
     {
 
         /// <summary>
@@ -16,6 +16,11 @@
         /// Pageの短一辺
         /// </summary>
         public double ShortSide { get { return 794d; } }
+
+        /// <summary>
+        /// 印刷実行
+        /// </summary>
+        public abstract void ExecutePrint();
 
     }
 

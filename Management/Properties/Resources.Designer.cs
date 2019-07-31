@@ -106,6 +106,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   挿入 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_Insert {
+            get {
+                return ResourceManager.GetString("Button_Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   次 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Button_Next {

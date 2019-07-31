@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 namespace Management.Data.Info
 {
 
+#pragma warning disable 0659
+
     /// <summary>
     /// Job情報
     /// </summary>
