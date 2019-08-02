@@ -26,6 +26,26 @@ namespace Management.Pages.ViewModel.Quotation
         #region ViewModel
 
         /// <summary>
+        /// 印刷モード
+        /// </summary>
+        public bool IsPrintMode { get { return _Model?.IsPrintMode ?? false; } }
+
+        /// <summary>
+        /// 入力モード
+        /// </summary>
+        public bool IsInputMode { get { return !_Model?.IsPrintMode ?? true; } }
+
+        /// <summary>
+        /// 現在ページ
+        /// </summary>
+        public int NowPage { get { return _Model?.NowPage ?? 0; } }
+
+        /// <summary>
+        /// 最大ページ数
+        /// </summary>
+        public int MaxPage { get { return _Model?.MaxPage ?? 0; } }
+
+        /// <summary>
         /// 取引先社名
         /// </summary>
         public string ClientName
@@ -144,6 +164,11 @@ namespace Management.Pages.ViewModel.Quotation
         }
 
         /// <summary>
+        /// 印刷用摘要一覧
+        /// </summary>
+        public ObservableCollection<QuoteSummary> PrintSummaries { get { return _Model?.PrintSummaries; } }
+
+        /// <summary>
         /// 選択している見積内容
         /// </summary>
         public QuoteSummary SelectedSummary { get; set; } = null;
@@ -161,6 +186,26 @@ namespace Management.Pages.ViewModel.Quotation
                     _Model.File.Remarks = value;
                     CallPropertyChanged();
                 }
+            }
+        }
+
+        /// <summary>
+        /// 小計金額
+        /// 税抜
+        /// </summary>
+        private decimal _SubTotalPrice;
+
+        /// <summary>
+        /// 小計金額
+        /// 税抜
+        /// </summary>
+        public decimal SubTotalPrice
+        {
+            get { return _SubTotalPrice; }
+            set
+            {
+                _SubTotalPrice = value;
+                CallPropertyChanged();
             }
         }
 
@@ -315,7 +360,11 @@ namespace Management.Pages.ViewModel.Quotation
 
             foreach (var summary in _Model.File.Summaries)
             {
-                summary.SetCalcTotalPrice(new Action(() => CalcTotalPrice()));
+                summary.SetCalcTotalPrice(new Action(() => 
+                {
+                    CalcSubTotalPrice();
+                    CalcTotalPrice();
+                }));
             }
 
         }
@@ -332,7 +381,11 @@ namespace Management.Pages.ViewModel.Quotation
 
             foreach (var summary in _Model.File.Summaries)
             {
-                summary.SetCalcTotalPrice(new Action(() => CalcTotalPrice()));
+                summary.SetCalcTotalPrice(new Action(() => 
+                {
+                    CalcSubTotalPrice();
+                    CalcTotalPrice();
+                }));
             }
 
         }
@@ -357,6 +410,46 @@ namespace Management.Pages.ViewModel.Quotation
                 _Model.Dispose();
                 _Model = null;
             }
+
+        }
+
+        /// <summary>
+        /// 小計金額を計算
+        /// </summary>
+        private void CalcSubTotalPrice()
+        {
+
+            decimal subTotalPrice = 0;
+
+            if (_Model != null)
+            {
+
+                if (IsPrintMode)
+                {
+
+                    foreach (var summary in PrintSummaries)
+                    {
+
+                        subTotalPrice += summary.Price;
+
+                    }
+
+                }
+                else
+                {
+
+                    foreach (var summary in _Model.File.Summaries)
+                    {
+
+                        subTotalPrice += summary.Price;
+
+                    }
+
+                }
+
+            }
+
+            SubTotalPrice = subTotalPrice;
 
         }
 

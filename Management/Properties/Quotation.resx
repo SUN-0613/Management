@@ -185,6 +185,10 @@
     <value>No.</value>
     <comment>No</comment>
   </data>
+  <data name="Page" xml:space="preserve">
+    <value>Page</value>
+    <comment>ページ表記</comment>
+  </data>
   <data name="PaymentTerms" xml:space="preserve">
     <value>支払条件：</value>
     <comment>支払条件</comment>

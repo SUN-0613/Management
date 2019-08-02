@@ -26,6 +26,35 @@ namespace Management.Pages.Model.Quotation
 
         #endregion
 
+        #region ViewModel.Property
+
+        /// <summary>
+        /// 印刷モード
+        /// </summary>
+        public bool IsPrintMode = false;
+
+        /// <summary>
+        /// 1ページ毎の表示摘要件数
+        /// </summary>
+        public const int PageLineCount = 10;
+
+        /// <summary>
+        /// 現在ページ
+        /// </summary>
+        public int NowPage;
+
+        /// <summary>
+        /// 最大ページ数
+        /// </summary>
+        public int MaxPage;
+
+        /// <summary>
+        /// 印刷用摘要一覧
+        /// </summary>
+        public ObservableCollection<QuoteSummary> PrintSummaries { get; set; }
+
+        #endregion
+
         /// <summary>
         /// 見積書.Model
         /// </summary>

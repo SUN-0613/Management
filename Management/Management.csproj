@@ -85,6 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converter\BoolVisibilityConverter.cs" />
     <Compile Include="Converter\DeliveryUnitConverter.cs" />
     <Compile Include="Converter\JobStatusConverter.cs" />
     <Compile Include="Converter\VolumeUnitConverter.cs" />

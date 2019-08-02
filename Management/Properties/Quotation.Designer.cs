@@ -214,6 +214,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   Page に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Page {
+            get {
+                return ResourceManager.GetString("Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   支払条件： に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string PaymentTerms {
