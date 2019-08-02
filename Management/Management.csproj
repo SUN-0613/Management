@@ -85,6 +85,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converter\DeliveryUnitConverter.cs" />
     <Compile Include="Converter\JobStatusConverter.cs" />
     <Compile Include="Converter\VolumeUnitConverter.cs" />
     <Compile Include="Data\File\ClientDetailFile.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Data\File\QuotationFile.cs" />
     <Compile Include="Data\Info\Client.cs" />
     <Compile Include="Data\Info\DataFileInfo.cs" />
+    <Compile Include="Data\Info\DeliveryDate.cs" />
     <Compile Include="Data\Info\Job.cs" />
     <Compile Include="Data\Info\JobStatus.cs" />
     <Compile Include="Data\Info\QuoteSummary.cs" />
@@ -112,12 +114,14 @@
     <Compile Include="Forms\Model\Menu\Schedule.cs" />
     <Compile Include="Forms\Model\Menu\TabItem.cs" />
     <Compile Include="Forms\Model\Menu\Timer.cs" />
+    <Compile Include="Forms\Model\Quotation\InputDeliveryDate.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientAdd.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientInfo.cs" />
     <Compile Include="Forms\ViewModel\Clients\ClientStaffAdd.cs" />
     <Compile Include="Forms\ViewModel\Clients\SelectedStaff.cs" />
     <Compile Include="Forms\ViewModel\Menu\MainMenu.cs" />
     <Compile Include="Forms\ViewModel\Master\MasterInfo.cs" />
+    <Compile Include="Forms\ViewModel\Quotation\InputDeliveryDate.cs" />
     <Compile Include="Forms\View\Clients\ClientAdd.xaml.cs">
       <DependentUpon>ClientAdd.xaml</DependentUpon>
     </Compile>
@@ -132,6 +136,9 @@
     </Compile>
     <Compile Include="Forms\View\Master\MasterInfo.xaml.cs">
       <DependentUpon>MasterInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\Quotation\InputDeliveryDate.xaml.cs">
+      <DependentUpon>InputDeliveryDate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Model\Calendar\Calendar.cs" />
     <Compile Include="Pages\Model\Calendar\Class\DayInfo.cs" />
@@ -293,6 +300,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\View\Master\MasterInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\View\Quotation\InputDeliveryDate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

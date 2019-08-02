@@ -46,7 +46,7 @@ namespace Management.Data.File
         /// <summary>
         /// 納期
         /// </summary>
-        public string DeliveryDate;
+        public DeliveryDate DeliveryDate;
 
         /// <summary>
         /// 見積内容一覧
@@ -101,11 +101,17 @@ namespace Management.Data.File
             QuoteNo = GetValue(nameof(QuoteNo), "");
             QuoteDate = GetValue(nameof(QuoteDate), DateTime.Now);
             JobName = GetValue(nameof(JobName), "");
-            DeliveryDate = GetValue(nameof(DeliveryDate), "");
             Remarks = GetValue(nameof(Remarks), "");
 
             if (Element != null)
             {
+
+                var delivery = Element.Element(nameof(DeliveryDate));
+                DeliveryDate = new DeliveryDate()
+                {
+                    No = GetValue(nameof(DeliveryDate.No), 0d),
+                    Unit = GetValue(nameof(DeliveryDate.Unit), DeliveryUnit.Months)
+                };
 
                 foreach (var element in Element.Elements(nameof(ClientStaffs)))
                 {
@@ -154,10 +160,14 @@ namespace Management.Data.File
                 new XElement(nameof(QuoteNo), QuoteNo),
                 new XElement(nameof(QuoteDate), QuoteDate),
                 new XElement(nameof(JobName), JobName),
-                new XElement(nameof(DeliveryDate), DeliveryDate),
                 new XElement(nameof(Remarks), Remarks)
             })
             {
+
+                var delivery = new XElement(nameof(DeliveryDate));
+
+                AddElement(ref delivery, new XElement(nameof(DeliveryDate.No), DeliveryDate.No));
+                AddElement(ref delivery, new XElement(nameof(DeliveryDate.Unit), DeliveryDate.Unit));
 
                 foreach (var staff in ClientStaffs)
                 {

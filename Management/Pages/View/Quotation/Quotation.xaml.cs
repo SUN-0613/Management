@@ -1,5 +1,7 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
+using FormsView = Management.Forms.View;
+using FormsViewModel = Management.Forms.ViewModel;
 using ViewModel = Management.Pages.ViewModel.Quotation;
 using System;
 using System.ComponentModel;
@@ -66,8 +68,41 @@ namespace Management.Pages.View.Quotation
                 switch (e.PropertyName)
                 {
 
-                    case "CallSelectedStaff":   // 客先担当者を選択
+                    case "CallSelectedStaff":       // 客先担当者を選択
 
+                        var selectStaffs = new FormsView::Clients.SelectedStaff(viewModel.GetDataFileInfo());
+                        var resultValue = selectStaffs.ShowDialog();
+
+                        if (resultValue.HasValue && resultValue.Value
+                            && selectStaffs.DataContext is FormsViewModel::Clients.SelectedStaff staffViewModel)
+                        {
+
+                            viewModel.SetClientStaffs(staffViewModel.Staffs);
+
+                        }
+
+                        selectStaffs.Dispose();
+                        selectStaffs = null;
+
+                        break;
+
+                    case "CallInputDeliveryDate":   // 納期入力
+
+                        var deliveryDate = new FormsView::Quotation.InputDeliveryDate(viewModel.GetDeliveryDate());
+                        resultValue = deliveryDate.ShowDialog();
+
+                        if (resultValue.HasValue && resultValue.Value
+                            && deliveryDate.DataContext is FormsViewModel::Quotation.InputDeliveryDate deliveryViewModel)
+                        {
+
+                            viewModel.SetDeliveryDate(deliveryViewModel.No, deliveryViewModel.SelectedUnit);
+
+                        }
+
+                        deliveryDate.Dispose();
+                        deliveryDate = null;
+
+                        break;
 
                     default:
                         break;

@@ -160,6 +160,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   納期の入力 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string InputDeliveryDate {
+            get {
+                return ResourceManager.GetString("InputDeliveryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   件名： に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string JobTitle {
@@ -187,7 +196,7 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   *月間 に類似しているローカライズされた文字列を検索します。
+        ///   *ヶ月間 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string Months {
             get {
@@ -264,6 +273,15 @@ namespace Management.Properties {
         internal static string Remarks {
             get {
                 return ResourceManager.GetString("Remarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   客先担当の選択 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string SelectedClientStaffs {
+            get {
+                return ResourceManager.GetString("SelectedClientStaffs", resourceCulture);
             }
         }
         

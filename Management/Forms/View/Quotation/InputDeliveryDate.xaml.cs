@@ -1,23 +1,23 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
-using ViewModel = Management.Forms.ViewModel.Clients;
+using ViewModel = Management.Forms.ViewModel.Quotation;
 using System;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Management.Forms.View.Clients
+namespace Management.Forms.View.Quotation
 {
     /// <summary>
-    /// SelectedStaff.xaml の相互作用ロジック
+    /// InputDeliveryDate.xaml の相互作用ロジック
     /// </summary>
-    public partial class SelectedStaff : Window, IDisposable
+    public partial class InputDeliveryDate : Window, IDisposable
     {
 
         /// <summary>
-        /// 客先担当選択.View
+        /// 納期入力.View
         /// </summary>
-        /// <param name="dataFile">ファイル情報</param>
-        public SelectedStaff(DataFileInfo dataFile)
+        /// <param name="deliveryDate">見積納期</param>
+        public InputDeliveryDate(DeliveryDate deliveryDate)
         {
 
             InitializeComponent();
@@ -27,8 +27,9 @@ namespace Management.Forms.View.Clients
                 dispose.Dispose();
             }
 
-            var viewModel = new ViewModel::SelectedStaff(dataFile);
+            var viewModel = new ViewModel::InputDeliveryDate(deliveryDate);
             viewModel.PropertyChanged += OnPropertyChanged;
+
             DataContext = viewModel;
 
         }
@@ -49,22 +50,19 @@ namespace Management.Forms.View.Clients
                 dispose.Dispose();
             }
 
-            DataContext = null;
-
         }
-        
+
         /// <summary>
         /// ViewModelプロパティ変更イベント
         /// </summary>
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
 
-            if (DataContext is ViewModel::SelectedStaff viewModel)
+            if (DataContext is ViewModel::InputDeliveryDate viewModel)
             {
 
                 switch (e.PropertyName)
                 {
-
 
                     case "CallOk":
                         DialogResult = true;

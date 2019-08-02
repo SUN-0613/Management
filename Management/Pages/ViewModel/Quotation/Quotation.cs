@@ -125,18 +125,7 @@ namespace Management.Pages.ViewModel.Quotation
         /// <summary>
         /// 納期
         /// </summary>
-        public string DeliveryDate
-        {
-            get { return _Model?.File.DeliveryDate ?? ""; }
-            set
-            {
-                if (_Model != null)
-                {
-                    _Model.File.DeliveryDate = value;
-                    CallPropertyChanged();
-                }
-            }
-        }
+        public string DeliveryDate { get { return _Model?.File.DeliveryDate.Word ?? ""; } }
 
         /// <summary>
         /// 見積内容一覧
@@ -202,12 +191,18 @@ namespace Management.Pages.ViewModel.Quotation
         {
             get
             {
+                return new DelegateCommand(() => { CallPropertyChanged("CallSelectedStaff"); });
+            }
+        }
 
-                return new DelegateCommand(() => 
-                {
-                    CallPropertyChanged("CallSelectedStaff");
-                });
-
+        /// <summary>
+        /// 納期入力コマンド
+        /// </summary>
+        public DelegateCommand InputDeliveryDateCommand
+        {
+            get
+            {
+                return new DelegateCommand(() => { CallPropertyChanged("CallInputDeliveryDate"); });
             }
         }
 
@@ -387,6 +382,47 @@ namespace Management.Pages.ViewModel.Quotation
 
             TotalPrice = totalPrice;
 
+        }
+
+        /// <summary>
+        /// 取引先担当者の登録
+        /// </summary>
+        /// <param name="staffs">取引先担当者一覧</param>
+        public void SetClientStaffs(ObservableCollection<Staff> staffs)
+        {
+            _Model?.SetClientStaffs(staffs);
+            CallPropertyChanged(nameof(ClientStaff));
+        }
+
+        /// <summary>
+        /// 納期情報の取得
+        /// </summary>
+        public DeliveryDate GetDeliveryDate()
+        {
+            return _Model?.File.DeliveryDate;
+        }
+
+        /// <summary>
+        /// 納期情報を設定
+        /// </summary>
+        /// <param name="no">数日、週数、月数</param>
+        /// <param name="unit">
+        /// 単位指定
+        /// 日、週、月
+        /// </param>
+        public void SetDeliveryDate(double no, DeliveryUnit unit)
+        {
+            _Model?.SetDeliveryDate(no, unit);
+            CallPropertyChanged(nameof(DeliveryDate));
+        }
+
+        /// <summary>
+        /// 見積情報の取得
+        /// </summary>
+        /// <returns>見積情報</returns>
+        public override DataFileInfo GetDataFileInfo()
+        {
+            return _Model?.DataFile;
         }
 
         /// <summary>

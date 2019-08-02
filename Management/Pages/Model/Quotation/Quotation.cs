@@ -1,6 +1,7 @@
 ﻿using Management.Data.File;
 using Management.Data.Info;
 using System;
+using System.Collections.ObjectModel;
 
 namespace Management.Pages.Model.Quotation
 {
@@ -21,7 +22,7 @@ namespace Management.Pages.Model.Quotation
         /// <summary>
         /// 見積情報
         /// </summary>
-        private DataFileInfo _DataFile;
+        public DataFileInfo DataFile { get; private set; }
 
         #endregion
 
@@ -32,7 +33,8 @@ namespace Management.Pages.Model.Quotation
         public Quotation(DataFileInfo dataFile)
         {
 
-            File = new QuotationFile(dataFile);
+            DataFile = dataFile;
+            File = new QuotationFile(DataFile);
 
         }
 
@@ -42,7 +44,7 @@ namespace Management.Pages.Model.Quotation
         /// <returns></returns>
         public object Clone()
         {
-            return new Quotation(_DataFile);
+            return new Quotation(DataFile);
         }
 
         /// <summary>
@@ -70,6 +72,38 @@ namespace Management.Pages.Model.Quotation
         public void Delete()
         {
             File.Delete();
+        }
+
+        /// <summary>
+        /// 取引先担当者の登録
+        /// </summary>
+        /// <param name="staffs">取引先担当者一覧</param>
+        public void SetClientStaffs(ObservableCollection<Staff> staffs)
+        {
+
+            File.ClientStaffs.Clear();
+
+            foreach (var staff in staffs)
+            {
+                File.ClientStaffs.Add((Staff)staff.Clone());
+            }
+
+        }
+
+        /// <summary>
+        /// 納期情報を設定
+        /// </summary>
+        /// <param name="no">数日、週数、月数</param>
+        /// <param name="unit">
+        /// 単位指定
+        /// 日、週、月
+        /// </param>
+        public void SetDeliveryDate(double no, DeliveryUnit unit)
+        {
+
+            File.DeliveryDate.No = no;
+            File.DeliveryDate.Unit = unit;
+
         }
 
     }

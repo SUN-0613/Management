@@ -161,6 +161,10 @@
     <value>時間</value>
     <comment>数量単位：時間</comment>
   </data>
+  <data name="InputDeliveryDate" xml:space="preserve">
+    <value>納期の入力</value>
+    <comment>メニュー：納期の入力</comment>
+  </data>
   <data name="JobTitle" xml:space="preserve">
     <value>件名：</value>
     <comment>件名</comment>
@@ -174,8 +178,8 @@
     <comment>文章</comment>
   </data>
   <data name="Months" xml:space="preserve">
-    <value>*月間</value>
-    <comment>受注後*月間</comment>
+    <value>*ヶ月間</value>
+    <comment>受注後*ヶ月間</comment>
   </data>
   <data name="No" xml:space="preserve">
     <value>No.</value>
@@ -208,6 +212,10 @@
   <data name="Remarks" xml:space="preserve">
     <value>備考</value>
     <comment>備考</comment>
+  </data>
+  <data name="SelectedClientStaffs" xml:space="preserve">
+    <value>客先担当の選択</value>
+    <comment>メニュー：客先担当の選択</comment>
   </data>
   <data name="Sets" xml:space="preserve">
     <value>式</value>

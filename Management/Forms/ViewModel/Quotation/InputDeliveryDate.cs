@@ -1,48 +1,55 @@
 ﻿using AYam.Common.MVVM;
 using Management.Data.Info;
-using Model = Management.Forms.Model.Clients;
+using Model = Management.Forms.Model.Quotation;
 using System;
-using System.Collections.ObjectModel;
 
-namespace Management.Forms.ViewModel.Clients
+namespace Management.Forms.ViewModel.Quotation
 {
 
     /// <summary>
-    /// 客先担当選択.ViewModel
+    /// 納期入力.ViewModel
     /// </summary>
-    public class SelectedStaff : ViewModelBase, IDisposable
+    public class InputDeliveryDate : ViewModelBase, IDisposable
     {
 
         #region Model
 
         /// <summary>
-        /// 客先担当選択.Model
+        /// 納期入力.Model
         /// </summary>
-        private Model::SelectedStaff _Model;
+        private Model::InputDeliveryDate _Model;
 
         #endregion
 
         #region Property
 
         /// <summary>
-        /// 取引先名称
+        /// 日数、週数、月数
         /// </summary>
-        public string ClientName
+        public double No
         {
-            get { return _Model?.ClientName ?? ""; }
-        }
-
-        /// <summary>
-        /// 客先担当一覧
-        /// </summary>
-        public ObservableCollection<Staff> Staffs
-        {
-            get { return _Model?.Staffs; }
+            get { return _Model?.DeliveryDate.No ?? 0d; }
             set
             {
                 if (_Model != null)
                 {
-                    Staffs = value;
+                    _Model.DeliveryDate.No = value;
+                    CallPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 納期単位
+        /// </summary>
+        public DeliveryUnit SelectedUnit
+        {
+            get { return _Model?.DeliveryDate.Unit ?? DeliveryUnit.Months; }
+            set
+            {
+                if (_Model != null)
+                {
+                    _Model.DeliveryDate.Unit = value;
                     CallPropertyChanged();
                 }
             }
@@ -55,7 +62,7 @@ namespace Management.Forms.ViewModel.Clients
         {
             get
             {
-                return new DelegateCommand(() => 
+                return new DelegateCommand(() =>
                 {
                     CallPropertyChanged("CallOk");
                 });
@@ -65,19 +72,19 @@ namespace Management.Forms.ViewModel.Clients
         #endregion
 
         /// <summary>
-        /// 客先担当選択.ViewModel
+        /// 納期入力.ViewModel
         /// </summary>
-        public SelectedStaff()
+        public InputDeliveryDate()
         { }
 
         /// <summary>
-        /// 客先担当選択.ViewModel
+        /// 納期入力.ViewModel
         /// </summary>
-        /// <param name="dataFile">ファイル情報</param>
-        public SelectedStaff(DataFileInfo dataFile)
+        /// <param name="deliveryDate">見積納期</param>
+        public InputDeliveryDate(DeliveryDate deliveryDate)
         {
 
-            _Model = new Model::SelectedStaff(dataFile);
+            _Model = new Model::InputDeliveryDate(deliveryDate);
 
         }
 

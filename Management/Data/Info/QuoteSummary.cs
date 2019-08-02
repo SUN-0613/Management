@@ -42,8 +42,6 @@ namespace Management.Data.Info
         /// </summary>
         private Action _CalcTotalPrice = null;
 
-        private int _No;
-
         /// <summary>
         /// No.
         /// </summary>
@@ -61,11 +59,6 @@ namespace Management.Data.Info
         /// 摘要
         /// </summary>
         public string Summary { get; set; }
-
-        /// <summary>
-        /// 数量
-        /// </summary>
-        private int _Volume = 0;
 
         /// <summary>
         /// 数量
@@ -88,11 +81,6 @@ namespace Management.Data.Info
         /// <summary>
         /// 単価
         /// </summary>
-        private decimal _UnitPrice = 0;
-
-        /// <summary>
-        /// 単価
-        /// </summary>
         public decimal UnitPrice
         {
             get { return _UnitPrice; }
@@ -109,6 +97,21 @@ namespace Management.Data.Info
         public decimal Price { get; set; }
 
         #endregion
+
+        /// <summary>
+        /// No.
+        /// </summary>
+        private int _No;
+
+        /// <summary>
+        /// 数量
+        /// </summary>
+        private int _Volume = 0;
+
+        /// <summary>
+        /// 単価
+        /// </summary>
+        private decimal _UnitPrice = 0;
 
         /// <summary>
         /// 見積摘要

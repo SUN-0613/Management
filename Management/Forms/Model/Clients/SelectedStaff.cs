@@ -158,30 +158,5 @@ namespace Management.Forms.Model.Clients
 
         }
 
-        /// <summary>
-        /// データ保存
-        /// </summary>
-        public void Save()
-        {
-
-            if (_File is QuotationFile quote)
-            {
-
-                quote.ClientStaffs.Clear();
-
-                foreach(var staff in Staffs)
-                {
-                    if (staff.IsSelected)
-                    {
-                        quote.ClientStaffs.Add((Staff)staff.Clone());
-                    }
-                }
-
-                quote.Save();
-
-            }
-
-        }
-
     }
 }
