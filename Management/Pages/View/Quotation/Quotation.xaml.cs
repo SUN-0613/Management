@@ -5,6 +5,7 @@ using FormsViewModel = Management.Forms.ViewModel;
 using ViewModel = Management.Pages.ViewModel.Quotation;
 using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Management.Pages.View.Quotation
@@ -20,6 +21,29 @@ namespace Management.Pages.View.Quotation
         /// </summary>
         /// <param name="dataFile">見積情報</param>
         public Quotation(DataFileInfo dataFile)
+        {
+
+            InitializeComponent();
+
+            if (DataContext is IDisposable dispose)
+            {
+                dispose.Dispose();
+            }
+
+            var viewModel = new ViewModel::Quotation(dataFile);
+            viewModel.PropertyChanged += OnPropertyChanged;
+
+            DataContext = viewModel;
+
+        }
+
+        /// <summary>
+        /// 見積書.View
+        /// </summary>
+        /// <param name="dataFile">見積情報</param>
+        /// <param name="nowPage">現在ページ数</param>
+        /// <param name="maxPage">最大ページ数</param>
+        public Quotation(DataFileInfo dataFile, int nowPage, int maxPage)
         {
 
             InitializeComponent();
@@ -101,6 +125,24 @@ namespace Management.Pages.View.Quotation
 
                         deliveryDate.Dispose();
                         deliveryDate = null;
+
+                        break;
+
+                    case "CallExecutePrint":        // 印刷実行
+
+                        if (MessageBox.Show(Properties.Resources.MessagePrint, Properties.Title.Quotation, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            viewModel.ExecutePrint();
+                        }
+
+                        break;
+
+                    case "CallSave":                // 保存
+
+                        if (MessageBox.Show(Properties.Resources.MessageSave, Properties.Title.Quotation, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
+                        {
+                            viewModel.Save();
+                        }
 
                         break;
 

@@ -58,7 +58,7 @@ namespace Management.Data.Info
         /// <summary>
         /// 摘要
         /// </summary>
-        public string Summary { get; set; }
+        public string Summary { get; set; } = string.Empty;
 
         /// <summary>
         /// 数量
@@ -95,6 +95,11 @@ namespace Management.Data.Info
         /// 金額
         /// </summary>
         public decimal Price { get; set; }
+
+        /// <summary>
+        /// 表示FLG
+        /// </summary>
+        public bool IsShow { get { return string.IsNullOrEmpty(Summary) && Volume.Equals(0) && UnitPrice.Equals(0);  } }
 
         #endregion
 

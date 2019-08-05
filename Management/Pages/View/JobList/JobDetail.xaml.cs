@@ -1,5 +1,6 @@
 ﻿using AYam.Common.MVVM;
 using ViewModel = Management.Pages.ViewModel.JobList;
+using Property = Management.Properties;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -61,12 +62,8 @@ namespace Management.Pages.View.JobList
                 switch (e.PropertyName)
                 {
 
-                    case "CallOpenQuotation":       // 見積書を開く
-                        MessageBox.Show("考え中");
-                        break;
-
-                    case "CallRevisionQuotation":   // 見積書の改訂
-                        MessageBox.Show("考え中");
+                    case "CallOpenQuotation":       // 見積書を開く・改訂
+                        viewModel.AddPageAction(Property::Title.Quotation, new Quotation.Quotation(viewModel.SelectedQuotation));
                         break;
 
                     case "CallOpenDelivery":        // 納品書を開く

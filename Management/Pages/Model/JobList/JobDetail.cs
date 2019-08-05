@@ -231,6 +231,25 @@ namespace Management.Pages.Model.JobList
             }
         }
 
+        /// <summary>
+        /// 見積書改訂
+        /// </summary>
+        public void RevisionQuotation()
+        {
+
+            if (Quotations.Count.Equals(0))
+            {
+                Quotations.Add(new DataFileInfo(DataKind.Quotation, 0, DateTime.Now, 1, false));
+            }
+            else
+            {
+                Quotations.Add(new DataFileInfo(DataKind.Quotation, Quotations[Quotations.Count - 1].Revision + 1, DateTime.Now, 1, false));
+            }
+
+            SelectedQuotation = Quotations[Quotations.Count - 1];
+
+        }
+
     }
 
 }

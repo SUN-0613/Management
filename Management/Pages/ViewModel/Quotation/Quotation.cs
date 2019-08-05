@@ -11,7 +11,7 @@ namespace Management.Pages.ViewModel.Quotation
     /// <summary>
     /// 見積書.ViewModel
     /// </summary>
-    public class Quotation : TabPrintViewModelBase, IDisposable, ICloneable
+    public class Quotation : TabPrintViewModelBase, IDisposable
     {
 
         #region Model
@@ -341,6 +341,25 @@ namespace Management.Pages.ViewModel.Quotation
             }
         }
 
+        /// <summary>
+        /// 印刷コマンド
+        /// </summary>
+        public DelegateCommand PrintCommand
+        {
+            get
+            {
+                return new DelegateCommand(() => { CallPropertyChanged("CallExecutePrint"); });
+            }
+        }
+
+        public DelegateCommand SaveCommand
+        {
+            get
+            {
+                return new DelegateCommand(() => { CallPropertyChanged("CallSave"); });
+            }
+        }
+
         #endregion
 
         /// <summary>
@@ -371,32 +390,31 @@ namespace Management.Pages.ViewModel.Quotation
 
         /// <summary>
         /// 見積書.ViewModel
-        /// Clone()実行用
         /// </summary>
-        /// <param name="quote">コピー元ViewModel</param>
-        private Quotation(Quotation quote)
+        /// <param name="dataFile">見積情報</param>
+        /// <param name="nowPage">現在ページ数</param>
+        /// <param name="maxPage">最大ページ数</param>
+        public Quotation(DataFileInfo dataFile, int nowPage, int maxPage)
         {
 
-            _Model = quote._Model.Clone() as Model::Quotation;
+            _Model = new Model::Quotation(dataFile)
+            {
+                IsPrintMode = true,
+                NowPage = nowPage,
+                MaxPage = maxPage
+            };
 
             foreach (var summary in _Model.File.Summaries)
             {
-                summary.SetCalcTotalPrice(new Action(() => 
+                summary.SetCalcTotalPrice(new Action(() =>
                 {
                     CalcSubTotalPrice();
                     CalcTotalPrice();
                 }));
             }
 
-        }
+            _Model.SetPrintSummaries();
 
-        /// <summary>
-        /// クローン作成
-        /// </summary>
-        /// <returns></returns>
-        public object Clone()
-        {
-            return new Quotation(this);
         }
 
         /// <summary>
@@ -523,7 +541,23 @@ namespace Management.Pages.ViewModel.Quotation
         /// </summary>
         public override void ExecutePrint()
         {
-            System.Windows.MessageBox.Show("考え中");
+            
+            if (_Model != null)
+            {
+
+                _Model.Save();
+                _Model.ExecutePrint();
+
+            }
+
+        }
+
+        /// <summary>
+        /// 保存
+        /// </summary>
+        public void Save()
+        {
+            _Model?.Save();
         }
 
     }

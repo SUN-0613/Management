@@ -1,6 +1,7 @@
-﻿using Management.Data.File;
+﻿using AYam.Common.Controls.Print;
+using Management.Data.File;
 using Management.Data.Info;
-using System;
+using View = Management.Pages.View.Quotation;
 using System.Collections.ObjectModel;
 
 namespace Management.Pages.Model.Quotation
@@ -9,7 +10,7 @@ namespace Management.Pages.Model.Quotation
     /// <summary>
     /// 見積書.Model
     /// </summary>
-    public class Quotation : IDisposable, ICloneable
+    public class Quotation : PrintPageBase
     {
 
         #region File
@@ -36,7 +37,7 @@ namespace Management.Pages.Model.Quotation
         /// <summary>
         /// 1ページ毎の表示摘要件数
         /// </summary>
-        public const int PageLineCount = 10;
+        private const int PageLineCount = 10;
 
         /// <summary>
         /// 現在ページ
@@ -68,19 +69,25 @@ namespace Management.Pages.Model.Quotation
         }
 
         /// <summary>
-        /// クローン作成
-        /// </summary>
-        /// <returns></returns>
-        public object Clone()
-        {
-            return new Quotation(DataFile);
-        }
-
-        /// <summary>
         /// 終了処理
         /// </summary>
-        public void Dispose()
+        public override void Dispose()
         {
+
+            base.Dispose();
+
+            if (PrintSummaries != null)
+            {
+
+                foreach (var summary in PrintSummaries)
+                {
+                    summary.Dispose();
+                }
+
+                PrintSummaries.Clear();
+                PrintSummaries = null;
+
+            }
 
             File.Dispose();
             File = null;
@@ -132,6 +139,65 @@ namespace Management.Pages.Model.Quotation
 
             File.DeliveryDate.No = no;
             File.DeliveryDate.Unit = unit;
+            
+        }
+
+        /// <summary>
+        /// 印刷範囲の摘要を抽出
+        /// </summary>
+        public void SetPrintSummaries()
+        {
+
+            if (IsPrintMode)
+            {
+
+                PrintSummaries = new ObservableCollection<QuoteSummary>();
+
+                for (int iLoop = (NowPage - 1) * PageLineCount; iLoop < NowPage * PageLineCount; iLoop++)
+                {
+
+                    if (iLoop >= File.Summaries.Count)
+                    {
+                        PrintSummaries.Add(new QuoteSummary());
+                    }
+                    else
+                    {
+                        PrintSummaries.Add(File.Summaries[iLoop]);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        /// <summary>
+        /// 印刷実行
+        /// </summary>
+        public async void ExecutePrint()
+        {
+
+            // ページ数の計算
+            if (File.Summaries.Count % PageLineCount == 0)
+            {
+                MaxPage = File.Summaries.Count / PageLineCount;
+            }
+            else
+            {
+                MaxPage = File.Summaries.Count / PageLineCount + 1;
+            }
+
+            // ページ毎に印刷データを作成
+            for (int pageNo = 1; pageNo <= MaxPage; pageNo++)
+            {
+
+                PrintPages.Add(new View::Quotation(DataFile, pageNo, MaxPage));
+
+            }
+
+            // 印刷実行
+            await Print();
 
         }
 

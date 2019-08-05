@@ -387,7 +387,16 @@ namespace Management.Pages.ViewModel.JobList
                                     break;
 
                                 case "revisionQuotation":   // 見積書の改訂
-                                    CallPropertyChanged("CallRevisionQuotation");
+
+                                    _Model.RevisionQuotation();
+
+                                    CallPropertyChanged(nameof(Quotations));
+                                    CallPropertyChanged(nameof(SelectedQuotation));
+                                    CallPropertyChanged(nameof(SelectedQuotation.Revision));
+                                    CallPropertyChanged(nameof(IsQuotationExist));
+
+                                    CallPropertyChanged("CallOpenQuotation");
+
                                     break;
 
                                 case "openDelivery":        // 納品書を開く

@@ -259,6 +259,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   印刷 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Print {
+            get {
+                return ResourceManager.GetString("Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   見積日 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string QuotationDate {
@@ -282,6 +291,15 @@ namespace Management.Properties {
         internal static string Remarks {
             get {
                 return ResourceManager.GetString("Remarks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   保存 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

@@ -169,4 +169,12 @@
     <value>保存</value>
     <comment>ボタン：保存</comment>
   </data>
+  <data name="MessagePrint" xml:space="preserve">
+    <value>データを保存して印刷しますか？</value>
+    <comment>メッセージボックス：印刷</comment>
+  </data>
+  <data name="MessageSave" xml:space="preserve">
+    <value>データを保存しますか？</value>
+    <comment>メッセージボックス：保存</comment>
+  </data>
 </root>

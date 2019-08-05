@@ -205,6 +205,10 @@
     <value>金額</value>
     <comment>金額</comment>
   </data>
+  <data name="Print" xml:space="preserve">
+    <value>印刷</value>
+    <comment>メニュー：印刷</comment>
+  </data>
   <data name="QuotationDate" xml:space="preserve">
     <value>見積日</value>
     <comment>見積日</comment>
@@ -216,6 +220,10 @@
   <data name="Remarks" xml:space="preserve">
     <value>備考</value>
     <comment>備考</comment>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+    <comment>メニュー：保存</comment>
   </data>
   <data name="SelectedClientStaffs" xml:space="preserve">
     <value>客先担当の選択</value>

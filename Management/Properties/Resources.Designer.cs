@@ -176,5 +176,23 @@ namespace Management.Properties {
                 return ResourceManager.GetString("Button_Save", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   データを保存して印刷しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessagePrint {
+            get {
+                return ResourceManager.GetString("MessagePrint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   データを保存しますか？ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessageSave {
+            get {
+                return ResourceManager.GetString("MessageSave", resourceCulture);
+            }
+        }
     }
 }
