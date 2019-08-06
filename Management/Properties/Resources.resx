@@ -177,4 +177,8 @@
     <value>データを保存しますか？</value>
     <comment>メッセージボックス：保存</comment>
   </data>
+  <data name="NewData" xml:space="preserve">
+    <value>新規作成</value>
+    <comment>新規作成</comment>
+  </data>
 </root>

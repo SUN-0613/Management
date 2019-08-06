@@ -67,6 +67,19 @@ namespace Management.Forms.ViewModel.Menu
         }
 
         /// <summary>
+        /// 選択しているタブ
+        /// </summary>
+        public int SelectedTabIndex
+        {
+            get { return _TabItem.SelectedTabIndex; }
+            set
+            {
+                _TabItem.SelectedTabIndex = value;
+                CallPropertyChanged(nameof(SelectedTabIndex));
+            }
+        }
+
+        /// <summary>
         /// 表示するスケジュール一覧の切り替えコマンド
         /// </summary>
         public DelegateCommand<string> ChangeListCommand { get { return _Schedule.ChangeListCommand; } }
@@ -179,6 +192,11 @@ namespace Management.Forms.ViewModel.Menu
             _Schedule = new Model::Schedule();
 
             _TabItem = new Model::TabItem();
+            _TabItem.PropertyChanged += OnTabItemPropertyChanged;
+
+            // 初期値表示
+            _TabItem.AddTabItem(Properties.Title.JobList, new Job::JobList());
+            SelectedTabIndex = _TabItem.TabItems.Count - 1;
 
         }
 
@@ -209,6 +227,7 @@ namespace Management.Forms.ViewModel.Menu
 
             if (_TabItem != null)
             {
+                _TabItem.PropertyChanged -= OnTabItemPropertyChanged;
                 _TabItem.Dispose();
                 _TabItem = null;
             }
@@ -226,6 +245,26 @@ namespace Management.Forms.ViewModel.Menu
 
                 case "CallDateTime":
                     CallPropertyChanged(nameof(Now));
+                    break;
+
+                default:
+                    break;
+
+            }
+
+        }
+
+        /// <summary>
+        /// タブ.Modelプロパティ変更イベント
+        /// </summary>
+        private void OnTabItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            switch (e.PropertyName)
+            {
+
+                case "CallSelectedTabItem":
+                    CallPropertyChanged(nameof(SelectedTabIndex));
                     break;
 
                 default:

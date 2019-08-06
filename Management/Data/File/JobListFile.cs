@@ -203,21 +203,31 @@ namespace Management.Data.File
 
                     }
 
-                    var cover = new XElement(nameof(Job.CoverLetter), Jobs[iLoop].CoverLetter.CreatedFlg);
+                    if (Jobs[iLoop].CoverLetter != null)
+                    {
 
-                    AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.Revision), Jobs[iLoop].CoverLetter.Revision));
-                    AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.CreateDate), Jobs[iLoop].CoverLetter.CreateDate));
-                    AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.Seaquence), Jobs[iLoop].CoverLetter.Seaquence));
+                        var cover = new XElement(nameof(Job.CoverLetter), Jobs[iLoop].CoverLetter.CreatedFlg);
 
-                    AddElement(ref element, cover);
+                        AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.Revision), Jobs[iLoop].CoverLetter.Revision));
+                        AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.CreateDate), Jobs[iLoop].CoverLetter.CreateDate));
+                        AddAttribute(ref cover, new XAttribute(nameof(DataFileInfo.Seaquence), Jobs[iLoop].CoverLetter.Seaquence));
 
-                    var status = new XElement(nameof(Job.Status), Jobs[iLoop].Status.Status);
+                        AddElement(ref element, cover);
 
-                    AddAttribute(ref status, new XAttribute(nameof(JobStatus.Deadline), Jobs[iLoop].Status.Deadline));
-                    AddAttribute(ref status, new XAttribute(nameof(JobStatus.OrderedDate), Jobs[iLoop].Status.OrderedDate));
-                    AddAttribute(ref status, new XAttribute(nameof(JobStatus.DeliveryDate), Jobs[iLoop].Status.DeliveryDate));
+                    }
 
-                    AddElement(ref element, status);
+                    if (Jobs[iLoop].Status != null)
+                    {
+
+                        var status = new XElement(nameof(Job.Status), Jobs[iLoop].Status.Status);
+
+                        AddAttribute(ref status, new XAttribute(nameof(JobStatus.Deadline), Jobs[iLoop].Status.Deadline));
+                        AddAttribute(ref status, new XAttribute(nameof(JobStatus.OrderedDate), Jobs[iLoop].Status.OrderedDate));
+                        AddAttribute(ref status, new XAttribute(nameof(JobStatus.DeliveryDate), Jobs[iLoop].Status.DeliveryDate));
+
+                        AddElement(ref element, status);
+
+                    }
 
                     elements.Add(element);
 

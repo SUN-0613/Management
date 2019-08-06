@@ -22,7 +22,7 @@ namespace Management.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class JobList {
+    public class JobList {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Management.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Management.Properties.JobList", typeof(JobList).Assembly);
@@ -51,7 +51,7 @@ namespace Management.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Management.Properties {
         /// <summary>
         ///   取引先 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Client {
+        public static string Client {
             get {
                 return ResourceManager.GetString("Client", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Management.Properties {
         /// <summary>
         ///   封筒・送付状 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string CoverLetterFile {
+        public static string CoverLetterFile {
             get {
                 return ResourceManager.GetString("CoverLetterFile", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Management.Properties {
         /// <summary>
         ///   作成日時 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string CreateDateTime {
+        public static string CreateDateTime {
             get {
                 return ResourceManager.GetString("CreateDateTime", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Management.Properties {
         /// <summary>
         ///   納品書 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string DeliveryFile {
+        public static string DeliveryFile {
             get {
                 return ResourceManager.GetString("DeliveryFile", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace Management.Properties {
         /// <summary>
         ///   納期 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string DeliveryInfo {
+        public static string DeliveryInfo {
             get {
                 return ResourceManager.GetString("DeliveryInfo", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace Management.Properties {
         /// <summary>
         ///   詳細 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Detail {
+        public static string Detail {
             get {
                 return ResourceManager.GetString("Detail", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace Management.Properties {
         /// <summary>
         ///   作成済 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string FileExist {
+        public static string FileExist {
             get {
                 return ResourceManager.GetString("FileExist", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace Management.Properties {
         /// <summary>
         ///   未作成 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string FileNoExist {
+        public static string FileNoExist {
             get {
                 return ResourceManager.GetString("FileNoExist", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace Management.Properties {
         /// <summary>
         ///   請求書 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string InvoiceFile {
+        public static string InvoiceFile {
             get {
                 return ResourceManager.GetString("InvoiceFile", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace Management.Properties {
         /// <summary>
         ///   新規ジョブを登録しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string MessageJobAdd {
+        public static string MessageJobAdd {
             get {
                 return ResourceManager.GetString("MessageJobAdd", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace Management.Properties {
         /// <summary>
         ///   「*」をジョブ一覧より削除しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string MessageJobRemove {
+        public static string MessageJobRemove {
             get {
                 return ResourceManager.GetString("MessageJobRemove", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace Management.Properties {
         /// <summary>
         ///   名称 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Name {
+        public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace Management.Properties {
         /// <summary>
         ///   金額 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Price {
+        public static string Price {
             get {
                 return ResourceManager.GetString("Price", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace Management.Properties {
         /// <summary>
         ///   見積書 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string QuotationFile {
+        public static string QuotationFile {
             get {
                 return ResourceManager.GetString("QuotationFile", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace Management.Properties {
         /// <summary>
         ///   改訂 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Revision {
+        public static string Revision {
             get {
                 return ResourceManager.GetString("Revision", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace Management.Properties {
         /// <summary>
         ///   ステータス に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status {
+        public static string Status {
             get {
                 return ResourceManager.GetString("Status", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace Management.Properties {
         /// <summary>
         ///   納品 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status_Delivery {
+        public static string Status_Delivery {
             get {
                 return ResourceManager.GetString("Status_Delivery", resourceCulture);
             }
@@ -216,7 +216,7 @@ namespace Management.Properties {
         /// <summary>
         ///   完了 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status_Finished {
+        public static string Status_Finished {
             get {
                 return ResourceManager.GetString("Status_Finished", resourceCulture);
             }
@@ -225,7 +225,7 @@ namespace Management.Properties {
         /// <summary>
         ///   - に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status_None {
+        public static string Status_None {
             get {
                 return ResourceManager.GetString("Status_None", resourceCulture);
             }
@@ -234,7 +234,7 @@ namespace Management.Properties {
         /// <summary>
         ///   未注 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status_NotOrdered {
+        public static string Status_NotOrdered {
             get {
                 return ResourceManager.GetString("Status_NotOrdered", resourceCulture);
             }
@@ -243,7 +243,7 @@ namespace Management.Properties {
         /// <summary>
         ///   受注 に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string Status_Ordered {
+        public static string Status_Ordered {
             get {
                 return ResourceManager.GetString("Status_Ordered", resourceCulture);
             }

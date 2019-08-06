@@ -94,7 +94,7 @@ namespace Management.Pages.ViewModel.JobList
         /// </summary>
         public string SelectedClientName
         {
-            get { return _Model?.SelectedClient.Name ?? ""; }
+            get { return SelectedClient?.Name ?? ""; }
         }
 
         /// <summary>
@@ -361,7 +361,10 @@ namespace Management.Pages.ViewModel.JobList
             {
 
                 return new DelegateCommand(
-                    () => { CallPropertyChanged("CallDetail"); },
+                    () => 
+                    {
+                        AddPageAction(Properties.Title.JobDetail + ":" + Name, new View.JobList.JobDetail(this));
+                    },
                     () => true);
 
             }

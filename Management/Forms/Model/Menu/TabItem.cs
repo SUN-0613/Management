@@ -20,6 +20,11 @@ namespace Management.Forms.Model.Menu
         /// </summary>
         public ObservableCollection<TabItemData> TabItems { get; set; }
 
+        /// <summary>
+        /// 選択タブIndex
+        /// </summary>
+        public int SelectedTabIndex = -1;
+
         #endregion
 
         /// <summary>
@@ -30,9 +35,9 @@ namespace Management.Forms.Model.Menu
 
             TabItems = new ObservableCollection<TabItemData>();
 
-#if DEBUG
-            AddTabItem("テスト表示", "TEST");
-#endif
+            //#if DEBUG
+            //            AddTabItem("テスト表示", "TEST");
+            //#endif
 
         }
 
@@ -86,12 +91,17 @@ namespace Management.Forms.Model.Menu
                     // 対象クラス内で表示データを作成済なので、NewTabがnullでないものを探して追加
                     foreach (var tabItem in TabItems)
                     {
+
                         if (tabItem.IsMakeNewTab)
                         {
+
                             AddTabItem(tabItem.NewTab);
                             tabItem.IsMakeNewTab = false;
+
                             break;
+
                         }
+
                     }
 
                     break;
@@ -119,8 +129,13 @@ namespace Management.Forms.Model.Menu
         /// <param name="tabItem">タブ表示データ</param>
         private void AddTabItem(TabItemData tabItem)
         {
+
             tabItem.PropertyChanged += OnPropertyChanged;
             TabItems.Add(tabItem);
+
+            SelectedTabIndex = TabItems.Count - 1;
+            CallPropertyChanged("CallSelectedTabItem");
+
         }
 
     }

@@ -29,7 +29,7 @@
 
         <DataGrid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Details}" SelectedItem="{Binding SelectedDetail}" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" HeadersVisibility="Column" >
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="{x:Static p:JobList.Detail}">
+                <DataGridTemplateColumn Header="{x:Static p:JobList.Detail}" Width="60" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{x:Static p:Resources.Button_Open}" >
@@ -40,9 +40,9 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="{x:Static p:JobList.Name}" Binding="{Binding Name}" IsReadOnly="True" Width="120" />
-                <DataGridTextColumn Header="{x:Static p:JobList.Client}" Binding="{Binding SelectedClientName}" IsReadOnly="True" />
-                <DataGridTemplateColumn Header="{x:Static p:JobList.QuotationFile}">
+                <DataGridTextColumn Header="{x:Static p:JobList.Name}" Binding="{Binding Name}" IsReadOnly="True" Width="200*" />
+                <DataGridTextColumn Header="{x:Static p:JobList.Client}" Binding="{Binding SelectedClientName}" IsReadOnly="True" Width="200*" />
+                <DataGridTemplateColumn Header="{x:Static p:JobList.QuotationFile}" Width="60" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsQuotationExist}" >
@@ -53,7 +53,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="{x:Static p:JobList.DeliveryFile}">
+                <DataGridTemplateColumn Header="{x:Static p:JobList.DeliveryFile}" Width="60" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsDeliveryExist}" >
@@ -64,7 +64,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="{x:Static p:JobList.InvoiceFile}">
+                <DataGridTemplateColumn Header="{x:Static p:JobList.InvoiceFile}" Width="60" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{x:Static p:Resources.Button_Open}" IsEnabled="{Binding IsInvoiceExist}" >
@@ -75,7 +75,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="{x:Static p:JobList.Status}" Binding="{Binding Status.Status, Converter={StaticResource jobConv}}" IsReadOnly="True" />
+                <DataGridTextColumn Header="{x:Static p:JobList.Status}" Binding="{Binding Status.Status, Converter={StaticResource jobConv}}" IsReadOnly="True" Width="120" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

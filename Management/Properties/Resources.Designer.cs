@@ -194,5 +194,14 @@ namespace Management.Properties {
                 return ResourceManager.GetString("MessageSave", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   新規作成 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NewData {
+            get {
+                return ResourceManager.GetString("NewData", resourceCulture);
+            }
+        }
     }
 }

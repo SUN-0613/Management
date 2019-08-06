@@ -66,7 +66,7 @@ namespace Management.Pages.View.JobList
                         {
                             viewModel.AddNewJob();
                             viewModel.SelectedDetail = viewModel.Details[viewModel.Details.Count - 1];
-                            viewModel.AddPageAction(Properties.Title.JobDetail, viewModel.SelectedDetail);
+                            viewModel.AddPageAction(Properties.Title.JobDetail + ":" + Properties.Resources.NewData , new JobDetail(viewModel.SelectedDetail));
                         }
 
                         break;
@@ -81,7 +81,7 @@ namespace Management.Pages.View.JobList
                         break;
 
                     case "CallDetail":
-                        viewModel.AddPageAction(Properties.Title.JobDetail, new JobDetail(viewModel.SelectedDetail));
+                        viewModel.AddPageAction(Properties.Title.JobDetail + ":" + viewModel.SelectedDetail.Name, new JobDetail(viewModel.SelectedDetail));
                         break;
 
                     default:
