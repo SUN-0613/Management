@@ -363,7 +363,7 @@ namespace Management.Pages.ViewModel.JobList
                 return new DelegateCommand(
                     () => 
                     {
-                        AddPageAction(Properties.Title.JobDetail + ":" + Name, new View.JobList.JobDetail(this));
+                        CallPropertyChanged("CallDetail");
                     },
                     () => true);
 

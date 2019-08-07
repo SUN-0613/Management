@@ -21,9 +21,16 @@ namespace Management.Pages.View.JobList
 
             InitializeComponent();
 
-            if (DataContext is ViewModelBase viewModel)
+            if (DataContext is ViewModel::JobList viewModel)
             {
+
                 viewModel.PropertyChanged += OnPropertyChanged;
+
+                foreach (var detail in viewModel.Details)
+                {
+                    detail.PropertyChanged += OnPropertyChanged;
+                }
+
             }
 
         }
@@ -34,14 +41,17 @@ namespace Management.Pages.View.JobList
         public void Dispose()
         {
 
-            if (DataContext is ViewModelBase viewModel)
+            if (DataContext is ViewModel::JobList viewModel)
             {
-                viewModel.PropertyChanged -= OnPropertyChanged;
-            }
 
-            if (DataContext is IDisposable dispose)
-            {
-                dispose.Dispose();
+                foreach (var detail in viewModel.Details)
+                {
+                    detail.PropertyChanged += OnPropertyChanged;
+                }
+
+                viewModel.PropertyChanged -= OnPropertyChanged;
+                viewModel.Dispose();
+
             }
 
             DataContext = null;
@@ -65,6 +75,7 @@ namespace Management.Pages.View.JobList
                         if (MessageBox.Show(Properties.JobList.MessageJobAdd, Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
                             viewModel.AddNewJob();
+                            viewModel.Details[viewModel.Details.Count - 1].PropertyChanged += OnPropertyChanged;
                             viewModel.SelectedDetail = viewModel.Details[viewModel.Details.Count - 1];
                             viewModel.AddPageAction(Properties.Title.JobDetail + ":" + Properties.Resources.NewData , new JobDetail(viewModel.SelectedDetail));
                         }
@@ -76,12 +87,25 @@ namespace Management.Pages.View.JobList
                         if (viewModel.SelectedDetail != null
                             && MessageBox.Show(Properties.JobList.MessageJobRemove.Replace("*", viewModel.SelectedDetail.Name), Properties.Title.JobList, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
+
+                            var index = viewModel.Details.IndexOf(viewModel.SelectedDetail);
+                            viewModel.Details[index].PropertyChanged -= OnPropertyChanged;
+
                             viewModel.RemoveSelectedJob();
+
                         }
                         break;
 
                     case "CallDetail":
-                        viewModel.AddPageAction(Properties.Title.JobDetail + ":" + viewModel.SelectedDetail.Name, new JobDetail(viewModel.SelectedDetail));
+
+                        if (sender is ViewModel::JobDetail detail)
+                        {
+
+                            viewModel.SelectedDetail = detail;
+                            viewModel.AddPageAction(Properties.Title.JobDetail + ":" + viewModel.SelectedDetail.Name, new JobDetail(viewModel.SelectedDetail));
+
+                        }
+                        
                         break;
 
                     default:

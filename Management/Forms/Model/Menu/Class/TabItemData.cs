@@ -71,10 +71,14 @@ namespace Management.Forms.Model.Menu.Class
             Content = content;
 
             if (content is Page page
-                && page.DataContext is MVVM::TabViewModelBase viewModel)
-            {
-                viewModel.ClosePageAction = new Action(() => CloseTab());
-                viewModel.AddPageAction = new Action<string, object>((string newTabName, object newContent) => AddTab(newTabName, newContent));
+                && page.DataContext is MVVM::TabViewModelBase viewModel
+                && (viewModel.ClosePageAction == null
+                    || viewModel.AddPageAction == null))
+            { 
+
+                    viewModel.ClosePageAction = new Action(() => CloseTab());
+                    viewModel.AddPageAction = new Action<string, object>((string newTabName, object newContent) => AddTab(newTabName, newContent));
+
             }
 
         }
