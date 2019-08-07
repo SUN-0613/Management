@@ -4,37 +4,37 @@ namespace Management.Data.Info
 {
 
     /// <summary>
+    /// 状態
+    /// </summary>
+    public enum StatusEnum
+    {
+        /// <summary>
+        /// 無
+        /// </summary>
+        None,
+        /// <summary>
+        /// 未注
+        /// </summary>
+        NotOrdered,
+        /// <summary>
+        /// 受注
+        /// </summary>
+        Ordered,
+        /// <summary>
+        /// 納品
+        /// </summary>
+        Delivery,
+        /// <summary>
+        /// 完了
+        /// </summary>
+        Finished
+    }
+
+    /// <summary>
     /// ジョブの状態
     /// </summary>
     public class JobStatus
     {
-
-        /// <summary>
-        /// 状態
-        /// </summary>
-        public enum StatusEnum
-        {
-            /// <summary>
-            /// 無
-            /// </summary>
-            None,
-            /// <summary>
-            /// 未注
-            /// </summary>
-            NotOrdered,
-            /// <summary>
-            /// 受注
-            /// </summary>
-            Ordered,
-            /// <summary>
-            /// 納品
-            /// </summary>
-            Delivery,
-            /// <summary>
-            /// 完了
-            /// </summary>
-            Finished
-        }
 
         /// <summary>
         /// 状態

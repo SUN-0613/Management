@@ -10,7 +10,7 @@ namespace Management.Converter
     /// <summary>
     /// ジョブ状態をリソースファイル内容に変換
     /// </summary>
-    [ValueConversion(typeof(JobStatus.StatusEnum), typeof(string))]
+    [ValueConversion(typeof(StatusEnum), typeof(string))]
     public class JobStatusConverter : IValueConverter
     {
 
@@ -24,25 +24,25 @@ namespace Management.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             
-            if (value is JobStatus.StatusEnum status)
+            if (value is StatusEnum status)
             {
 
                 switch (status)
                 {
 
-                    case JobStatus.StatusEnum.None:
+                    case StatusEnum.None:
                         return Property::JobList.Status_None;
 
-                    case JobStatus.StatusEnum.NotOrdered:
+                    case StatusEnum.NotOrdered:
                         return Property::JobList.Status_NotOrdered;
 
-                    case JobStatus.StatusEnum.Ordered:
+                    case StatusEnum.Ordered:
                         return Property::JobList.Status_Ordered;
 
-                    case JobStatus.StatusEnum.Delivery:
+                    case StatusEnum.Delivery:
                         return Property::JobList.Status_Delivery;
 
-                    case JobStatus.StatusEnum.Finished:
+                    case StatusEnum.Finished:
                         return Property::JobList.Status_Finished;
 
                     default:

@@ -130,7 +130,7 @@ namespace Management.Data.File
                     var status = element.Element(nameof(Job.Status));
                     job.Status = new JobStatus()
                     {
-                        Status = GetValue(status, JobStatus.StatusEnum.None)
+                        Status = GetValue(status, StatusEnum.None)
                         , Deadline = GetAttribute(status, nameof(JobStatus.Deadline), "")
                         , OrderedDate = GetAttribute(status, nameof(JobStatus.OrderedDate), DateTime.MinValue)
                         , DeliveryDate = GetAttribute(status, nameof(JobStatus.DeliveryDate), DateTime.MinValue)

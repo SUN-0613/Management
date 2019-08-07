@@ -143,6 +143,11 @@ namespace Management.Pages.ViewModel.JobList
         public bool IsQuotationExist { get { return _Model?.IsQuotationExist ?? false; } }
 
         /// <summary>
+        /// 見積書改訂ボタン表記
+        /// </summary>
+        public string QuotationButtonContent { get { return IsQuotationExist ? Properties.Resources.Button_Revision : Properties.Resources.Button_New; } }
+
+        /// <summary>
         /// 納品書
         /// </summary>
         public ObservableCollection<DataFileInfo> Deliveries
@@ -186,6 +191,11 @@ namespace Management.Pages.ViewModel.JobList
         /// 納品書作成済
         /// </summary>
         public bool IsDeliveryExist { get { return _Model?.IsDeliveryExist ?? false; } }
+
+        /// <summary>
+        /// 納品書改訂ボタン表記
+        /// </summary>
+        public string DeliveryButtonContent { get { return IsDeliveryExist ? Properties.Resources.Button_Revision : Properties.Resources.Button_New; } }
 
         /// <summary>
         /// 請求書
@@ -233,6 +243,11 @@ namespace Management.Pages.ViewModel.JobList
         public bool IsInvoiceExist { get { return _Model?.IsInvoiceExist ?? false; } }
 
         /// <summary>
+        /// 請求書改訂ボタン表記
+        /// </summary>
+        public string InvoiceButtonContent { get { return IsInvoiceExist ? Properties.Resources.Button_Revision : Properties.Resources.Button_New; } }
+
+        /// <summary>
         /// 封筒・送付状
         /// </summary>
         public DataFileInfo CoverLetter
@@ -269,14 +284,14 @@ namespace Management.Pages.ViewModel.JobList
         /// <summary>
         /// ステータス
         /// </summary>
-        public JobStatus Status
+        public StatusEnum Status
         {
-            get { return _Model?.Status; }
+            get { return _Model?.Status.Status ?? StatusEnum.None; }
             set
             {
                 if (_Model != null)
                 {
-                    _Model.Status = value;
+                    _Model.Status.Status = value;
                     CallPropertyChanged();
                     CallPropertyChanged(nameof(DeliveryInfo));
                 }
@@ -290,16 +305,16 @@ namespace Management.Pages.ViewModel.JobList
         {
             get
             {
-                switch (_Model?.Status.Status ?? JobStatus.StatusEnum.None)
+                switch (_Model?.Status.Status ?? StatusEnum.None)
                 {
 
-                    case JobStatus.StatusEnum.NotOrdered:
+                    case StatusEnum.NotOrdered:
                         return _Model.Status.Deadline;
 
-                    case JobStatus.StatusEnum.Ordered:
+                    case StatusEnum.Ordered:
                         return _Model.Status.DeliveryDate.ToString("yyyy/MM/dd");
 
-                    case JobStatus.StatusEnum.Delivery:
+                    case StatusEnum.Delivery:
                         return _Model.Status.DepositDate.ToString("yyyy/MM/dd");
                         
                     default:
@@ -332,16 +347,16 @@ namespace Management.Pages.ViewModel.JobList
         {
             get
             {
-                switch (_Model?.Status.Status ?? JobStatus.StatusEnum.None)
+                switch (_Model?.Status.Status ?? StatusEnum.None)
                 {
 
-                    case JobStatus.StatusEnum.Ordered:
+                    case StatusEnum.Ordered:
                         return Brushes.LightYellow;
 
-                    case JobStatus.StatusEnum.Delivery:
+                    case StatusEnum.Delivery:
                         return Brushes.LightGreen;
 
-                    case JobStatus.StatusEnum.Finished:
+                    case StatusEnum.Finished:
                         return Brushes.LightGray;
 
                     default:

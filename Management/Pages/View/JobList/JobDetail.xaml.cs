@@ -63,7 +63,7 @@ namespace Management.Pages.View.JobList
                 {
 
                     case "CallOpenQuotation":       // 見積書を開く・改訂
-                        viewModel.AddPageAction(Property::Title.Quotation, new Quotation.Quotation(viewModel.SelectedQuotation));
+                        viewModel.AddPageAction(Property::Title.Quotation, new Quotation.Quotation(viewModel.SelectedQuotation), true);
                         break;
 
                     case "CallOpenDelivery":        // 納品書を開く

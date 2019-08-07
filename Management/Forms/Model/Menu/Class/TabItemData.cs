@@ -57,6 +57,16 @@ namespace Management.Forms.Model.Menu.Class
         /// </summary>
         public bool IsMakeNewTab = false;
 
+        /// <summary>
+        /// タブ終了FLG
+        /// </summary>
+        public bool IsCloseTab = false;
+
+        /// <summary>
+        /// 終了処理実行FLG
+        /// </summary>
+        private bool IsDisposable = true;
+
         #endregion
 
         /// <summary>
@@ -77,7 +87,13 @@ namespace Management.Forms.Model.Menu.Class
             { 
 
                     viewModel.ClosePageAction = new Action(() => CloseTab());
-                    viewModel.AddPageAction = new Action<string, object>((string newTabName, object newContent) => AddTab(newTabName, newContent));
+                    viewModel.AddPageAction = new Action<string, object, bool>(
+                        (string newTabName, object newContent, bool isDisposable) => 
+                        {
+
+                            AddTab(newTabName, newContent, isDisposable);
+
+                        });
 
             }
 
@@ -89,7 +105,7 @@ namespace Management.Forms.Model.Menu.Class
         public void Dispose()
         {
 
-            if (Content is IDisposable content)
+            if (IsDisposable && Content is IDisposable content)
             {
                 content.Dispose();
             }
@@ -103,8 +119,11 @@ namespace Management.Forms.Model.Menu.Class
         /// </summary>
         private void CloseTab()
         {
+
             Dispose();
+            IsCloseTab = true;
             CallPropertyChanged("CallCloseTabItem");
+
         }
 
         /// <summary>
@@ -112,11 +131,12 @@ namespace Management.Forms.Model.Menu.Class
         /// </summary>
         /// <param name="tabName">追加タブに表示するデータ名</param>
         /// <param name="content">追加タブに表示するデータ</param>
-        private void AddTab(string tabName, object content)
+        /// <param name="isDisposable">終了処理を行うか</param>
+        private void AddTab(string tabName, object content, bool isDisposable)
         {
 
             IsMakeNewTab = true;
-            NewTab = new TabItemData(tabName, content);
+            NewTab = new TabItemData(tabName, content) { IsDisposable = isDisposable };
             CallPropertyChanged("CallAddTabItem");
 
         }

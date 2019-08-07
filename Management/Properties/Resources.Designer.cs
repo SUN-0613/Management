@@ -115,6 +115,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   新規作成 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Button_New {
+            get {
+                return ResourceManager.GetString("Button_New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   次 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Button_Next {

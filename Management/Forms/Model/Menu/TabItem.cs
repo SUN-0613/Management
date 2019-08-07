@@ -72,21 +72,24 @@ namespace Management.Forms.Model.Menu
             switch (e.PropertyName)
             {
 
-                case "CallCloseTabItem":
+                case "CallCloseTabItem":    // タブを閉じる
 
-                    // 対象はDispose()実行済みなので、Contentがnullのものを探して削除
                     foreach (var tabItem in TabItems)
                     {
-                        if (tabItem.Content == null)
+
+                        if (tabItem.IsCloseTab)
                         {
+
                             TabItems.Remove(tabItem);
                             break;
+
                         }
+
                     }
 
                     break;
 
-                case "CallAddTabItem":
+                case "CallAddTabItem":      // タブを追加
 
                     // 対象クラス内で表示データを作成済なので、NewTabがnullでないものを探して追加
                     foreach (var tabItem in TabItems)

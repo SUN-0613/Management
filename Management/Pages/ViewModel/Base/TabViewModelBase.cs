@@ -17,8 +17,11 @@ namespace Management.Pages.ViewModel.Base
 
         /// <summary>
         /// ページを追加するアクション
+        /// 第1引数：タブに表記する名称
+        /// 第2引数：タブ内容(Page等)
+        /// 第3引数：タブを閉じる際にDispose処理を行うか
         /// </summary>
-        public Action<string, object> AddPageAction;
+        public Action<string, object, bool> AddPageAction;
 
     }
 
