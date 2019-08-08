@@ -85,6 +85,7 @@ namespace Management.Pages.ViewModel.JobList
                 {
                     _Model.SelectedClient = value;
                     CallPropertyChanged();
+                    CallPropertyChanged(nameof(SelectedClientName));
                 }
             }
         }
@@ -475,7 +476,7 @@ namespace Management.Pages.ViewModel.JobList
         /// <remarks>
         /// Management.Pages.Model.JobList.JobList.Save()
         /// </remarks>
-        private readonly Action _SaveAction;
+        private Action _SaveAction;
 
         /// <summary>
         /// ジョブ.ViewModel
@@ -499,6 +500,8 @@ namespace Management.Pages.ViewModel.JobList
         /// </summary>
         public void Dispose()
         {
+
+            _SaveAction = null;
 
             if (_Model != null)
             {

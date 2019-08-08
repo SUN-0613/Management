@@ -11,15 +11,12 @@ namespace Management.Forms.Model.Menu.Class
     /// <summary>
     /// TabControl内に表示するデータ
     /// </summary>
-    public class TabItemData : ViewModelBase, IDisposable
+    public class TabItemData : IDisposable
     {
 
         #region Property
 
-        /// <summary>
-        /// 作成日時
-        /// </summary>
-        public DateTime CreateDate = DateTime.Now;
+        public DateTime CreateDateTime = DateTime.Now;
 
         /// <summary>
         /// ヘッダ
@@ -47,53 +44,40 @@ namespace Management.Forms.Model.Menu.Class
             }
         }
 
-        /// <summary>
-        /// 新規タブを呼び出す場合の表示データ
-        /// </summary>
-        public TabItemData NewTab = null;
-
-        /// <summary>
-        /// 新規タブ作成FLG
-        /// </summary>
-        public bool IsMakeNewTab = false;
-
-        /// <summary>
-        /// タブ終了FLG
-        /// </summary>
-        public bool IsCloseTab = false;
-
-        /// <summary>
-        /// 終了処理実行FLG
-        /// </summary>
-        private bool IsDisposable = true;
-
         #endregion
+
+        /// <summary>
+        /// タブを閉じるアクション
+        /// </summary>
+        private Action<TabItemData> _CloseTabItemAction;
+
+        /// <summary>
+        /// タブを追加するアクション
+        /// </summary>
+        private Action<TabItemData> _AddTabItemAction;
 
         /// <summary>
         /// TabControl内に表示するデータ
         /// </summary>
         /// <param name="header">ヘッダ</param>
         /// <param name="content">表示データ</param>
-        public TabItemData(string header, object content)
+        /// <param name="closeTabItemAction">タブを閉じるアクション</param>
+        /// <param name="addTabItemAction">タブを追加するアクション</param>
+        public TabItemData(string header, object content, Action<TabItemData> closeTabItemAction, Action<TabItemData> addTabItemAction)
         {
 
             Header = header;
             Content = content;
+            _CloseTabItemAction = closeTabItemAction;
+            _AddTabItemAction = addTabItemAction;
 
             if (content is Page page
-                && page.DataContext is MVVM::TabViewModelBase viewModel
-                && (viewModel.ClosePageAction == null
-                    || viewModel.AddPageAction == null))
+                && page.DataContext is MVVM::TabViewModelBase viewModel)
             { 
 
                     viewModel.ClosePageAction = new Action(() => CloseTab());
-                    viewModel.AddPageAction = new Action<string, object, bool>(
-                        (string newTabName, object newContent, bool isDisposable) => 
-                        {
-
-                            AddTab(newTabName, newContent, isDisposable);
-
-                        });
+                    viewModel.AddPageAction = new Action<string, object>(
+                        (string newTabName, object newContent) =>  { AddTab(newTabName, newContent); });
 
             }
 
@@ -105,12 +89,15 @@ namespace Management.Forms.Model.Menu.Class
         public void Dispose()
         {
 
-            if (IsDisposable && Content is IDisposable content)
+            if (Content is IDisposable content)
             {
                 content.Dispose();
             }
 
             Content = null;
+
+            _CloseTabItemAction = null;
+            _AddTabItemAction = null;
 
         }
 
@@ -120,9 +107,8 @@ namespace Management.Forms.Model.Menu.Class
         private void CloseTab()
         {
 
+            _CloseTabItemAction(this);
             Dispose();
-            IsCloseTab = true;
-            CallPropertyChanged("CallCloseTabItem");
 
         }
 
@@ -131,14 +117,9 @@ namespace Management.Forms.Model.Menu.Class
         /// </summary>
         /// <param name="tabName">追加タブに表示するデータ名</param>
         /// <param name="content">追加タブに表示するデータ</param>
-        /// <param name="isDisposable">終了処理を行うか</param>
-        private void AddTab(string tabName, object content, bool isDisposable)
+        private void AddTab(string tabName, object content)
         {
-
-            IsMakeNewTab = true;
-            NewTab = new TabItemData(tabName, content) { IsDisposable = isDisposable };
-            CallPropertyChanged("CallAddTabItem");
-
+            _AddTabItemAction(new TabItemData(tabName, content, _CloseTabItemAction, _AddTabItemAction));
         }
 
         /// <summary>
@@ -149,7 +130,7 @@ namespace Management.Forms.Model.Menu.Class
 
             if (obj is TabItemData tabItem)
             {
-                return CreateDate.Equals(tabItem.CreateDate);
+                return CreateDateTime.Equals(tabItem.CreateDateTime);
             }
             else
             {

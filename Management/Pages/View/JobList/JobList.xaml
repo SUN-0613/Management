@@ -75,7 +75,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="{x:Static p:JobList.Status}" Binding="{Binding Status.Status, Converter={StaticResource jobConv}}" IsReadOnly="True" Width="120" />
+                <DataGridTextColumn Header="{x:Static p:JobList.Status}" Binding="{Binding Status, Converter={StaticResource jobConv}}" IsReadOnly="True" Width="120" />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>

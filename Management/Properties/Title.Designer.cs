@@ -61,6 +61,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   カレンダー に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Calendar {
+            get {
+                return ResourceManager.GetString("Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   取引先登録 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ClientAdd {

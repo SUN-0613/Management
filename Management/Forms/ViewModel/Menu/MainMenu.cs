@@ -2,6 +2,7 @@
 using Management.Data.Schedule;
 using Model = Management.Forms.Model.Menu;
 using Class = Management.Forms.Model.Menu.Class;
+using Calendar = Management.Pages.View.Calendar;
 using Job = Management.Pages.View.JobList;
 using System;
 using System.Collections.ObjectModel;
@@ -195,8 +196,9 @@ namespace Management.Forms.ViewModel.Menu
             _TabItem.PropertyChanged += OnTabItemPropertyChanged;
 
             // 初期値表示
+            _TabItem.AddTabItem(Properties.Title.Calendar, new Calendar::Calendar());
             _TabItem.AddTabItem(Properties.Title.JobList, new Job::JobList());
-            SelectedTabIndex = _TabItem.TabItems.Count - 1;
+            SelectedTabIndex = 0;
 
         }
 
