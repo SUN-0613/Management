@@ -126,14 +126,42 @@ namespace Management.Forms.ViewModel.Menu
             get
             {
 
+                int index = -1;
+
                 return new DelegateCommand<string>(
                     (parameter) =>
                     {
                         switch (parameter)
                         {
 
-                            case "job": //ジョブ一覧
-                                _TabItem.AddTabItem(Properties.Title.JobList, new Job::JobList());
+                            case "calendar":    // カレンダー
+
+                                index = _TabItem.IsOpenTabItemSameTitle(Properties.Title.Calendar);
+
+                                if (index.Equals(-1))
+                                {
+                                    _TabItem.AddTabItem(Properties.Title.Calendar, new Calendar::Calendar());
+                                }
+                                else
+                                {
+                                    SelectedTabIndex = index;
+                                }
+
+                                break;
+
+                            case "job":         // ジョブ一覧
+
+                                index = _TabItem.IsOpenTabItemSameTitle(Properties.Title.JobList);
+
+                                if (index.Equals(-1))
+                                {
+                                    _TabItem.AddTabItem(Properties.Title.JobList, new Job::JobList());
+                                }
+                                else
+                                {
+                                    SelectedTabIndex = index;
+                                }
+                                
                                 break;
 
                             default:

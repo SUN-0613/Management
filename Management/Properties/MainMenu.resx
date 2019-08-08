@@ -117,8 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Calendar" xml:space="preserve">
+    <value>カレンダー(_C)</value>
+    <comment>メニュー：カレンダー</comment>
+  </data>
   <data name="ClientInfo" xml:space="preserve">
-    <value>取引先情報</value>
+    <value>取引先情報(_C)</value>
     <comment>メニュー：取引先情報</comment>
   </data>
   <data name="File" xml:space="preserve">
@@ -130,7 +134,7 @@
     <comment>メニュー：ジョブ一覧</comment>
   </data>
   <data name="MasterInfo" xml:space="preserve">
-    <value>マスタ情報</value>
+    <value>マスタ情報(_M)</value>
     <comment>メニュー：マスタ情報</comment>
   </data>
   <data name="MasterOption" xml:space="preserve">

@@ -30,6 +30,8 @@
             </MenuItem>
             <MenuItem Header="{x:Static p:MainMenu.Process}" >
                 <MenuItem Header="{x:Static p:MainMenu.Job}"  Command="{Binding ProcessCommand}" CommandParameter="job" />
+                <Separator />
+                <MenuItem Header="{x:Static p:MainMenu.Calendar}"  Command="{Binding ProcessCommand}" CommandParameter="calendar" />
             </MenuItem>
             <MenuItem Header="{x:Static p:MainMenu.MasterOption}" >
                 <MenuItem Header="{x:Static p:MainMenu.MasterInfo}" Command="{Binding MasterCommand}" CommandParameter="master" />

@@ -55,6 +55,62 @@ namespace Management.Forms.Model.Menu
         }
 
         /// <summary>
+        /// 同内容のタブを開いているか
+        /// </summary>
+        /// <param name="title">タイトル</param>
+        /// <returns>
+        /// -1:該当タブ無し
+        /// 他：該当タブIndex
+        /// </returns>
+        public int IsOpenTabItemSameTitle(string title)
+        {
+
+            int index = -1;
+
+            for (int iLoop = 0; iLoop < TabItems.Count; iLoop++)
+            {
+
+                var tabItem = TabItems[iLoop];
+
+                if (tabItem.Header.Equals(title))
+                {
+                    index = iLoop;
+                    break;
+                }
+
+            }
+
+            return index;
+
+        }
+
+        /// <summary>
+        /// 同内容のタブを開いているか
+        /// </summary>
+        /// <param name="title">表示内容</param>
+        /// <returns>
+        /// True:タブ有
+        /// False:タブ無
+        /// </returns>
+        public bool IsOpenTabItemSameContent(object content)
+        {
+
+            bool isOpen = false;
+
+            foreach (var tabItem in TabItems)
+            {
+                if (tabItem.Content.Equals(content))
+                {
+                    isOpen = true;
+                    break;
+                }
+            }
+
+            return isOpen;
+
+        }
+
+        /// <summary>
         /// タブを閉じる
         /// </summary>
         /// <param name="tabItem">タブ表示データ</param>

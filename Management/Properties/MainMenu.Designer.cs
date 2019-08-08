@@ -61,7 +61,16 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   取引先情報 に類似しているローカライズされた文字列を検索します。
+        ///   カレンダー(_C) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Calendar {
+            get {
+                return ResourceManager.GetString("Calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   取引先情報(_C) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ClientInfo {
             get {
@@ -88,7 +97,7 @@ namespace Management.Properties {
         }
         
         /// <summary>
-        ///   マスタ情報 に類似しているローカライズされた文字列を検索します。
+        ///   マスタ情報(_M) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MasterInfo {
             get {
