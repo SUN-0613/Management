@@ -40,463 +40,466 @@
             <MenuItem Header="{x:Static p:Quotation.Print}" Command="{Binding PrintCommand}" />
         </ContextMenu>
     </Page.ContextMenu>
-    <Grid Background="White" >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="5" />
-            <RowDefinition Height="60" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="90" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="70" />
-            <RowDefinition Height="180" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="10" />
-            <RowDefinition Height="385" />
-            <RowDefinition Height="40" />
-            <RowDefinition Height="15" />
-            <RowDefinition Height="170" />
-            <RowDefinition Height="28" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="22" />
-            <ColumnDefinition Width="750" />
-            <ColumnDefinition Width="22" />
-        </Grid.ColumnDefinitions>
-
-        <!-- タイトル、ページ数 -->
-        <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+    <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
+        <Grid Background="White" >
             <Grid.RowDefinitions>
-                <!-- 60 -->
-                <RowDefinition Height="20" />
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="100" />
-            </Grid.ColumnDefinitions>
-
-            <!-- ページ数 -->
-            <Grid Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
-                <Grid.RowDefinitions>
-                    <!-- 20 -->
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <!-- 100 -->
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="20" />
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Page}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding NowPage}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="1,0" />
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="/" FontSize="13" TextAlignment="Center" VerticalAlignment="Center" />
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding MaxPage}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="1,0" />
-
-            </Grid>
-            
-            <!-- タイトル -->
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static p:Quotation.Title}" FontSize="36" TextAlignment="Center" VerticalAlignment="Bottom" />
-            
-        </Grid>
-
-        <!-- 宛先、No、日付 -->
-        <Grid Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 90 -->
+                <RowDefinition Height="5" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="180" />
                 <RowDefinition Height="10" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="385" />
                 <RowDefinition Height="40" />
+                <RowDefinition Height="15" />
+                <RowDefinition Height="170" />
+                <RowDefinition Height="28" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="350" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="22" />
+                <ColumnDefinition Width="750" />
+                <ColumnDefinition Width="22" />
             </Grid.ColumnDefinitions>
-            
-            <!-- 客先社名 -->
-            <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+
+            <!-- タイトル、ページ数 -->
+            <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
                 <Grid.RowDefinitions>
-                    <!-- 40 -->
-                    <RowDefinition Height="*" />
+                    <!-- 60 -->
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <!-- 350 -->
-                    <ColumnDefinition Width="250" />
+                    <!-- 750 -->
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
 
-                <Line Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" X1="0" X2="250" Y1="39" Y2="39" Stroke="Black" StrokeThickness="1" />
-
-                <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
-                    <TextBlock Text="{Binding ClientName}" TextAlignment="Center" VerticalAlignment="Center" />
-                </Viewbox>
-
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Attention}" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" />
-
-            </Grid>
-            
-            <!-- 客先担当者名 -->
-            <Grid Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
-                <Grid.RowDefinitions>
-                    <!-- 40 -->
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <!-- 350 -->
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="250" />
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ClientStaffName}" FontSize="24" TextAlignment="Right" VerticalAlignment="Center" />
-
-                <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" MaxHeight="30" Margin="3,0" >
-                    <TextBlock Text="{Binding ClientName}" TextAlignment="Left" VerticalAlignment="Center" />
-                </Viewbox>
-
-            </Grid>
-            
-            <!-- 見積No -->
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationNo}" TextAlignment="Right" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteNo}" TextAlignment="Right" VerticalAlignment="Center" />
-            
-            <!-- 見積日 -->
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationDate}" TextAlignment="Right" VerticalAlignment="Center" />
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteDate, StringFormat=yyyy年M月d日}" TextAlignment="Right" VerticalAlignment="Center" />
-
-            <!-- 客先担当選択Button -->
-            <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="1" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource ButtonCustomStyle}" >
-                <Button.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" Command="{Binding SelectedStaffCommand}" />
-                </Button.InputBindings>
-            </Button>
-            
-        </Grid>
-
-        <!-- 件名 -->
-        <Grid Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 70 -->
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="500" />
-                <ColumnDefinition Width="100" />
-            </Grid.ColumnDefinitions>
-
-            <Line Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" X1="0" X2="650" Y1="34" Y2="34" Stroke="Black" StrokeThickness="1" />
-
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.JobTitle}" TextAlignment="Right" VerticalAlignment="Center" Padding="3,0" FontWeight="Bold" />
-
-            <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" MaxHeight="35" >
-                <TextBlock Text="{Binding JobName}" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
-            </Viewbox>
-
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static p:Quotation.Message}" TextAlignment="Left" VerticalAlignment="Center" Padding="90,0" />
-
-        </Grid>
-        
-        <!-- 納期、マスタ情報 -->
-        <Grid Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 180 -->
-                <RowDefinition Height="90" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="30" />
-                <RowDefinition Height="30" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="85" />
-                <ColumnDefinition Width="260" />
-            </Grid.ColumnDefinitions>
-            
-            <!-- 納期 -->
-            <Line Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.DeliveryDate}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding DeliveryDate}" TextAlignment="Left" VerticalAlignment="Center" />
-            
-            <!-- 納期入力Button -->
-            <Button Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource ButtonCustomStyle}" >
-                <Button.InputBindings>
-                    <MouseBinding MouseAction="LeftClick" Command="{Binding InputDeliveryDateCommand}" />
-                </Button.InputBindings>
-            </Button>
-
-            <!-- 支払条件 -->
-            <Line Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.PaymentTerms}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.PaymentTermsMessage}" TextAlignment="Left" VerticalAlignment="Center" />
-            
-            <!-- 有効期限 -->
-            <Line Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
-            <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExpirationDate}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExpirationDateMessage}" TextAlignment="Left" VerticalAlignment="Center" />
-
-            <!-- マスタ情報 -->
-            <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="2" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                <Grid>
+                <!-- ページ数 -->
+                <Grid Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
                     <Grid.RowDefinitions>
-                        <!-- 90 -->
-                        <RowDefinition Height="*" />
+                        <!-- 20 -->
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <!-- 345 -->
-                        <ColumnDefinition Width="*" />
+                        <!-- 100 -->
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="20" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding MasterPostCode}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
-                    <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding MasterAddress}" FontSize="21" TextAlignment="Left" VerticalAlignment="Top" />
+
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Page}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding NowPage}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="1,0" />
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="/" FontSize="13" TextAlignment="Center" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding MaxPage}" FontSize="13" TextAlignment="Right" VerticalAlignment="Center" Padding="1,0" />
+
                 </Grid>
-            </Viewbox>
+            
+                <!-- タイトル -->
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static p:Quotation.Title}" FontSize="36" TextAlignment="Center" VerticalAlignment="Bottom" />
+            
+            </Grid>
 
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Telephone}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterTelephone}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+            <!-- 宛先、No、日付 -->
+            <Grid Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 90 -->
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="350" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="180" />
+                </Grid.ColumnDefinitions>
+            
+                <!-- 客先社名 -->
+                <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+                    <Grid.RowDefinitions>
+                        <!-- 40 -->
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!-- 350 -->
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.EMail}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterEMail}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+                    <Line Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" X1="0" X2="250" Y1="39" Y2="39" Stroke="Black" StrokeThickness="1" />
 
-            <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.MasterName}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
-            <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterName}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+                    <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+                        <TextBlock Text="{Binding ClientName}" TextAlignment="Center" VerticalAlignment="Center" />
+                    </Viewbox>
+
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Attention}" FontSize="24" TextAlignment="Center" VerticalAlignment="Center" />
+
+                </Grid>
+            
+                <!-- 客先担当者名 -->
+                <Grid Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+                    <Grid.RowDefinitions>
+                        <!-- 40 -->
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <!-- 350 -->
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="250" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ClientStaffName}" FontSize="24" TextAlignment="Right" VerticalAlignment="Center" />
+
+                    <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" MaxHeight="30" Margin="3,0" >
+                        <TextBlock Text="{Binding ClientName}" TextAlignment="Left" VerticalAlignment="Center" />
+                    </Viewbox>
+
+                </Grid>
+            
+                <!-- 見積No -->
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationNo}" TextAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteNo}" TextAlignment="Right" VerticalAlignment="Center" />
+            
+                <!-- 見積日 -->
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationDate}" TextAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteDate, StringFormat=yyyy年M月d日}" TextAlignment="Right" VerticalAlignment="Center" />
+
+                <!-- 客先担当選択Button -->
+                <Button Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="1" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource ButtonCustomStyle}" >
+                    <Button.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding SelectedStaffCommand}" />
+                    </Button.InputBindings>
+                </Button>
+            
+            </Grid>
+
+            <!-- 件名 -->
+            <Grid Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 70 -->
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="500" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+
+                <Line Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" X1="0" X2="650" Y1="34" Y2="34" Stroke="Black" StrokeThickness="1" />
+
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.JobTitle}" TextAlignment="Right" VerticalAlignment="Center" Padding="3,0" FontWeight="Bold" />
+
+                <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" MaxHeight="35" >
+                    <TextBlock Text="{Binding JobName}" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" />
+                </Viewbox>
+
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static p:Quotation.Message}" TextAlignment="Left" VerticalAlignment="Center" Padding="90,0" />
+
+            </Grid>
+        
+            <!-- 納期、マスタ情報 -->
+            <Grid Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 180 -->
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="85" />
+                    <ColumnDefinition Width="260" />
+                </Grid.ColumnDefinitions>
+            
+                <!-- 納期 -->
+                <Line Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.DeliveryDate}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding DeliveryDate}" TextAlignment="Left" VerticalAlignment="Center" />
+            
+                <!-- 納期入力Button -->
+                <Button Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="2" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Style="{StaticResource ButtonCustomStyle}" >
+                    <Button.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding InputDeliveryDateCommand}" />
+                    </Button.InputBindings>
+                </Button>
+
+                <!-- 支払条件 -->
+                <Line Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.PaymentTerms}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.PaymentTermsMessage}" TextAlignment="Left" VerticalAlignment="Center" />
+            
+                <!-- 有効期限 -->
+                <Line Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" X1="0" X2="300" Y1="29" Y2="29" Stroke="Black" StrokeThickness="1" />
+                <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExpirationDate}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExpirationDateMessage}" TextAlignment="Left" VerticalAlignment="Center" />
+
+                <!-- マスタ情報 -->
+                <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="2" StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <!-- 90 -->
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <!-- 345 -->
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding MasterPostCode}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{Binding MasterAddress}" FontSize="21" TextAlignment="Left" VerticalAlignment="Top" />
+                    </Grid>
+                </Viewbox>
+
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.Telephone}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterTelephone}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.EMail}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterEMail}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+
+                <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.MasterName}" FontSize="21" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                <TextBlock Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Text="{Binding MasterName}" FontSize="21" TextAlignment="Left" VerticalAlignment="Center" />
+
+            </Grid>
+        
+            <!-- 合計金額 -->
+            <Grid Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 40 -->
+                    <RowDefinition Height="31" />
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="2" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="350" />
+                </Grid.ColumnDefinitions>
+
+                <Line Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="400" Y1="0" Y2="0" Stroke="Black" StrokeThickness="1" />
+                <Line Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="400" Y1="0" Y2="0" Stroke="Black" StrokeThickness="1" />
+
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.TotalPrice}" TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Padding="2,0" />
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding TotalPrice, StringFormat='C'}" TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Padding="2,0" />
+                <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExcludingTax}" TextAlignment="Left" VerticalAlignment="Center" FontSize="21" Padding="2,0" />
+
+            </Grid>
+        
+            <!-- 摘要（てきよう）入力モード -->
+            <DataGrid Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Summaries}" SelectedItem="{Binding SelectedSummary}" Background="Transparent" AutoGenerateColumns="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" Visibility="{Binding IsInputMode, Converter={StaticResource convBoolVisible}}" >
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Height" Value="35" />
+                        <Setter Property="VerticalContentAlignment" Value="Center" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="FontSize" Value="18" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="35" />
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="{x:Static p:Quotation.No}" Binding="{Binding No}" FontSize="18" IsReadOnly="True" Width="70" CellStyle="{StaticResource cellRightStyle}" />
+                    <DataGridTextColumn Header="{x:Static p:Quotation.Summary}" Binding="{Binding Summary}" FontSize="18" IsReadOnly="False" Width="305"/>
+                    <DataGridTemplateColumn Header="{x:Static p:Quotation.Volume}" Width="140" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Transparent" BorderThickness="0" Text="{Binding Volume, StringFormat='C', UpdateSourceTrigger=PropertyChanged, Delay=100}" FontSize="18" TextAlignment="Right" />
+                                    <ComboBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource volumeUnit}}" SelectedItem="{Binding Unit}" >
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Converter={StaticResource convVolumeUnit}}" FontSize="18" />
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="{x:Static p:Quotation.UnitPrice}" Binding="{Binding UnitPrice, StringFormat='C'}" FontSize="18" IsReadOnly="False" Width="117" CellStyle="{StaticResource cellRightStyle}" EditingElementStyle="{StaticResource cellRightStyle}" />
+                    <DataGridTextColumn Header="{x:Static p:Quotation.Price}" Binding="{Binding Price, StringFormat='C'}" FontSize="18" IsReadOnly="True" Width="118" CellStyle="{StaticResource cellRightStyle}" />
+                </DataGrid.Columns>
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="{x:Static p:Resources.Button_Add}" Command="{Binding SummaryCommand}" CommandParameter="add" />
+                        <MenuItem Header="{x:Static p:Resources.Button_Insert}" Command="{Binding SummaryCommand}" CommandParameter="insert" />
+                        <MenuItem Header="{x:Static p:Resources.Button_Remove}" Command="{Binding SummaryCommand}" CommandParameter="remove" />
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+            </DataGrid>
+        
+            <!-- 摘要（摘要）印刷モード -->
+            <Grid Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
+                <Grid.RowDefinitions>
+                    <!-- 385 -->
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                    <RowDefinition Height="35" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="305" />
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="70" />
+                    <ColumnDefinition Width="117" />
+                    <ColumnDefinition Width="118" />
+                </Grid.ColumnDefinitions>
+
+                <!-- 項目名 -->
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.No}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Summary}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Content="{x:Static p:Quotation.Volume}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.UnitPrice}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Price}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+
+                <!-- 1行目 -->
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 2行目 -->
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 3行目 -->
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 4行目 -->
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 5行目 -->
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 6行目 -->
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 7行目 -->
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 8行目 -->
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 9行目 -->
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+                <!-- 10行目 -->
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+
+
+            </Grid>
+        
+            <!-- 小計 -->
+            <Grid Grid.Row="11" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 40 -->
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="375" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="235" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.SubTotal}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,1,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding TotalPrice, StringFormat='C'}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,1,1" />
+
+            </Grid>
+        
+            <!-- 備考 -->
+            <Grid Grid.Row="13" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+                <Grid.RowDefinitions>
+                    <!-- 170 -->
+                    <RowDefinition Height="170" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!-- 750 -->
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="600" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Remarks}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" AcceptsReturn="True" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged, Delay=100}" TextAlignment="Left" VerticalAlignment="Top" Padding="1" BorderBrush="Black" BorderThickness="1" MinHeight="170" />
+
+            </Grid>
 
         </Grid>
-        
-        <!-- 合計金額 -->
-        <Grid Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 40 -->
-                <RowDefinition Height="31" />
-                <RowDefinition Height="2" />
-                <RowDefinition Height="2" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="350" />
-            </Grid.ColumnDefinitions>
 
-            <Line Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="400" Y1="0" Y2="0" Stroke="Black" StrokeThickness="1" />
-            <Line Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="3" X1="0" X2="400" Y1="0" Y2="0" Stroke="Black" StrokeThickness="1" />
-
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.TotalPrice}" TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Padding="2,0" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding TotalPrice, StringFormat='C'}" TextAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Padding="2,0" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ExcludingTax}" TextAlignment="Left" VerticalAlignment="Center" FontSize="21" Padding="2,0" />
-
-        </Grid>
-        
-        <!-- 摘要（てきよう）入力モード -->
-        <DataGrid Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Summaries}" SelectedItem="{Binding SelectedSummary}" Background="Transparent" AutoGenerateColumns="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserAddRows="False" CanUserDeleteRows="False" HeadersVisibility="Column" Visibility="{Binding IsInputMode, Converter={StaticResource convBoolVisible}}" >
-            <DataGrid.ColumnHeaderStyle>
-                <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Height" Value="35" />
-                    <Setter Property="VerticalContentAlignment" Value="Center" />
-                    <Setter Property="HorizontalContentAlignment" Value="Center" />
-                    <Setter Property="FontSize" Value="18" />
-                </Style>
-            </DataGrid.ColumnHeaderStyle>
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Height" Value="35" />
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Quotation.No}" Binding="{Binding No}" FontSize="18" IsReadOnly="True" Width="70" CellStyle="{StaticResource cellRightStyle}" />
-                <DataGridTextColumn Header="{x:Static p:Quotation.Summary}" Binding="{Binding Summary}" FontSize="18" IsReadOnly="False" Width="305"/>
-                <DataGridTemplateColumn Header="{x:Static p:Quotation.Volume}" Width="140" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Transparent" BorderThickness="0" Text="{Binding Volume, StringFormat='C', UpdateSourceTrigger=PropertyChanged, Delay=100}" FontSize="18" TextAlignment="Right" />
-                                <ComboBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource volumeUnit}}" SelectedItem="{Binding Unit}" >
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Converter={StaticResource convVolumeUnit}}" FontSize="18" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                            </Grid>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="{x:Static p:Quotation.UnitPrice}" Binding="{Binding UnitPrice, StringFormat='C'}" FontSize="18" IsReadOnly="False" Width="117" CellStyle="{StaticResource cellRightStyle}" EditingElementStyle="{StaticResource cellRightStyle}" />
-                <DataGridTextColumn Header="{x:Static p:Quotation.Price}" Binding="{Binding Price, StringFormat='C'}" FontSize="18" IsReadOnly="True" Width="118" CellStyle="{StaticResource cellRightStyle}" />
-            </DataGrid.Columns>
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="{x:Static p:Resources.Button_Add}" Command="{Binding SummaryCommand}" CommandParameter="add" />
-                    <MenuItem Header="{x:Static p:Resources.Button_Insert}" Command="{Binding SummaryCommand}" CommandParameter="insert" />
-                    <MenuItem Header="{x:Static p:Resources.Button_Remove}" Command="{Binding SummaryCommand}" CommandParameter="remove" />
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
-        
-        <!-- 摘要（摘要）印刷モード -->
-        <Grid Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
-            <Grid.RowDefinitions>
-                <!-- 385 -->
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-                <RowDefinition Height="35" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="70" />
-                <ColumnDefinition Width="305" />
-                <ColumnDefinition Width="70" />
-                <ColumnDefinition Width="70" />
-                <ColumnDefinition Width="117" />
-                <ColumnDefinition Width="118" />
-            </Grid.ColumnDefinitions>
-
-            <!-- 項目名 -->
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.No}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Summary}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Content="{x:Static p:Quotation.Volume}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.UnitPrice}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Price}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-
-            <!-- 1行目 -->
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 2行目 -->
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 3行目 -->
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 4行目 -->
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 5行目 -->
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 6行目 -->
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 7行目 -->
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 8行目 -->
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 9行目 -->
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-            <!-- 10行目 -->
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-            <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-
-
-        </Grid>
-        
-        <!-- 小計 -->
-        <Grid Grid.Row="11" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 40 -->
-                <RowDefinition Height="40" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="375" />
-                <ColumnDefinition Width="140" />
-                <ColumnDefinition Width="235" />
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.SubTotal}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,1,1" />
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding TotalPrice, StringFormat='C'}" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,1,1" />
-
-        </Grid>
-        
-        <!-- 備考 -->
-        <Grid Grid.Row="13" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <!-- 170 -->
-                <RowDefinition Height="170" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <!-- 750 -->
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="600" />
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Remarks}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-            <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" AcceptsReturn="True" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged, Delay=100}" TextAlignment="Left" VerticalAlignment="Top" Padding="1" BorderBrush="Black" BorderThickness="1" MinHeight="170" />
-
-        </Grid>
-
-    </Grid>
+    </ScrollViewer>
 </Page>
