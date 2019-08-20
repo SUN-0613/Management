@@ -97,6 +97,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   納期入力 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string InputDeliveryDate {
+            get {
+                return ResourceManager.GetString("InputDeliveryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   ジョブ詳細 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string JobDetail {

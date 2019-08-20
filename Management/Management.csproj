@@ -91,12 +91,14 @@
     <Compile Include="Converter\VolumeUnitConverter.cs" />
     <Compile Include="Data\File\ClientDetailFile.cs" />
     <Compile Include="Data\File\ClientsFile.cs" />
+    <Compile Include="Data\File\DocumentNoFile.cs" />
     <Compile Include="Data\File\JobListFile.cs" />
     <Compile Include="Data\File\MasterFile.cs" />
     <Compile Include="Data\File\QuotationFile.cs" />
     <Compile Include="Data\Info\Client.cs" />
     <Compile Include="Data\Info\DataFileInfo.cs" />
     <Compile Include="Data\Info\DeliveryDate.cs" />
+    <Compile Include="Data\Info\DocumentNo.cs" />
     <Compile Include="Data\Info\Job.cs" />
     <Compile Include="Data\Info\JobStatus.cs" />
     <Compile Include="Data\Info\QuoteSummary.cs" />

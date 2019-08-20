@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="{x:Static p:Title.SelectedStaff}" 
         Height="350" Width="600"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow">
     <Window.DataContext>
         <vm:SelectedStaff />
@@ -32,19 +32,7 @@
         </Grid.ColumnDefinitions>
         
         <!-- 取引先 -->
-        <Grid Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="120" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:ClientInfo.CompanyName}" VerticalAlignment="Center" TextAlignment="Right" Padding="1,0" />
-            <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding ClientName}" VerticalAlignment="Center" TextAlignment="Left" Padding="1,0" />
-
-        </Grid>
+        <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding ClientName}" VerticalAlignment="Center" TextAlignment="Left" FontSize="18" Padding="1,0" />
         
         <!-- 担当一覧 -->
         <Grid Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >

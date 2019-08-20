@@ -139,14 +139,17 @@ namespace Management.Forms.Model.Clients
                     Staffs.Add((Staff)staff.Clone());
 
                     bool isSelected = false;
+                    bool isNotationFullName = false;
                     var index = selectedStaffs.IndexOf(staff);
 
                     if (!index.Equals(-1))
                     {
                         isSelected = selectedStaffs[index].IsSelected;
+                        isNotationFullName = selectedStaffs[index].IsNotationFullName;
                     }
 
                     Staffs[Staffs.Count - 1].IsSelected = isSelected;
+                    Staffs[Staffs.Count - 1].IsNotationFullName = isNotationFullName;
 
                 }
 

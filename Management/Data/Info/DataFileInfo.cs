@@ -82,7 +82,7 @@ namespace Management.Data.Info
         /// <returns>作成日時_改訂No</returns>
         public string GetFileNameParts()
         {
-            return CreateDate.ToString("yyyyMMdd") + "_" + Revision.ToString();
+            return CreateDate.ToString("yyyyMMdd") + "_Rev" + Revision.ToString("d2");
         }
 
     }

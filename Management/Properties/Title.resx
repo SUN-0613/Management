@@ -133,6 +133,10 @@
     <value>担当者登録</value>
     <comment>取引先：担当者登録ダイアログ</comment>
   </data>
+  <data name="InputDeliveryDate" xml:space="preserve">
+    <value>納期入力</value>
+    <comment>御見積：納期入力</comment>
+  </data>
   <data name="JobDetail" xml:space="preserve">
     <value>ジョブ詳細</value>
     <comment>ジョブ情報：詳細ページ</comment>

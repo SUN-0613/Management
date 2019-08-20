@@ -46,7 +46,7 @@ namespace Management.Pages.ViewModel.JobList
         public JobDetail SelectedDetail { get; set; } = null;
 
         /// <summary>
-        /// 取引先一覧の操作コマンド
+        /// ジョブ一覧の操作コマンド
         /// </summary>
         public DelegateCommand<string> ListCommand
         {

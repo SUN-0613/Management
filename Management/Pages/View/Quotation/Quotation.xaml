@@ -134,7 +134,7 @@
 
                     <Line Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" X1="0" X2="250" Y1="39" Y2="39" Stroke="Black" StrokeThickness="1" />
 
-                    <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" >
+                    <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" HorizontalAlignment="Center" >
                         <TextBlock Text="{Binding ClientName}" TextAlignment="Center" VerticalAlignment="Center" />
                     </Viewbox>
 
@@ -157,17 +157,17 @@
                     <TextBlock Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.ClientStaffName}" FontSize="24" TextAlignment="Right" VerticalAlignment="Center" />
 
                     <Viewbox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="Left" MaxHeight="30" Margin="3,0" >
-                        <TextBlock Text="{Binding ClientName}" TextAlignment="Left" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding ClientStaff}" TextAlignment="Left" VerticalAlignment="Center" />
                     </Viewbox>
 
                 </Grid>
             
                 <!-- 見積No -->
-                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationNo}" TextAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationNo}" TextAlignment="Left" VerticalAlignment="Center" />
                 <TextBlock Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteNo}" TextAlignment="Right" VerticalAlignment="Center" />
             
                 <!-- 見積日 -->
-                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationDate}" TextAlignment="Right" VerticalAlignment="Center" />
+                <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Text="{x:Static p:Quotation.QuotationDate}" TextAlignment="Left" VerticalAlignment="Center" />
                 <TextBlock Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Text="{Binding QuoteDate, StringFormat=yyyy年M月d日}" TextAlignment="Right" VerticalAlignment="Center" />
 
                 <!-- 客先担当選択Button -->
@@ -216,8 +216,8 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <!-- 750 -->
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="300" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="250" />
                     <ColumnDefinition Width="5" />
                     <ColumnDefinition Width="85" />
                     <ColumnDefinition Width="260" />

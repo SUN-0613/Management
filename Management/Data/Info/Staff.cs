@@ -105,7 +105,10 @@ namespace Management.Data.Info
         /// <param name="mobilePhone">携帯電話番号</param>
         /// <param name="remarks">メモ</param>
         /// <param name="createDate">登録日</param>
-        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string position, string eMailAddress, string mobilePhone, string remarks, DateTime createDate, bool IsNotationFullName)
+        /// <param name="isNotationFullName">書類表記時、フルネーム表示するか</param>
+        /// <param name="isFullNameJapaneseStyle">フルネームを姓名表記とするか</param>
+        /// <param name="isSelected">該当担当者を書類表記するか</param>
+        public Staff(string firstName, string firstKana, string lastName, string lastKana, string department, string position, string eMailAddress, string mobilePhone, string remarks, DateTime createDate, bool isNotationFullName, bool isFullNameJapaneseStyle, bool isSelected)
         {
 
             FirstName = firstName;
@@ -118,6 +121,9 @@ namespace Management.Data.Info
             MobilePhone = mobilePhone;
             Remarks = remarks;
             CreateDate = createDate;
+            IsNotationFullName = isNotationFullName;
+            IsFullNameJapaneseStyle = isFullNameJapaneseStyle;
+            IsSelected = isSelected;
 
         }
 
@@ -134,19 +140,7 @@ namespace Management.Data.Info
 
             if (obj is Staff staff)
             {
-
-                return staff.FirstName.Equals(FirstName)
-                        && staff.FirstKana.Equals(FirstKana)
-                        && staff.LastName.Equals(LastName)
-                        && staff.LastKana.Equals(LastKana)
-                        && staff.Department.Equals(Department)
-                        && staff.Position.Equals(Position)
-                        && staff.EMailAddress.Equals(EMailAddress)
-                        && staff.MobilePhone.Equals(MobilePhone)
-                        && staff.Remarks.Equals(Remarks)
-                        && staff.CreateDate.Equals(CreateDate)
-                        && staff.IsNotationFullName.Equals(IsNotationFullName);
-
+                return staff.CreateDate.Equals(CreateDate);
             }
             else
             {
@@ -170,7 +164,7 @@ namespace Management.Data.Info
         /// <returns>クローン</returns>
         public object Clone()
         {
-            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, Position, EMailAddress, MobilePhone, Remarks, CreateDate, IsNotationFullName);
+            return new Staff(FirstName, FirstKana, LastName, LastKana, Department, Position, EMailAddress, MobilePhone, Remarks, CreateDate, IsNotationFullName, IsFullNameJapaneseStyle, IsSelected);
         }
 
     }

@@ -248,6 +248,15 @@ namespace Management.Pages.Model.JobList
 
             SelectedQuotation = Quotations[Quotations.Count - 1];
 
+            var file = new QuotationFile(SelectedQuotation)
+            {
+                JobName = Name,
+                QuoteNo = new DocumentNoFile().UpdateDocumentNo(DataKind.Quotation),
+                ClientName = SelectedClient?.Name
+            };
+
+            file.Save();
+
         }
 
     }

@@ -501,8 +501,12 @@ namespace Management.Pages.ViewModel.Quotation
         /// <param name="staffs">取引先担当者一覧</param>
         public void SetClientStaffs(ObservableCollection<Staff> staffs)
         {
+
             _Model?.SetClientStaffs(staffs);
             CallPropertyChanged(nameof(ClientStaff));
+
+            Save();
+
         }
 
         /// <summary>

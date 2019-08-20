@@ -67,6 +67,8 @@ namespace Management.Pages.View.JobList
             if (DataContext is ViewModel::JobList viewModel)
             {
 
+                var detail = sender as ViewModel::JobDetail;
+
                 switch (e.PropertyName)
                 {
 
@@ -98,11 +100,23 @@ namespace Management.Pages.View.JobList
 
                     case "CallDetail":
 
-                        if (sender is ViewModel::JobDetail detail)
+                        if (detail != null)
                         {
 
                             viewModel.SelectedDetail = detail;
                             viewModel.AddPageAction(Properties.Title.JobDetail + ":" + viewModel.SelectedDetail.Name, new JobDetail(viewModel.SelectedDetail));
+
+                        }
+                        
+                        break;
+
+                    case "CallOpenQuotation":
+
+                        if (detail != null)
+                        {
+
+                            viewModel.SelectedDetail = detail;
+                            viewModel.AddPageAction(Properties.Title.Quotation + ":" + viewModel.SelectedDetail.Name, new Quotation.Quotation(detail.SelectedQuotation));
 
                         }
                         

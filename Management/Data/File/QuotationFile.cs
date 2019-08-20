@@ -10,6 +10,10 @@ using System.Xml.Linq;
 
 namespace Management.Data.File
 {
+
+    /// <summary>
+    /// 見積書情報ファイル
+    /// </summary>
     public class QuotationFile : XmlDataFile
     {
 
@@ -99,7 +103,7 @@ namespace Management.Data.File
 
             ClientName = GetValue(nameof(ClientName), "");
             QuoteNo = GetValue(nameof(QuoteNo), "");
-            QuoteDate = GetValue(nameof(QuoteDate), DateTime.Now);
+            QuoteDate = GetValue(nameof(QuoteDate), DateTime.Today);
             JobName = GetValue(nameof(JobName), "");
             Remarks = GetValue(nameof(Remarks), "");
 
@@ -109,8 +113,8 @@ namespace Management.Data.File
                 var delivery = Element.Element(nameof(DeliveryDate));
                 DeliveryDate = new DeliveryDate()
                 {
-                    No = GetValue(nameof(DeliveryDate.No), 0d),
-                    Unit = GetValue(nameof(DeliveryDate.Unit), DeliveryUnit.Months)
+                    No = GetValue(delivery.Element(nameof(DeliveryDate.No)), 0d),
+                    Unit = GetValue(delivery.Element(nameof(DeliveryDate.Unit)), DeliveryUnit.Months)
                 };
 
                 foreach (var element in Element.Elements(nameof(ClientStaffs)))
@@ -125,7 +129,9 @@ namespace Management.Data.File
                                         , GetValue(element.Element(nameof(Staff.MobilePhone)), "")
                                         , GetValue(element.Element(nameof(Staff.Remarks)), "")
                                         , GetAttribute(element, nameof(Staff.CreateDate), DateTime.Now)
-                                        , GetAttribute(element, nameof(Staff.IsNotationFullName), false))
+                                        , GetAttribute(element, nameof(Staff.IsNotationFullName), false)
+                                        , GetAttribute(element, nameof(Staff.IsFullNameJapaneseStyle), true)
+                                        , GetAttribute(element, nameof(Staff.IsSelected), false))
                     {
                         IsSelected = GetAttribute(element, nameof(Staff.IsSelected), false)
                     });
@@ -146,6 +152,17 @@ namespace Management.Data.File
                 }
 
             }
+            else
+            {
+
+                DeliveryDate = new DeliveryDate()
+                {
+                    No = 0d,
+                    Unit = DeliveryUnit.Months
+                };
+
+            }
+
         }
 
         /// <summary>
@@ -168,6 +185,8 @@ namespace Management.Data.File
 
                 AddElement(ref delivery, new XElement(nameof(DeliveryDate.No), DeliveryDate.No));
                 AddElement(ref delivery, new XElement(nameof(DeliveryDate.Unit), DeliveryDate.Unit));
+
+                elements.Add(delivery);
 
                 foreach (var staff in ClientStaffs)
                 {
@@ -234,12 +253,17 @@ namespace Management.Data.File
                 foreach (var staff in ClientStaffs)
                 {
 
-                    if (!text.Length.Equals(0))
+                    if (staff.IsSelected)
                     {
-                        text.Append(Property::ClientInfo.Comma);
-                    }
 
-                    text.Append(staff).Append(Property::ClientInfo.HonorificTitle);
+                        if (!text.Length.Equals(0))
+                        {
+                            text.Append(Property::ClientInfo.Comma);
+                        }
+
+                        text.Append(staff.IsNotationFullName ? staff.FullName : staff.LastName).Append(Property::ClientInfo.HonorificTitle);
+
+                    }
 
                 }
 

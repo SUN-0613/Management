@@ -443,6 +443,9 @@ namespace Management.Pages.ViewModel.JobList
 
                             }
 
+                            // 現状を保存
+                            _SaveAction();
+
                         },
                         () => true
                     );

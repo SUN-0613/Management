@@ -84,6 +84,11 @@ namespace Management.Data.Path
             public readonly string CoverLetter;
 
             /// <summary>
+            /// 各書類の最終No
+            /// </summary>
+            public readonly string DocumentNo;
+
+            /// <summary>
             /// ファイル情報
             /// </summary>
             public FileInfo()
@@ -97,6 +102,7 @@ namespace Management.Data.Path
                 ClientDetail = ComMethod::Path.GetFullPath(_Directories.ClientPath, "Client_" + Wild + ".xml");
 
                 Jobs = ComMethod::Path.GetFullPath(_Directories.JobPath, "Jobs.xml");
+                DocumentNo = ComMethod::Path.GetFullPath(_Directories.JobPath, "DocumentNo.xml");
                 Quotation = ComMethod::Path.GetFullPath(_Directories.QuotationPath, "Quotation_" + Wild + ".xml");
                 Delivery = ComMethod::Path.GetFullPath(_Directories.DeliveryPath, "Delivery_" + Wild + ".xml");
                 Invoice = ComMethod::Path.GetFullPath(_Directories.InvoicePath, "Invoice_" + Wild + ".xml");

@@ -36,7 +36,7 @@ namespace Management.Forms.Model.Clients
 
             if (staff == null)
             {
-                Staff = new Staff("", "", "", "", "", "", "", "", "", DateTime.Now, false);
+                Staff = new Staff("", "", "", "", "", "", "", "", "", DateTime.Now, false, true, false);
             }
             else
             {

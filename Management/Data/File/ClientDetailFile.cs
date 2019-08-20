@@ -115,6 +115,8 @@ namespace Management.Data.File
                                         , GetValue(element.Element(nameof(Staff.Remarks)), "")
                                         , GetAttribute(element, nameof(Staff.CreateDate), DateTime.Now)
                                         , GetAttribute(element, nameof(Staff.IsNotationFullName), false)
+                                        , GetAttribute(element, nameof(Staff.IsFullNameJapaneseStyle), true)
+                                        , GetAttribute(element, nameof(Staff.IsSelected), false)
                                         ));
 
                 }

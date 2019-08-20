@@ -121,7 +121,10 @@ namespace Management.Pages.Model.Quotation
 
             foreach (var staff in staffs)
             {
-                File.ClientStaffs.Add((Staff)staff.Clone());
+                if (staff.IsSelected)
+                {
+                    File.ClientStaffs.Add((Staff)staff.Clone());
+                }
             }
 
         }
