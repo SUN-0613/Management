@@ -120,7 +120,7 @@ namespace Management.Pages.ViewModel.Quotation
         /// <summary>
         /// マスタ情報.郵便番号
         /// </summary>
-        public string MasterPostCode { get { return _Model?.File.Master.PostalCode ?? ""; } }
+        public string MasterPostCode { get { return Properties.Resources.PostCodeMark + _Model?.File.Master.PostalCode ?? ""; } }
 
         /// <summary>
         /// マスタ情報.住所
@@ -270,7 +270,7 @@ namespace Management.Pages.ViewModel.Quotation
 
                                 Summaries?.Add(new QuoteSummary()
                                 {
-                                    No = Summaries?.Count ?? 1,
+                                    No = Summaries?.Count + 1 ?? 1,
                                     Summary = "",
                                     Volume = 0,
                                     Unit = VolumeUnit.Sets,
@@ -335,6 +335,8 @@ namespace Management.Pages.ViewModel.Quotation
                                 break;
 
                         }
+
+                        Save();
 
                     });
 

@@ -212,5 +212,14 @@ namespace Management.Properties {
                 return ResourceManager.GetString("NewData", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   〒 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PostCodeMark {
+            get {
+                return ResourceManager.GetString("PostCodeMark", resourceCulture);
+            }
+        }
     }
 }
