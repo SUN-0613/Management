@@ -289,7 +289,7 @@ namespace Management.Pages.ViewModel.Quotation
                                     if (!index.Equals(-1))
                                     {
 
-                                        for (int iLoop = index + 1; iLoop < Summaries.Count; iLoop++)
+                                        for (int iLoop = index; iLoop < Summaries.Count; iLoop++)
                                         {
                                             Summaries[iLoop].No += 1;
                                         }
@@ -321,7 +321,7 @@ namespace Management.Pages.ViewModel.Quotation
                                     if (!index.Equals(-1))
                                     {
 
-                                        for (int iLoop = index + 1; iLoop < Summaries.Count; iLoop++)
+                                        for (int iLoop = Summaries.Count - 1; iLoop > index; iLoop--)
                                         {
                                             Summaries[iLoop].No -= 1;
                                         }
@@ -337,6 +337,8 @@ namespace Management.Pages.ViewModel.Quotation
                         }
 
                         Save();
+                        CalcSubTotalPrice();
+                        CalcTotalPrice();
 
                     });
 
@@ -388,6 +390,9 @@ namespace Management.Pages.ViewModel.Quotation
                 }));
             }
 
+            CalcSubTotalPrice();
+            CalcTotalPrice();
+
         }
 
         /// <summary>
@@ -416,6 +421,9 @@ namespace Management.Pages.ViewModel.Quotation
             }
 
             _Model.SetPrintSummaries();
+
+            CalcSubTotalPrice();
+            CalcTotalPrice();
 
         }
 

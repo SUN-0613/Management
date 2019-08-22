@@ -146,6 +146,7 @@ namespace Management.Data.File
                         No = GetValue(element.Element(nameof(QuoteSummary.No)), 1),
                         Summary = GetValue(element.Element(nameof(QuoteSummary.Summary)), ""),
                         Volume = GetValue(element.Element(nameof(QuoteSummary.Volume)), 0),
+                        Unit = GetValue(element.Element(nameof(QuoteSummary.Unit)), VolumeUnit.Pieces),
                         UnitPrice = GetValue(element.Element(nameof(QuoteSummary.UnitPrice)), 0),
                     });
 
@@ -218,6 +219,7 @@ namespace Management.Data.File
                     AddElement(ref element, new XElement(nameof(QuoteSummary.No), summary.No));
                     AddElement(ref element, new XElement(nameof(QuoteSummary.Summary), summary.Summary));
                     AddElement(ref element, new XElement(nameof(QuoteSummary.Volume), summary.Volume));
+                    AddElement(ref element, new XElement(nameof(QuoteSummary.Unit), summary.Unit));
                     AddElement(ref element, new XElement(nameof(QuoteSummary.UnitPrice), summary.UnitPrice));
 
                     elements.Add(element);
