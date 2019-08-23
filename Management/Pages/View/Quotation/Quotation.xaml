@@ -370,7 +370,7 @@
                                             <b:FrameworkElementMoveFocus />
                                         </i:Interaction.Behaviors>
                                     </TextBox>
-                                    <ComboBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource volumeUnit}}" SelectedItem="{Binding Unit, Mode=TwoWay}" >
+                                    <ComboBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" ItemsSource="{Binding Source={StaticResource volumeUnit}}" SelectedValue="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
                                         <ComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding Converter={StaticResource convVolumeUnit}}" FontSize="18" />
@@ -398,7 +398,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="{x:Static p:Quotation.Price}" Width="118" >
+                    <DataGridTemplateColumn Header="{x:Static p:Quotation.Price}" Width="117" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -441,8 +441,8 @@
                     <ColumnDefinition Width="70" />
                     <ColumnDefinition Width="305" />
                     <ColumnDefinition Width="70" />
-                    <ColumnDefinition Width="70" />
-                    <ColumnDefinition Width="117" />
+                    <ColumnDefinition Width="69" />
+                    <ColumnDefinition Width="118" />
                     <ColumnDefinition Width="118" />
                 </Grid.ColumnDefinitions>
 
@@ -451,88 +451,327 @@
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Summary}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="2" Content="{x:Static p:Quotation.Volume}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.UnitPrice}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Price}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Price}" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,1,1" />
 
                 <!-- 1行目 -->
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[0].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[0].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 2行目 -->
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[1].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[1].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 3行目 -->
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[2].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[2].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 4行目 -->
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[3].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[3].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 5行目 -->
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[4].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[4].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 6行目 -->
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[5].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[5].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 7行目 -->
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[6].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[6].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 8行目 -->
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[7].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[7].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 9行目 -->
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[8].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[8].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
                 <!-- 10行目 -->
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].No}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Summary}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Volume}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Unit}" FontSize="18" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].UnitPrice}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" Content="{Binding PrintSummaries[9].Price}" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,0,1" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
-
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].No}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].Summary}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].Volume}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="3" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="0,0,0,1" HorizontalContentAlignment="Left" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].Unit, Converter={StaticResource convVolumeUnit}}" FontSize="18" TextAlignment="Left" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
+                <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
+                    <Label.Content>
+                        <TextBlock Text="{Binding PrintSummaries[9].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                    </Label.Content>
+                </Label>
 
             </Grid>
         
@@ -569,13 +808,24 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.Remarks}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,1,0,1" />
-                <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" AcceptsReturn="True" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged, Delay=100}" TextAlignment="Left" VerticalAlignment="Top" Padding="1" BorderBrush="Black" BorderThickness="1" MinHeight="170" >
+
+                <!-- 入力モード -->
+                <TextBox Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Text="{Binding Remarks, UpdateSourceTrigger=PropertyChanged, Delay=100}" TextAlignment="Left" VerticalAlignment="Top" Padding="1" BorderBrush="Black" BorderThickness="1" MinHeight="170" MinWidth="600" AcceptsReturn="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="{Binding IsInputMode, Converter={StaticResource convBoolVisible}}" >
                     <i:Interaction.Behaviors>
                         <b:TextBoxSelectAll />
                         <b:FrameworkElementMoveFocus />
                     </i:Interaction.Behaviors>
                 </TextBox>
-
+                
+                <!-- 印刷モード -->
+                <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
+                    <Label.Content>
+                        <Viewbox StretchDirection="DownOnly" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                            <TextBlock Text="{Binding Remarks}" TextAlignment="Left" VerticalAlignment="Top" />
+                        </Viewbox>
+                    </Label.Content>
+                </Label>
+                
             </Grid>
 
         </Grid>

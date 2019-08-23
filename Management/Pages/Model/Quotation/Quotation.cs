@@ -178,7 +178,8 @@ namespace Management.Pages.Model.Quotation
         /// <summary>
         /// 印刷実行
         /// </summary>
-        public async void ExecutePrint()
+        /// <returns>エラーメッセージ</returns>
+        public string ExecutePrint()
         {
 
             // ページ数の計算
@@ -200,7 +201,7 @@ namespace Management.Pages.Model.Quotation
             }
 
             // 印刷実行
-            await Print();
+            return Print();
 
         }
 

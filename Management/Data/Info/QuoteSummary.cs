@@ -99,7 +99,7 @@ namespace Management.Data.Info
         /// <summary>
         /// 表示FLG
         /// </summary>
-        public bool IsShow { get { return string.IsNullOrEmpty(Summary) && Volume.Equals(0) && UnitPrice.Equals(0);  } }
+        public bool IsShow { get { return !(string.IsNullOrEmpty(Summary) && Volume.Equals(0) && UnitPrice.Equals(0));  } }
 
         #endregion
 

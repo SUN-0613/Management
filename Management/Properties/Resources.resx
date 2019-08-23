@@ -173,6 +173,10 @@
     <value>保存</value>
     <comment>ボタン：保存</comment>
   </data>
+  <data name="MessageFinishPrint" xml:space="preserve">
+    <value>印刷が完了しました</value>
+    <comment>メッセージボックス：印刷完了</comment>
+  </data>
   <data name="MessagePrint" xml:space="preserve">
     <value>データを保存して印刷しますか？</value>
     <comment>メッセージボックス：印刷</comment>

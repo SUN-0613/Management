@@ -1,4 +1,4 @@
-﻿using AYam.Common.MVVM;
+﻿using Management.Method;
 using ViewModel = Management.Pages.ViewModel.JobList;
 using System;
 using System.ComponentModel;
@@ -104,7 +104,7 @@ namespace Management.Pages.View.JobList
                         {
 
                             viewModel.SelectedDetail = detail;
-                            viewModel.AddPageAction(Properties.Title.JobDetail + ":" + viewModel.SelectedDetail.Name, new JobDetail(viewModel.SelectedDetail));
+                            viewModel.AddPageAction(TabNameMethod.GetTabName(Properties.Title.JobDetail, viewModel.SelectedDetail.Name), new JobDetail(viewModel.SelectedDetail));
 
                         }
                         
@@ -116,7 +116,7 @@ namespace Management.Pages.View.JobList
                         {
 
                             viewModel.SelectedDetail = detail;
-                            viewModel.AddPageAction(Properties.Title.Quotation + ":" + viewModel.SelectedDetail.Name, new Quotation.Quotation(detail.SelectedQuotation));
+                            viewModel.AddPageAction(TabNameMethod.GetTabName(Properties.Title.Quotation, viewModel.SelectedDetail.Name), new Quotation.Quotation(detail.SelectedQuotation));
 
                         }
                         

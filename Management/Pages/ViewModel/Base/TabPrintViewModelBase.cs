@@ -30,7 +30,8 @@ namespace Management.Pages.ViewModel.Base
         /// <summary>
         /// 印刷実行
         /// </summary>
-        public abstract void ExecutePrint();
+        /// <returns>エラーメッセージ</returns>
+        public abstract string ExecutePrint();
 
     }
 

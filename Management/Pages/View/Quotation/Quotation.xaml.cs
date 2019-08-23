@@ -53,7 +53,7 @@ namespace Management.Pages.View.Quotation
                 dispose.Dispose();
             }
 
-            var viewModel = new ViewModel::Quotation(dataFile);
+            var viewModel = new ViewModel::Quotation(dataFile, nowPage, maxPage);
             viewModel.PropertyChanged += OnPropertyChanged;
 
             DataContext = viewModel;
@@ -132,7 +132,18 @@ namespace Management.Pages.View.Quotation
 
                         if (MessageBox.Show(Properties.Resources.MessagePrint, Properties.Title.Quotation, MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No, MessageBoxOptions.DefaultDesktopOnly).Equals(MessageBoxResult.Yes))
                         {
-                            viewModel.ExecutePrint();
+
+                            var errMessage = viewModel.ExecutePrint();
+
+                            if (!string.IsNullOrEmpty(errMessage) || errMessage.Length.Equals(0))
+                            {
+                                MessageBox.Show(Properties.Resources.MessageFinishPrint, Properties.Title.Quotation, MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+                            }
+                            else
+                            {
+                                MessageBox.Show(errMessage, Properties.Title.Quotation, MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+                            }
+
                         }
 
                         break;

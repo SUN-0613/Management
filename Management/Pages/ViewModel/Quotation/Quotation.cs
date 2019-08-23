@@ -553,15 +553,19 @@ namespace Management.Pages.ViewModel.Quotation
         /// <summary>
         /// 印刷実行
         /// </summary>
-        public override void ExecutePrint()
+        public override string ExecutePrint()
         {
             
             if (_Model != null)
             {
 
                 _Model.Save();
-                _Model.ExecutePrint();
+                return _Model.ExecutePrint();
 
+            }
+            else
+            {
+                return string.Empty;
             }
 
         }

@@ -143,6 +143,7 @@
     <Compile Include="Forms\View\Quotation\InputDeliveryDate.xaml.cs">
       <DependentUpon>InputDeliveryDate.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Method\TabNameMethod.cs" />
     <Compile Include="Pages\Model\Calendar\Calendar.cs" />
     <Compile Include="Pages\Model\Calendar\Class\DayInfo.cs" />
     <Compile Include="Pages\Model\Calendar\Class\Holiday.cs" />

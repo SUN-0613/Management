@@ -187,6 +187,15 @@ namespace Management.Properties {
         }
         
         /// <summary>
+        ///   印刷が完了しました に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MessageFinishPrint {
+            get {
+                return ResourceManager.GetString("MessageFinishPrint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   データを保存して印刷しますか？ に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MessagePrint {
