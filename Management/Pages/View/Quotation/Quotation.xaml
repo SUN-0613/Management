@@ -327,7 +327,7 @@
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="{x:Static p:Quotation.No}" Width="70" >
+                    <DataGridTemplateColumn Header="{x:Static p:Quotation.No}" Width="50" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -476,12 +476,12 @@
                 </Label>
                 <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[0].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[0].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="1" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[0].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[0].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[0].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -508,12 +508,12 @@
                 </Label>
                 <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[1].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[1].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="2" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[1].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[1].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[1].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -540,12 +540,12 @@
                 </Label>
                 <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[2].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[2].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="3" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[2].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[2].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[2].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -572,12 +572,12 @@
                 </Label>
                 <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[3].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[3].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="4" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[3].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[3].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[3].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -604,12 +604,12 @@
                 </Label>
                 <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[4].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[4].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="5" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[4].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[4].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[4].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -636,12 +636,12 @@
                 </Label>
                 <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[5].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[5].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="6" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[5].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[5].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[5].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -668,12 +668,12 @@
                 </Label>
                 <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[6].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[6].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="7" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[6].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[6].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[6].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -700,12 +700,12 @@
                 </Label>
                 <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[7].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[7].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="8" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[7].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[7].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[7].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -732,12 +732,12 @@
                 </Label>
                 <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[8].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[8].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="9" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[8].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[8].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[8].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
@@ -764,19 +764,19 @@
                 </Label>
                 <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="4" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,0,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[9].UnitPrice}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[9].UnitPrice, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
                 <Label Grid.Row="10" Grid.RowSpan="1" Grid.Column="5" Grid.ColumnSpan="1" BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalContentAlignment="Right" >
                     <Label.Content>
-                        <TextBlock Text="{Binding PrintSummaries[9].Price}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
+                        <TextBlock Text="{Binding PrintSummaries[9].Price, StringFormat='C'}" FontSize="18" TextAlignment="Right" VerticalAlignment="Center" Visibility="{Binding PrintSummaries[9].IsShow, Converter={StaticResource convBoolVisible}}" />
                     </Label.Content>
                 </Label>
 
             </Grid>
         
             <!-- 小計 -->
-            <Grid Grid.Row="11" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" >
+            <Grid Grid.Row="11" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Visibility="{Binding IsPrintMode, Converter={StaticResource convBoolVisible}}" >
                 <Grid.RowDefinitions>
                     <!-- 40 -->
                     <RowDefinition Height="40" />
@@ -790,7 +790,7 @@
 
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" Grid.ColumnSpan="1" Content="{x:Static p:Quotation.SubTotal}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1,0,1,1" />
                 <Label Grid.Row="0" Grid.RowSpan="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="0,0,1,1" >
-                    <TextBlock Text="{Binding TotalPrice, StringFormat='C'}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
+                    <TextBlock Text="{Binding SubTotalPrice, StringFormat='C'}" TextAlignment="Right" VerticalAlignment="Center" Padding="2,0" />
                 </Label>
 
             </Grid>
